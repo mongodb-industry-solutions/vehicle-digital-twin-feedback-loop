@@ -1,5 +1,8 @@
 # Typescript Sample Code for IoT Device
 
+## Set up the Atlas backend
+[Guide](https://github.com/mongodb-industry-solutions/Connected-Devices/blob/main/Guide%20-%20Digital%20Twin%20Sanbox%20Environment.pdf)
+
 ## Prepare and rund demo
 
 1. Update Realm App ID in ./src/congif.ts
