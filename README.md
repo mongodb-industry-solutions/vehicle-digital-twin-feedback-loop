@@ -3,3 +3,5 @@ Code samples and demos around using the Realm database in combination with Mongo
 
 First use case / demo code:
 [Typescript Sample Application](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
+
+![image](Overview.png)
