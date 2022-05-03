@@ -1,0 +1,6 @@
+
+device-ts/node_modules/
+device-ts/build
+device-ts/.DS_Store
+.DS_Store
+device-ts/mongodb-realm/
