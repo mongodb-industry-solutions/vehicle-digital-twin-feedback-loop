@@ -1,10 +1,5 @@
 # Typescript Sample Code for IoT Device
 
-## Initialize Typescript Project
-
-https://khalilstemmler.com/blogs/typescript/node-starter-project/
-
-
 ## Prepare and rund demo
 
 1. Update Realm App ID in ./src/congif.ts
