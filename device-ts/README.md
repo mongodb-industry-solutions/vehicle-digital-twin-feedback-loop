@@ -10,5 +10,5 @@
 3. npm install
 4. npx tsc
 5. The file "index.html" in src is not automatically copied to build folder yet! -> just copy paste from src
-6. node build/index.js
+6. node build/server.js
 7. Open web console http://localhost:3000

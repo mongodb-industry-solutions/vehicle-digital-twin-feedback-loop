@@ -5,8 +5,6 @@ import { createDevice, addComponent } from "./realm/app"
 const app = express();
 const port = 3000;
 
-//const realmApp = require("./realm/app");
-
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
