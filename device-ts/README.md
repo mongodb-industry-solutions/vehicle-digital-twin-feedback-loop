@@ -12,3 +12,10 @@
 5. The file "index.html" in src is not automatically copied to build folder yet! -> just copy paste from src
 6. node build/server.js
 7. Open web console http://localhost:3000
+
+
+
+## Create and run docker image
+
+1. docker build . -t device-ts
+2. docker run -p 3000:3000 device-ts
