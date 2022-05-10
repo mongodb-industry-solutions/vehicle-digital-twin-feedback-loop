@@ -1,5 +1,5 @@
 //
-//  EasyApp.swift
+//  ControllerApp.swift
 //  Easy
 //
 //  Created by Felix Reichenbach on 03.06.21.

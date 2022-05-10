@@ -12,7 +12,7 @@
 		631657E22675F6B300D397C5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631657E12675F6B300D397C5 /* LoginView.swift */; };
 		631657E42675F70B00D397C5 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631657E32675F70B00D397C5 /* DevicesView.swift */; };
 		632054B8266ABF72008DFC61 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632054B7266ABF72008DFC61 /* ViewModel.swift */; };
-		63C9ABBC266948D200069D38 /* EasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C9ABBB266948D200069D38 /* EasyApp.swift */; };
+		63C9ABBC266948D200069D38 /* ControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C9ABBB266948D200069D38 /* ControllerApp.swift */; };
 		63C9ABBE266948D200069D38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C9ABBD266948D200069D38 /* ContentView.swift */; };
 		63C9ABC0266948D300069D38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C9ABBF266948D300069D38 /* Assets.xcassets */; };
 		63C9ABC3266948D300069D38 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C9ABC2266948D300069D38 /* Preview Assets.xcassets */; };
@@ -23,8 +23,8 @@
 		631657E12675F6B300D397C5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		631657E32675F70B00D397C5 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
 		632054B7266ABF72008DFC61 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		63C9ABB8266948D200069D38 /* Easy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Easy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		63C9ABBB266948D200069D38 /* EasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApp.swift; sourceTree = "<group>"; };
+		63C9ABB8266948D200069D38 /* Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controller.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63C9ABBB266948D200069D38 /* ControllerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerApp.swift; sourceTree = "<group>"; };
 		63C9ABBD266948D200069D38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		63C9ABBF266948D300069D38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63C9ABC2266948D300069D38 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		63C9ABAF266948D200069D38 = {
 			isa = PBXGroup;
 			children = (
-				63C9ABBA266948D200069D38 /* Easy */,
+				63C9ABBA266948D200069D38 /* Controller */,
 				63C9ABB9266948D200069D38 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,15 +56,15 @@
 		63C9ABB9266948D200069D38 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				63C9ABB8266948D200069D38 /* Easy.app */,
+				63C9ABB8266948D200069D38 /* Controller.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		63C9ABBA266948D200069D38 /* Easy */ = {
+		63C9ABBA266948D200069D38 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				63C9ABBB266948D200069D38 /* EasyApp.swift */,
+				63C9ABBB266948D200069D38 /* ControllerApp.swift */,
 				63C9ABBD266948D200069D38 /* ContentView.swift */,
 				631657E12675F6B300D397C5 /* LoginView.swift */,
 				631657E32675F70B00D397C5 /* DevicesView.swift */,
@@ -74,7 +74,7 @@
 				63C9ABC4266948D300069D38 /* Info.plist */,
 				63C9ABC1266948D300069D38 /* Preview Content */,
 			);
-			path = Easy;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		63C9ABC1266948D300069D38 /* Preview Content */ = {
@@ -88,9 +88,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		63C9ABB7266948D200069D38 /* Easy */ = {
+		63C9ABB7266948D200069D38 /* Controller */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63C9ABC7266948D300069D38 /* Build configuration list for PBXNativeTarget "Easy" */;
+			buildConfigurationList = 63C9ABC7266948D300069D38 /* Build configuration list for PBXNativeTarget "Controller" */;
 			buildPhases = (
 				63C9ABB4266948D200069D38 /* Sources */,
 				63C9ABB5266948D200069D38 /* Frameworks */,
@@ -100,13 +100,13 @@
 			);
 			dependencies = (
 			);
-			name = Easy;
+			name = Controller;
 			packageProductDependencies = (
 				6301D04A27E7540D008FFAFE /* Realm */,
 				6301D04C27E7540D008FFAFE /* RealmSwift */,
 			);
 			productName = Easy;
-			productReference = 63C9ABB8266948D200069D38 /* Easy.app */;
+			productReference = 63C9ABB8266948D200069D38 /* Controller.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -123,7 +123,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 63C9ABB3266948D200069D38 /* Build configuration list for PBXProject "Easy" */;
+			buildConfigurationList = 63C9ABB3266948D200069D38 /* Build configuration list for PBXProject "Controller" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -139,7 +139,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				63C9ABB7266948D200069D38 /* Easy */,
+				63C9ABB7266948D200069D38 /* Controller */,
 			);
 		};
 /* End PBXProject section */
@@ -163,7 +163,7 @@
 			files = (
 				63C9ABBE266948D200069D38 /* ContentView.swift in Sources */,
 				631657E42675F70B00D397C5 /* DevicesView.swift in Sources */,
-				63C9ABBC266948D200069D38 /* EasyApp.swift in Sources */,
+				63C9ABBC266948D200069D38 /* ControllerApp.swift in Sources */,
 				632054B8266ABF72008DFC61 /* ViewModel.swift in Sources */,
 				631657E22675F6B300D397C5 /* LoginView.swift in Sources */,
 				63C9ABD0266967E100069D38 /* Model.swift in Sources */,
@@ -295,16 +295,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Easy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8G6ZDTMXZS;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Easy/Info.plist;
+				INFOPLIST_FILE = Controller/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.Easy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.Controller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -317,16 +317,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Easy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8G6ZDTMXZS;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Easy/Info.plist;
+				INFOPLIST_FILE = Controller/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.Easy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.Controller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -336,7 +336,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63C9ABB3266948D200069D38 /* Build configuration list for PBXProject "Easy" */ = {
+		63C9ABB3266948D200069D38 /* Build configuration list for PBXProject "Controller" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63C9ABC5266948D300069D38 /* Debug */,
@@ -345,7 +345,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63C9ABC7266948D300069D38 /* Build configuration list for PBXNativeTarget "Easy" */ = {
+		63C9ABC7266948D300069D38 /* Build configuration list for PBXNativeTarget "Controller" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63C9ABC8266948D300069D38 /* Debug */,
