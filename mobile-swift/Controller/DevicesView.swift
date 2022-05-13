@@ -9,21 +9,21 @@ import SwiftUI
 
 struct DevicesView: View {
     @ObservedObject var viewModel: ViewModel
-    @State private var showingAddItem = false
+    @State private var showingAddDevice = false
     
     var body: some View {
         NavigationView {
             VStack{
                 // The list shows the items in the realm.
                 List {
-                    if let items = viewModel.items {
-                        ForEach(items.freeze()) { item in
-                            NavigationLink(item.name, destination: detailView(item: item))
+                    if let devices = viewModel.devices {
+                        ForEach(devices.freeze()) { device in
+                            NavigationLink(device.name, destination: DeviceDetailView(device: device))
                         }
                         .onDelete(perform: delete)
                     }
                 }
-                Button("Add Item", action: {showingAddItem = true})
+                Button("Add Item", action: {showingAddDevice = true})
             }
             .navigationTitle("Devices")
             .toolbar {
@@ -33,21 +33,14 @@ struct DevicesView: View {
             }
         }
         .navigationViewStyle(.stack)
-        .sheet(isPresented: $showingAddItem) {
+        .sheet(isPresented: $showingAddDevice) {
             // show the add item view
-            AddView(viewModel: viewModel, isPresented: $showingAddItem)
+            AddView(viewModel: viewModel, isPresented: $showingAddDevice)
         }
     }
     
     func delete(at offsets: IndexSet) {
         viewModel.deleteItem(at: offsets)
-    }
-}
-
-struct detailView: View {
-    var item:Device
-    var body: some View {
-        Text(item.name)
     }
 }
 

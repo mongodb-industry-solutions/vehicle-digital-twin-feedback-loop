@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6301D04B27E7540D008FFAFE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6301D04A27E7540D008FFAFE /* Realm */; };
 		6301D04D27E7540D008FFAFE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6301D04C27E7540D008FFAFE /* RealmSwift */; };
+		630D2377282F058000EAD0C5 /* DeviceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D2376282F058000EAD0C5 /* DeviceDetailView.swift */; };
 		631657E22675F6B300D397C5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631657E12675F6B300D397C5 /* LoginView.swift */; };
 		631657E42675F70B00D397C5 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631657E32675F70B00D397C5 /* DevicesView.swift */; };
 		632054B8266ABF72008DFC61 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632054B7266ABF72008DFC61 /* ViewModel.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		630D2376282F058000EAD0C5 /* DeviceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailView.swift; sourceTree = "<group>"; };
 		631657E12675F6B300D397C5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		631657E32675F70B00D397C5 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
 		632054B7266ABF72008DFC61 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -45,11 +47,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6366B2CA282B1D870085E418 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		63C9ABAF266948D200069D38 = {
 			isa = PBXGroup;
 			children = (
 				63C9ABBA266948D200069D38 /* Controller */,
 				63C9ABB9266948D200069D38 /* Products */,
+				6366B2CA282B1D870085E418 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +78,7 @@
 				63C9ABBD266948D200069D38 /* ContentView.swift */,
 				631657E12675F6B300D397C5 /* LoginView.swift */,
 				631657E32675F70B00D397C5 /* DevicesView.swift */,
+				630D2376282F058000EAD0C5 /* DeviceDetailView.swift */,
 				632054B7266ABF72008DFC61 /* ViewModel.swift */,
 				63C9ABCF266967E100069D38 /* Model.swift */,
 				63C9ABBF266948D300069D38 /* Assets.xcassets */,
@@ -161,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				630D2377282F058000EAD0C5 /* DeviceDetailView.swift in Sources */,
 				63C9ABBE266948D200069D38 /* ContentView.swift in Sources */,
 				631657E42675F70B00D397C5 /* DevicesView.swift in Sources */,
 				63C9ABBC266948D200069D38 /* ControllerApp.swift in Sources */,

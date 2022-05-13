@@ -5,6 +5,7 @@ export class Device { //extends Realm.Object {
     public _id = new ObjectId;
     public name = "";
     public owner_id = "";
+    public isOn = false;
     public components: Array<Component> = [];
 
     public static schema = {//: Realm.ObjectSchema = {
@@ -14,6 +15,7 @@ export class Device { //extends Realm.Object {
             _id: 'objectId',
             name: 'string',
             owner_id: 'string',
+            isOn: 'bool',
             components: 'Component[]'
         }
     }

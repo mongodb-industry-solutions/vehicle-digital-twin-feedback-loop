@@ -18,7 +18,7 @@ class ViewModel: ObservableObject {
     @Published var itemName: String = ""
     @Published var progressView: Bool = false
     
-    @Published var items: RealmSwift.Results<Device>?
+    @Published var devices: RealmSwift.Results<Device>?
     
     let app: RealmSwift.App = RealmSwift.App(id: "<-- REALM APP ID -->")
     var notificationToken: NotificationToken?
@@ -80,7 +80,7 @@ class ViewModel: ObservableObject {
                         $0.owner_id == user.id
                     })
                 }
-                self.items = realm.objects(Device.self).sorted(byKeyPath: "_id", ascending: true)
+                self.devices = realm.objects(Device.self).sorted(byKeyPath: "_id", ascending: true)
                 self.notificationToken = realm.observe { notification, realm in
                     print("Notification")
                     self.objectWillChange.send()
@@ -95,8 +95,8 @@ class ViewModel: ObservableObject {
     
     func addItem() {
         print("addDevice")
-        try! items?.realm?.write(withoutNotifying: [notificationToken!]){
-            items?.realm!.add(Device(value: ["owner_id": app.currentUser?.id, "name": itemName]))
+        try! devices?.realm?.write(withoutNotifying: [notificationToken!]){
+            devices?.realm!.add(Device(value: ["owner_id": app.currentUser?.id, "name": itemName]))
         }
         objectWillChange.send()
     }
@@ -108,8 +108,8 @@ class ViewModel: ObservableObject {
          print("Delete Failed")
          return
          }*/
-        try! items?.realm?.write(withoutNotifying: [notificationToken!]){
-            items?.realm!.delete(items![offsets.first!])
+        try! devices?.realm?.write(withoutNotifying: [notificationToken!]){
+            devices?.realm!.delete(devices![offsets.first!])
         }
     }
 }
