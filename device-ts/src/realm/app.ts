@@ -1,7 +1,9 @@
-import { Component, Device } from "./schemas";
-import { appID, realmUser } from "./config";
-import Realm from "realm";
+import { Component, Device } from './schemas';
+import { appID, realmUser } from './config';
+import Realm from 'realm';
 import { ObjectID } from "bson";
+import { publishMessage } from '../mqtt/mqtt';
+import {activateGen, deactivateGen} from '../data-generator/data-generator';
 
 const schemaList = [Device, Component];
 const app = new Realm.App({ id: appID });
@@ -50,8 +52,19 @@ export function addComponent(name: string) {
 // Realm object change listener
 function changedPropertiesListener(object: any, changes: any) {
   changes.changedProperties.forEach((propName: string) => {
-    console.log(propName);
-    console.log(`Property value: ${object[propName]}`);
+    console.log(`Changed Property: ${propName}: ${object[propName]}`);
+
+    if(propName === 'isOn') {
+      if (object[propName]) {
+        // Activate data-generator
+        activateGen();
+      } else {
+        //deactivated data-generator
+        deactivateGen();
+      }
+      // Framework for publishing MQTT messages
+      publishMessage(`{ ${propName} : ${object[propName]} }`);
+    }
   });
 }
 
