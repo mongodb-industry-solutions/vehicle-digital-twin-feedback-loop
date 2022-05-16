@@ -14,6 +14,7 @@ class Device: Object, ObjectKeyIdentifiable {
     @Persisted var name: String = "Device Name"
     @Persisted var owner_id: String = ""
     @Persisted var isOn: Bool = false
+    @Persisted var flexibleData: Map<String, String>
 }
 
 class Component: Object {

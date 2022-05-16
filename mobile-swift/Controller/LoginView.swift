@@ -12,7 +12,14 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            Text("LoginView")
+            Image("LoginScreen")
+                .padding(.top, 50)
+                .padding(.bottom, 25)
+            Text("MongoDB Device Controller")
+                .font(.largeTitle)
+                .fontWeight(.medium)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 25)
             Form {
                 TextField("Username", text: $viewModel.username)
                 SecureField("Password", text: $viewModel.password)

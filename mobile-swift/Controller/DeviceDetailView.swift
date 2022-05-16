@@ -8,18 +8,36 @@
 import SwiftUI
 import RealmSwift
 
+
 struct DeviceDetailView: View {
     @ObservedRealmObject var device: Device
-    
+
     var body: some View {
-        Form {
-            Text(device.name)
-                .font(.title)
-                .padding()
-            Toggle(isOn: $device.isOn) {
-                Text("Status")
+        NavigationView {
+            Form {
+                Section(header: Text("CONTROL")) {
+                    Toggle(isOn: $device.isOn) {
+                        Text("Device Status")
+                    }
+                }
+                Section(header: Text("ABOUT")) {
+                    HStack {
+                        Text("Owner ID")
+                        Spacer()
+                        Text(device.owner_id)
+                    }
+                    List(Array(device.flexibleData.keys), id: \.self) { key in
+                        HStack {
+                            Text(key)
+                            Spacer()
+                            Text(device.flexibleData[key] ?? "")
+                        }
+                    }
+                }
             }
+            .navigationBarTitle(device.name)
         }
+        .navigationViewStyle(.stack)
     }
 }
 
