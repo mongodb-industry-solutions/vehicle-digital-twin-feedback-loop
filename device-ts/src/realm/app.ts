@@ -77,7 +77,7 @@ const changeListener = (
     console.log(`New object added: ${objects[index].name}!`);
     objects[0].addListener(changedPropertiesListener);
   });
-  console.log(JSON.stringify(objects));
+  //console.log(JSON.stringify(objects));
 }
 
 async function login() {
