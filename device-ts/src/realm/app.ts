@@ -18,6 +18,7 @@ export function createDevice(name: string) {
       name: name,
       owner_id: app.currentUser?.id ?? "no current user id!",
       isOn: false,
+      mixedTypes: null,
       components: []
     });
   });

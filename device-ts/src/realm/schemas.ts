@@ -7,7 +7,10 @@ export class Device {
     public name = "";
     public owner_id = "";
     public isOn = false;
-    public flexibleData?: Realm.Dictionary<string>;
+    // Field type which supports multiple multiple data types
+    public mixedTypes = null;
+    // Dictionary which supports adding new key value pairs with support for the 'mixed' data types
+    public flexibleData?: Realm.Dictionary<Realm.Mixed>;
     public components: Array<Component> = [];
 
     public static schema = {
@@ -18,8 +21,9 @@ export class Device {
             name: 'string',
             owner_id: 'string',
             isOn: 'bool',
-            components: 'Component[]',
-            flexibleData: 'string{}'
+            mixedTypes: 'mixed',
+            flexibleData: '{}',
+            components: 'Component[]'
         }
     }
 }

@@ -26,11 +26,16 @@ struct DeviceDetailView: View {
                         Spacer()
                         Text(device.owner_id)
                     }
+                    HStack {
+                        Text("Mixed Types")
+                        Spacer()
+                        Text(device.mixedTypes.stringValue ?? "No String but  \(type(of: device.mixedTypes))")
+                    }
                     List(Array(device.flexibleData.keys), id: \.self) { key in
                         HStack {
                             Text(key)
                             Spacer()
-                            Text(device.flexibleData[key] ?? "")
+                            Text(device.flexibleData[key]?.stringValue ?? "No string but  \(type(of: device.flexibleData[key]))")
                         }
                     }
                 }
