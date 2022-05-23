@@ -3,7 +3,7 @@ import { appID, realmUser } from './config';
 import Realm from 'realm';
 import { ObjectID } from "bson";
 import { publishMessage } from '../mqtt/mqtt';
-import {activateGen, deactivateGen} from '../data-generator/data-generator';
+import { activateGen, deactivateGen } from '../data-generator/data-generator';
 
 const schemaList = [Device, Component];
 const app = new Realm.App({ id: appID });
@@ -55,7 +55,7 @@ function changedPropertiesListener(object: any, changes: any) {
   changes.changedProperties.forEach((propName: string) => {
     console.log(`Changed Property: ${propName}: ${object[propName]}`);
 
-    if(propName === 'isOn') {
+    if (propName === 'isOn') {
       if (object[propName]) {
         // Activate data-generator
         activateGen();

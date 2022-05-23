@@ -11,16 +11,11 @@ import RealmSwift
 
 struct DeviceDetailView: View {
     @ObservedRealmObject var device: Device
-
+    
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("CONTROL")) {
-                    Toggle(isOn: $device.isOn) {
-                        Text("Device Status")
-                    }
-                }
-                Section(header: Text("ABOUT")) {
+                Section(header: Text("Attributes")) {
                     HStack {
                         Text("Owner ID")
                         Spacer()
@@ -29,13 +24,34 @@ struct DeviceDetailView: View {
                     HStack {
                         Text("Mixed Types")
                         Spacer()
-                        Text(device.mixedTypes.stringValue ?? "No String but  \(type(of: device.mixedTypes))")
+                        Text(device.mixedTypes.stringValue ?? "No String: \(type(of: device.mixedTypes))")
                     }
                     List(Array(device.flexibleData.keys), id: \.self) { key in
                         HStack {
                             Text(key)
                             Spacer()
                             Text(device.flexibleData[key]?.stringValue ?? "No string but  \(type(of: device.flexibleData[key]))")
+                        }
+                    }
+                }
+                Section(header: Text("CONTROLS")) {
+                    Toggle(isOn: $device.isOn) {
+                        Text("Time Series")
+                    }
+                }
+                Section(header: Text("Sensors")) {
+                    HStack {
+                        Text("Sensor")
+                        Spacer()
+                        Text("\(device.sensor)")
+                    }
+                }
+                Section(header: Text("Components: \(device.components.count)")) {
+                    List {
+                        ForEach(device.components, id: \._id) { component in
+                            HStack {
+                                Text(component.name ?? "")
+                            }
                         }
                     }
                 }

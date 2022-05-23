@@ -76,7 +76,10 @@ class ViewModel: ObservableObject {
                 let subscriptions = realm.subscriptions
                 subscriptions.write {
                     subscriptions.removeAll()
-                    subscriptions.append(QuerySubscription<Device>(name: "filter") {
+                    subscriptions.append(QuerySubscription<Device>(name: "Devices") {
+                        $0.owner_id == user.id
+                    })
+                    subscriptions.append(QuerySubscription<Component>(name: "Components") {
                         $0.owner_id == user.id
                     })
                 }

@@ -14,8 +14,9 @@ class Device: Object, ObjectKeyIdentifiable {
     @Persisted var name: String = "Device Name"
     @Persisted var owner_id: String = ""
     @Persisted var isOn: Bool = false
+    @Persisted var sensor: Int = 0
     @Persisted var flexibleData: Map<String, AnyRealmValue>
-    @Persisted var mixedTypes: AnyRealmValue = AnyRealmValue.none
+    @Persisted var mixedTypes: AnyRealmValue = AnyRealmValue.string("")
 }
 
 class Component: Object {

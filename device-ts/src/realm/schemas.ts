@@ -11,9 +11,14 @@ export class Device {
     public mixedTypes = null;
     // Dictionary which supports adding new key value pairs with support for the 'mixed' data types
     public flexibleData?: Realm.Dictionary<Realm.Mixed>;
-    public components: Array<Component> = [];
+    public components: Realm.List<Component>;
 
-    public static schema = {
+    constructor() {
+        // Lie because https://github.com/realm/realm-js/issues/2469
+        this.components = [] as any;
+    }
+
+    public static schema: Realm.ObjectSchema = {
         name: 'Device',
         primaryKey: '_id',
         properties: {
@@ -34,7 +39,7 @@ export class Component {
     public name = "";
     public owner_id = "";
 
-    public static schema = {
+    public static schema: Realm.ObjectSchema = {
         name: 'Component',
         primaryKey: '_id',
         properties: {
