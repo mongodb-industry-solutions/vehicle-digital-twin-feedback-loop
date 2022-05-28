@@ -23,6 +23,9 @@
     </div>
     <button id="create_device" type="button" class="btn btn-primary">Create Device</button>
     <button id="add_component" type="button" class="btn btn-primary">Add Component</button>
+    <button id="add_sensor" type="button" class="btn btn-primary">Add Sensor</button>
+    <button id="pause_realm" type="button" class="btn btn-primary">Pause Realm</button>
+    <button id="resume_realm" type="button" class="btn btn-primary">Resume Realm</button>
   </div>
 
   <script>
@@ -35,6 +38,24 @@
 
     $("#add_component").click(async function () {
       const response = await fetch('http://localhost:3000/add_component');
+      const result = await response.json(); //extract JSON from the http response
+      console.log(JSON.stringify(result));
+    });
+
+    $("#add_sensor").click(async function () {
+      const response = await fetch('http://localhost:3000/add_sensor');
+      const result = await response.json(); //extract JSON from the http response
+      console.log(JSON.stringify(result));
+    });
+
+    $("#pause_realm").click(async function () {
+      const response = await fetch('http://localhost:3000/pause_realm');
+      const result = await response.json(); //extract JSON from the http response
+      console.log(JSON.stringify(result));
+    });
+
+    $("#resume_realm").click(async function () {
+      const response = await fetch('http://localhost:3000/resume_realm');
       const result = await response.json(); //extract JSON from the http response
       console.log(JSON.stringify(result));
     });

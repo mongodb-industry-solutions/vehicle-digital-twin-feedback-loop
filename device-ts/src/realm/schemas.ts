@@ -22,7 +22,7 @@ export class Device {
         name: 'Device',
         primaryKey: '_id',
         properties: {
-            _id: 'objectId',
+            _id: { type: 'objectId', default: new ObjectId },
             name: 'string',
             owner_id: 'string',
             isOn: 'bool',
@@ -46,6 +46,26 @@ export class Component {
             _id: 'objectId',
             name: 'string?',
             owner_id: 'string'
+        }
+    }
+}
+
+export class Sensor {
+
+    public _id = new ObjectId;
+    public name = "";
+    //public owner_id = "";
+    public value = 0;
+
+    public static schema: Realm.ObjectSchema = {
+        name: 'Sensor',
+        primaryKey: '_id',
+        asymmetric: true,
+        properties: {
+            _id: 'objectId',
+            name: 'string',
+            //owner_id: 'string',
+            value: 'int'
         }
     }
 }

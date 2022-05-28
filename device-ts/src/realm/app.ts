@@ -1,11 +1,11 @@
-import { Component, Device } from './schemas';
+import { Component, Device, Sensor } from './schemas';
 import { appID, realmUser } from './config';
 import Realm from 'realm';
 import { ObjectID } from "bson";
 import { publishMessage } from '../mqtt/mqtt';
 import { activateGen, deactivateGen } from '../data-generator/data-generator';
 
-const schemaList = [Device, Component];
+const schemaList = [Device, Component, Sensor];
 const app = new Realm.App({ id: appID });
 let realm: Realm;
 
@@ -48,6 +48,37 @@ export function addComponent(name: string) {
     return err;
   }
 
+}
+
+// REST API push sensor data function
+export function addSensor(value: number) {
+  let sensor;
+  // realm.push seems not implemented yet
+  /*
+  realm.write(() => {
+    sensor = realm.push<Sensor>('Sensor', {
+      _id: new ObjectID,
+      name: "sensor",
+      value: value,
+      //owner_id: app.currentUser?.id ?? "no current user"
+    });
+  });*/
+  return(sensor);
+
+}
+
+// REST API pause Realm function
+export function pauseRealm() {
+  console.log('pause')
+  realm.syncSession?.pause();
+  return({state: 'paused'});
+}
+
+// REST API resume Realm function
+export function resumeRealm() {
+  console.log('resume');
+  realm.syncSession?.resume();
+  return({state: 'resumed'});
 }
 
 // Realm object change listener
