@@ -1,8 +1,12 @@
 import { ObjectId } from 'bson';
 import Realm from 'realm';
 
+
+/**
+ * Realm object schema/class definition for a device object within typescript
+ */
 export class Device {
-    
+
     public _id = new ObjectId;
     public name = "";
     public owner_id = "";
@@ -33,6 +37,9 @@ export class Device {
     }
 }
 
+/**
+ * Realm object schema/class definition for a component object within typescript
+ */
 export class Component {
 
     public _id = new ObjectId;
@@ -50,6 +57,10 @@ export class Component {
     }
 }
 
+
+/**
+ * Realm object schema/class definition for a sensor measurement object within typescript
+ */
 export class Sensor {
 
     public _id = new ObjectId;

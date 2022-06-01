@@ -5,12 +5,17 @@ import { ObjectID } from "bson";
 import { publishMessage } from '../mqtt/mqtt';
 import { activateGen, deactivateGen } from '../data-generator/data-generator';
 
-const schemaList = [Device, Component, Sensor];
+/**
+ * Initialize a new Realm application instance
+ */
 const app = new Realm.App({ id: appID });
 let realm: Realm;
 
-
-// REST API insert new device function
+/**
+ * Creates a new Device object with the provided name
+ * @param name Name of the device
+ * @returns Attributes of the created device as JSON object
+ */
 export function createDevice(name: string) {
   realm.write(() => {
     realm.create<Device>('Device', {
@@ -29,7 +34,11 @@ export function createDevice(name: string) {
   };
 }
 
-// REST API add component function
+/**
+ * Creates a new component with the provided name and relates it to the first previously created Device object
+ * @param name Name of the component to be created
+ * @returns Result of the component creation procedure as JSON object or the resulting error
+ */
 export function addComponent(name: string) {
   if (realm.objects<Device>('Device').length > 0) {
     const device = realm.objects<Device>('Device')[0];
@@ -41,48 +50,106 @@ export function addComponent(name: string) {
       });
       device.components.push(component);
     });
-    return { success: "Component created and related to id: " + device._id };
+    return { result: "Component created and related to id: " + device._id };
   } else {
     const err = "Add component failed, no device available!";
     console.log(err);
     return err;
   }
-
 }
 
-// REST API push sensor data function
+/**
+ * Uses the asymmetric sync functionality to efficiently push a time series object to the backend
+ * @param value Number type e.g. a sensor value
+ * @returns JSON object
+ */
 export function addSensor(value: number) {
   let sensor;
-  // realm.push seems not implemented yet
+  // Backend functionality not implemented yet
   /*
   realm.write(() => {
-    sensor = realm.push<Sensor>('Sensor', {
+    sensor = realm.create<Sensor>('Sensor', {
       _id: new ObjectID,
       name: "sensor",
       value: value,
       //owner_id: app.currentUser?.id ?? "no current user"
     });
   });*/
-  return(sensor);
-
+  return ({ result: 'not implemented yet' });
 }
 
-// REST API pause Realm function
+/**
+ * Pauses synchronization of a previously opened Realm
+ * @returns JSON object
+ */
 export function pauseRealm() {
   console.log('pause')
   realm.syncSession?.pause();
-  return({state: 'paused'});
+  return ({ state: 'paused' });
 }
 
-// REST API resume Realm function
+/**
+ * Resumes synchronization of a previsouly paused Realm 
+ * @returns JSON object
+ */
 export function resumeRealm() {
   console.log('resume');
   realm.syncSession?.resume();
-  return({state: 'resumed'});
+  return ({ state: 'resumed' });
 }
 
-// Realm object change listener
-function changedPropertiesListener(object: any, changes: any) {
+/**
+ * Change a flexible sync subscription dynamically to change data sets to be synchronized
+ */
+export function toggleSyncSubscription() {
+  // Idea: Slider or simple toggle to select all or a subset of objects to sync
+  console.log('not implemented yet')
+}
+
+/**
+ * Object change listener callback function to process change events
+ * @param object Modified object
+ * @param changes List of modified fields
+ */
+function deviceChangeListener(object: any, changes: any) {
+  console.log(`Changed object: ${object.name}`);
+  if (changes.deleted) {
+    console.log(`Object ${object.name} has been deleted!`);
+  }
+  console.log(`${changes.changedProperties.length} properties have been changed:`);
+  changes.changedProperties.forEach((prop: any) => {
+    console.log(` ${prop}`);
+  });
+}
+
+/**
+ * Adds an object change listener to the first previously created Device object using the above functiona as callback
+ * @returns JSON object
+ */
+export function addObjectChangeListener() {
+  realm.objects('Device')[0].addListener(deviceChangeListener);
+  return { result: "Listener added!" }
+}
+
+/**
+ * Remove a previously added object change listener from the first Device object created
+ * @returns JSON object
+ */
+export function removeObjectChangeListener() {
+  realm.objects('Device')[0].removeListener(deviceChangeListener);
+  return { result: "Listener removed!" }
+}
+
+/**
+ * WORK IN PROGRESS!
+ * @todo create activation/deactivation listener
+ * @todo depending on active/passive add/remove MQTT listener on topic
+ * @todo add asymmetric write function for time series data to Atlas backend
+ * Object change listener which listens on MQTT topic and streams events via asymmetric sync to backend
+ * @param object 
+ * @param changes 
+ */
+function eventForwarderListener(object: any, changes: any) {
   changes.changedProperties.forEach((propName: string) => {
     console.log(`Changed Property: ${propName}: ${object[propName]}`);
 
@@ -100,37 +167,68 @@ function changedPropertiesListener(object: any, changes: any) {
   });
 }
 
-// Realm collection change listener
+/**
+ * Callback function for Realm collections listener
+ * @param objects 
+ * @param changes 
+ */
 const changeListener = (
   objects: Realm.Collection<any>,
   changes: any) => {
   // Handle newly added objects
   changes.insertions.forEach((index: number) => {
     console.log(`New object added: ${objects[index].name}!`);
-    objects[0].addListener(changedPropertiesListener);
+    //objects[0].addListener(changedPropertiesListener);
   });
   //console.log(JSON.stringify(objects));
 }
 
+/**
+ * Atlas application services email/password authentication
+ * @returns Realm user object
+ */
 async function login() {
-  // Authenticate the device user
   const credentials: Realm.Credentials = Realm.Credentials.emailPassword(realmUser.username, realmUser.password);
   const user: Realm.User = await app.logIn(credentials);
   console.log("Successfully logged in: " + user.id);
   return user;
 }
 
-// Main function
+/**
+ * On process shutdown remove all change listeners,delete created devices/components and exit program
+ */
+process.on("SIGINT", function () {
+  console.log("Shutdown and cleanup initiated!");
+  try {
+    // Remove all change listener
+    realm.removeAllListeners();
+    // Delete all device and component entries of the current subscription
+    realm.write(() => {
+      realm.deleteAll();
+    });
+    // Remove all flexible sync subscriptions
+    realm.subscriptions.update((subscriptions) => {
+      subscriptions.removeAll();
+    })
+  } catch (err) {
+    console.error("Failed: ", err);
+  }
+  process.exit();
+});
+
+/**
+ * Main function
+ */
 async function run() {
   login().then(async (user) => {
     realm = await Realm.open({
-      schema: schemaList,
+      schema: [Device, Component, Sensor],
       sync: {
         user: user,
         flexible: true,
       }
     });
-    // Create and add a filter subscription
+    // Create and add flexible xync subscription filters
     await realm.subscriptions.update((subscriptions) => {
       subscriptions.add(
         realm
@@ -143,33 +241,17 @@ async function run() {
           .filtered("owner_id =" + JSON.stringify(app.currentUser?.id), { name: "component-filter" })
       );
     });
-    // Add change listener to filtered list of objects
-    realm.objects('Device').addListener(changeListener);
-    realm.objects('Component').addListener(changeListener);
+    // Add Realm change listener to filtered list of objects
+    //realm.objects('Device').addListener(changeListener);
+    //realm.objects('Component').addListener(changeListener);
   }).catch((err) => {
     console.log('Login failed: ', err)
   });
 }
 
-// Execute main function
+/**
+ * Execute main function
+ */
 run().catch((err) => {
   console.error("Failed: ", err);
-});
-
-// Shutdown and cleanup code
-process.on("SIGINT", function () {
-  console.log("Shutdown and cleanup initiated!");
-  try {
-    realm.write(() => {
-      // Delete all objects of the current filter from the realm.
-      realm.deleteAll();
-    });
-    realm.removeAllListeners();
-    realm.subscriptions.update((subscriptions) => {
-      subscriptions.removeAll();
-    })
-    process.exit();
-  } catch (err) {
-    console.error("Failed: ", err);
-  }
 });
