@@ -3,9 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
-    integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-  <title>Digital Twin Device</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title>Device Simulator</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <style>
@@ -16,49 +15,123 @@
 </head>
 
 <body>
-
   <div class="container">
     <div class="jumbotron">
-      <h1>Digital-Twin "Onboard UI"</h1>
+      <h1>Device Simulator</h1>
+      <hr class="my-4">
+      <table>
+        <tr>
+          <td>
+            <button id="create_device" type="button" class="btn btn-primary btn-block">Create Device</button>
+          </td>
+          <td>
+            <input id="device_name" type="text" class="form-control" placeholder="Device Name" aria-label="Device Name">
+          </td>
+        </tr>
+        <td>
+          <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
+        </td>
+        <td>
+          <input id="component_name" type="text" class="form-control" placeholder="Component Name"
+            aria-label="Component Name">
+        </td>
+        </tr>
+        <tr>
+          <td>
+            <button id="pause_realm" type="button" class="btn btn-primary btn-block">Pause Sync</button>
+          </td>
+          <td>
+            <button id="resume_realm" type="button" class="btn btn-primary btn-block">Resume Sync</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button id="add_listener" type="button" class="btn btn-primary btn-block">Add Device Listener</button>
+          </td>
+          <td>
+            <button id="remove_listener" type="button" class="btn btn-primary btn-block">Remove Device Listener</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button id="add_sensor" type="button" class="btn btn-primary btn-block">Add Measurement</button>
+          </td>
+          <td>
+            <input id="sensor_value" type="range" min="1" max="100" value="50">
+            <label for="sensor_value">Range: 0-100</label>
+          </td>
+        </tr>
+      </table>
     </div>
-    <button id="create_device" type="button" class="btn btn-primary">Create Device</button>
-    <button id="add_component" type="button" class="btn btn-primary">Add Component</button>
-    <button id="add_sensor" type="button" class="btn btn-primary">Add Sensor</button>
-    <button id="pause_realm" type="button" class="btn btn-primary">Pause Realm</button>
-    <button id="resume_realm" type="button" class="btn btn-primary">Resume Realm</button>
   </div>
-
   <script>
 
-    $("#create_device").click(async function () {
-      const response = await fetch('http://localhost:3000/create_device');
-      const result = await response.json(); //extract JSON from the http response
-      console.log(JSON.stringify(result));
+    $("#create_device").click(function () {
+      $.ajax({
+        url: "http://localhost:3000/create_device",
+        type: "POST",
+        data: { name: $("#device_name").val() },
+        success: (result) => { console.log(JSON.stringify(result)) },
+        error: (error) => { console.log(`${error}`) }
+      });
     });
 
-    $("#add_component").click(async function () {
-      const response = await fetch('http://localhost:3000/add_component');
-      const result = await response.json(); //extract JSON from the http response
-      console.log(JSON.stringify(result));
+    $("#add_component").click(function () {
+      $.ajax({
+        url: "http://localhost:3000/add_component",
+        type: "POST",
+        data: { name: $("#component_name").val() },
+        success: (result) => { console.log(JSON.stringify(result)) },
+        error: (error) => { console.log(`${error}`) }
+      });
     });
 
-    $("#add_sensor").click(async function () {
-      const response = await fetch('http://localhost:3000/add_sensor');
-      const result = await response.json(); //extract JSON from the http response
-      console.log(JSON.stringify(result));
+    $("#pause_realm").click(function () {
+      $.ajax({
+        url: "http://localhost:3000/pause_realm",
+        type: "GET",
+        success: (result) => { console.log(JSON.stringify(result)) },
+        error: (error) => { console.log(`${error}`) }
+      });
     });
 
-    $("#pause_realm").click(async function () {
-      const response = await fetch('http://localhost:3000/pause_realm');
-      const result = await response.json(); //extract JSON from the http response
-      console.log(JSON.stringify(result));
+    $("#resume_realm").click(function () {
+      $.ajax({
+        url: "http://localhost:3000/resume_realm",
+        type: "GET",
+        success: (result) => { console.log(JSON.stringify(result)) },
+        error: (error) => { console.log(`${error}`) }
+      });
     });
 
-    $("#resume_realm").click(async function () {
-      const response = await fetch('http://localhost:3000/resume_realm');
-      const result = await response.json(); //extract JSON from the http response
-      console.log(JSON.stringify(result));
+    $("#add_listener").click(function () {
+      $.ajax({
+        url: "http://localhost:3000/add_listener",
+        type: "GET",
+        success: (result) => { console.log(JSON.stringify(result)) },
+        error: (error) => { console.log(`${error}`) }
+      });
     });
+
+    $("#remove_listener").click(function () {
+      $.ajax({
+        url: "http://localhost:3000/remove_listener",
+        type: "GET",
+        success: (result) => { console.log(JSON.stringify(result)) },
+        error: (error) => { console.log(`${error}`) }
+      });
+    });
+
+    $("#add_sensor").click(function () {
+      $.ajax({
+        url: "http://localhost:3000/add_sensor",
+        type: "POST",
+        data: { value: $("#sensor_value").val() },
+        success: (result) => { console.log(JSON.stringify(result)) },
+        error: (error) => { console.log(`${error}`) }
+      });
+    });
+
   </script>
 
 </body>

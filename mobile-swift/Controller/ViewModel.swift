@@ -20,7 +20,7 @@ class ViewModel: ObservableObject {
     
     @Published var devices: RealmSwift.Results<Device>?
     
-    let app: RealmSwift.App = RealmSwift.App(id: "<-- Realm App ID -->")
+    let app: RealmSwift.App = RealmSwift.App(id: Bundle.main.object(forInfoDictionaryKey:"Atlas_App_ID") as! String)
     var notificationToken: NotificationToken?
     
     init() {
@@ -74,7 +74,7 @@ class ViewModel: ObservableObject {
             case .success(let realm):
                 self.realm = realm
                 let subscriptions = realm.subscriptions
-                subscriptions.write {
+                subscriptions.update {
                     subscriptions.removeAll()
                     subscriptions.append(QuerySubscription<Device>(name: "Devices") {
                         $0.owner_id == user.id

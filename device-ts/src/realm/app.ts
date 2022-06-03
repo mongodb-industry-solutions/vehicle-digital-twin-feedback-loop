@@ -2,8 +2,8 @@ import { Component, Device, Sensor } from './schemas';
 import { appID, realmUser } from './config';
 import Realm from 'realm';
 import { ObjectID } from "bson";
-import { publishMessage } from '../mqtt/mqtt';
-import { activateGen, deactivateGen } from '../data-generator/data-generator';
+//import { publishMessage } from '../mqtt/mqtt';
+//import { activateGen, deactivateGen } from '../data-generator/data-generator';
 
 /**
  * Initialize a new Realm application instance
@@ -23,13 +23,14 @@ export function createDevice(name: string) {
       name: name,
       owner_id: app.currentUser?.id ?? "no current user id!",
       isOn: false,
-      mixedTypes: null,
+      sensor: 0,
+      mixedTypes: "",
       components: []
     });
   });
   return {
     devices: realm.objects<Device>('Device').map(({ _id, name }) => {
-      return { 'device_id': _id, 'device_name': name };
+      return { result: { 'device_id': _id, 'device_name': name }};
     })
   };
 }
@@ -40,6 +41,7 @@ export function createDevice(name: string) {
  * @returns Result of the component creation procedure as JSON object or the resulting error
  */
 export function addComponent(name: string) {
+  console.log(name);
   if (realm.objects<Device>('Device').length > 0) {
     const device = realm.objects<Device>('Device')[0];
     realm.write(() => {
@@ -52,30 +54,28 @@ export function addComponent(name: string) {
     });
     return { result: "Component created and related to id: " + device._id };
   } else {
-    const err = "Add component failed, no device available!";
-    console.log(err);
+    const err = { result: "Add component failed, no device available!" };
     return err;
   }
 }
 
 /**
  * Uses the asymmetric sync functionality to efficiently push a time series object to the backend
- * @param value Number type e.g. a sensor value
+ * @param value String type e.g. a sensor value
  * @returns JSON object
  */
 export function addSensor(value: number) {
   let sensor;
-  // Backend functionality not implemented yet
-  /*
   realm.write(() => {
     sensor = realm.create<Sensor>('Sensor', {
       _id: new ObjectID,
       name: "sensor",
-      value: value,
-      //owner_id: app.currentUser?.id ?? "no current user"
+      value: Number(value),
+      owner_id: app.currentUser?.id ?? "no current user"
     });
-  });*/
-  return ({ result: 'not implemented yet' });
+    realm.objects<Device>('Device')[0].sensor = Number(value);
+  });
+  return ({ result: `Sensor measurement ${value} inserted!` });
 }
 
 /**
@@ -85,7 +85,7 @@ export function addSensor(value: number) {
 export function pauseRealm() {
   console.log('pause')
   realm.syncSession?.pause();
-  return ({ state: 'paused' });
+  return ({ result: 'Sync paused!' });
 }
 
 /**
@@ -93,9 +93,9 @@ export function pauseRealm() {
  * @returns JSON object
  */
 export function resumeRealm() {
-  console.log('resume');
+  console.log('Sync paused!');
   realm.syncSession?.resume();
-  return ({ state: 'resumed' });
+  return ({ result: 'Sync resumed!' });
 }
 
 /**
@@ -127,8 +127,9 @@ function deviceChangeListener(object: any, changes: any) {
  * @returns JSON object
  */
 export function addObjectChangeListener() {
-  realm.objects('Device')[0].addListener(deviceChangeListener);
-  return { result: "Listener added!" }
+  let device = realm.objects<Device>('Device')[0];
+  device.addListener(deviceChangeListener);
+  return { result: `Listener added to device: ${device.name}!` }
 }
 
 /**
@@ -136,8 +137,9 @@ export function addObjectChangeListener() {
  * @returns JSON object
  */
 export function removeObjectChangeListener() {
-  realm.objects('Device')[0].removeListener(deviceChangeListener);
-  return { result: "Listener removed!" }
+  let device = realm.objects<Device>('Device')[0];
+  device.removeListener(deviceChangeListener);
+  return { result: `Listener removed from device: ${device.name}!` }
 }
 
 /**
@@ -149,6 +151,8 @@ export function removeObjectChangeListener() {
  * @param object 
  * @param changes 
  */
+
+/*
 function eventForwarderListener(object: any, changes: any) {
   changes.changedProperties.forEach((propName: string) => {
     console.log(`Changed Property: ${propName}: ${object[propName]}`);
@@ -166,12 +170,12 @@ function eventForwarderListener(object: any, changes: any) {
     }
   });
 }
-
+*/
 /**
  * Callback function for Realm collections listener
  * @param objects 
  * @param changes 
- */
+ *
 const changeListener = (
   objects: Realm.Collection<any>,
   changes: any) => {
@@ -181,17 +185,20 @@ const changeListener = (
     //objects[0].addListener(changedPropertiesListener);
   });
   //console.log(JSON.stringify(objects));
-}
-
+};
+*/
 /**
  * Atlas application services email/password authentication
- * @returns Realm user object
  */
 async function login() {
-  const credentials: Realm.Credentials = Realm.Credentials.emailPassword(realmUser.username, realmUser.password);
-  const user: Realm.User = await app.logIn(credentials);
-  console.log("Successfully logged in: " + user.id);
-  return user;
+  await app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
+  realm = await Realm.open({
+    schema: [Device, Component, Sensor],
+    sync: {
+      user: app.currentUser!,
+      flexible: true
+    }
+  });
 }
 
 /**
@@ -220,32 +227,14 @@ process.on("SIGINT", function () {
  * Main function
  */
 async function run() {
-  login().then(async (user) => {
-    realm = await Realm.open({
-      schema: [Device, Component, Sensor],
-      sync: {
-        user: user,
-        flexible: true,
-      }
-    });
-    // Create and add flexible xync subscription filters
-    await realm.subscriptions.update((subscriptions) => {
-      subscriptions.add(
-        realm
-          .objects(Device.schema.name)
-          .filtered("owner_id =" + JSON.stringify(app.currentUser?.id), { name: "device-filter" })
-      );
-      subscriptions.add(
-        realm
-          .objects(Component.schema.name)
-          .filtered("owner_id =" + JSON.stringify(app.currentUser?.id), { name: "component-filter" })
-      );
-    });
-    // Add Realm change listener to filtered list of objects
-    //realm.objects('Device').addListener(changeListener);
-    //realm.objects('Component').addListener(changeListener);
-  }).catch((err) => {
-    console.log('Login failed: ', err)
+  await login().catch(err => {
+    console.error("Login: " + err);
+  });
+  // Create and add flexible xync subscription filters
+  const owner = `owner_id = ${JSON.stringify(app.currentUser!.id)}`
+  realm.subscriptions.update( subscriptions => {
+    subscriptions.add(realm.objects('Device').filtered( owner, { name: "device-filter" }));
+    subscriptions.add(realm.objects('Component').filtered( owner, { name: "component-filter" }));
   });
 }
 

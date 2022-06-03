@@ -21,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15D0988A284809F000AF5D90 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		630D2376282F058000EAD0C5 /* DeviceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailView.swift; sourceTree = "<group>"; };
 		631657E12675F6B300D397C5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		631657E32675F70B00D397C5 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 				63C9ABBF266948D300069D38 /* Assets.xcassets */,
 				63C9ABC4266948D300069D38 /* Info.plist */,
 				63C9ABC1266948D300069D38 /* Preview Content */,
+				15D0988A284809F000AF5D90 /* Config.xcconfig */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -303,6 +305,7 @@
 		};
 		63C9ABC8266948D300069D38 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15D0988A284809F000AF5D90 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -325,6 +328,7 @@
 		};
 		63C9ABC9266948D300069D38 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15D0988A284809F000AF5D90 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

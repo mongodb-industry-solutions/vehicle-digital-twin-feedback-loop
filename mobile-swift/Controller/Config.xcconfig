@@ -1,0 +1,12 @@
+//
+//  Config.xcconfig
+//  Controller
+//
+//  Created by Felix Reichenbach on 01.06.22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Atlas Application Services Application ID
+Atlas_App_ID = <--YOUR ATLAS APP ID-->

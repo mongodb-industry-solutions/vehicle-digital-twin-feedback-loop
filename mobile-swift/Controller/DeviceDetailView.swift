@@ -43,7 +43,7 @@ struct DeviceDetailView: View {
                     HStack {
                         Text("Sensor")
                         Spacer()
-                        Text("\(device.sensor)")
+                        Text("\(device.sensor ?? 0)")
                     }
                 }
                 Section(header: Text("Components: \(device.components.count)")) {

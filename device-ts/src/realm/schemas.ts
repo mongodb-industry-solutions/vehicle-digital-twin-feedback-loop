@@ -11,8 +11,9 @@ export class Device {
     public name = "";
     public owner_id = "";
     public isOn = false;
+    public sensor = 0;
     // Field type which supports multiple multiple data types
-    public mixedTypes = null;
+    public mixedTypes = "";
     // Dictionary which supports adding new key value pairs with support for the 'mixed' data types
     public flexibleData?: Realm.Dictionary<Realm.Mixed>;
     public components: Realm.List<Component>;
@@ -30,6 +31,7 @@ export class Device {
             name: 'string',
             owner_id: 'string',
             isOn: 'bool',
+            sensor: 'int?',
             mixedTypes: 'mixed',
             flexibleData: '{}',
             components: 'Component[]'
@@ -65,7 +67,7 @@ export class Sensor {
 
     public _id = new ObjectId;
     public name = "";
-    //public owner_id = "";
+    public owner_id = "";
     public value = 0;
 
     public static schema: Realm.ObjectSchema = {
@@ -75,7 +77,7 @@ export class Sensor {
         properties: {
             _id: 'objectId',
             name: 'string',
-            //owner_id: 'string',
+            owner_id: 'string',
             value: 'int'
         }
     }

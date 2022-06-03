@@ -1,12 +1,14 @@
 import express from "express";
 import path from "path";
 import { createDevice, addComponent, addSensor , pauseRealm, resumeRealm, addObjectChangeListener, removeObjectChangeListener} from "./realm/app"
+import bodyParser from 'body-parser'
 
 /**
  * Instantiate express server
  */
 const app = express();
 const port = 3000;
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /**
  * Load index.html on root path
@@ -18,24 +20,16 @@ app.get("/", (req, res) => {
 /**
  * Provide create device endpoint
  */
-app.get('/create_device', (req, res) => {
-  const result = createDevice("MyDevice");
+app.post('/create_device', (req, res) => {
+  const result = createDevice(req.body.name);
   res.send(result);
 })
 
 /**
  * Provide create component endpoint
  */
-app.get('/add_component', (req, res) => {
-  const result = addComponent("MyComponent");
-  res.send(result);
-})
-
-/**
- * Provide add sensor measurement endpoint
- */
-app.get('/add_sensor', (req, res) => {
-  const result = addSensor(0);
+app.post('/add_component', (req, res) => {
+  const result = addComponent(req.body.name);
   res.send(result);
 })
 
@@ -68,6 +62,14 @@ app.get('/add_listener', (req, res) => {
  */
 app.get('/remove_listener', (req, res) => {
   const result = removeObjectChangeListener();
+  res.send(result);
+})
+
+/**
+ * Provide add sensor measurement endpoint
+ */
+ app.post('/add_sensor', (req, res) => {
+  const result = addSensor(req.body.value);
   res.send(result);
 })
 
