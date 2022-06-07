@@ -20,7 +20,7 @@
 3. Update Atlas_App_ID = <-- Your Atlas App ID -->
 4. Run the the app. Sometimes after a fresh download I had to readd the Realm packages to be able to start the app. 
 
-## Create and run docker image
+## Create and run docker image (Not required for base setup!)
 
 1. docker build . -t device-ts
 2. docker run -p 3000:3000 device-ts
