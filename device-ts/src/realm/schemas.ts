@@ -6,79 +6,111 @@ import Realm from 'realm';
  * Realm object schema/class definition for a device object within typescript
  */
 export class Device {
-
-    public _id = new ObjectId;
-    public name = "";
-    public owner_id = "";
-    public isOn = false;
-    public sensor = 0;
-    // Field type which supports multiple multiple data types
-    public mixedTypes = "";
-    // Dictionary which supports adding new key value pairs with support for the 'mixed' data types
-    public flexibleData?: Realm.Dictionary<Realm.Mixed>;
-    public components: Realm.List<Component>;
-
-    constructor() {
-        // Lie because https://github.com/realm/realm-js/issues/2469
-        this.components = [] as any;
+  static schema: Realm.ObjectSchema = {
+    name: 'Device',
+    primaryKey: '_id',
+    properties: {
+      _id: 'objectId',
+      name: 'string',
+      owner_id: 'string',
+      isOn: 'bool',
+      sensor: 'int?',
+      mixedTypes: 'mixed',
+      flexibleData: '{}',
+      components: 'Component[]'
     }
+  }
 
-    public static schema: Realm.ObjectSchema = {
-        name: 'Device',
-        primaryKey: '_id',
-        properties: {
-            _id: { type: 'objectId', default: new ObjectId },
-            name: 'string',
-            owner_id: 'string',
-            isOn: 'bool',
-            sensor: 'int?',
-            mixedTypes: 'mixed',
-            flexibleData: '{}',
-            components: 'Component[]'
-        }
-    }
+  _id: ObjectId = new ObjectId;
+  name = "";
+  owner_id: string;
+  isOn = false;
+  sensor?: number;
+  // Field type which supports multiple multiple data types
+  mixedTypes = "";
+  // Lie because https://github.com/realm/realm-js/issues/2469
+  components = [] as any;
+  // Dictionary which supports adding new key value pairs with support for the 'mixed' data types
+  flexibleData?: Realm.Dictionary<Realm.Mixed>;
+
+  constructor(
+    name: string,
+    owner_id: string,
+  ) {
+    this.name = name;
+    this.owner_id = owner_id;
+  }
 }
 
 /**
  * Realm object schema/class definition for a component object within typescript
  */
 export class Component {
-
-    public _id = new ObjectId;
-    public name = "";
-    public owner_id = "";
-
-    public static schema: Realm.ObjectSchema = {
-        name: 'Component',
-        primaryKey: '_id',
-        properties: {
-            _id: 'objectId',
-            name: 'string?',
-            owner_id: 'string'
-        }
+  static schema: Realm.ObjectSchema = {
+    name: 'Component',
+    primaryKey: '_id',
+    properties: {
+      _id: 'objectId',
+      name: 'string?',
+      owner_id: 'string'
     }
-}
+  }
 
+  _id = new ObjectId;
+  name?: string;
+  owner_id: string;
+
+  constructor(name: string, owner_id: string) {
+    this.name = name;
+    this.owner_id = owner_id;
+  }
+}
 
 /**
  * Realm object schema/class definition for a sensor measurement object within typescript
  */
 export class Sensor {
-
-    public _id = new ObjectId;
-    public name = "";
-    public owner_id = "";
-    public value = 0;
-
-    public static schema: Realm.ObjectSchema = {
-        name: 'Sensor',
-        primaryKey: '_id',
-        asymmetric: true,
-        properties: {
-            _id: 'objectId',
-            name: 'string',
-            owner_id: 'string',
-            value: 'int'
-        }
+  static schema: Realm.ObjectSchema = {
+    name: 'Sensor',
+    asymmetric: true,
+    primaryKey: '_id',
+    properties: {
+      _id: 'objectId?',
+      sensorId: 'string?',
+      timestamp: 'date?',
+      value: 'int?',
     }
+  }
 }
+
+
+/*
+
+JSON Schema
+
+{
+  "title": "Sensor",
+  "bsonType": "object",
+  "required": [
+    "_id",
+    "name",
+    "owner_id",
+    "value"
+  ],
+  "properties": {
+    "_id": {
+      "bsonType": "objectId"
+    },
+    "name": {
+      "bsonType": "string"
+    },
+    "owner_id": {
+      "bsonType": "string"
+    },
+    "value": {
+      "bsonType": "long"
+    }
+  }
+}
+
+*/

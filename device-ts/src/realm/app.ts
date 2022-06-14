@@ -18,18 +18,11 @@ let realm: Realm;
  */
 export function createDevice(name: string) {
   realm.write(() => {
-    realm.create<Device>('Device', {
-      _id: new ObjectID(),
-      name: name,
-      owner_id: app.currentUser?.id ?? "no current user id!",
-      isOn: false,
-      sensor: 0,
-      mixedTypes: "",
-      components: []
-    });
+    const device = new Device(name, app.currentUser?.id ?? "no current user id!");
+    realm.create<Device>('Device', device);
   });
   return {
-    devices: realm.objects<Device>('Device').map(({ _id, name }) => {
+    devices: realm.objects<Device>('Device').map((_id, name ) => {
       return { result: { 'device_id': _id, 'device_name': name }};
     })
   };
@@ -45,14 +38,10 @@ export function addComponent(name: string) {
   if (realm.objects<Device>('Device').length > 0) {
     const device = realm.objects<Device>('Device')[0];
     realm.write(() => {
-      const component = realm.create<Component>('Component', {
-        _id: new ObjectID,
-        name: name,
-        owner_id: app.currentUser?.id ?? "no current user",
-      });
+      const component = realm.create<Component>('Component', {_id: new ObjectID, name: name, owner_id: app.currentUser?.id ?? "no current user"});
       device.components.push(component);
     });
-    return { result: "Component created and related to id: " + device._id };
+    return { result: "Component created and related to id: " + device.name};
   } else {
     const err = { result: "Add component failed, no device available!" };
     return err;
@@ -65,13 +54,12 @@ export function addComponent(name: string) {
  * @returns JSON object
  */
 export function addSensor(value: number) {
-  let sensor;
   realm.write(() => {
-    sensor = realm.create<Sensor>('Sensor', {
+    realm.create<Sensor>('Sensor', {
       _id: new ObjectID,
-      name: "sensor",
+      sensorId: "sensor",
       value: Number(value),
-      owner_id: app.currentUser?.id ?? "no current user"
+      timestamp: new Date()
     });
     realm.objects<Device>('Device')[0].sensor = Number(value);
   });
@@ -127,7 +115,7 @@ function deviceChangeListener(object: any, changes: any) {
  * @returns JSON object
  */
 export function addObjectChangeListener() {
-  let device = realm.objects<Device>('Device')[0];
+  const device = realm.objects<Device>('Device')[0];
   device.addListener(deviceChangeListener);
   return { result: `Listener added to device: ${device.name}!` }
 }
@@ -137,7 +125,7 @@ export function addObjectChangeListener() {
  * @returns JSON object
  */
 export function removeObjectChangeListener() {
-  let device = realm.objects<Device>('Device')[0];
+  const device = realm.objects<Device>('Device')[0];
   device.removeListener(deviceChangeListener);
   return { result: `Listener removed from device: ${device.name}!` }
 }
@@ -228,7 +216,7 @@ process.on("SIGINT", function () {
  */
 async function run() {
   await login().catch(err => {
-    console.error("Login: " + err);
+    console.error("Error: " + JSON.stringify(err));
   });
   // Create and add flexible xync subscription filters
   const owner = `owner_id = ${JSON.stringify(app.currentUser!.id)}`
