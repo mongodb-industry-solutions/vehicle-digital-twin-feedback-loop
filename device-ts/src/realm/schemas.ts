@@ -21,7 +21,7 @@ export class Device {
     }
   }
 
-  _id: ObjectId = new ObjectId;
+  _id: ObjectId;
   name = "";
   owner_id: string;
   isOn = false;
@@ -35,10 +35,11 @@ export class Device {
 
   constructor(
     name: string,
-    owner_id: string,
+    owner_id: string
   ) {
     this.name = name;
     this.owner_id = owner_id;
+    this._id = new ObjectId
   }
 }
 
