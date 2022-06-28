@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import { createDevice, addComponent, addSensor , pauseRealm, resumeRealm, addObjectChangeListener, removeObjectChangeListener} from "./realm/app"
+import { createDevice, addComponent, addSensor , pauseRealm, resumeRealm, addObjectChangeListener, removeObjectChangeListener, getDevices} from "./realm/app"
 import bodyParser from 'body-parser'
 
 /**
@@ -16,6 +16,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
+
+/**
+ * Provide get device names endpoint
+ */
+ app.get('/get_device_names', (req, res) => {
+  const names:string[] = getDevices();
+  res.send({names});
+})
 
 /**
  * Provide create device endpoint

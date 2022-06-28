@@ -12,20 +12,40 @@ const app = new Realm.App({ id: appID });
 let realm: Realm;
 
 /**
+ * Return the names of created devices as list
+ * @returns List of createded devices names
+ */
+export function getDevices(): string[] {
+  const deviceList: any[] = [];
+  realm.objects<Device>('Device').map((device) => {
+    console.log(device.name);
+    deviceList.push({_id: device._id, name: device.name});
+  })
+  console.log(JSON.stringify(deviceList));
+  return deviceList;
+}
+
+/**
  * Creates a new Device object with the provided name
  * @param name Name of the device
  * @returns Attributes of the created device as JSON object
  */
 export function createDevice(name: string) {
-  realm.write(() => {
-    const device = new Device(name, app.currentUser?.id ?? "no current user id!");
-    realm.create<Device>('Device', device);
+  const device: any = realm.write(() => {
+    const dev = realm.create<Device>('Device', {
+      _id: new ObjectID, 
+      name: name, 
+      owner_id: app.currentUser?.id ?? "no current user",
+      isOn: false,
+      mixedTypes: ""
+    });
+    return dev;
   });
-  return {
-    devices: realm.objects<Device>('Device').map((_id, name ) => {
-      return { result: { 'device_id': _id, 'device_name': name }};
-    })
-  };
+  if (device instanceof Device) {
+    return {result: { name: device.name, _id: device._id}};
+  } else {
+    return {result: "Object creation failed!"}
+  }
 }
 
 /**
@@ -34,7 +54,6 @@ export function createDevice(name: string) {
  * @returns Result of the component creation procedure as JSON object or the resulting error
  */
 export function addComponent(name: string) {
-  console.log(name);
   if (realm.objects<Device>('Device').length > 0) {
     const device = realm.objects<Device>('Device')[0];
     realm.write(() => {
