@@ -19,7 +19,7 @@ export function getDevices(): string[] {
   const deviceList: any[] = [];
   realm.objects<Device>('Device').map((device) => {
     console.log(device.name);
-    deviceList.push({_id: device._id, name: device.name});
+    deviceList.push({ _id: device._id, name: device.name });
   })
   console.log(JSON.stringify(deviceList));
   return deviceList;
@@ -33,8 +33,8 @@ export function getDevices(): string[] {
 export function createDevice(name: string) {
   const device: any = realm.write(() => {
     const dev = realm.create<Device>('Device', {
-      _id: new ObjectID, 
-      name: name, 
+      _id: new ObjectID,
+      name: name,
       owner_id: app.currentUser?.id ?? "no current user",
       isOn: false,
       mixedTypes: ""
@@ -42,9 +42,9 @@ export function createDevice(name: string) {
     return dev;
   });
   if (device instanceof Device) {
-    return {result: { name: device.name, _id: device._id}};
+    return { result: { name: device.name, _id: device._id } };
   } else {
-    return {result: "Object creation failed!"}
+    return { result: "Object creation failed!" }
   }
 }
 
@@ -57,10 +57,10 @@ export function addComponent(name: string) {
   if (realm.objects<Device>('Device').length > 0) {
     const device = realm.objects<Device>('Device')[0];
     realm.write(() => {
-      const component = realm.create<Component>('Component', {_id: new ObjectID, name: name, owner_id: app.currentUser?.id ?? "no current user"});
+      const component = realm.create<Component>('Component', { _id: new ObjectID, name: name, owner_id: app.currentUser?.id ?? "no current user" });
       device.components.push(component);
     });
-    return { result: "Component created and related to id: " + device.name};
+    return { result: "Component created and related to id: " + device.name };
   } else {
     const err = { result: "Add component failed, no device available!" };
     return err;
@@ -209,10 +209,9 @@ async function login() {
 }
 
 /**
- * On process shutdown remove all change listeners,delete created devices/components and exit program
+ * Remove all change listeners,delete created devices/components
  */
-process.on("SIGINT", function () {
-  console.log("Shutdown and cleanup initiated!");
+export function cleanupRealm() {
   try {
     // Remove all change listener
     realm.removeAllListeners();
@@ -224,11 +223,11 @@ process.on("SIGINT", function () {
     realm.subscriptions.update((subscriptions) => {
       subscriptions.removeAll();
     })
+    console.log("Realm cleaned up!")
   } catch (err) {
     console.error("Failed: ", err);
   }
-  process.exit();
-});
+}
 
 /**
  * Main function
@@ -239,9 +238,9 @@ async function run() {
   });
   // Create and add flexible xync subscription filters
   const owner = `owner_id = ${JSON.stringify(app.currentUser!.id)}`
-  realm.subscriptions.update( subscriptions => {
-    subscriptions.add(realm.objects('Device').filtered( owner, { name: "device-filter" }));
-    subscriptions.add(realm.objects('Component').filtered( owner, { name: "component-filter" }));
+  realm.subscriptions.update(subscriptions => {
+    subscriptions.add(realm.objects('Device').filtered(owner, { name: "device-filter" }));
+    subscriptions.add(realm.objects('Component').filtered(owner, { name: "component-filter" }));
   });
 }
 
