@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import * as realmApp from "./realm/app";
 import bodyParser from 'body-parser'
+import { Device } from "./realm/schemas";
 
 
 /**
@@ -37,12 +38,27 @@ app.get('/subscribe', (req, res) => {
   client = res;
   // listen for client 'close' requests
   req.on('close', () => { client = null; });
+
+  //Add devices collection change listener
+  realmApp.addDevicesChangeListener(sendDevicesEvent);
+
 });
 
-// send refresh event (must start with 'data: ')
+// send refresh event to browser
 function sendRefreshEvent(data:any) {
   client.write('event: refresh\n');
   client.write(`data: ${data.name}\n\n`);
+}
+
+// send list of devices to browser
+function sendDevicesEvent() {
+  console.log("Device Change Detected!");
+  let event = "";
+  const devices = realmApp.getDevices();
+  console.log(JSON.stringify(devices));
+
+  client.write('event: devices\n');
+  client.write(`data: ${JSON.stringify(devices)}\n\n`);
 }
 
 /**
@@ -59,7 +75,7 @@ app.get('/get_device_names', (req, res) => {
 app.post('/create_device', (req, res) => {
   const result = realmApp.createDevice(req.body.name);
   res.send(result);
-  console.log(JSON.stringify(result));
+  //console.log('Device created: ' + JSON.stringify(result));
   sendRefreshEvent(result.result);
 })
 

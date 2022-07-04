@@ -67,7 +67,12 @@
         </tr>
         <tr>
           <td>
-            <select id="select_component" type="select">Select Component</button>
+            <label for="select_device">Selected device:</label>
+          </td>
+          <td>
+            <select id="select_device" type="select">
+              <option>Select</option>
+            </select>
           </td>
           <td>
           </td>
@@ -78,18 +83,39 @@
   <script>
     $(document).ready(function () {
 
-      function updateDiv(device) {
-        const content = `<div id="device_state">${device}</div>`;
-        $("#device_state").replaceWith(content)
+      // Update device select menu
+      function updateSelect(event) {
+        const devices = JSON.parse(event.data);
+        let options = "<option selected>None</option>";
+        if (Array.isArray(devices)) {
+          devices.forEach(element => {
+            options += `<option value="${element._id}">${element.name}</option>`
+          });
+          $("#select_device").empty().append(options)
+          // set selected option to previous value: https://stackoverflow.com/questions/13343566/set-select-option-selected-by-value
+          $("#select_device select").val("val2");
+        } else {
+          console.log("no Array!");
+        }
+      }
+
+      // Update device state section
+      function updateState(event) {
+        const content = `<div id="device_state">${event.data}</div>`;
+        $("#device_state").replaceWith(content);
       }
 
       const evtSource = new EventSource("//localhost:3000/subscribe");
       evtSource.onmessage = function (e) {
         console.log("onmessage: " + e.data);
-      };
+      }
 
       evtSource.addEventListener("refresh", function (event) {
-        updateDiv(event.data);
+        updateState(event.data);
+      });
+
+      evtSource.addEventListener("devices", function (event) {
+        updateSelect(event);
       });
 
       $("#create_device").click(function () {
@@ -97,7 +123,7 @@
           url: "http://localhost:3000/create_device",
           type: "POST",
           data: { name: $("#device_name").val() },
-          success: (result) => { 
+          success: (result) => {
             console.log('Device Created: ' + JSON.stringify(result));
           },
           error: (error) => { console.log(`${error}`) }
@@ -160,14 +186,8 @@
         });
       });
 
-      $("#select_component").click(function () {
-        $.ajax({
-          url: "http://localhost:3000/get_device_names",
-          type: "GET",
-          success: (result) => { console.log(JSON.stringify(result)) },
-          error: (error) => { console.log(`${error}`) }
-        });
-        $("#select_component").html($("<option>", { "value": "me", "text": "me" })).insertAfter($(this));
+      $("#select_device").on('change', function () {
+        console.log('Device selected: _id: ' + $('#select_device').val());
       });
     });
   </script>

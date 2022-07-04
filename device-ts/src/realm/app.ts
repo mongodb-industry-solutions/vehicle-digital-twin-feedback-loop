@@ -18,10 +18,8 @@ let realm: Realm;
 export function getDevices(): string[] {
   const deviceList: any[] = [];
   realm.objects<Device>('Device').map((device) => {
-    console.log(device.name);
     deviceList.push({ _id: device._id, name: device.name });
   })
-  console.log(JSON.stringify(deviceList));
   return deviceList;
 }
 
@@ -148,6 +146,16 @@ export function removeObjectChangeListener() {
   device.removeListener(deviceChangeListener);
   return { result: `Listener removed from device: ${device.name}!` }
 }
+
+/**
+ * Add a devices collection change listener
+ */
+ export function addDevicesChangeListener(listener:any) {
+  const devices = realm.objects('Device');
+  devices.addListener(listener);
+}
+
+
 
 /**
  * WORK IN PROGRESS!
