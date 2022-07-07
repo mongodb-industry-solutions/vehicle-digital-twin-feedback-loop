@@ -4,9 +4,22 @@ import Realm from 'realm';
 
 /**
  * Realm object schema/class definition for a device object within typescript
+ * https://github.com/realm/realm-js/releases
  */
-export class Device {
-  static schema: Realm.ObjectSchema = {
+export class Device extends Realm.Object<Device> {
+  _id = new ObjectId;
+  name = "";
+  owner_id!: string;
+  isOn = false;
+  sensor?: number;
+  // Field type which supports multiple multiple data types
+  mixedTypes = "";
+  // Lie because https://github.com/realm/realm-js/issues/2469
+  components = [] as any;
+  // Dictionary which supports adding new key value pairs with support for the 'mixed' data types
+  flexibleData?: Realm.Dictionary<Realm.Mixed>;
+
+  static schema = {
     name: 'Device',
     primaryKey: '_id',
     properties: {
@@ -20,34 +33,17 @@ export class Device {
       components: 'Component[]'
     }
   }
-
-  _id: ObjectId;
-  name = "";
-  owner_id: string;
-  isOn = false;
-  sensor?: number;
-  // Field type which supports multiple multiple data types
-  mixedTypes = "";
-  // Lie because https://github.com/realm/realm-js/issues/2469
-  components = [] as any;
-  // Dictionary which supports adding new key value pairs with support for the 'mixed' data types
-  flexibleData?: Realm.Dictionary<Realm.Mixed>;
-
-  constructor(
-    name: string,
-    owner_id: string
-  ) {
-    this.name = name;
-    this.owner_id = owner_id;
-    this._id = new ObjectId
-  }
 }
 
 /**
  * Realm object schema/class definition for a component object within typescript
  */
-export class Component {
-  static schema: Realm.ObjectSchema = {
+export class Component extends Realm.Object<Component> {
+  _id!: ObjectId;
+  name?: string;
+  owner_id!: string;
+
+  static schema = {
     name: 'Component',
     primaryKey: '_id',
     properties: {
@@ -56,22 +52,13 @@ export class Component {
       owner_id: 'string'
     }
   }
-
-  _id = new ObjectId;
-  name?: string;
-  owner_id: string;
-
-  constructor(name: string, owner_id: string) {
-    this.name = name;
-    this.owner_id = owner_id;
-  }
 }
 
 /**
  * Realm object schema/class definition for a sensor measurement object within typescript
  */
-export class Sensor {
-  static schema: Realm.ObjectSchema = {
+export class Sensor extends Realm.Object<Sensor> {
+  static schema = {
     name: 'Sensor',
     asymmetric: true,
     primaryKey: '_id',

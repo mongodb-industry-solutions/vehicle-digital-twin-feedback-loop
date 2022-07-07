@@ -55,7 +55,7 @@ export function addComponent(name: string) {
   if (realm.objects<Device>('Device').length > 0) {
     const device = realm.objects<Device>('Device')[0];
     realm.write(() => {
-      const component = realm.create<Component>('Component', { _id: new ObjectID, name: name, owner_id: app.currentUser?.id ?? "no current user" });
+      const component = new Component(realm, {_id: new ObjectID, name: name, owner_id: app.currentUser?.id ?? "no current user" });
       device.components.push(component);
     });
     return { result: "Component created and related to id: " + device.name };
@@ -72,7 +72,7 @@ export function addComponent(name: string) {
  */
 export function addSensor(value: number) {
   realm.write(() => {
-    realm.create<Sensor>('Sensor', {
+    const measurement = new Sensor(realm, {
       _id: new ObjectID,
       sensorId: "sensor",
       value: Number(value),
