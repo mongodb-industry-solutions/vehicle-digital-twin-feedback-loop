@@ -81,20 +81,27 @@
     </div>
   </div>
   <script>
+    let activeDevice;
+
     $(document).ready(function () {
 
       // Update device select menu
       function updateSelect(event) {
         const devices = JSON.parse(event.data);
-        let options = "<option selected>None</option>";
+        let options = "";
         if (Array.isArray(devices)) {
           devices.forEach(element => {
-            options += `<option value="${element._id}">${element.name}</option>`
+            let selected = "";
+            if(element.id == activeDevice) {
+              selected = 'selected ';
+            }
+            options += `<option ${selected}value="${element._id}">${element.name}</option>`
           });
           $("#select_device").empty().append(options)
           // set selected option to previous value: https://stackoverflow.com/questions/13343566/set-select-option-selected-by-value
           $("#select_device select").val("val2");
         } else {
+          $("#select_device").empty().append("<option>None</option>")
           console.log("no Array!");
         }
       }
@@ -187,7 +194,8 @@
       });
 
       $("#select_device").on('change', function () {
-        console.log('Device selected: _id: ' + $('#select_device').val());
+        activeDevice = $('#select_device').val();
+        console.log(`Device selected: _id: ${activeDevice}`); // + $('#select_device').val());
       });
     });
   </script>
