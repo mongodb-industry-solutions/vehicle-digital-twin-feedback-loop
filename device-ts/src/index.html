@@ -84,7 +84,6 @@
     let activeDevice;
 
     $(document).ready(function () {
-
       // Update device select menu
       function updateSelect(event) {
         const devices = JSON.parse(event.data);
@@ -92,7 +91,7 @@
         if (Array.isArray(devices)) {
           devices.forEach(element => {
             let selected = "";
-            if(element.id == activeDevice) {
+            if (element._id === activeDevice) {
               selected = 'selected ';
             }
             options += `<option ${selected}value="${element._id}">${element.name}</option>`
@@ -108,13 +107,13 @@
 
       // Update device state section
       function updateState(event) {
-        const content = `<div id="device_state">${event.data}</div>`;
+        const content = `<div id="device_state"><p>${event}</p></div>`;
         $("#device_state").replaceWith(content);
       }
 
       const evtSource = new EventSource("//localhost:3000/subscribe");
-      evtSource.onmessage = function (e) {
-        console.log("onmessage: " + e.data);
+      evtSource.onmessage = function (event) {
+        console.log("onmessage: " + event.data);
       }
 
       evtSource.addEventListener("refresh", function (event) {
