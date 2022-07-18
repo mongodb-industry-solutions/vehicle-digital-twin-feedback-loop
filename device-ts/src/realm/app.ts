@@ -71,13 +71,14 @@ export function addComponent(name: string) {
  * @returns JSON object
  */
 export function addSensor(value: number) {
+  const measurement = {
+    _id: new ObjectID,
+    sensorId: "sensor",
+    value: Number(value),
+    timestamp: new Date()
+  };
   realm.write(() => {
-    const measurement = new Sensor(realm, {
-      _id: new ObjectID,
-      sensorId: "sensor",
-      value: Number(value),
-      timestamp: new Date()
-    });
+    realm.create<Sensor>('Sensor', measurement);
     realm.objects<Device>('Device')[0].sensor = Number(value);
   });
   return ({ result: `Sensor measurement ${value} inserted!` });

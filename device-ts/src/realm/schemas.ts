@@ -1,5 +1,6 @@
 import { ObjectId } from 'bson';
 import Realm from 'realm';
+import internal from 'stream';
 
 
 /**
@@ -58,15 +59,20 @@ export class Component extends Realm.Object<Component> {
  * Realm object schema/class definition for a sensor measurement object within typescript
  */
 export class Sensor extends Realm.Object<Sensor> {
+  _id!: ObjectId;
+  sensorId!: string;
+  timestamp!: Date;
+  value!: number;
+
   static schema = {
     name: 'Sensor',
     asymmetric: true,
     primaryKey: '_id',
     properties: {
-      _id: 'objectId?',
-      sensorId: 'string?',
-      timestamp: 'date?',
-      value: 'int?',
+      _id: 'objectId',
+      sensorId: 'string',
+      timestamp: 'date',
+      value: 'int',
     }
   }
 }
