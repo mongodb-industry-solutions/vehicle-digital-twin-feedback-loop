@@ -1,0 +1,8 @@
+{
+    "components": {
+        "ref": "#/relationship/mongodb-atlas/Digital-Twins/Component",
+        "source_key": "components",
+        "foreign_key": "_id",
+        "is_list": true
+    }
+}

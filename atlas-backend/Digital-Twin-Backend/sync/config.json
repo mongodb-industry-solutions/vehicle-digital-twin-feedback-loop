@@ -1,0 +1,40 @@
+{
+    "type": "flexible",
+    "state": "enabled",
+    "development_mode_enabled": true,
+    "service_name": "mongodb-atlas",
+    "database_name": "Digital-Twins",
+    "last_disabled": 1656883204,
+    "client_max_offline_days": 30,
+    "is_recovery_mode_disabled": false,
+    "permissions": {
+        "rules": {
+            "Sensor": [
+                {
+                    "name": "sensors",
+                    "applyWhen": {},
+                    "read": true,
+                    "write": true
+                }
+            ]
+        },
+        "defaultRoles": [
+            {
+                "name": "owner-read-write",
+                "applyWhen": {},
+                "read": {
+                    "owner_id": "%%user.id"
+                },
+                "write": {
+                    "owner_id": "%%user.id"
+                }
+            }
+        ]
+    },
+    "queryable_fields_names": [
+        "owner_id"
+    ],
+    "asymmetric_tables": [
+        "Sensor"
+    ]
+}
