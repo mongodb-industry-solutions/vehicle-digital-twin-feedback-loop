@@ -1,9 +1,6 @@
 # Typescript Sample Code for IoT Device
 
-## Set up the Atlas backend
-[Guide](https://github.com/mongodb-industry-solutions/Connected-Devices/blob/main/Guide%20-%20Digital%20Twin%20Sanbox%20Environment.pdf)
-
-## Prepare and run demo
+## Prepare and run "Device Simulator"
 
 1. Update Realm App ID in ./src/congif.ts
 2. cd ./device-ts
@@ -13,9 +10,7 @@
 6. node build/server.js
 7. Open web console http://localhost:3000
 
-
-
-## Create and run docker image
+## Create and run docker image (Not required for base setup!)
 
 1. docker build . -t device-ts
 2. docker run -p 3000:3000 device-ts
