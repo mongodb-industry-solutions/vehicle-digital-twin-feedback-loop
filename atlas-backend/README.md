@@ -13,4 +13,4 @@ This folder contains all the MongoDB Atlas backend configuration files.
 
 ## Download Deployed Application
 
-1. ```realm-cli pull --local ./Digital-Twin-Backend --remote < YOUR APP ID >```
+1. ```realm-cli pull --local ./Digital-Twin-Backend --remote <-- YOUR APP ID -->```
