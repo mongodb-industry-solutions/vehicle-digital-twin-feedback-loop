@@ -2,16 +2,17 @@ FROM node:16
 # Create app directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
+# Bundle app source
 COPY package*.json ./
+COPY tsconfig.json ./
+COPY ./src ./src
+COPY ./src/index.html ./build/index.html
+
+# Install app dependencies
 RUN npm install
 
-# If you are building your code for production
-# RUN npm ci --only=production
-
-# Bundle app source
-COPY ./build/ /usr/src/app/build
-COPY ./src/index.html /usr/src/app/build/index.html
+# Compile typescript application
+RUN npm run build
 
 # Expose port for webui
 EXPOSE 3000
