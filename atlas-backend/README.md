@@ -2,7 +2,7 @@
 
 This folder contains all the MongoDB Atlas backend configuration files.
 
-## Setup the Digital-Twin-Backend Application
+## Setup The Digital-Twin-Backend Application
 
 1. You need a MongoDB Atlas user account and access to an organization/project
 2. [Install realm-cli](https://www.mongodb.com/docs/atlas/app-services/cli/#installation)
@@ -11,3 +11,6 @@ This folder contains all the MongoDB Atlas backend configuration files.
 5. Import the Digital-Twin-Backend application ```realm-cli push --local ./Digital-Twin-Backend```
 
 
+## Download Deployed Application
+
+1. ```realm-cli pull --local ./Digital-Twin-Backend --remote < YOUR APP ID >```
