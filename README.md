@@ -17,6 +17,6 @@ Code samples and demos around using the Realm database in combination with Mongo
 
 ## PDF Setup Guide and First Use Guidance
 
-[Typescript Sample Application](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
+[PDF Setup Guide](https://github.com/mongodb-industry-solutions/Connected-Devices/blob/main/Guide%20-%20Digital%20Twin%20Sanbox%20Environment.pdf)
 
 
