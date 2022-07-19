@@ -3,11 +3,19 @@ Code samples and demos around using the Realm database in combination with Mongo
 
 ![image](Overview.png)
 
-## Environment Setup
+## MongoDB Atlas Backend Setup
 
-1. [Setup MongoDB Atlas Backend](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/atlas-backend)
+[Setup MongoDB Atlas Backend](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/atlas-backend)
 
-## First use case / demo code
+## Device Simulator Application
+
+[Setup Device Simulator](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
+
+## iOS Mobile Application
+
+[Setup iOS Mobile Application](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
+
+## PDF Setup Guide and First Use Guidance
 
 [Typescript Sample Application](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
 
