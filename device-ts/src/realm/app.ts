@@ -2,8 +2,6 @@ import { Component, Device, Sensor } from './schemas';
 import { appID, realmUser } from './config';
 import Realm from 'realm';
 import { ObjectID } from "bson";
-//import { publishMessage } from '../mqtt/mqtt';
-//import { activateGen, deactivateGen } from '../data-generator/data-generator';
 
 /**
  * Initialize a new Realm application instance
@@ -156,53 +154,6 @@ export function removeObjectChangeListener() {
   devices.addListener(listener);
 }
 
-
-
-/**
- * WORK IN PROGRESS!
- * @todo create activation/deactivation listener
- * @todo depending on active/passive add/remove MQTT listener on topic
- * @todo add asymmetric write function for time series data to Atlas backend
- * Object change listener which listens on MQTT topic and streams events via asymmetric sync to backend
- * @param object 
- * @param changes 
- */
-
-/*
-function eventForwarderListener(object: any, changes: any) {
-  changes.changedProperties.forEach((propName: string) => {
-    console.log(`Changed Property: ${propName}: ${object[propName]}`);
-
-    if (propName === 'isOn') {
-      if (object[propName]) {
-        // Activate data-generator
-        activateGen();
-      } else {
-        //deactivated data-generator
-        deactivateGen();
-      }
-      // Framework for publishing MQTT messages
-      publishMessage(`{ ${propName} : ${object[propName]} }`);
-    }
-  });
-}
-*/
-/**
- * Callback function for Realm collections listener
- * @param objects 
- * @param changes 
- *
-const changeListener = (
-  objects: Realm.Collection<any>,
-  changes: any) => {
-  // Handle newly added objects
-  changes.insertions.forEach((index: number) => {
-    console.log(`New object added: ${objects[index].name}!`);
-    //objects[0].addListener(changedPropertiesListener);
-  });
-  //console.log(JSON.stringify(objects));
-};
-*/
 /**
  * Atlas application services email/password authentication
  */

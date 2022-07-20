@@ -1,7 +1,5 @@
 import { ObjectId } from 'bson';
 import Realm from 'realm';
-import internal from 'stream';
-
 
 /**
  * Realm object schema/class definition for a device object within typescript
@@ -76,35 +74,3 @@ export class Sensor extends Realm.Object<Sensor> {
     }
   }
 }
-
-
-/*
-
-JSON Schema
-
-{
-  "title": "Sensor",
-  "bsonType": "object",
-  "required": [
-    "_id",
-    "name",
-    "owner_id",
-    "value"
-  ],
-  "properties": {
-    "_id": {
-      "bsonType": "objectId"
-    },
-    "name": {
-      "bsonType": "string"
-    },
-    "owner_id": {
-      "bsonType": "string"
-    },
-    "value": {
-      "bsonType": "long"
-    }
-  }
-}
-
-*/
