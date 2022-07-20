@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import * as realmApp from "./realm/app";
 import bodyParser from 'body-parser'
-import { Device } from "./realm/schemas";
+
 
 
 /**
