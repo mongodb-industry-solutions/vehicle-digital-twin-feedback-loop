@@ -13,10 +13,10 @@ This folder contains all the MongoDB Atlas backend configuration files.
 2. [Generate API key](https://www.mongodb.com/docs/atlas/app-services/cli/#generate-an-api-key)
 3. [Login with your API key](https://www.mongodb.com/docs/atlas/app-services/cli/#authenticate-with-an-api-key)
 4. Navigate into the "Digital-Twin-Backend" folder
-4. Import the Digital-Twin-Backend application ```realm-cli push``` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs
-5. Create the demo user: ```realm-cli users create --type email --email demo --password demopw```
-6. Remember the "App ID" and continue with running the ["Device-TS"](https://github.com/mongodb-industry-solutions/Connected-Devices/tree/development-fr/device-ts) which will create all the required schemas to complete the setup process
+4. Import the Digital-Twin-Backend application `realm-cli push` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs
+5. Create the demo user: `realm-cli users create --type email --email demo --password demopw`
+6. Get the created "App ID" `realm-cli apps list` and continue with running the ["Device-TS"](https://github.com/mongodb-industry-solutions/Connected-Devices/tree/development-fr/device-ts), which will create all the required schemas to complete the setup process
 
 ## Download Deployed Application Changes
 
-1. Download changes via the UI into your local app folder ```realm-cli pull```
+1. Download changes via the UI into your local app folder `realm-cli pull`
