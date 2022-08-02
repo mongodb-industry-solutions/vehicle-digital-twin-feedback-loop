@@ -1,0 +1,42 @@
+{
+    "bsonType": "object",
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "components": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "objectId"
+            }
+        },
+        "flexibleData": {
+            "additionalProperties": {
+                "bsonType": "mixed"
+            },
+            "bsonType": "object"
+        },
+        "isOn": {
+            "bsonType": "bool"
+        },
+        "mixedTypes": {
+            "bsonType": "mixed"
+        },
+        "name": {
+            "bsonType": "string"
+        },
+        "owner_id": {
+            "bsonType": "string"
+        },
+        "sensor": {
+            "bsonType": "long"
+        }
+    },
+    "required": [
+        "_id",
+        "name",
+        "owner_id",
+        "isOn"
+    ],
+    "title": "Device"
+}

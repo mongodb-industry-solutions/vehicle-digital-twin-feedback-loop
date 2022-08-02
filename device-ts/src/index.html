@@ -19,6 +19,10 @@
     <div class="jumbotron">
       <h1>Device Simulator</h1>
       <hr class="my-4">
+      <div id="device_state">
+        <p>Device State</p>
+      </div>
+      <hr class="my-4">
       <table>
         <tr>
           <td>
@@ -61,77 +65,139 @@
             <label for="sensor_value">Range: 0-100</label>
           </td>
         </tr>
+        <tr>
+          <td>
+            <label for="select_device">Selected device:</label>
+          </td>
+          <td>
+            <select id="select_device" type="select">
+              <option>Select</option>
+            </select>
+          </td>
+          <td>
+          </td>
+        </tr>
       </table>
     </div>
   </div>
   <script>
+    let activeDevice;
+    const port = window.location.port;
 
-    $("#create_device").click(function () {
-      $.ajax({
-        url: "http://localhost:3000/create_device",
-        type: "POST",
-        data: { name: $("#device_name").val() },
-        success: (result) => { console.log(JSON.stringify(result)) },
-        error: (error) => { console.log(`${error}`) }
+    $(document).ready(function () {
+      // Update device select menu
+      function updateSelect(event) {
+        const devices = JSON.parse(event.data);
+        let options = "";
+        if (Array.isArray(devices)) {
+          devices.forEach(element => {
+            let selected = "";
+            if (element._id === activeDevice) {
+              selected = 'selected ';
+            }
+            options += `<option ${selected}value="${element._id}">${element.name}</option>`
+          });
+          $("#select_device").empty().append(options)
+          // set selected option to previous value: https://stackoverflow.com/questions/13343566/set-select-option-selected-by-value
+          $("#select_device select").val("val2");
+        } else {
+          $("#select_device").empty().append("<option>None</option>")
+          console.log("no Array!");
+        }
+      }
+
+      // Update device state section
+      function updateState(event) {
+        const content = `<div id="device_state"><p>${event}</p></div>`;
+        $("#device_state").replaceWith(content);
+      }
+
+      const evtSource = new EventSource(`//localhost:${port}/subscribe`);
+      evtSource.onmessage = function (event) {
+        console.log("onmessage: " + event.data);
+      }
+
+      evtSource.addEventListener("refresh", function (event) {
+        updateState(event.data);
+      });
+
+      evtSource.addEventListener("devices", function (event) {
+        updateSelect(event);
+      });
+
+      $("#create_device").click(function () {
+        $.ajax({
+          url: `http://localhost:${port}/create_device`,
+          type: "POST",
+          data: { name: $("#device_name").val() },
+          success: (result) => {
+            console.log('Device Created: ' + JSON.stringify(result));
+          },
+          error: (error) => { console.log(`${error}`) }
+        });
+      });
+
+      $("#add_component").click(function () {
+        $.ajax({
+          url: `http://localhost:${port}/add_component`,
+          type: "POST",
+          data: { name: $("#component_name").val() },
+          success: (result) => { console.log(JSON.stringify(result)) },
+          error: (error) => { console.log(`${error}`) }
+        });
+      });
+
+      $("#pause_realm").click(function () {
+        $.ajax({
+          url: `http://localhost:${port}/pause_realm`,
+          type: "GET",
+          success: (result) => { console.log(JSON.stringify(result)) },
+          error: (error) => { console.log(`${error}`) }
+        });
+      });
+
+      $("#resume_realm").click(function () {
+        $.ajax({
+          url: `http://localhost:${port}/resume_realm`,
+          type: "GET",
+          success: (result) => { console.log(JSON.stringify(result)) },
+          error: (error) => { console.log(`${error}`) }
+        });
+      });
+
+      $("#add_listener").click(function () {
+        $.ajax({
+          url: `http://localhost:${port}/add_listener`,
+          type: "GET",
+          success: (result) => { console.log(JSON.stringify(result)) },
+          error: (error) => { console.log(`${error}`) }
+        });
+      });
+
+      $("#remove_listener").click(function () {
+        $.ajax({
+          url: `http://localhost:${port}/remove_listener`,
+          type: "GET",
+          success: (result) => { console.log(JSON.stringify(result)) },
+          error: (error) => { console.log(`${error}`) }
+        });
+      });
+
+      $("#add_sensor").click(function () {
+        $.ajax({
+          url: `http://localhost:${port}/add_sensor`,
+          type: "POST",
+          data: { value: $("#sensor_value").val() },
+          success: (result) => { console.log(JSON.stringify(result)) },
+          error: (error) => { console.log(`${error}`) }
+        });
+      });
+
+      $("#select_device").on('change', function () {
+        activeDevice = $('#select_device').val();
+        console.log(`Device selected: _id: ${activeDevice}`);
       });
     });
-
-    $("#add_component").click(function () {
-      $.ajax({
-        url: "http://localhost:3000/add_component",
-        type: "POST",
-        data: { name: $("#component_name").val() },
-        success: (result) => { console.log(JSON.stringify(result)) },
-        error: (error) => { console.log(`${error}`) }
-      });
-    });
-
-    $("#pause_realm").click(function () {
-      $.ajax({
-        url: "http://localhost:3000/pause_realm",
-        type: "GET",
-        success: (result) => { console.log(JSON.stringify(result)) },
-        error: (error) => { console.log(`${error}`) }
-      });
-    });
-
-    $("#resume_realm").click(function () {
-      $.ajax({
-        url: "http://localhost:3000/resume_realm",
-        type: "GET",
-        success: (result) => { console.log(JSON.stringify(result)) },
-        error: (error) => { console.log(`${error}`) }
-      });
-    });
-
-    $("#add_listener").click(function () {
-      $.ajax({
-        url: "http://localhost:3000/add_listener",
-        type: "GET",
-        success: (result) => { console.log(JSON.stringify(result)) },
-        error: (error) => { console.log(`${error}`) }
-      });
-    });
-
-    $("#remove_listener").click(function () {
-      $.ajax({
-        url: "http://localhost:3000/remove_listener",
-        type: "GET",
-        success: (result) => { console.log(JSON.stringify(result)) },
-        error: (error) => { console.log(`${error}`) }
-      });
-    });
-
-    $("#add_sensor").click(function () {
-      $.ajax({
-        url: "http://localhost:3000/add_sensor",
-        type: "POST",
-        data: { value: $("#sensor_value").val() },
-        success: (result) => { console.log(JSON.stringify(result)) },
-        error: (error) => { console.log(`${error}`) }
-      });
-    });
-
   </script>
 
 </body>

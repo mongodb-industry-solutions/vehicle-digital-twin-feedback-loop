@@ -1,0 +1,23 @@
+{
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "sensorId": {
+            "bsonType": "string"
+        },
+        "timestamp": {
+            "bsonType": "date"
+        },
+        "value": {
+            "bsonType": "int"
+        }
+    },
+    "required": [
+        "_id",
+        "sensorId",
+        "timestamp",
+        "value"
+    ],
+    "title": "Sensor"
+}

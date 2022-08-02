@@ -2,8 +2,6 @@ import { Component, Device, Sensor } from './schemas';
 import { appID, realmUser } from './config';
 import Realm from 'realm';
 import { ObjectID } from "bson";
-//import { publishMessage } from '../mqtt/mqtt';
-//import { activateGen, deactivateGen } from '../data-generator/data-generator';
 
 /**
  * Initialize a new Realm application instance
@@ -18,10 +16,8 @@ let realm: Realm;
 export function getDevices(): string[] {
   const deviceList: any[] = [];
   realm.objects<Device>('Device').map((device) => {
-    console.log(device.name);
-    deviceList.push({_id: device._id, name: device.name});
+    deviceList.push({ _id: device._id, name: device.name });
   })
-  console.log(JSON.stringify(deviceList));
   return deviceList;
 }
 
@@ -33,8 +29,8 @@ export function getDevices(): string[] {
 export function createDevice(name: string) {
   const device: any = realm.write(() => {
     const dev = realm.create<Device>('Device', {
-      _id: new ObjectID, 
-      name: name, 
+      _id: new ObjectID,
+      name: name,
       owner_id: app.currentUser?.id ?? "no current user",
       isOn: false,
       mixedTypes: ""
@@ -42,9 +38,9 @@ export function createDevice(name: string) {
     return dev;
   });
   if (device instanceof Device) {
-    return {result: { name: device.name, _id: device._id}};
+    return { result: { name: device.name, _id: device._id } };
   } else {
-    return {result: "Object creation failed!"}
+    return { result: "Object creation failed!" }
   }
 }
 
@@ -57,10 +53,10 @@ export function addComponent(name: string) {
   if (realm.objects<Device>('Device').length > 0) {
     const device = realm.objects<Device>('Device')[0];
     realm.write(() => {
-      const component = realm.create<Component>('Component', {_id: new ObjectID, name: name, owner_id: app.currentUser?.id ?? "no current user"});
+      const component = new Component(realm, {_id: new ObjectID, name: name, owner_id: app.currentUser?.id ?? "no current user" });
       device.components.push(component);
     });
-    return { result: "Component created and related to id: " + device.name};
+    return { result: "Component created and related to id: " + device.name };
   } else {
     const err = { result: "Add component failed, no device available!" };
     return err;
@@ -73,13 +69,14 @@ export function addComponent(name: string) {
  * @returns JSON object
  */
 export function addSensor(value: number) {
+  const measurement = {
+    _id: new ObjectID,
+    sensorId: "sensor",
+    value: Number(value),
+    timestamp: new Date()
+  };
   realm.write(() => {
-    realm.create<Sensor>('Sensor', {
-      _id: new ObjectID,
-      sensorId: "sensor",
-      value: Number(value),
-      timestamp: new Date()
-    });
+    realm.create<Sensor>('Sensor', measurement);
     realm.objects<Device>('Device')[0].sensor = Number(value);
   });
   return ({ result: `Sensor measurement ${value} inserted!` });
@@ -150,50 +147,13 @@ export function removeObjectChangeListener() {
 }
 
 /**
- * WORK IN PROGRESS!
- * @todo create activation/deactivation listener
- * @todo depending on active/passive add/remove MQTT listener on topic
- * @todo add asymmetric write function for time series data to Atlas backend
- * Object change listener which listens on MQTT topic and streams events via asymmetric sync to backend
- * @param object 
- * @param changes 
+ * Add a devices collection change listener
  */
-
-/*
-function eventForwarderListener(object: any, changes: any) {
-  changes.changedProperties.forEach((propName: string) => {
-    console.log(`Changed Property: ${propName}: ${object[propName]}`);
-
-    if (propName === 'isOn') {
-      if (object[propName]) {
-        // Activate data-generator
-        activateGen();
-      } else {
-        //deactivated data-generator
-        deactivateGen();
-      }
-      // Framework for publishing MQTT messages
-      publishMessage(`{ ${propName} : ${object[propName]} }`);
-    }
-  });
+ export function addDevicesChangeListener(listener:any) {
+  const devices = realm.objects('Device');
+  devices.addListener(listener);
 }
-*/
-/**
- * Callback function for Realm collections listener
- * @param objects 
- * @param changes 
- *
-const changeListener = (
-  objects: Realm.Collection<any>,
-  changes: any) => {
-  // Handle newly added objects
-  changes.insertions.forEach((index: number) => {
-    console.log(`New object added: ${objects[index].name}!`);
-    //objects[0].addListener(changedPropertiesListener);
-  });
-  //console.log(JSON.stringify(objects));
-};
-*/
+
 /**
  * Atlas application services email/password authentication
  */
@@ -209,10 +169,9 @@ async function login() {
 }
 
 /**
- * On process shutdown remove all change listeners,delete created devices/components and exit program
+ * Remove all change listeners,delete created devices/components
  */
-process.on("SIGINT", function () {
-  console.log("Shutdown and cleanup initiated!");
+export function cleanupRealm() {
   try {
     // Remove all change listener
     realm.removeAllListeners();
@@ -224,11 +183,11 @@ process.on("SIGINT", function () {
     realm.subscriptions.update((subscriptions) => {
       subscriptions.removeAll();
     })
+    console.log("Realm cleaned up!")
   } catch (err) {
     console.error("Failed: ", err);
   }
-  process.exit();
-});
+}
 
 /**
  * Main function
@@ -239,9 +198,9 @@ async function run() {
   });
   // Create and add flexible xync subscription filters
   const owner = `owner_id = ${JSON.stringify(app.currentUser!.id)}`
-  realm.subscriptions.update( subscriptions => {
-    subscriptions.add(realm.objects('Device').filtered( owner, { name: "device-filter" }));
-    subscriptions.add(realm.objects('Component').filtered( owner, { name: "component-filter" }));
+  realm.subscriptions.update(subscriptions => {
+    subscriptions.add(realm.objects('Device').filtered(owner, { name: "device-filter" }));
+    subscriptions.add(realm.objects('Component').filtered(owner, { name: "component-filter" }));
   });
 }
 
