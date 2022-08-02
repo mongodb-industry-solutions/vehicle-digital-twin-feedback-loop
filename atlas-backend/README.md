@@ -15,8 +15,7 @@ This folder contains all the MongoDB Atlas backend configuration files.
 4. Navigate into the "Digital-Twin-Backend" folder
 4. Import the Digital-Twin-Backend application `realm-cli push` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs
 5. Create the demo user: `realm-cli users create --type email --email demo --password demopw`
-7. Unfortunately to get asymmetric sync working, currently you have to manually [adjust the sync permissions](https://www.mongodb.com/docs/atlas/app-services/sync/data-access-patterns/sync-mode/#flexible-sync) via web ui to meet [this](). You will have to terminate, change and reactivate sync for this change!
-- Adjust the permissions here to match this JSON structure
+7. Unfortunately to get asymmetric sync working, you have to manually [adjust the sync permissions](https://www.mongodb.com/docs/atlas/app-services/sync/data-access-patterns/sync-mode/#flexible-sync) via web ui to meet [this](https://github.com/mongodb-industry-solutions/Connected-Devices/blob/development-fr/atlas-backend/SyncPermissions.JSON). This requires to terminate, change and reactivate sync!
 6. Get the created "App ID" `realm-cli apps list` and continue with running the ["Device-TS"](https://github.com/mongodb-industry-solutions/Connected-Devices/tree/development-fr/device-ts), which will create all the required schemas to complete the setup process
 
 ## Download Deployed Application Changes
