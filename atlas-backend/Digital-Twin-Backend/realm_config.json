@@ -1,8 +1,6 @@
 {
-    "app_id": "digital-twin-backend-hvprt",
     "config_version": 20210101,
     "name": "Digital-Twin-Backend",
     "location": "IE",
-    "provider_region": "aws-eu-west-1",
     "deployment_model": "LOCAL"
 }
