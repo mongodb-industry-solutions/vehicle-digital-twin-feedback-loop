@@ -5,7 +5,7 @@ This folder contains all the MongoDB Atlas backend configuration files.
 ## Setup The Digital-Twin-Backend MongoDB Backend
 
 1. You need a [MongoDB Cloud](https://cloud.mongodb.com/) user account and access to an organization/project
-2. [Create a MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it "Digital-Twin". Shared clusters should work. Serverless instances are **not yet** supported!
+2. [Create a MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it "Digital-Twin". <br>Shared clusters should work. Serverless instances are **not yet** supported!
 
 ## Setup the Digital-Twin Application
 
