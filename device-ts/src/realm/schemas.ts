@@ -8,7 +8,7 @@ import Realm from 'realm';
 export class Device extends Realm.Object<Device> {
   _id = new ObjectId;
   name = "";
-  owner_id!: string;
+  device_id!: string;
   isOn = false;
   sensor?: number;
   // Field type which supports multiple multiple data types
@@ -24,7 +24,7 @@ export class Device extends Realm.Object<Device> {
     properties: {
       _id: 'objectId',
       name: 'string',
-      owner_id: 'string',
+      device_id: 'string',
       isOn: 'bool',
       sensor: 'int?',
       mixedTypes: 'mixed',
@@ -40,7 +40,7 @@ export class Device extends Realm.Object<Device> {
 export class Component extends Realm.Object<Component> {
   _id!: ObjectId;
   name?: string;
-  owner_id!: string;
+  device_id!: string;
 
   static schema = {
     name: 'Component',
@@ -48,7 +48,7 @@ export class Component extends Realm.Object<Component> {
     properties: {
       _id: 'objectId',
       name: 'string?',
-      owner_id: 'string'
+      device_id: 'string'
     }
   }
 }
@@ -58,7 +58,7 @@ export class Component extends Realm.Object<Component> {
  */
 export class Sensor extends Realm.Object<Sensor> {
   _id!: ObjectId;
-  sensorId!: string;
+  device_id!: string;
   timestamp!: Date;
   value!: number;
 
@@ -68,7 +68,7 @@ export class Sensor extends Realm.Object<Sensor> {
     primaryKey: '_id',
     properties: {
       _id: 'objectId',
-      sensorId: 'string',
+      device_id: 'string',
       timestamp: 'date',
       value: 'int',
     }
