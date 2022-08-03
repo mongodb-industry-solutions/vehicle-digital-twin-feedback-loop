@@ -4,16 +4,16 @@
         "_id": {
             "bsonType": "objectId"
         },
-        "name": {
+        "device_id": {
             "bsonType": "string"
         },
-        "owner_id": {
+        "name": {
             "bsonType": "string"
         }
     },
     "required": [
         "_id",
-        "owner_id"
+        "device_id"
     ],
     "title": "Component"
 }

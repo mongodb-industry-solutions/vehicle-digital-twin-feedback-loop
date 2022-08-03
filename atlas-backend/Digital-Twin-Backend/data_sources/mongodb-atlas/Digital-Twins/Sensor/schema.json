@@ -3,7 +3,7 @@
         "_id": {
             "bsonType": "objectId"
         },
-        "sensorId": {
+        "device_id": {
             "bsonType": "string"
         },
         "timestamp": {
@@ -15,9 +15,9 @@
     },
     "required": [
         "_id",
-        "sensorId",
         "timestamp",
-        "value"
+        "value",
+        "device_id"
     ],
     "title": "Sensor"
 }
