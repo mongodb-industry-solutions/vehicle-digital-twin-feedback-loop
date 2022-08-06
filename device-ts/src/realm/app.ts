@@ -31,7 +31,7 @@ export function createDevice(name: string) {
     const dev = realm.create<Device>('Device', {
       _id: new ObjectID,
       name: name,
-      owner_id: app.currentUser?.id ?? "no current user",
+      device_id: app.currentUser?.id ?? "no current user",
       isOn: false,
       mixedTypes: ""
     });
@@ -53,7 +53,7 @@ export function addComponent(name: string) {
   if (realm.objects<Device>('Device').length > 0) {
     const device = realm.objects<Device>('Device')[0];
     realm.write(() => {
-      const component = new Component(realm, {_id: new ObjectID, name: name, owner_id: app.currentUser?.id ?? "no current user" });
+      const component = new Component(realm, {_id: new ObjectID, name: name, device_id: app.currentUser?.id ?? "no current user" });
       device.components.push(component);
     });
     return { result: "Component created and related to id: " + device.name };
@@ -71,7 +71,7 @@ export function addComponent(name: string) {
 export function addSensor(value: number) {
   const measurement = {
     _id: new ObjectID,
-    sensorId: "sensor",
+    device_id: app.currentUser?.id ?? "no current user",
     value: Number(value),
     timestamp: new Date()
   };
@@ -197,10 +197,10 @@ async function run() {
     console.error("Error: " + JSON.stringify(err));
   });
   // Create and add flexible xync subscription filters
-  const owner = `owner_id = ${JSON.stringify(app.currentUser!.id)}`
+  const deviceID = `device_id = ${JSON.stringify(app.currentUser!.id)}`
   realm.subscriptions.update(subscriptions => {
-    subscriptions.add(realm.objects('Device').filtered(owner, { name: "device-filter" }));
-    subscriptions.add(realm.objects('Component').filtered(owner, { name: "component-filter" }));
+    subscriptions.add(realm.objects('Device').filtered(deviceID, { name: "device-filter" }));
+    subscriptions.add(realm.objects('Component').filtered(deviceID, { name: "component-filter" }));
   });
 }
 

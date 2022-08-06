@@ -10,6 +10,9 @@
                 "bsonType": "objectId"
             }
         },
+        "device_id": {
+            "bsonType": "string"
+        },
         "flexibleData": {
             "additionalProperties": {
                 "bsonType": "mixed"
@@ -25,9 +28,6 @@
         "name": {
             "bsonType": "string"
         },
-        "owner_id": {
-            "bsonType": "string"
-        },
         "sensor": {
             "bsonType": "long"
         }
@@ -35,8 +35,8 @@
     "required": [
         "_id",
         "name",
-        "owner_id",
-        "isOn"
+        "isOn",
+        "device_id"
     ],
     "title": "Device"
 }
