@@ -19,6 +19,10 @@
     <div class="jumbotron">
       <h1>Device Simulator</h1>
       <hr class="my-4">
+      <label for="select_device">Selected device:</label>
+      <select id="select_device" type="select">
+        <option>Select</option>
+      </select>
       <div id="device_state">
         <p>Device State</p>
       </div>
@@ -32,13 +36,14 @@
             <input id="device_name" type="text" class="form-control" placeholder="Device Name" aria-label="Device Name">
           </td>
         </tr>
-        <td>
-          <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
-        </td>
-        <td>
-          <input id="component_name" type="text" class="form-control" placeholder="Component Name"
-            aria-label="Component Name">
-        </td>
+        <tr>
+          <td>
+            <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
+          </td>
+          <td>
+            <input id="component_name" type="text" class="form-control" placeholder="Component Name"
+              aria-label="Component Name">
+          </td>
         </tr>
         <tr>
           <td>
@@ -56,25 +61,32 @@
             <button id="remove_listener" type="button" class="btn btn-primary btn-block">Remove Device Listener</button>
           </td>
         </tr>
+      </table>
+      <hr class="my-4">
+      <table>
         <tr>
           <td>
-            <button id="add_sensor" type="button" class="btn btn-primary btn-block">Add Measurement</button>
+            <b>Device Sensor</b>
           </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><label for="sensor_value_1">Voltage</label></td>
           <td>
-            <input id="sensor_value" type="range" min="1" max="100" value="50">
-            <label for="sensor_value">Range: 0-100</label>
+            <input id="sensor_value_1" type="range" min="1" max="100" value="50">
+          </td>
+        <tr>
+          <td><label for="sensor_value_2">Current</label></td>
+          <td>
+            <input id="sensor_value_2" type="range" min="1" max="100" value="50">
           </td>
         </tr>
         <tr>
           <td>
-            <label for="select_device">Selected device:</label>
+            <p>(Range 1-100)</p>
           </td>
           <td>
-            <select id="select_device" type="select">
-              <option>Select</option>
-            </select>
-          </td>
-          <td>
+            <button id="add_sensor" type="button" class="btn btn-primary btn-block">Add Measurement</button>
           </td>
         </tr>
       </table>
@@ -187,9 +199,9 @@
         $.ajax({
           url: `http://localhost:${port}/add_sensor`,
           type: "POST",
-          data: { value: $("#sensor_value").val() },
+          data: { value_1: parseInt($("#sensor_value_1").val()), value_2: parseInt($("#sensor_value_2").val()) },
           success: (result) => { console.log(JSON.stringify(result)) },
-          error: (error) => { console.log(`${error}`) }
+          error: (error) => { console.log(`Error: ${JSON.stringify(error)}`) }
         });
       });
 

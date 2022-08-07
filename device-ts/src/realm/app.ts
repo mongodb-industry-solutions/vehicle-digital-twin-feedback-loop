@@ -68,18 +68,19 @@ export function addComponent(name: string) {
  * @param value String type e.g. a sensor value
  * @returns JSON object
  */
-export function addSensor(value: number) {
+export function addSensor(sensor: { value_1: string, value_2: string}) {
   const measurement = {
     _id: new ObjectID,
     device_id: app.currentUser?.id ?? "no current user",
-    value: Number(value),
+    value_1: parseInt(sensor.value_1),
+    value_2: parseInt(sensor.value_2),
     timestamp: new Date()
   };
   realm.write(() => {
     realm.create<Sensor>('Sensor', measurement);
-    realm.objects<Device>('Device')[0].sensor = Number(value);
+    realm.objects<Device>('Device')[0].sensor = parseInt(sensor.value_1);
   });
-  return ({ result: `Sensor measurement ${value} inserted!` });
+  return ({ result: `Sensor measurement ${sensor} inserted!` });
 }
 
 /**

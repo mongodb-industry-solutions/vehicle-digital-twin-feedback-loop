@@ -60,7 +60,8 @@ export class Sensor extends Realm.Object<Sensor> {
   _id!: ObjectId;
   device_id!: string;
   timestamp!: Date;
-  value!: number;
+  value_1!: number;
+  value_2!: number;
 
   static schema = {
     name: 'Sensor',
@@ -70,7 +71,8 @@ export class Sensor extends Realm.Object<Sensor> {
       _id: 'objectId',
       device_id: 'string',
       timestamp: 'date',
-      value: 'int',
+      value_1: 'int',
+      value_2: 'int'
     }
   }
 }
