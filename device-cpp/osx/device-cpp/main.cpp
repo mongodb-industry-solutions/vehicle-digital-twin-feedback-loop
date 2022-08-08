@@ -54,7 +54,7 @@ realm::task<void> wait_for_sync_downloads(const realm::User& user) {
 realm::task<realm::db_config> task;
 
 realm::task<realm::db_config> run_realm() {
-    auto app = realm::App("cpp-sdk-2-pgjiz");
+    auto app = realm::App(<-- YOUR REALM APP ID STRING -->);
     auto user = co_await app.login(realm::App::Credentials::anonymous());
 
     auto flx_sync_config = user.flexible_sync_configuration();
