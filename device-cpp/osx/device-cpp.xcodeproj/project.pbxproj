@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E80F1828B83364001CCE5F /* realm-cpp-sdk in Frameworks */ = {isa = PBXBuildFile; productRef = 15E80F1728B83364001CCE5F /* realm-cpp-sdk */; };
 		633BDB7D289FED2400DD9B7A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 633BDB7C289FED2400DD9B7A /* main.cpp */; };
 		633BDB85289FED5200DD9B7A /* event_loop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 633BDB83289FED5200DD9B7A /* event_loop.cpp */; };
 		633BDB88289FEE1F00DD9B7A /* realm-cpp-sdk in Frameworks */ = {isa = PBXBuildFile; productRef = 633BDB87289FEE1F00DD9B7A /* realm-cpp-sdk */; };
@@ -37,6 +38,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				633BDB88289FEE1F00DD9B7A /* realm-cpp-sdk in Frameworks */,
+				15E80F1828B83364001CCE5F /* realm-cpp-sdk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +89,7 @@
 			name = "device-cpp";
 			packageProductDependencies = (
 				633BDB87289FEE1F00DD9B7A /* realm-cpp-sdk */,
+				15E80F1728B83364001CCE5F /* realm-cpp-sdk */,
 			);
 			productName = "device-cpp";
 			productReference = 633BDB79289FED2400DD9B7A /* device-cpp */;
@@ -117,6 +120,7 @@
 			mainGroup = 633BDB70289FED2400DD9B7A;
 			packageReferences = (
 				633BDB86289FEE1F00DD9B7A /* XCRemoteSwiftPackageReference "realm-cpp" */,
+				15E80F1628B83364001CCE5F /* XCRemoteSwiftPackageReference "realm-cpp" */,
 			);
 			productRefGroup = 633BDB7A289FED2400DD9B7A /* Products */;
 			projectDirPath = "";
@@ -304,6 +308,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		15E80F1628B83364001CCE5F /* XCRemoteSwiftPackageReference "realm-cpp" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cpp";
+			requirement = {
+				branch = lm/update;
+				kind = branch;
+			};
+		};
 		633BDB86289FEE1F00DD9B7A /* XCRemoteSwiftPackageReference "realm-cpp" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cpp";
@@ -315,6 +327,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		15E80F1728B83364001CCE5F /* realm-cpp-sdk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 633BDB86289FEE1F00DD9B7A /* XCRemoteSwiftPackageReference "realm-cpp" */;
+			productName = "realm-cpp-sdk";
+		};
 		633BDB87289FEE1F00DD9B7A /* realm-cpp-sdk */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 633BDB86289FEE1F00DD9B7A /* XCRemoteSwiftPackageReference "realm-cpp" */;
