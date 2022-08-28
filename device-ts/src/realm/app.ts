@@ -8,17 +8,38 @@ import { ObjectID } from "bson";
  */
 const app = new Realm.App({ id: appID });
 let realm: Realm;
+// Reference to the created device object
+export let device: Device & Realm.Object<unknown>;
 
 /**
- * Return the names of created devices as list
- * @returns List of createded devices names
+ * Main function
  */
-export function getDevices(): string[] {
-  const deviceList: any[] = [];
-  realm.objects<Device>('Device').map((device) => {
-    deviceList.push({ _id: device._id, name: device.name });
-  })
-  return deviceList;
+async function run() {
+  await login().catch(err => {
+    console.error("Error: " + JSON.stringify(err));
+  });
+  // Create and add flexible sync subscription filters
+  const deviceID = `device_id = ${JSON.stringify(app.currentUser!.id)}`
+  realm.subscriptions.update(subscriptions => {
+    subscriptions.add(realm.objects('Device').filtered(deviceID, { name: "device-filter" }));
+    subscriptions.add(realm.objects('Component').filtered(deviceID, { name: "component-filter" }));
+  });
+  // Create Device object on application start
+  createDevice("Device Name");
+}
+
+/**
+ * Atlas application services email/password authentication
+ */
+async function login() {
+  await app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
+  realm = await Realm.open({
+    schema: [Device.schema, Component.schema, Sensor.schema],
+    sync: {
+      user: app.currentUser!,
+      flexible: true
+    }
+  });
 }
 
 /**
@@ -27,21 +48,15 @@ export function getDevices(): string[] {
  * @returns Attributes of the created device as JSON object
  */
 export function createDevice(name: string) {
-  const device: any = realm.write(() => {
-    const dev = realm.create<Device>('Device', {
-      _id: new ObjectID,
-      name: name,
-      device_id: app.currentUser?.id ?? "no current user",
-      isOn: false,
-      mixedTypes: ""
+  const newDevice = new Device(name, app.currentUser!.id);
+  try {
+    realm.write(() => {
+      device = realm.create(Device.schema.name, newDevice);
     });
-    return dev;
-  });
-  if (device instanceof Device) {
-    return { result: { name: device.name, _id: device._id } };
-  } else {
-    return { result: "Object creation failed!" }
+  } catch (error) {
+    console.error(error);
   }
+  //device = realm.objects<Device>('Device').filtered(`device_id = '${app.currentUser!.id}'`)[0];
 }
 
 /**
@@ -50,36 +65,16 @@ export function createDevice(name: string) {
  * @returns Result of the component creation procedure as JSON object or the resulting error
  */
 export function addComponent(name: string) {
-  if (realm.objects<Device>('Device').length > 0) {
-    const device = realm.objects<Device>('Device')[0];
+  try {
     realm.write(() => {
-      const component = new Component(realm, {_id: new ObjectID, name: name, device_id: app.currentUser?.id ?? "no current user" });
+      let component = new Component(name, app.currentUser!.id);
       device.components.push(component);
     });
     return { result: "Component created and related to id: " + device.name };
-  } else {
-    const err = { result: "Add component failed, no device available!" };
-    return err;
+  } catch (error) {
+    console.error(error);
+    return { result: "Add component failed, no device available!" };
   }
-}
-
-/**
- * Uses the asymmetric sync functionality to efficiently push a time series object to the backend
- * @param value String type e.g. a sensor value
- * @returns JSON object
- */
-export function addSensor(value: number) {
-  const measurement = {
-    _id: new ObjectID,
-    device_id: app.currentUser?.id ?? "no current user",
-    value: Number(value),
-    timestamp: new Date()
-  };
-  realm.write(() => {
-    realm.create<Sensor>('Sensor', measurement);
-    realm.objects<Device>('Device')[0].sensor = Number(value);
-  });
-  return ({ result: `Sensor measurement ${value} inserted!` });
 }
 
 /**
@@ -103,6 +98,20 @@ export function resumeRealm() {
 }
 
 /**
+ * Uses the asymmetric sync functionality to efficiently push a time series object to the backend
+ * @param value String type e.g. a sensor value
+ * @returns JSON object
+ */
+export function addSensor(value: number) {
+  let measurement = new Sensor(app.currentUser!.id, Number(value));
+  realm.write(() => {
+    realm.create(Sensor.schema.name, measurement);
+    device.sensor = Number(value);
+  });
+  return ({ result: `Sensor measurement ${value} inserted!` });
+}
+
+/**
  * Change a flexible sync subscription dynamically to change data sets to be synchronized
  */
 export function toggleSyncSubscription() {
@@ -111,61 +120,19 @@ export function toggleSyncSubscription() {
 }
 
 /**
- * Object change listener callback function to process change events
- * @param object Modified object
- * @param changes List of modified fields
+ * Refresh device on web application
+ * @returns Device as JSON string
  */
-function deviceChangeListener(object: any, changes: any) {
-  console.log(`Changed object: ${object.name}`);
-  if (changes.deleted) {
-    console.log(`Object ${object.name} has been deleted!`);
-  }
-  console.log(`${changes.changedProperties.length} properties have been changed:`);
-  changes.changedProperties.forEach((prop: any) => {
-    console.log(` ${prop}`);
-  });
-}
-
-/**
- * Adds an object change listener to the first previously created Device object using the above functiona as callback
- * @returns JSON object
- */
-export function addObjectChangeListener() {
-  const device = realm.objects<Device>('Device')[0];
-  device.addListener(deviceChangeListener);
-  return { result: `Listener added to device: ${device.name}!` }
-}
-
-/**
- * Remove a previously added object change listener from the first Device object created
- * @returns JSON object
- */
-export function removeObjectChangeListener() {
-  const device = realm.objects<Device>('Device')[0];
-  device.removeListener(deviceChangeListener);
-  return { result: `Listener removed from device: ${device.name}!` }
+export function getDeviceAsJSON(): string {
+  return JSON.stringify(device.toJSON());
 }
 
 /**
  * Add a devices collection change listener
  */
- export function addDevicesChangeListener(listener:any) {
+export function addDevicesChangeListener(listener: any) {
   const devices = realm.objects('Device');
   devices.addListener(listener);
-}
-
-/**
- * Atlas application services email/password authentication
- */
-async function login() {
-  await app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
-  realm = await Realm.open({
-    schema: [Device, Component, Sensor],
-    sync: {
-      user: app.currentUser!,
-      flexible: true
-    }
-  });
 }
 
 /**
@@ -187,21 +154,6 @@ export function cleanupRealm() {
   } catch (err) {
     console.error("Failed: ", err);
   }
-}
-
-/**
- * Main function
- */
-async function run() {
-  await login().catch(err => {
-    console.error("Error: " + JSON.stringify(err));
-  });
-  // Create and add flexible xync subscription filters
-  const deviceID = `device_id = ${JSON.stringify(app.currentUser!.id)}`
-  realm.subscriptions.update(subscriptions => {
-    subscriptions.add(realm.objects('Device').filtered(deviceID, { name: "device-filter" }));
-    subscriptions.add(realm.objects('Component').filtered(deviceID, { name: "component-filter" }));
-  });
 }
 
 /**

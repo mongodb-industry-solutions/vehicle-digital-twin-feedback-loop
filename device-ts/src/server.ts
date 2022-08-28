@@ -3,8 +3,6 @@ import path from "path";
 import * as realmApp from "./realm/app";
 import bodyParser from 'body-parser'
 
-
-
 /**
  * Instantiate express server
  */
@@ -39,48 +37,25 @@ app.get('/subscribe', (req, res) => {
   // listen for client 'close' requests
   req.on('close', () => { client = null; });
 
-  //Add devices collection change listener
-  realmApp.addDevicesChangeListener(sendDevicesEvent);
+  //Add device change listener
+  realmApp.device.addListener(refreshDevice);
 
 });
 
-// send refresh event to browser
-function sendRefreshEvent(data:any) {
+// Get device state and send event to refresh device component on UI
+function refreshDevice() {
+  const device = realmApp.getDeviceAsJSON();
+  sendRefreshEvent(device);
+}
+
+// Send refresh event to browser window
+function sendRefreshEvent(device: string) {
   client.write('event: refresh\n');
-  client.write(`data: ${data.name}\n\n`);
-}
-
-// send list of devices to browser
-function sendDevicesEvent() {
-  console.log("Device Change Detected!");
-  let event = "";
-  const devices = realmApp.getDevices();
-  console.log(JSON.stringify(devices));
-
-  client.write('event: devices\n');
-  client.write(`data: ${JSON.stringify(devices)}\n\n`);
+  client.write(`data: ${device}\n\n`);
 }
 
 /**
- * Provide get device names endpoint
- */
-app.get('/get_device_names', (req, res) => {
-  const devices: string[] = realmApp.getDevices();
-  res.send({ devices });
-})
-
-/**
- * Provide create device endpoint
- */
-app.post('/create_device', (req, res) => {
-  const result = realmApp.createDevice(req.body.name);
-  res.send(result);
-  //console.log('Device created: ' + JSON.stringify(result));
-  sendRefreshEvent(result.result);
-})
-
-/**
- * Provide create component endpoint
+ * Provide add component endpoint
  */
 app.post('/add_component', (req, res) => {
   const result = realmApp.addComponent(req.body.name);
@@ -100,22 +75,6 @@ app.get('/pause_realm', (req, res) => {
  */
 app.get('/resume_realm', (req, res) => {
   const result = realmApp.resumeRealm();
-  res.send(result);
-})
-
-/**
- * Provide an add object change listener endpoint
- */
-app.get('/add_listener', (req, res) => {
-  const result = realmApp.addObjectChangeListener();
-  res.send(result);
-})
-
-/**
- * Provide a remove a previously added object change listener endpoint
- */
-app.get('/remove_listener', (req, res) => {
-  const result = realmApp.removeObjectChangeListener();
   res.send(result);
 })
 
