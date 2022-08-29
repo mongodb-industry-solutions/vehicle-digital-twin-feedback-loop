@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p .",
+    "postbuild": "copyfiles -u 1 \"src/index.html\" build",
     "start": "node build/server.js"
   },
   "keywords": [],
