@@ -1,7 +1,6 @@
 import { Component, Device, Sensor } from './schemas';
 import { appID, realmUser } from './config';
 import Realm from 'realm';
-import { ObjectID } from "bson";
 
 /**
  * Initialize a new Realm application instance
@@ -106,17 +105,10 @@ export function addSensor(sensor: {voltage: string, current: string}) {
   let measurement = new Sensor(app.currentUser!.id, Number(sensor.voltage), Number(sensor.current));
   realm.write(() => {
     realm.create(Sensor.schema.name, measurement);
-    device.sensor = Number(sensor.current);
+    device.voltage = Number(sensor.voltage);
+    device.current = Number(sensor.current);
   });
   return ({ result: `Sensor measurement ${sensor.current} inserted!` });
-}
-
-/**
- * Change a flexible sync subscription dynamically to change data sets to be synchronized
- */
-export function toggleSyncSubscription() {
-  // Idea: Slider or simple toggle to select all or a subset of objects to sync
-  console.log('not implemented yet')
 }
 
 /**

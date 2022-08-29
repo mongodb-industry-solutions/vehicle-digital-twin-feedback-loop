@@ -11,7 +11,9 @@ export class Device {
   public name: string;
   public device_id!: string;
   public isOn: boolean;
-  public sensor?: number | null;
+  //public sensor?: number | null;
+  public voltage?: number | null;
+  public current?: number | null;
   // Field type which supports multiple multiple data types
   public mixedTypes?: Realm.Mixed | null;
   // Lie because https://github.com/realm/realm-js/issues/2469
@@ -27,7 +29,9 @@ export class Device {
       name: 'string',
       device_id: 'string',
       isOn: 'bool',
-      sensor: 'int?',
+      //sensor: 'int?',
+      voltage: 'int?',
+      current: 'int?',
       mixedTypes: 'mixed?',
       flexibleData: '{}',
       components: 'Component[]'
