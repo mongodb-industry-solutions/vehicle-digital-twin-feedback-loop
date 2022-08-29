@@ -102,13 +102,13 @@ export function resumeRealm() {
  * @param value String type e.g. a sensor value
  * @returns JSON object
  */
-export function addSensor(value: number) {
-  let measurement = new Sensor(app.currentUser!.id, Number(value));
+export function addSensor(sensor: {voltage: string, current: string}) {
+  let measurement = new Sensor(app.currentUser!.id, Number(sensor.voltage), Number(sensor.current));
   realm.write(() => {
     realm.create(Sensor.schema.name, measurement);
-    device.sensor = Number(value);
+    device.sensor = Number(sensor.current);
   });
-  return ({ result: `Sensor measurement ${value} inserted!` });
+  return ({ result: `Sensor measurement ${sensor.current} inserted!` });
 }
 
 /**

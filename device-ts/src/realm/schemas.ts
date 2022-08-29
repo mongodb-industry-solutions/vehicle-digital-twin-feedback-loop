@@ -75,7 +75,8 @@ export class Sensor {
   public _id!: ObjectId;
   public device_id!: string;
   public timestamp!: Date;
-  public value!: number;
+  public voltage!: number;
+  public current!: number;
 
   static schema: Realm.ObjectSchema = {
     name: 'Sensor',
@@ -85,14 +86,16 @@ export class Sensor {
       _id: 'objectId',
       device_id: 'string',
       timestamp: 'date',
-      value: 'int',
+      voltage: 'int',
+      current: 'int'
     }
   }
 
-  constructor(device_id: string, value: number) {
+  constructor(device_id: string, voltage: number, current: number) {
     this._id = new ObjectId;
     this.device_id = device_id;
     this.timestamp = new Date();
-    this.value = value;
+    this.voltage = voltage;
+    this.current = current;
   }
 }

@@ -82,7 +82,8 @@ app.get('/resume_realm', (req, res) => {
  * Provide add sensor measurement endpoint
  */
 app.post('/add_sensor', (req, res) => {
-  const result = realmApp.addSensor(req.body.value);
+  console.log(JSON.stringify(req.body));
+  const result = realmApp.addSensor(req.body);
   res.send(result);
 })
 

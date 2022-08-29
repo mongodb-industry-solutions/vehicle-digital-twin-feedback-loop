@@ -15,43 +15,48 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container overflow-hidden">
     <div class="jumbotron">
-      <h1>Device Simulator</h1>
-      <hr class="my-4">
       <div id="device_state">
         <p>Device State</p>
       </div>
       <hr class="my-4">
-      <table>
-        <tr>
-          <td>
-            <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
-          </td>
-          <td>
-            <input id="component_name" type="text" class="form-control" placeholder="Component Name"
-              aria-label="Component Name">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button id="pause_realm" type="button" class="btn btn-primary btn-block">Pause Sync</button>
-          </td>
-          <td>
-            <button id="resume_realm" type="button" class="btn btn-primary btn-block">Resume Sync</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button id="add_sensor" type="button" class="btn btn-primary btn-block">Add Measurement</button>
-          </td>
-          <td>
-            <input id="sensor_value" type="range" min="1" max="100" value="50">
-            <label for="sensor_value">Range: 0-100</label>
-          </td>
-        </tr>
-      </table>
+      <div class="row mt-2">
+        <div class="col">
+          <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
+        </div>
+        <div class="col">
+          <input id="component_name" type="text" class="form-control" placeholder="Component Name"
+            aria-label="Component Name">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          <button id="pause_realm" type="button" class="btn btn-primary btn-block">Pause Sync</button>
+        </div>
+        <div class="col">
+          <button id="resume_realm" type="button" class="btn btn-primary btn-block">Resume Sync</button>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          <button id="add_sensor" type="button" class="btn btn-primary btn-block">Track Telemetry</button>
+        </div>
+        <div class="col">
+          <label for="battery_current">Ampere: (0-100)</label>
+          <input id="battery_current" type="range" min="1" max="100" value="50">
+        </div>
+        <div class="col">
+          <label for="battery_voltage">Volt: (0-100)</label>
+          <input id="battery_voltage" type="range" min="1" max="100" value="50">
+        </div>
+      </div>
     </div>
+  </div>
   </div>
   <script>
     const port = window.location.port;
@@ -62,8 +67,9 @@
       function updateState(device) {
         const content = `
           <div id="device_state">
+            <h1>${device.name}</h1>
+            <hr class="my-4">
             <p>_id: ${device._id}</p>
-            <p>name: ${device.name}</p>
             <p>isOn: ${device.isOn}</p>
             <p>sensor: ${device.sensor}</p>
             <p>components: ${device.components.length}</p>
@@ -112,7 +118,7 @@
         $.ajax({
           url: `http://localhost:${port}/add_sensor`,
           type: "POST",
-          data: { value: $("#sensor_value").val() },
+          data: { voltage: $("#battery_voltage").val(), current: $("#battery_current").val() },
           success: (result) => { console.log(JSON.stringify(result)) },
           error: (error) => { console.log(`${error}`) }
         });
