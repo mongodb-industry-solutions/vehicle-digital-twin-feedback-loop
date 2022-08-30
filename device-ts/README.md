@@ -1,5 +1,9 @@
 # Typescript Sample Code for IoT Device
 
+## Prerequisits
+
+Install [Node.js](https://nodejs.org/)
+
 ## Prepare and run "Device Simulator"
 
 1. Update Realm App ID in `./src/config.ts`
