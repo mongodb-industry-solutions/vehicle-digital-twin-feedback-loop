@@ -77,10 +77,10 @@ class ViewModel: ObservableObject {
                 subscriptions.update {
                     subscriptions.removeAll()
                     subscriptions.append(QuerySubscription<Device>(name: "Devices") {
-                        $0.owner_id == user.id
+                        $0.device_id == user.id
                     })
                     subscriptions.append(QuerySubscription<Component>(name: "Components") {
-                        $0.owner_id == user.id
+                        $0.device_id == user.id
                     })
                 }
                 self.devices = realm.objects(Device.self).sorted(byKeyPath: "_id", ascending: true)
