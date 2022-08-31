@@ -6,8 +6,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY tsconfig.json ./
 COPY ./src ./src
-# to be verified as npm run build extended with copyfiles
-#COPY ./src/index.html ./build/index.html
 
 # Install app dependencies
 RUN npm install
