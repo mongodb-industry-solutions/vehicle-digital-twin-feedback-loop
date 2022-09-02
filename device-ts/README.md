@@ -15,5 +15,8 @@ Install [Node.js](https://nodejs.org/)
 
 ## Build and run "Device Simulator" in a container
 
+Prerequisit:
+- [Docker Desktop](https://www.docker.com/) (may require license!) or alternatively [Colima](https://github.com/abiosoft/colima)
+
 1. `docker build . -t device-ts`
 2. `docker run -p 3000:3000 device-ts`
