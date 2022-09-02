@@ -17,9 +17,9 @@ struct DeviceDetailView: View {
             Form {
                 Section(header: Text("Attributes")) {
                     HStack {
-                        Text("Owner ID")
+                        Text("Device ID")
                         Spacer()
-                        Text(device.owner_id)
+                        Text(device.device_id)
                     }
                     HStack {
                         Text("Mixed Types")
@@ -36,14 +36,19 @@ struct DeviceDetailView: View {
                 }
                 Section(header: Text("CONTROLS")) {
                     Toggle(isOn: $device.isOn) {
-                        Text("Time Series")
+                        Text("Device Status")
                     }
                 }
                 Section(header: Text("Sensors")) {
                     HStack {
-                        Text("Sensor")
+                        Text("Voltage")
                         Spacer()
-                        Text("\(device.sensor ?? 0)")
+                        Text("\(device.voltage ?? 0)")
+                    }
+                    HStack {
+                        Text("Current")
+                        Spacer()
+                        Text("\(device.current ?? 0)")
                     }
                 }
                 Section(header: Text("Components: \(device.components.count)")) {

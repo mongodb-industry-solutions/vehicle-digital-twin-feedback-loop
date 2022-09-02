@@ -13,7 +13,7 @@ Install [Node.js](https://nodejs.org/)
 6. `npm start`
 7. Open web console http://localhost:3000
 
-## OPTIONAL Create and run docker image (to be verfied due to adding copyfiles!)
+## Build and run "Device Simulator" in a container
 
 1. `docker build . -t device-ts`
 2. `docker run -p 3000:3000 device-ts`
