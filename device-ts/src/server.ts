@@ -1,30 +1,36 @@
 import express from "express";
 import path from "path";
-import * as realmApp from "./realm/app";
+import RealmApp from "./realm/app";
 import bodyParser from 'body-parser'
+
+/**
+ * Instantiate Realm application
+ */
+const realmApp = new RealmApp();
+realmApp.login()
+
 
 /**
  * Instantiate express server
  */
-const app = express();
+const webserver = express();
 const port = 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/img/'));
+webserver.use(bodyParser.urlencoded({ extended: true }));
+webserver.use(express.static(__dirname + '/img/'));
 
-/**
- * Load index.html on root path
- */
-app.get("/", (req, res) => {
+// Load index.html on root path
+webserver.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 /**
- * Notify browser window
+ * Browser update notifications
  */
-let client: any = null;
+let client: any;
 
-app.get('/subscribe', (req, res) => {
+// Hook to subscribe to browser notifications
+webserver.get('/subscribe', (req, res) => {
   // send headers to keep connection alive
   const headers = {
     'Content-Type': 'text/event-stream',
@@ -38,61 +44,61 @@ app.get('/subscribe', (req, res) => {
   client = res;
   // listen for client 'close' requests
   req.on('close', () => { client = null; });
-
-  //Add device change listener
-  realmApp.device.addListener(refreshDevice);
-
+  // Add change listener to send object changes to browser
+  realmApp.realm?.objects("Device").addListener(refreshDevice);
 });
 
-// Get device state and send event to refresh device component on UI
+// Get device state and send event to refresh device on UI
 function refreshDevice() {
-  const device = realmApp.getDeviceAsJSON();
-  sendRefreshEvent(device);
+  sendRefreshEvent(realmApp.getDeviceAsJSON());
 }
 
 // Send refresh event to browser window
 function sendRefreshEvent(device: string) {
-  client.write('event: refresh\n');
-  client.write(`data: ${device}\n\n`);
+    client.write('event: refresh\n');
+    client.write(`data: ${device}\n\n`);
 }
 
 /**
  * Provide add component endpoint
  */
-app.post('/add_component', (req, res) => {
+webserver.post('/add_component', (req, res) => {
   const result = realmApp.addComponent(req.body.name);
+  console.log(result);
   res.send(result);
 })
 
 /**
  * Provide a pause synced Realm instance endpoint
  */
-app.get('/pause_realm', (req, res) => {
+webserver.get('/pause_realm', (req, res) => {
   const result = realmApp.pauseRealm();
+  console.log(result);
   res.send(result);
 })
 
 /**
  * Provide a resume endpoint for a previously paused synced Realm instance
  */
-app.get('/resume_realm', (req, res) => {
+webserver.get('/resume_realm', (req, res) => {
   const result = realmApp.resumeRealm();
+  console.log(result);
   res.send(result);
 })
 
 /**
  * Provide add sensor measurement endpoint
  */
-app.post('/add_sensor', (req, res) => {
-  console.log(JSON.stringify(req.body));
+webserver.post('/add_sensor', (req, res) => {
   const result = realmApp.addSensor(req.body);
+  console.log(result);
   res.send(result);
 })
 
 /**
  * Run the express server on the provided port
  */
-app.listen(port, () => {
+webserver.listen(port, () => {
   console.log(`Digital-Twin app listening on port ${port}`);
 });
 
