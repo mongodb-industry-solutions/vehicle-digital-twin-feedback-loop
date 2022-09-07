@@ -99,7 +99,7 @@ class ViewModel: ObservableObject {
     func addItem() {
         print("addDevice")
         try! devices?.realm?.write(withoutNotifying: [notificationToken!]){
-            devices?.realm!.add(Device(value: ["owner_id": app.currentUser?.id, "name": itemName]))
+            devices?.realm!.add(Device(value: ["device_id": app.currentUser?.id, "name": itemName]))
         }
         objectWillChange.send()
     }
