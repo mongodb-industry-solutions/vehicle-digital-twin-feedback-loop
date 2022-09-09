@@ -20,6 +20,8 @@ export class Device {
   public components = [] as any;
   // Dictionary which supports adding new key value pairs with support for the 'mixed' data types
   public flexibleData?: Realm.Dictionary<Realm.Mixed> | null;
+  // Embedded battery object
+  public battery?: Battery | null;
 
   static schema: Realm.ObjectSchema = {
     name: 'Device',
@@ -34,17 +36,41 @@ export class Device {
       current: 'int?',
       mixedTypes: 'mixed?',
       flexibleData: '{}',
-      components: 'Component[]'
+      components: 'Component[]',
+      battery: 'Battery?',
     }
   }
 
-  constructor(name: string, device_id: string) {
+  constructor(name: string, device_id: string, battery: Battery) {
     this._id = new ObjectId;
     this.name = name;
     this.device_id = device_id;
     this.isOn = true;
+    this.battery = battery;
+  }
+}
+
+/**
+ * Realm object schema/class definition for an embedded battery object
+ */
+export class Battery {
+  public sn: string;
+  public capacity: number;
+
+
+  static schema: Realm.ObjectSchema = {
+    name: 'Battery',
+    embedded: true,
+    properties: {
+      sn: 'string?',
+      capacity: 'int'
+    }
   }
 
+  constructor(sn: string, capacity: number) {
+    this.sn = sn;
+    this.capacity = capacity;
+  }
 }
 
 /**
@@ -78,6 +104,8 @@ export class Component {
 export class Sensor {
   public _id!: ObjectId;
   public device_id!: string;
+  public type = 'battery';
+  public sn!: string;
   public timestamp!: Date;
   public voltage!: number;
   public current!: number;
@@ -89,15 +117,17 @@ export class Sensor {
     properties: {
       _id: 'objectId',
       device_id: 'string',
+      sn: 'string',
       timestamp: 'date',
       voltage: 'int',
       current: 'int'
     }
   }
 
-  constructor(device_id: string, voltage: number, current: number) {
+  constructor(device_id: string, sn: string, voltage: number, current: number) {
     this._id = new ObjectId;
     this.device_id = device_id;
+    this.sn = sn;
     this.timestamp = new Date();
     this.voltage = voltage;
     this.current = current;

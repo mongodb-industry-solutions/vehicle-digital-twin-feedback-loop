@@ -1,4 +1,4 @@
-import { Component, Device, Sensor } from './schemas';
+import { Device, Battery, Component, Sensor } from './schemas';
 import { appID, realmUser } from './config';
 import Realm from 'realm';
 
@@ -19,7 +19,7 @@ class RealmApp {
   async login() {
     await this.app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
     this.realm = await Realm.open({
-      schema: [Device.schema, Component.schema, Sensor.schema],
+      schema: [Device.schema, Battery.schema, Component.schema, Sensor.schema],
       sync: {
         user: this.app.currentUser!,
         flexible: true
@@ -41,7 +41,7 @@ class RealmApp {
    * @returns Attributes of the created device as JSON object
    */
   createDevice(name: string) {
-    const newDevice = new Device(name, this.app.currentUser!.id);
+    const newDevice = new Device(name, this.app.currentUser!.id, new Battery('123', 100));
     try {
       this.realm!.write(() => {
         this.realm!.create(Device.schema.name, newDevice);
@@ -92,7 +92,7 @@ class RealmApp {
    * Uses the asymmetric sync functionality to efficiently push a time series object to the backend
    */
   addSensor(sensor: { voltage: string, current: string }) {
-    let measurement = new Sensor(this.app.currentUser!.id, Number(sensor.voltage), Number(sensor.current));
+    let measurement = new Sensor(this.app.currentUser!.id, this.device.battery!.sn, Number(sensor.voltage), Number(sensor.current));
     this.realm!.write(() => {
       this.realm!.create(Sensor.schema.name, measurement);
       this.device!.voltage = Number(sensor.voltage);
