@@ -1,6 +1,6 @@
-import { Device, Battery, Component, Sensor } from './schemas';
+import { Device, Battery, Component, Sensor, Command } from './schemas';
 import { appID, realmUser } from './config';
-import Realm from 'realm';
+import Realm, { Collection, CollectionChangeSet } from 'realm';
 
 class RealmApp {
 
@@ -19,7 +19,7 @@ class RealmApp {
   async login() {
     await this.app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
     this.realm = await Realm.open({
-      schema: [Device.schema, Battery.schema, Component.schema, Sensor.schema],
+      schema: [Device.schema, Battery.schema, Component.schema, Sensor.schema, Command.schema],
       sync: {
         user: this.app.currentUser!,
         flexible: true
@@ -30,9 +30,19 @@ class RealmApp {
     this.realm?.subscriptions.update(subscriptions => {
       subscriptions.add(this.realm!.objects('Device').filtered(deviceID, { name: "device-filter" }));
       subscriptions.add(this.realm!.objects('Component').filtered(deviceID, { name: "component-filter" }));
+      subscriptions.add(this.realm!.objects('Command').filtered(deviceID, { name: "command-filter" }));
     });
     // Create Device object on application start
     this.createDevice("Device Name Login");
+    // Add command change listener
+    // Add the listener callback to the collection of dogs
+    try {
+      this.realm?.objects("Command").addListener(this.onCommand);
+    } catch (error) {
+      console.error(
+        `An exception was thrown within the change listener: ${error}`
+      );
+    }
   }
 
   /**
@@ -106,6 +116,17 @@ class RealmApp {
    */
   getDeviceAsJSON(): string {
     return JSON.stringify(this.device!.toJSON());
+  }
+
+  /**
+   * Add command listener
+   */
+  onCommand(commands: any, changes: CollectionChangeSet) {
+    // Handle newly added commands
+    changes.insertions.forEach((index) => {
+      const insertedCmd = commands[index];
+      console.log(`New command received: ${insertedCmd.operation}, created at: ${insertedCmd._id.getTimestamp()}`);
+    });
   }
 
   /**

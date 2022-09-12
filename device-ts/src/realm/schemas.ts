@@ -1,5 +1,5 @@
 import { ObjectId } from 'bson';
-import Realm from 'realm';
+import Realm, { Dictionary } from 'realm';
 
 /**
  * Realm object schema/class definition for a device object within typescript
@@ -131,5 +131,32 @@ export class Sensor {
     this.timestamp = new Date();
     this.voltage = voltage;
     this.current = current;
+  }
+}
+
+/**
+ * Command object to run operations on the device
+ */
+export class Command {
+  public _id!: ObjectId;
+  public device_id!: string;
+  public operation: string;
+  public desiredState?: Dictionary;
+
+  static schema: Realm.ObjectSchema = {
+    name: 'Command',
+    primaryKey: '_id',
+    properties: {
+      _id: 'objectId',
+      device_id: 'string',
+      operation: 'string',
+      desiredState: '{}',
+    }
+  }
+
+  constructor(device_id: string, operation: string, desiredState?: Dictionary) {
+    this.device_id = device_id;
+    this.operation = operation;
+    this.desiredState = desiredState
   }
 }
