@@ -13,11 +13,76 @@
     }
 
     #device_state{
-      height:400px;
-      background-image: url("car_outline.png");
+      height:500px;
+      background-image: url("new_car.png");
       background-repeat: no-repeat;
+      background-position: 70%;
       background-color: white;
       font-size: 30px;
+    }
+    
+    #device_state p{
+      /*background-color: #E3FCF7;*/
+      color: black;
+      font-size: 16px;
+     /* width: 250px;*/
+      padding: 5px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    ul {
+    /*columns: 3;
+    -webkit-columns: 3;
+    -moz-columns: 3;*/
+    list-style: none;
+    padding-left: 0px;
+    padding-top: 40px;
+    }
+
+    #components{
+      background-color: lightgray;
+      border-radius: 5px;
+      width: 150px;
+    }
+
+    #device_id{
+      width: 300px;
+      margin-left: 39%;
+      margin-top: -40px;
+      background-color: lightgray;
+      border-radius: 5px;
+    }
+
+    #voltage{
+      background-color: #E3FCF7;
+      border-radius: 5px;
+      width: 100px;
+      margin-left: 52%;
+    }
+
+    #current{
+      background-color: #E3FCF7;
+      border-radius: 5px;
+      width: 100px;
+      margin-left: 52%;
+    }
+
+    #ison{
+      background-color: #F9EBFF;
+      border-radius: 5px;
+      width: 100px;
+      margin-left: 70%;
+      margin-top: -80px;
+    }
+
+    /*Engine GIF*/
+    #engine {
+      display: none;
+      width: 120px;
+      margin-left: 70%;
+      margin-top: -10px;
+
     }
 
     .jumbotron{
@@ -46,6 +111,8 @@
       <div id="device_state">
         <p>Device State</p>
       </div>
+
+      
       <hr class="my-4">
       <div class="row mt-2">
         <div class="col">
@@ -93,15 +160,38 @@
       function updateState(device) {
         const content = `
           <div id="device_state">
-            <h1>${device.name}</h1>
-            <hr class="my-4">
-            <p>_id: ${device._id}</p>
-            <p>isOn: ${device.isOn}</p>
-            <p>voltage: ${device.voltage}</p>
-            <p>current: ${device.current}</p>
-            <p>components: ${device.components.length}</p>
+            
+              <h1>${device.name}</h1>
+              <hr class="my-4">
+
+            <ul>
+              
+              <li id="components"><p>Components: ${device.components.length}</p></li>
+              <li id="voltage"><p>Voltage: ${device.voltage}</p></li>
+              <li class="short_tag" id="current"><p>Current: ${device.current}</p></li>
+              <li class="short_tag" id="ison"><p>isOn: ${device.isOn}</p></li>
+              <li><img id="engine" src="engine_transparent.gif" alt="Engine GIF" /></li>
+              <li id="device_id"><p>_id: ${device._id}</p></li>
+            </ul>
+
           </div>`;
         $("#device_state").replaceWith(content);
+
+        /*Change background to car with spoiler 
+        $("#add_component").click(function() {
+          $("#device_state").css("background-image", "url(car_spoiler.png)");
+        }); */
+
+        //Change background to car with spoiler when a component is added
+        if (device.components.length >= 1){
+          $("#device_state").css("background-image", "url(car_spoiler.png)");
+        }
+
+        //Show engine gif when isOn is true
+        if (device.isOn == true){
+          $("#engine").css("display", "block");
+        }
+
       }
 
       const evtSource = new EventSource(`//localhost:${port}/subscribe`);
