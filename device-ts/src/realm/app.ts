@@ -4,6 +4,7 @@ import Realm, { Collection, CollectionChangeSet } from 'realm';
 
 class RealmApp {
 
+  self;
   app;
   realm?: Realm;
   // Reference to the created device object
@@ -11,6 +12,7 @@ class RealmApp {
 
   constructor() {
     this.app = new Realm.App({ id: appID });
+    this.self = this;
   }
 
   /**
@@ -37,7 +39,7 @@ class RealmApp {
     // Add command change listener
     // Add the listener callback to the collection of dogs
     try {
-      this.realm?.objects("Command").addListener(this.onCommand);
+      this.realm!.objects("Command").addListener(this.onCommand.bind(this));
     } catch (error) {
       console.error(
         `An exception was thrown within the change listener: ${error}`
@@ -103,11 +105,15 @@ class RealmApp {
    */
   addSensor(sensor: { voltage: string, current: string }) {
     let measurement = new Sensor(this.app.currentUser!.id, this.device.battery!.sn, Number(sensor.voltage), Number(sensor.current));
-    this.realm!.write(() => {
-      this.realm!.create(Sensor.schema.name, measurement);
-      this.device!.voltage = Number(sensor.voltage);
-      this.device!.current = Number(sensor.current);
-    });
+    try {
+      this.realm!.write(() => {
+        this.realm!.create(Sensor.schema.name, measurement);
+        this.device!.voltage = Number(sensor.voltage);
+        this.device!.current = Number(sensor.current);
+      });
+    } catch (err) {
+      console.error(err);
+    }
     return ({ result: `Updated sensor measurement voltage:${sensor.voltage} and current:${sensor.current} added!` });
   }
 
@@ -121,11 +127,18 @@ class RealmApp {
   /**
    * Add command listener
    */
-  onCommand(commands: any, changes: CollectionChangeSet) {
+  onCommand(commands: Collection<any>, changes: CollectionChangeSet) {
     // Handle newly added commands
     changes.insertions.forEach((index) => {
       const insertedCmd = commands[index];
-      console.log(`New command received: ${insertedCmd.operation}, created at: ${insertedCmd._id.getTimestamp()}`);
+      console.log(`New command received: ${insertedCmd.command}, created at: ${insertedCmd._id.getTimestamp()}`);
+      try {
+        this.realm?.write(() => {
+          this.realm?.delete(insertedCmd);
+        });
+      } catch (err) {
+        console.error(err);
+      }
     });
   }
 
