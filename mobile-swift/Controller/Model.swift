@@ -23,15 +23,14 @@ class Device: Object, ObjectKeyIdentifiable {
 
 class Component: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
-
     @Persisted var name: String?
-
     @Persisted var device_id: String = ""
 }
 
 class Command: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var device_id: String
-    @Persisted var command: Map<String, AnyRealmValue>
+    @Persisted var command: String
+    @Persisted var parameter: Map<String, AnyRealmValue>
 
 }

@@ -76,6 +76,7 @@ struct DeviceDetailView: View {
 struct CommandView: View {
     @ObservedObject var device: Device
     @Binding var isPresented: Bool
+    @State var command: String = ""
     
     var body: some View {
         VStack {
@@ -83,14 +84,17 @@ struct CommandView: View {
                 Text("Item Name:")
                     .font(.callout)
                     .bold()
-                TextField("Enter a name...", text: $device.name)
+                TextField("Enter Command", text: $command)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }.padding()
-            Button("Add", action: {
-                isPresented = false
-            })
+            Button("Send", action: sendCommand)
             Button("Dismiss", action: {isPresented = false})
         }
+    }
+    
+    func sendCommand(){
+        $device.commands.append(Command(value: ["device_id": device.device_id, "command": command]))
+        isPresented = false
     }
 }
 

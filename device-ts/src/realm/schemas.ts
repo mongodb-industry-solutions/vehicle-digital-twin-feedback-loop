@@ -11,13 +11,14 @@ export class Device {
   public name: string;
   public device_id!: string;
   public isOn: boolean;
+  public commands: Command[] = [];
   //public sensor?: number | null;
   public voltage?: number | null;
   public current?: number | null;
   // Field type which supports multiple multiple data types
   public mixedTypes?: Realm.Mixed | null;
   // Lie because https://github.com/realm/realm-js/issues/2469
-  public components = [] as any;
+  public components: Component[] = [];
   // Dictionary which supports adding new key value pairs with support for the 'mixed' data types
   public flexibleData?: Realm.Dictionary<Realm.Mixed> | null;
   // Embedded battery object
@@ -31,6 +32,7 @@ export class Device {
       name: 'string',
       device_id: 'string',
       isOn: 'bool',
+      commands: 'Command[]',
       //sensor: 'int?',
       voltage: 'int?',
       current: 'int?',
@@ -140,8 +142,8 @@ export class Sensor {
 export class Command {
   public _id!: ObjectId;
   public device_id!: string;
-  public operation: string;
-  public desiredState?: Dictionary;
+  public command: string;
+  public parameter?: Dictionary;
 
   static schema: Realm.ObjectSchema = {
     name: 'Command',
@@ -149,14 +151,14 @@ export class Command {
     properties: {
       _id: 'objectId',
       device_id: 'string',
-      operation: 'string',
-      desiredState: '{}',
+      command: 'string',
+      parameter: '{}',
     }
   }
 
   constructor(device_id: string, operation: string, desiredState?: Dictionary) {
     this.device_id = device_id;
-    this.operation = operation;
-    this.desiredState = desiredState
+    this.command = operation;
+    this.parameter = desiredState
   }
 }
