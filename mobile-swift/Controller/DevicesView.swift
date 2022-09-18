@@ -6,74 +6,86 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct DevicesView: View {
-    @ObservedObject var viewModel: ViewModel
-    @State private var showingAddDevice = false
+    // This view opens a synced realm.
+    // We've injected a `flexibleSyncConfiguration` as an environment value,
+    // so `@AsyncOpen` here opens a realm using that configuration.
+    @AsyncOpen(appId: Bundle.main.object(forInfoDictionaryKey:"Atlas_App_ID") as? String, timeout: 4000) var asyncOpen
+    
+    var body: some View {
+        // Because we are setting the `ownerId` to the `user.id`, we need
+        // access to the app's current user in this view.
+        //let user = app?.currentUser
+        switch asyncOpen {
+            // Starting the Realm.asyncOpen process.
+            // Show a progress view.
+        case .connecting:
+            ProgressView()
+            // Waiting for a user to be logged in before executing
+            // Realm.asyncOpen.
+        case .waitingForUser:
+            ProgressView("Waiting for user to log in...")
+            // The realm has been opened and is ready for use.
+            // Show the content view.
+        case .open(_):
+            DevicesListView()
+            // The realm is currently being downloaded from the server.
+            // Show a progress view.
+        case .progress(let progress):
+            ProgressView(progress)
+            // Opening the Realm failed.
+            // Show an error view.
+        case .error(let error):
+            ErrorView(error: error)
+        }
+    }
+}
+struct ErrorView: View {
+    var error: Error
+    
+    var body: some View {
+        VStack {
+            Text("Error opening the realm: \(error.localizedDescription)")
+        }
+    }
+}
+
+
+struct DevicesListView: View {
+    
+    @ObservedResults(Device.self) var devices
     
     var body: some View {
         NavigationView {
             VStack{
                 // The list shows the items in the realm.
                 List {
-                    if let devices = viewModel.devices {
-                        ForEach(devices.freeze()) { device in
-                            NavigationLink(device.name, destination: DeviceDetailView(device: device))
-                        }
-                        .onDelete(perform: delete)
+                    ForEach(devices) { device in
+                        NavigationLink(device.name, destination: DeviceDetailView(device: device))
                     }
+                    .onDelete(perform: $devices.remove)
                 }
-                Button("Add Item", action: {showingAddDevice = true})
             }
             .navigationTitle("Devices")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Button("Logout", action: viewModel.logout)
+                    Button("Logout", action: logout)
                 }
             }
         }
         .navigationViewStyle(.stack)
-        .sheet(isPresented: $showingAddDevice) {
-            // show the add item view
-            AddView(viewModel: viewModel, isPresented: $showingAddDevice)
-        }
     }
     
-    func delete(at offsets: IndexSet) {
-        viewModel.deleteItem(at: offsets)
-    }
-}
-
-
-struct AddView: View {
-    @ObservedObject var viewModel: ViewModel
-    @Binding var isPresented: Bool
-    
-    var body: some View {
-        VStack {
-            HStack(alignment: .center) {
-                Text("Item Name:")
-                    .font(.callout)
-                    .bold()
-                TextField("Enter a name...", text: $viewModel.itemName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-            }.padding()
-            Button("Add", action: {
-                viewModel.addItem()
-                isPresented = false
-            })
-            Button("Dismiss", action: {isPresented = false})
+    func logout() {
+        guard let user = app!.currentUser else {
+            return
         }
-    }
-}
-
-struct ItemsView_Previews: PreviewProvider {
-    static var previews: some View {
-        if #available(iOS 15.0, *) {
-            DevicesView(viewModel: ViewModel())
-                .previewInterfaceOrientation(.portrait)
-        } else {
-            // Fallback on earlier versions
+        user.logOut() { error in
+            // Other views are observing the app and will detect
+            // that the currentUser has changed. Nothing more to do here.
+            print("Logged out")
         }
     }
 }

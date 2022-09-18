@@ -10,7 +10,6 @@
 		630D2377282F058000EAD0C5 /* DeviceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D2376282F058000EAD0C5 /* DeviceDetailView.swift */; };
 		631657E22675F6B300D397C5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631657E12675F6B300D397C5 /* LoginView.swift */; };
 		631657E42675F70B00D397C5 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631657E32675F70B00D397C5 /* DevicesView.swift */; };
-		632054B8266ABF72008DFC61 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632054B7266ABF72008DFC61 /* ViewModel.swift */; };
 		6389BC0728563F2C0014EFB7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6389BC0628563F2C0014EFB7 /* Realm */; };
 		6389BC0928563F2C0014EFB7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6389BC0828563F2C0014EFB7 /* RealmSwift */; };
 		63C9ABBC266948D200069D38 /* ControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C9ABBB266948D200069D38 /* ControllerApp.swift */; };
@@ -25,7 +24,6 @@
 		630D2376282F058000EAD0C5 /* DeviceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailView.swift; sourceTree = "<group>"; };
 		631657E12675F6B300D397C5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		631657E32675F70B00D397C5 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
-		632054B7266ABF72008DFC61 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		63C9ABB8266948D200069D38 /* Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C9ABBB266948D200069D38 /* ControllerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerApp.swift; sourceTree = "<group>"; };
 		63C9ABBD266948D200069D38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 				631657E12675F6B300D397C5 /* LoginView.swift */,
 				631657E32675F70B00D397C5 /* DevicesView.swift */,
 				630D2376282F058000EAD0C5 /* DeviceDetailView.swift */,
-				632054B7266ABF72008DFC61 /* ViewModel.swift */,
 				63C9ABCF266967E100069D38 /* Model.swift */,
 				63C9ABBF266948D300069D38 /* Assets.xcassets */,
 				63C9ABC4266948D300069D38 /* Info.plist */,
@@ -179,7 +176,6 @@
 				63C9ABBE266948D200069D38 /* ContentView.swift in Sources */,
 				631657E42675F70B00D397C5 /* DevicesView.swift in Sources */,
 				63C9ABBC266948D200069D38 /* ControllerApp.swift in Sources */,
-				632054B8266ABF72008DFC61 /* ViewModel.swift in Sources */,
 				631657E22675F6B300D397C5 /* LoginView.swift in Sources */,
 				63C9ABD0266967E100069D38 /* Model.swift in Sources */,
 			);

@@ -11,6 +11,7 @@ import RealmSwift
 
 struct DeviceDetailView: View {
     @ObservedRealmObject var device: Device
+    @State private var showingCommandView = false
     
     var body: some View {
         NavigationView {
@@ -60,10 +61,36 @@ struct DeviceDetailView: View {
                         }
                     }
                 }
+                Button("Send Command", action: {showingCommandView = true})
             }
             .navigationBarTitle(device.name)
         }
         .navigationViewStyle(.stack)
+        .sheet(isPresented: $showingCommandView) {
+            // show the add item view
+            CommandView(device: device.thaw()!, isPresented: $showingCommandView)
+        }
+    }
+}
+
+struct CommandView: View {
+    @ObservedObject var device: Device
+    @Binding var isPresented: Bool
+    
+    var body: some View {
+        VStack {
+            HStack(alignment: .center) {
+                Text("Item Name:")
+                    .font(.callout)
+                    .bold()
+                TextField("Enter a name...", text: $device.name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }.padding()
+            Button("Add", action: {
+                isPresented = false
+            })
+            Button("Dismiss", action: {isPresented = false})
+        }
     }
 }
 

@@ -18,6 +18,7 @@ class Device: Object, ObjectKeyIdentifiable {
     @Persisted var current: Int?
     @Persisted var flexibleData: Map<String, AnyRealmValue>
     @Persisted var mixedTypes: AnyRealmValue = AnyRealmValue.string("")
+    @Persisted var commands: List<Command>
 }
 
 class Component: Object {
@@ -26,4 +27,11 @@ class Component: Object {
     @Persisted var name: String?
 
     @Persisted var device_id: String = ""
+}
+
+class Command: Object {
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var device_id: String
+    @Persisted var command: Map<String, AnyRealmValue>
+
 }
