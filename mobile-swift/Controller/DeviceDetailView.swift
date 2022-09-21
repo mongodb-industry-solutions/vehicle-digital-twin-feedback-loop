@@ -63,9 +63,8 @@ struct DeviceDetailView: View {
                 }
                 Button("Send Command", action: {showingCommandView = true})
             }
-            .navigationBarTitle(device.name)
         }
-        .navigationViewStyle(.stack)
+        .navigationBarTitle(device.name)
         .sheet(isPresented: $showingCommandView) {
             // show the add item view
             CommandView(device: device.thaw()!, isPresented: $showingCommandView)
@@ -79,17 +78,35 @@ struct CommandView: View {
     @State var command: String = ""
     
     var body: some View {
-        VStack {
-            HStack(alignment: .center) {
-                Text("Item Name:")
-                    .font(.callout)
+        Text("Submit Command").font(.title)
+        VStack() {
+            HStack(){
+                Text("Command")
+                    .font(.title3)
                     .bold()
+                Spacer()
+            }.padding()
+            HStack() {
                 TextField("Enter Command", text: $command)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                Spacer()
             }.padding()
-            Button("Send", action: sendCommand)
-            Button("Dismiss", action: {isPresented = false})
-        }
+            HStack() {
+                Text("Parameter")
+                    .font(.title3)
+                    .bold()
+                Spacer()
+            }.padding()
+            HStack() {
+                TextField("Enter Key", text: $command)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Text(":")
+                TextField("Enter Value", text: $command)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+        }.padding()
+        Button("Send", action: sendCommand)
+        Button("Dismiss", action: {isPresented = false})
     }
     
     func sendCommand(){
