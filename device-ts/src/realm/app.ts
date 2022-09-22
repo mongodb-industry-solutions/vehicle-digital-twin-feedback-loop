@@ -35,7 +35,7 @@ class RealmApp {
       subscriptions.add(this.realm!.objects('Command').filtered(deviceID, { name: "command-filter" }));
     });
     // Create Device object on application start
-    this.createDevice("Device Name Login");
+    this.createDevice("My Car");
     // Add command change listener
     // Add the listener callback to the collection of dogs
     try {
@@ -108,8 +108,8 @@ class RealmApp {
     try {
       this.realm!.write(() => {
         this.realm!.create(Sensor.schema.name, measurement);
-        this.device!.voltage = Number(sensor.voltage);
-        this.device!.current = Number(sensor.current);
+        this.device.battery!.voltage = Number(sensor.voltage);
+        this.device.battery!.current = Number(sensor.current);
       });
     } catch (err) {
       console.error(err);
