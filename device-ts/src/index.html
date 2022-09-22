@@ -22,36 +22,39 @@
     }
     
     #device_state p{
-      /*background-color: #E3FCF7;*/
       color: black;
       font-size: 16px;
-     /* width: 250px;*/
       padding: 5px;
-      border-radius: 20px;
       text-align: center;
     }
 
+    /*Tags*/
     ul {
-    /*columns: 3;
-    -webkit-columns: 3;
-    -moz-columns: 3;*/
     list-style: none;
     padding-left: 0px;
     padding-top: 40px;
     }
 
-    #components{
-      background-color: lightgray;
+    #number_components{
+      background-color: #00684A;
+      color: white;
       border-radius: 5px;
       width: 150px;
+      text-align: center;
+      margin-bottom: 0px;
+    }
+
+    #number_components p{
+      margin-bottom: 0px;
     }
 
     #device_id{
       width: 300px;
       margin-left: 39%;
-      margin-top: -40px;
-      background-color: lightgray;
+      margin-top: -30px;
       border-radius: 5px;
+      border: 2px solid black;
+      height: 35px;
     }
 
     #voltage{
@@ -59,6 +62,8 @@
       border-radius: 5px;
       width: 100px;
       margin-left: 52%;
+      margin-top: 5%;
+    
     }
 
     #current{
@@ -73,17 +78,32 @@
       border-radius: 5px;
       width: 100px;
       margin-left: 70%;
-      margin-top: -80px;
+      margin-top: -40px;
     }
 
-    /*Engine GIF*/
     #engine {
       display: none;
       width: 120px;
-      margin-left: 70%;
-      margin-top: -10px;
+      margin-left: 80%;
+      margin-top: -70px;
 
     }
+
+    /*Buttons*/
+    .col{
+      flex-grow: 0;
+      width: 200px;
+      margin-right: 30px;
+    }
+
+    #component_name{
+      width: 200px;
+    }
+
+    #number_components{
+      padding: 7px;
+    }
+    
 
     .jumbotron{
       background-color: white;
@@ -93,6 +113,9 @@
       background-color: #00ed64;
       border: none;
       color: black;
+      width: 200px;
+      margin: 0px;
+      
     }
 
     .btn:hover{
@@ -112,16 +135,20 @@
         <p>Device State</p>
       </div>
 
-      
       <hr class="my-4">
       <div class="row mt-2">
-        <div class="col">
-          <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
-        </div>
+        
         <div class="col">
           <input id="component_name" type="text" class="form-control" placeholder="Component Name"
             aria-label="Component Name">
         </div>
+        <div class="col">
+          <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
+        </div>
+        <div class="col" >
+          <p id="number_components"> Number of Components </p>
+        </div>
+        
         <div class="col">
         </div>
       </div>
@@ -165,8 +192,6 @@
               <hr class="my-4">
 
             <ul>
-              
-              <li id="components"><p>Components: ${device.components.length}</p></li>
               <li id="voltage"><p>Voltage: ${device.voltage}</p></li>
               <li class="short_tag" id="current"><p>Current: ${device.current}</p></li>
               <li class="short_tag" id="ison"><p>isOn: ${device.isOn}</p></li>
@@ -176,11 +201,6 @@
 
           </div>`;
         $("#device_state").replaceWith(content);
-
-        /*Change background to car with spoiler 
-        $("#add_component").click(function() {
-          $("#device_state").css("background-image", "url(car_spoiler.png)");
-        }); */
 
         //Change background to car with spoiler when a component is added
         if (device.components.length >= 1){
@@ -192,7 +212,18 @@
           $("#engine").css("display", "block");
         }
 
+        updateComponent(device);
       }
+
+      // Update number of components section
+      function updateComponent(device) {
+        const numbers = `
+          <div id="number_components">
+            <p>Components: ${device.components.length}</p>
+          </div>`;
+        $("#number_components").replaceWith(numbers);
+      }
+      
 
       const evtSource = new EventSource(`//localhost:${port}/subscribe`);
       evtSource.onmessage = function (event) {
@@ -212,6 +243,8 @@
           error: (error) => { console.log(`${error}`) }
         });
       });
+
+      
 
       $("#pause_realm").click(function () {
         $.ajax({
