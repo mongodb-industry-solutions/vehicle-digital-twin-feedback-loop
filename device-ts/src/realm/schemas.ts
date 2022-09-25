@@ -157,7 +157,7 @@ export class Command {
       _id: 'objectId',
       device_id: 'string',
       command: 'string',
-      parameter: '{}',
+      parameter: 'string{}',
       status: 'string'
     }
   }

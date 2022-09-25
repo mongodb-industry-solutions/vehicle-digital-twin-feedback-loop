@@ -7,7 +7,9 @@ import bodyParser from 'body-parser'
  * Instantiate Realm application
  */
 const realmApp = new RealmApp();
-realmApp.login()
+realmApp.login().catch(err => {
+  console.error(err);
+})
 
 
 /**
