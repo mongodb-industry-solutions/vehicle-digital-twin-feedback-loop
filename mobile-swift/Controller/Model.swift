@@ -39,5 +39,6 @@ class Command: Object {
     @Persisted var device_id: String
     @Persisted var command: String
     @Persisted var parameter: Map<String, String>
+    @Persisted var status: String
 
 }

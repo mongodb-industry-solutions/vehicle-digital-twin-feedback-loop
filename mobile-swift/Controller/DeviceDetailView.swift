@@ -76,6 +76,8 @@ struct CommandView: View {
     @ObservedObject var device: Device
     @Binding var isPresented: Bool
     @State var command: String = ""
+    @State var key: String = ""
+    @State var value: String = ""
     
     var body: some View {
         Text("Submit Command").font(.title)
@@ -98,10 +100,10 @@ struct CommandView: View {
                 Spacer()
             }.padding()
             HStack() {
-                TextField("Enter Key", text: $command)
+                TextField("Enter Key", text: $key)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 Text(":")
-                TextField("Enter Value", text: $command)
+                TextField("Enter Value", text: $value)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
         }.padding()
@@ -110,7 +112,11 @@ struct CommandView: View {
     }
     
     func sendCommand(){
-        $device.commands.append(Command(value: ["device_id": device.device_id, "command": command]))
+        $device.commands.append(Command(value: [
+            "device_id": device.device_id,
+            "command": command,
+            "parameter": [key: value],
+            "status": "submitted"]))
         isPresented = false
     }
 }

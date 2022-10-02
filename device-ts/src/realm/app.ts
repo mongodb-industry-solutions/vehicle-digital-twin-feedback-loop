@@ -134,7 +134,8 @@ class RealmApp {
       console.log(`New command received: ${insertedCmd.command}, created at: ${insertedCmd._id.getTimestamp()}`);
       try {
         this.realm?.write(() => {
-          this.realm?.delete(insertedCmd);
+          insertedCmd.status = "processed"
+          //this.realm?.delete(insertedCmd);
         });
       } catch (err) {
         console.error(err);
