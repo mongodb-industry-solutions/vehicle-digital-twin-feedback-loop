@@ -10,15 +10,22 @@ import RealmSwift
 
 class Device: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
-    @Persisted var components: List<Component>
-    @Persisted var name: String = "Device Name"
-    @Persisted var device_id: String = ""
-    @Persisted var isOn: Bool = false
-    @Persisted var voltage: Int?
-    @Persisted var current: Int?
-    @Persisted var flexibleData: Map<String, AnyRealmValue>
-    @Persisted var mixedTypes: AnyRealmValue = AnyRealmValue.string("")
+    @Persisted var battery: Battery?
     @Persisted var commands: List<Command>
+    @Persisted var components: List<Component>
+    @Persisted var current: Int?
+    @Persisted var device_id: String = ""
+    @Persisted var flexibleData: Map<String, AnyRealmValue>
+    @Persisted var isOn: Bool = false
+    @Persisted var mixedTypes: AnyRealmValue
+    @Persisted var name: String = ""
+}
+
+class Battery: EmbeddedObject {
+    @Persisted var capacity: Int?
+    @Persisted var current: Int?
+    @Persisted var sn: String?
+    @Persisted var voltage: Int?
 }
 
 class Component: Object {
@@ -31,6 +38,6 @@ class Command: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var device_id: String
     @Persisted var command: String
-    @Persisted var parameter: Map<String, AnyRealmValue>
+    @Persisted var parameter: Map<String, String>
 
 }

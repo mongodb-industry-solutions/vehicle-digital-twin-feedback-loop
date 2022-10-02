@@ -44,12 +44,12 @@ struct DeviceDetailView: View {
                     HStack {
                         Text("Voltage")
                         Spacer()
-                        Text("\(device.voltage ?? 0)")
+                        Text("\(device.battery?.voltage ?? 0)")
                     }
                     HStack {
                         Text("Current")
                         Spacer()
-                        Text("\(device.current ?? 0)")
+                        Text("\(device.battery?.current ?? 0)")
                     }
                 }
                 Section(header: Text("Components: \(device.components.count)")) {
