@@ -1,0 +1,30 @@
+{
+    "bsonType": "object",
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "command": {
+            "bsonType": "string"
+        },
+        "device_id": {
+            "bsonType": "string"
+        },
+        "parameter": {
+            "additionalProperties": {
+                "bsonType": "string"
+            },
+            "bsonType": "object"
+        },
+        "status": {
+            "bsonType": "string"
+        }
+    },
+    "required": [
+        "_id",
+        "command",
+        "device_id",
+        "status"
+    ],
+    "title": "Command"
+}

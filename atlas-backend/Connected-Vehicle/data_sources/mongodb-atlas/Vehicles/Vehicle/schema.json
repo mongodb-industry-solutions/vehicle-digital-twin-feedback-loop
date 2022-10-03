@@ -4,11 +4,39 @@
         "_id": {
             "bsonType": "objectId"
         },
+        "battery": {
+            "bsonType": "object",
+            "properties": {
+                "capacity": {
+                    "bsonType": "long"
+                },
+                "current": {
+                    "bsonType": "long"
+                },
+                "sn": {
+                    "bsonType": "string"
+                },
+                "voltage": {
+                    "bsonType": "long"
+                }
+            },
+            "required": [],
+            "title": "Battery"
+        },
+        "commands": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "objectId"
+            }
+        },
         "components": {
             "bsonType": "array",
             "items": {
                 "bsonType": "objectId"
             }
+        },
+        "current": {
+            "bsonType": "long"
         },
         "device_id": {
             "bsonType": "string"
@@ -30,6 +58,9 @@
         },
         "sensor": {
             "bsonType": "long"
+        },
+        "voltage": {
+            "bsonType": "long"
         }
     },
     "required": [
@@ -38,5 +69,5 @@
         "isOn",
         "device_id"
     ],
-    "title": "Device"
+    "title": "Vehicle"
 }

@@ -2,7 +2,7 @@
     "anon-user": {
         "name": "anon-user",
         "type": "anon-user",
-        "disabled": true
+        "disabled": false
     },
     "api-key": {
         "name": "api-key",
@@ -14,10 +14,8 @@
         "type": "local-userpass",
         "config": {
             "autoConfirm": true,
-            "resetPasswordSubject": "https://sample.com",
-            "resetPasswordUrl": "https://sample.com",
-            "runConfirmationFunction": false,
-            "runResetFunction": false
+            "resetPasswordUrl": "https://test.com",
+            "runConfirmationFunction": false
         },
         "disabled": false
     }

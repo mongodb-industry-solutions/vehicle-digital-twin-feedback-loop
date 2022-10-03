@@ -3,7 +3,13 @@
         "_id": {
             "bsonType": "objectId"
         },
+        "current": {
+            "bsonType": "long"
+        },
         "device_id": {
+            "bsonType": "string"
+        },
+        "sn": {
             "bsonType": "string"
         },
         "timestamp": {
@@ -11,13 +17,19 @@
         },
         "value": {
             "bsonType": "int"
+        },
+        "voltage": {
+            "bsonType": "long"
         }
     },
     "required": [
         "_id",
         "timestamp",
         "value",
-        "device_id"
+        "device_id",
+        "sn",
+        "voltage",
+        "current"
     ],
     "title": "Sensor"
 }

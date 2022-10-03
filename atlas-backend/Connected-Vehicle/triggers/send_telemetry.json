@@ -1,11 +1,12 @@
 {
-    "name": "vehicle-telemetry",
+    "id": "633b2bb64c40524d50a458ef",
+    "name": "send_telemetry",
     "type": "DATABASE",
     "config": {
         "operation_types": [
             "INSERT"
         ],
-        "database": "Digital-Twins",
+        "database": "Vehicles",
         "collection": "Sensor",
         "service_name": "mongodb-atlas",
         "match": {},
@@ -17,9 +18,11 @@
     },
     "disabled": false,
     "event_processors": {
-        "FUNCTION": {
+        "AWS_EVENTBRIDGE": {
             "config": {
-                "function_name": "defaultLog"
+                "account_id": "979559056307",
+                "extended_json_enabled": false,
+                "region": "us-east-1"
             }
         }
     }
