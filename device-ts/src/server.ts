@@ -109,6 +109,7 @@ webserver.listen(port, () => {
  */
 process.on("SIGINT", function () {
   console.log("Shutdown initiated!");
-  realmApp.cleanupRealm();
-  process.exit();
+  realmApp.cleanupRealm().then( () => { 
+    process.exit();
+  });
 });

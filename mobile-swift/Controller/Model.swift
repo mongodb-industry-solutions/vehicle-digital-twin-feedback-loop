@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Device: Object, ObjectKeyIdentifiable {
+class Vehicle: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var battery: Battery?
     @Persisted var commands: List<Command>

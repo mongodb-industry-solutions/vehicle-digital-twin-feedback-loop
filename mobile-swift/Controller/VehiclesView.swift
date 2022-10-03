@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct DevicesView: View {
+struct VehiclesView: View {
     // This view opens a synced realm.
     // We've injected a `flexibleSyncConfiguration` as an environment value,
     // so `@AsyncOpen` here opens a realm using that configuration.
@@ -55,20 +55,20 @@ struct ErrorView: View {
 
 struct DevicesListView: View {
     
-    @ObservedResults(Device.self) var devices
+    @ObservedResults(Vehicle.self) var vehicles
     
     var body: some View {
         NavigationView {
             VStack{
                 // The list shows the items in the realm.
                 List {
-                    ForEach(devices) { device in
-                        NavigationLink(device.name, destination: DeviceDetailView(device: device))
+                    ForEach(vehicles) { vehicle in
+                        NavigationLink(vehicle.name, destination: VehicleDetailView(vehicle: vehicle))
                     }
-                    .onDelete(perform: $devices.remove)
+                    .onDelete(perform: $vehicles.remove)
                 }
             }
-            .navigationTitle("Devices")
+            .navigationTitle("Vehicles")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Logout", action: logout)

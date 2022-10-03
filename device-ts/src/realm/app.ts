@@ -146,7 +146,7 @@ class RealmApp {
   /**
    * Remove all change listeners,delete created devices/components
    */
-  cleanupRealm() {
+  async cleanupRealm() {
     try {
       // Remove all change listener
       this.realm!.removeAllListeners();
@@ -154,11 +154,8 @@ class RealmApp {
       this.realm!.write(() => {
         this.realm!.deleteAll();
       });
+      await this.realm?.syncSession?.uploadAllLocalChanges()
       console.log("Realm cleaned up!")
-      // Remove all flexible sync subscriptions
-      this.realm!.subscriptions.update((subscriptions) => {
-        subscriptions.removeAll();
-      })
     } catch (err) {
       console.error("Failed: ", err);
     }

@@ -21,7 +21,7 @@ struct LoginView: View {
             Image("LoginScreen")
                 .padding(.top, 50)
                 .padding(.bottom, 25)
-            Text("MongoDB Device Controller")
+            Text("MongoDB Vehicle Controller")
                 .font(.largeTitle)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)

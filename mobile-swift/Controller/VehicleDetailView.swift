@@ -9,8 +9,8 @@ import SwiftUI
 import RealmSwift
 
 
-struct DeviceDetailView: View {
-    @ObservedRealmObject var device: Device
+struct VehicleDetailView: View {
+    @ObservedRealmObject var vehicle: Vehicle
     @State private var showingCommandView = false
     
     var body: some View {
@@ -18,43 +18,43 @@ struct DeviceDetailView: View {
             Form {
                 Section(header: Text("Attributes")) {
                     HStack {
-                        Text("Device ID")
+                        Text("Vehicle ID")
                         Spacer()
-                        Text(device.device_id)
+                        Text(vehicle.device_id)
                     }
                     HStack {
                         Text("Mixed Types")
                         Spacer()
-                        Text(device.mixedTypes.stringValue ?? "No String: \(type(of: device.mixedTypes))")
+                        Text(vehicle.mixedTypes.stringValue ?? "No String: \(type(of: vehicle.mixedTypes))")
                     }
-                    List(Array(device.flexibleData.keys), id: \.self) { key in
+                    List(Array(vehicle.flexibleData.keys), id: \.self) { key in
                         HStack {
                             Text(key)
                             Spacer()
-                            Text(device.flexibleData[key]?.stringValue ?? "No string but  \(type(of: device.flexibleData[key]))")
+                            Text(vehicle.flexibleData[key]?.stringValue ?? "No string but  \(type(of: vehicle.flexibleData[key]))")
                         }
                     }
                 }
                 Section(header: Text("CONTROLS")) {
-                    Toggle(isOn: $device.isOn) {
-                        Text("Device Status")
+                    Toggle(isOn: $vehicle.isOn) {
+                        Text("Vehicle Status")
                     }
                 }
                 Section(header: Text("Sensors")) {
                     HStack {
                         Text("Voltage")
                         Spacer()
-                        Text("\(device.battery?.voltage ?? 0)")
+                        Text("\(vehicle.battery?.voltage ?? 0)")
                     }
                     HStack {
                         Text("Current")
                         Spacer()
-                        Text("\(device.battery?.current ?? 0)")
+                        Text("\(vehicle.battery?.current ?? 0)")
                     }
                 }
-                Section(header: Text("Components: \(device.components.count)")) {
+                Section(header: Text("Components: \(vehicle.components.count)")) {
                     List {
-                        ForEach(device.components, id: \._id) { component in
+                        ForEach(vehicle.components, id: \._id) { component in
                             HStack {
                                 Text(component.name ?? "")
                             }
@@ -64,16 +64,16 @@ struct DeviceDetailView: View {
                 Button("Send Command", action: {showingCommandView = true})
             }
         }
-        .navigationBarTitle(device.name)
+        .navigationBarTitle(vehicle.name)
         .sheet(isPresented: $showingCommandView) {
             // show the add item view
-            CommandView(device: device.thaw()!, isPresented: $showingCommandView)
+            CommandView(vehicle: vehicle.thaw()!, isPresented: $showingCommandView)
         }
     }
 }
 
 struct CommandView: View {
-    @ObservedObject var device: Device
+    @ObservedObject var vehicle: Vehicle
     @Binding var isPresented: Bool
     @State var command: String = ""
     @State var key: String = ""
@@ -112,8 +112,8 @@ struct CommandView: View {
     }
     
     func sendCommand(){
-        $device.commands.append(Command(value: [
-            "device_id": device.device_id,
+        $vehicle.commands.append(Command(value: [
+            "device_id": vehicle.device_id,
             "command": command,
             "parameter": [key: value],
             "status": "submitted"]))
@@ -124,6 +124,6 @@ struct CommandView: View {
 
 struct DeviceDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DeviceDetailView(device: Device())
+        VehicleDetailView(vehicle: Vehicle())
     }
 }
