@@ -10,11 +10,9 @@ export class Vehicle {
   public _id?: ObjectId | null;
   public name: string;
   public device_id!: string;
+  public vin!: string;
   public isOn: boolean;
   public commands: Command[] = [];
-  //public sensor?: number | null;
-  //public voltage?: number | null;
-  //public current?: number | null;
   // Field type which supports multiple multiple data types
   public mixedTypes?: Realm.Mixed | null;
   // Lie because https://github.com/realm/realm-js/issues/2469
@@ -31,11 +29,9 @@ export class Vehicle {
       _id: 'objectId',
       name: 'string',
       device_id: 'string',
+      vin: 'string',
       isOn: 'bool',
       commands: 'Command[]',
-      //sensor: 'int?',
-      //voltage: 'int?',
-      //current: 'int?',
       mixedTypes: 'mixed?',
       flexibleData: '{}',
       components: 'Component[]',
@@ -43,10 +39,11 @@ export class Vehicle {
     }
   }
 
-  constructor(name: string, device_id: string, battery: Battery) {
+  constructor(name: string, device_id: string, vin: string, battery: Battery) {
     this._id = new ObjectId;
     this.name = name;
     this.device_id = device_id;
+    this.vin = vin;
     this.isOn = true;
     this.battery = battery;
   }

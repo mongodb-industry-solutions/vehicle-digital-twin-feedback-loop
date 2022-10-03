@@ -1,5 +1,5 @@
 import { Vehicle, Battery, Component, Sensor, Command } from './schemas';
-import { appID, realmUser } from './config';
+import { appID, realmUser, vin } from './config';
 import Realm, { Collection, CollectionChangeSet } from 'realm';
 
 class RealmApp {
@@ -28,7 +28,7 @@ class RealmApp {
       }
     });
     // Create and add flexible sync subscription filters
-    const deviceID = `device_id = ${JSON.stringify(this.app.currentUser!.id)}`
+    const deviceID = `device_id = ${JSON.stringify(this.app.currentUser!.id)}`;
     this.realm?.subscriptions.update(subscriptions => {
       subscriptions.add(this.realm!.objects('Vehicle').filtered(deviceID, { name: "device-filter" }));
       subscriptions.add(this.realm!.objects('Component').filtered(deviceID, { name: "component-filter" }));
@@ -53,7 +53,7 @@ class RealmApp {
    * @returns Attributes of the created device as JSON object
    */
   createDevice(name: string) {
-    const newDevice = new Vehicle(name, this.app.currentUser!.id, new Battery('123', 100));
+    const newDevice = new Vehicle(name, this.app.currentUser!.id, vin, new Battery('123', 100));
     try {
       this.realm!.write(() => {
         this.realm!.create(Vehicle.schema.name, newDevice);

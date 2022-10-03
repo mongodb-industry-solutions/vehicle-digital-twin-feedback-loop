@@ -8,6 +8,4 @@ export const realmUser = {
     password: "demopw"
 }
 
-export const vehicle = {
-    vin: "5UXFE83578L342684", // https://vingenerator.org/brand
-}
+export const vin = "5UXFE83578L342684"; // https://vingenerator.org/brand

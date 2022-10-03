@@ -20,7 +20,7 @@ struct VehicleDetailView: View {
                     HStack {
                         Text("Vehicle ID")
                         Spacer()
-                        Text(vehicle.device_id)
+                        Text(vehicle.vin)
                     }
                     HStack {
                         Text("Mixed Types")
