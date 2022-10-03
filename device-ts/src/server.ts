@@ -47,7 +47,7 @@ webserver.get('/subscribe', (req, res) => {
   // listen for client 'close' requests
   req.on('close', () => { client = null; });
   // Add change listener to send object changes to browser
-  realmApp.realm?.objects("Device").addListener(refreshDevice);
+  realmApp.realm?.objects("Vehicle").addListener(refreshDevice);
 });
 
 // Get device state and send event to refresh device on UI

@@ -6,7 +6,7 @@ import Realm, { Dictionary } from 'realm';
  * https://github.com/realm/realm-js/releases
  * https://github.com/realm/realm-js/issues/1795 -> applied works
  */
-export class Device {
+export class Vehicle {
   public _id?: ObjectId | null;
   public name: string;
   public device_id!: string;
@@ -25,7 +25,7 @@ export class Device {
   public battery?: Battery | null;
 
   static schema: Realm.ObjectSchema = {
-    name: 'Device',
+    name: 'Vehicle',
     primaryKey: '_id',
     properties: {
       _id: 'objectId',

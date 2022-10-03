@@ -1,4 +1,4 @@
-import { Device, Battery, Component, Sensor, Command } from './schemas';
+import { Vehicle, Battery, Component, Sensor, Command } from './schemas';
 import { appID, realmUser } from './config';
 import Realm, { Collection, CollectionChangeSet } from 'realm';
 
@@ -8,7 +8,7 @@ class RealmApp {
   app;
   realm?: Realm;
   // Reference to the created device object
-  device!: Device & Realm.Object;
+  device!: Vehicle & Realm.Object;
 
   constructor() {
     this.app = new Realm.App({ id: appID });
@@ -21,7 +21,7 @@ class RealmApp {
   async login() {
     await this.app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
     this.realm = await Realm.open({
-      schema: [Device.schema, Battery.schema, Component.schema, Sensor.schema, Command.schema],
+      schema: [Vehicle.schema, Battery.schema, Component.schema, Sensor.schema, Command.schema],
       sync: {
         user: this.app.currentUser!,
         flexible: true
@@ -30,7 +30,7 @@ class RealmApp {
     // Create and add flexible sync subscription filters
     const deviceID = `device_id = ${JSON.stringify(this.app.currentUser!.id)}`
     this.realm?.subscriptions.update(subscriptions => {
-      subscriptions.add(this.realm!.objects('Device').filtered(deviceID, { name: "device-filter" }));
+      subscriptions.add(this.realm!.objects('Vehicle').filtered(deviceID, { name: "device-filter" }));
       subscriptions.add(this.realm!.objects('Component').filtered(deviceID, { name: "component-filter" }));
       subscriptions.add(this.realm!.objects('Command').filtered(deviceID, { name: "command-filter" }));
     });
@@ -53,12 +53,12 @@ class RealmApp {
    * @returns Attributes of the created device as JSON object
    */
   createDevice(name: string) {
-    const newDevice = new Device(name, this.app.currentUser!.id, new Battery('123', 100));
+    const newDevice = new Vehicle(name, this.app.currentUser!.id, new Battery('123', 100));
     try {
       this.realm!.write(() => {
-        this.realm!.create(Device.schema.name, newDevice);
+        this.realm!.create(Vehicle.schema.name, newDevice);
       });
-      this.device = this.realm!.objects<Device>('Device').filtered(`device_id = '${this.app.currentUser!.id}'`)[0];
+      this.device = this.realm!.objects<Vehicle>('Vehicle').filtered(`device_id = '${this.app.currentUser!.id}'`)[0];
     } catch (error) {
       console.error(error);
     }
