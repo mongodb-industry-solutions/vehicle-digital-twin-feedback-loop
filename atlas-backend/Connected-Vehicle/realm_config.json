@@ -1,8 +1,0 @@
-{
-    "app_id": "connected-vehicle-nnafn",
-    "config_version": 20210101,
-    "name": "Connected-Vehicle",
-    "location": "US-VA",
-    "provider_region": "aws-us-east-1",
-    "deployment_model": "LOCAL"
-}
