@@ -1,7 +1,7 @@
 # MongoDB & Realm Connected-Devices Repository
 Code samples and demos around using the Realm database in combination with MongoDB Atlas and device sync.
 
-For the latest ( work in progress though ) demo including pretty visuals choose the "aws-connected-vehicle" branch!
+**For the latest demo app ( work in progress though ) including pretty visuals choose the "aws-connected-vehicle" branch!**
 
 ![image](Overview.png)
 
