@@ -35,7 +35,7 @@ export class Vehicle {
       mixedTypes: 'mixed?',
       flexibleData: '{}',
       components: 'Component[]',
-      battery: 'Battery?',
+      battery: 'Battery?'
     }
   }
 
@@ -113,6 +113,8 @@ export class Sensor {
   public voltage!: number;
   public current!: number;
 
+  public measurements?: Measurement[] = [{ts:"123", voltage: 12, current: 123}];
+
   static schema: Realm.ObjectSchema = {
     name: 'Sensor',
     asymmetric: true,
@@ -123,7 +125,8 @@ export class Sensor {
       sn: 'string',
       timestamp: 'date',
       voltage: 'int',
-      current: 'int'
+      current: 'int',
+      measurements: 'Measurement[]'
     }
   }
 
@@ -134,6 +137,32 @@ export class Sensor {
     this.timestamp = new Date();
     this.voltage = voltage;
     this.current = current;
+  }
+}
+
+/**
+ * Realm object schema/class definition for measurement object
+ */
+ export class Measurement {
+  public ts: string = "n/a";
+  public voltage?: number;
+  public current?: number;
+
+
+  static schema: Realm.ObjectSchema = {
+    name: 'Measurement',
+    embedded: true,
+    properties: {
+      ts: 'string?',
+      voltage: 'int?',
+      current: 'int?'
+    }
+  }
+
+  constructor(ts: string, voltage: number, current: number) {
+    this.ts = ts;
+    this.voltage = voltage;
+    this.current = current
   }
 }
 

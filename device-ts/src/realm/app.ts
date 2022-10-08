@@ -1,4 +1,4 @@
-import { Vehicle, Battery, Component, Sensor, Command } from './schemas';
+import { Vehicle, Battery, Component, Sensor, Measurement, Command } from './schemas';
 import { appID, realmUser, vin } from './config';
 import Realm, { Collection, CollectionChangeSet } from 'realm';
 
@@ -21,7 +21,7 @@ class RealmApp {
   async login() {
     await this.app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
     this.realm = await Realm.open({
-      schema: [Vehicle.schema, Battery.schema, Component.schema, Sensor.schema, Command.schema],
+      schema: [Vehicle.schema, Battery.schema, Component.schema, Sensor.schema, Measurement.schema, Command.schema],
       sync: {
         user: this.app.currentUser!,
         flexible: true
@@ -107,6 +107,7 @@ class RealmApp {
     let measurement = new Sensor(this.app.currentUser!.id, this.device.battery!.sn, Number(sensor.voltage), Number(sensor.current));
     try {
       this.realm!.write(() => {
+        // TODO -> change to push measurements array
         this.realm!.create(Sensor.schema.name, measurement);
         this.device.battery!.voltage = Number(sensor.voltage);
         this.device.battery!.current = Number(sensor.current);
