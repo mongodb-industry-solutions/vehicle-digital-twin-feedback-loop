@@ -29,8 +29,8 @@ struct VehiclesView: View {
             ProgressView("Waiting for user to log in...")
             // The realm has been opened and is ready for use.
             // Show the content view.
-        case .open(_):
-            DevicesListView()
+        case .open(let realm):
+            DevicesListView().environment(\.realm, realm)
             // The realm is currently being downloaded from the server.
             // Show a progress view.
         case .progress(let progress):
