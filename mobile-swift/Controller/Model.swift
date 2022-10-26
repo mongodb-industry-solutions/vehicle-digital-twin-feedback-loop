@@ -30,7 +30,7 @@ class Battery: EmbeddedObject {
 }
 
 class Component: Object {
-    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted(primaryKey: true) var _id: ObjectId?
     @Persisted var name: String?
     @Persisted var device_id: String = ""
 }

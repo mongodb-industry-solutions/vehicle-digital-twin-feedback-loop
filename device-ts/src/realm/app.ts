@@ -1,14 +1,15 @@
 import { Vehicle, Battery, Component, Sensor, Measurement, Command } from './schemas';
-import { appID, realmUser, vin } from './config';
-import Realm, { Collection, CollectionChangeSet } from 'realm';
+import { appID, realmUser, vehicleConfig } from './config';
+import { Collection, CollectionChangeSet } from 'realm';
+import { ObjectId } from 'bson';
 
 class RealmApp {
 
   self;
   app;
-  realm?: Realm;
-  // Reference to the created device object
-  device!: Vehicle & Realm.Object;
+  realm!: Realm;
+  // Reference to the created vehicle object
+  vehicle!: Vehicle;
 
   constructor() {
     this.app = new Realm.App({ id: appID });
@@ -21,7 +22,7 @@ class RealmApp {
   async login() {
     await this.app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
     this.realm = await Realm.open({
-      schema: [Vehicle.schema, Battery.schema, Component.schema, Sensor.schema, Measurement.schema, Command.schema],
+      schema: [Vehicle, Battery, Component, Sensor, Measurement, Command.schema],
       sync: {
         user: this.app.currentUser!,
         flexible: true
@@ -29,13 +30,24 @@ class RealmApp {
     });
     // Create and add flexible sync subscription filters
     const deviceID = `device_id = ${JSON.stringify(this.app.currentUser!.id)}`;
-    this.realm?.subscriptions.update(subscriptions => {
+    this.realm.subscriptions.update(subscriptions => {
       subscriptions.add(this.realm!.objects('Vehicle').filtered(deviceID, { name: "device-filter" }));
       subscriptions.add(this.realm!.objects('Component').filtered(deviceID, { name: "component-filter" }));
       subscriptions.add(this.realm!.objects('Command').filtered(deviceID, { name: "command-filter" }));
     });
-    // Create Device object on application start
-    this.createDevice("My Car");
+
+    // Create vehicle object on application start
+    let vehicleInit = vehicleConfig;
+    // Set user id
+    vehicleInit.device_id = this.app.currentUser!.id;
+
+    console.log(JSON.stringify(vehicleInit))
+
+    this.realm.write(() => {
+      this.vehicle = new Vehicle(this.realm, vehicleInit);
+      console.log("Hello " + this.vehicle.name);
+    });
+
     // Add command change listener
     // Add the listener callback to the collection of dogs
     try {
@@ -48,23 +60,6 @@ class RealmApp {
   }
 
   /**
-   * Creates a new Device object with the provided name
-   * @param name Name of the device
-   * @returns Attributes of the created device as JSON object
-   */
-  createDevice(name: string) {
-    const newDevice = new Vehicle(name, this.app.currentUser!.id, vin, new Battery('123', 100));
-    try {
-      this.realm!.write(() => {
-        this.realm!.create(Vehicle.schema.name, newDevice);
-      });
-      this.device = this.realm!.objects<Vehicle>('Vehicle').filtered(`device_id = '${this.app.currentUser!.id}'`)[0];
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  /**
    * Creates a new component with the provided name and relates it to the first previously created Device object
    * @param name Name of the component to be created
    * @returns Result of the component creation procedure as JSON object or the resulting error
@@ -72,10 +67,10 @@ class RealmApp {
   addComponent(name: string) {
     try {
       this.realm!.write(() => {
-        let component = new Component(name, this.app.currentUser!.id);
-        this.device!.components.push(component);
+        let component = new Component(this.realm, { _id: new ObjectId, name: name, device_id: this.app.currentUser!.id });
+        this.vehicle.components!.push(component);
       });
-      return { result: "Component created and related to id: " + this.device!.name };
+      return { result: "Component created and related to id: " + this.vehicle.name };
     } catch (error) {
       console.error(error);
       return { result: "Add component failed, no device available!" };
@@ -103,14 +98,22 @@ class RealmApp {
   /**
    * Uses the asymmetric sync functionality to efficiently push a time series object to the backend
    */
-  addSensor(sensor: { voltage: string, current: string }) {
-    let measurement = new Sensor(this.app.currentUser!.id, this.device.battery!.sn, Number(sensor.voltage), Number(sensor.current));
+  addSensor(measurement: { voltage: string, current: string }) {
+    //let old_measurement = new Sensor(this.app.currentUser!.id, this.vehicle.battery!.sn, Number(sensor.voltage), Number(sensor.current));
+    const sensor = {
+      device_id: this.app.currentUser!.id,
+      timestamp: new Date(),
+      voltage: Number(measurement.voltage),
+      current: Number(measurement.current)
+    }
+
+    console.log(JSON.stringify(sensor));
     try {
       this.realm!.write(() => {
         // TODO -> change to push measurements array
-        this.realm!.create(Sensor.schema.name, measurement);
-        this.device.battery!.voltage = Number(sensor.voltage);
-        this.device.battery!.current = Number(sensor.current);
+        this.realm.create("Sensor", sensor);
+        this.vehicle.battery!.voltage = Number(measurement.voltage);
+        this.vehicle.battery!.current = Number(measurement.current);
       });
     } catch (err) {
       console.error(err);
@@ -122,7 +125,7 @@ class RealmApp {
    * Refresh device on web application
    */
   getDeviceAsJSON(): string {
-    return JSON.stringify(this.device!.toJSON());
+    return JSON.stringify(this.vehicle!.toJSON());
   }
 
   /**
