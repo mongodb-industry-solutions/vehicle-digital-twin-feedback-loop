@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p .",
     "postbuild": "copyfiles -u 1 \"src/index.html\" build && copyfiles -u 1 \"src/img/* \" build",
-    "start": "node build/server.js"
+    "start": "node build/server.js",
+    "wireshark": "node --tls-cipher-list=\"AES128-SHA\" --tls-keylog=$(pwd)/keylog.txt build/server.js"
   },
   "keywords": [],
   "author": "",
