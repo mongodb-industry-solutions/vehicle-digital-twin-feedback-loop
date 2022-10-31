@@ -84,27 +84,22 @@ export class Component extends Realm.Object<Component> {
  * Realm object schema/class definition for a sensor measurement object within typescript
  */
 export class Sensor extends Realm.Object<Component> {
-  public _id?: ObjectId;
-  public device_id!: string;
+  public _id!: ObjectId;
+  public vin!: string;
   public type = 'battery';
   public sn?: string;
-  public timestamp?: Date;
-  public voltage!: number;
-  public current!: number;
 
-  public measurements: Unmanaged<Measurement>[] = [{ ts: "123", voltage: 12, current: 123 }];
+  public measurements!: Realm.List<Measurement>;
 
   static schema = {
     name: 'Sensor',
     asymmetric: true,
     primaryKey: '_id',
     properties: {
-      _id: 'objectId?',
-      device_id: 'string',
+      _id: 'objectId',
+      vin: 'string',
+      type: 'string',
       sn: 'string?',
-      timestamp: 'date?',
-      voltage: 'int',
-      current: 'int',
       measurements: 'Measurement[]'
     }
   }
@@ -114,7 +109,7 @@ export class Sensor extends Realm.Object<Component> {
  * Realm object schema/class definition for measurement object
  */
 export class Measurement extends Realm.Object<Measurement> {
-  public ts!: string;
+  public ts!: Date;
   public voltage?: number;
   public current?: number;
 
@@ -123,7 +118,7 @@ export class Measurement extends Realm.Object<Measurement> {
     name: 'Measurement',
     embedded: true,
     properties: {
-      ts: 'string',
+      ts: 'date',
       voltage: 'int?',
       current: 'int?'
     }
