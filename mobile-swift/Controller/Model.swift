@@ -27,6 +27,7 @@ class Battery: EmbeddedObject {
     @Persisted var current: Int?
     @Persisted var sn: String?
     @Persisted var voltage: Int?
+    @Persisted var status: String?
 }
 
 class Component: Object {

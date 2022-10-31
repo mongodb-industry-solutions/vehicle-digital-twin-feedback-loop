@@ -47,6 +47,7 @@ export class Battery extends Realm.Object<Battery> {
   public capacity?: number;
   public voltage?: number;
   public current?: number;
+  public status?: string;
 
 
   static schema = {
@@ -56,7 +57,8 @@ export class Battery extends Realm.Object<Battery> {
       sn: 'string?',
       capacity: 'int?',
       voltage: 'int?',
-      current: 'int?'
+      current: 'int?',
+      status: 'string?'
     }
   }
 }

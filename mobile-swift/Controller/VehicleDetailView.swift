@@ -40,7 +40,7 @@ struct VehicleDetailView: View {
                         Text("Vehicle Status")
                     }
                 }
-                Section(header: Text("Sensors")) {
+                Section(header: Text("Battery")) {
                     HStack {
                         Text("Voltage")
                         Spacer()
@@ -50,6 +50,11 @@ struct VehicleDetailView: View {
                         Text("Current")
                         Spacer()
                         Text("\(vehicle.battery?.current ?? 0)")
+                    }
+                    HStack {
+                        Text("Status")
+                        Spacer()
+                        Text( vehicle.battery?.status ?? "")
                     }
                 }
                 Section(header: Text("Components: \(vehicle.components.count)")) {
