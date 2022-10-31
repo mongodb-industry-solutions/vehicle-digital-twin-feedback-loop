@@ -6,3 +6,4 @@ device-ts/.DS_Store
 device-ts/mongodb-realm/
 atlas-backend/credentials.txt
 mobile-swift/Controller.xcodeproj/project.xcworkspace/xcuserdata/
+mobile-swift/Controller.xcodeproj/xcuserdata/felix.reichenbach.xcuserdatad/xcschemes/xcschememanagement.plist
