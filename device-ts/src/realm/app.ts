@@ -8,9 +8,9 @@ class RealmApp {
   self;
   app;
   realm!: Realm;
-  // Reference to the created vehicle object
+  // Reference to the vehicle object
   vehicle!: Vehicle;
-  // Stores battery measurements <20 until submission to backend
+  // Battery measurements bucket
   batteryMeasurements: Array<Unmanaged<Measurement>> = []
 
   constructor() {
@@ -30,7 +30,7 @@ class RealmApp {
         flexible: true
       }
     });
-    // Create and add flexible sync subscription filters
+    // Add flexible sync subscriptions
     const deviceID = `device_id = ${JSON.stringify(this.app.currentUser!.id)}`;
     this.realm.subscriptions.update(subscriptions => {
       subscriptions.add(this.realm!.objects('Vehicle').filtered(deviceID, { name: "device-filter" }));
@@ -40,18 +40,12 @@ class RealmApp {
 
     // Create vehicle object on application start
     let vehicleInit = vehicleConfig;
-    // Set user id
     vehicleInit.device_id = this.app.currentUser!.id;
-
-    console.log(JSON.stringify(vehicleInit))
-
     this.realm.write(() => {
       this.vehicle = new Vehicle(this.realm, vehicleInit);
-      console.log("Hello " + this.vehicle.name);
     });
 
-    // Add command change listener
-    // Add the listener callback to the collection of dogs
+    // Add a change listener for command objects
     try {
       this.realm!.objects("Command").addListener(this.onCommand.bind(this));
     } catch (error) {
@@ -62,7 +56,7 @@ class RealmApp {
   }
 
   /**
-   * Creates a new component with the provided name and relates it to the first previously created Device object
+   * Creates a new component object and relates it to the parent vehicle object
    * @param name Name of the component to be created
    * @returns Result of the component creation procedure as JSON object or the resulting error
    */
@@ -75,14 +69,13 @@ class RealmApp {
       return { result: "Component created and related to id: " + this.vehicle.name };
     } catch (error) {
       console.error(error);
-      return { result: "Add component failed, no device available!" };
+      return { result: "Add component failed, no vehicle available!" };
     }
   }
 
 
   /**
-   * Pauses synchronization of a previously opened Realm
-   * @returns JSON object
+   * Pause synchronization of the Realm
    */
   pauseRealm() {
     this.realm!.syncSession?.pause();
@@ -90,7 +83,7 @@ class RealmApp {
   }
 
   /**
-   * Resumes synchronization of a previsouly paused Realm 
+   * Resume synchronization of the paused Realm 
    */
   resumeRealm() {
     this.realm!.syncSession?.resume();
@@ -98,12 +91,12 @@ class RealmApp {
   }
 
   /**
-   * Uses the asymmetric sync functionality to efficiently push a time series object to the backend
+   * Store and sync battery sensor values
    */
   addSensor(values: { voltage: string, current: string }) {
 
     const measurement = { ts: new Date(), voltage: Number(values.voltage), current: Number(values.current) };
-    // Collect 20 measurements before pushing to backend
+    // Collect 20 measurements before using asymmetric sync for pushing to backend
     if (this.batteryMeasurements.length < 20) {
       this.batteryMeasurements.push(measurement)
     }
@@ -120,6 +113,7 @@ class RealmApp {
           this.realm.create("Sensor", sensor);
           this.batteryMeasurements = [];
         }
+        // Update vehicle battery fields and sync with backend
         this.vehicle.battery!.voltage = Number(measurement.voltage);
         this.vehicle.battery!.current = Number(measurement.current);
       });
@@ -130,7 +124,7 @@ class RealmApp {
   }
 
   /**
-   * Refresh device on web application
+   * Provide vehicle object as JSON string
    */
   getDeviceAsJSON(): string {
     return JSON.stringify(this.vehicle!.toJSON());

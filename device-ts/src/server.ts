@@ -11,7 +11,6 @@ realmApp.login().catch(err => {
   console.error(err);
 })
 
-
 /**
  * Instantiate express server
  */
@@ -31,9 +30,8 @@ webserver.get("/", (req, res) => {
  */
 let client: any;
 
-// Hook to subscribe to browser notifications
+// Create event stream subscription endpoint
 webserver.get('/subscribe', (req, res) => {
-  // send headers to keep connection alive
   const headers = {
     'Content-Type': 'text/event-stream',
     'Connection': 'keep-alive',
@@ -46,19 +44,19 @@ webserver.get('/subscribe', (req, res) => {
   client = res;
   // listen for client 'close' requests
   req.on('close', () => { client = null; });
-  // Add change listener to send object changes to browser
+  // Add vehicle change listener to send changes to browser
   realmApp.realm?.objects("Vehicle").addListener(refreshDevice);
 });
 
-// Get device state and send event to refresh device on UI
+// Callback for vehicle changes
 function refreshDevice() {
   sendRefreshEvent(realmApp.getDeviceAsJSON());
 }
 
-// Send refresh event to browser window
+// Publish vehicle refresh event to browser window
 function sendRefreshEvent(device: string) {
-    client.write('event: refresh\n');
-    client.write(`data: ${device}\n\n`);
+  client.write('event: refresh\n');
+  client.write(`data: ${device}\n\n`);
 }
 
 /**
@@ -71,7 +69,7 @@ webserver.post('/add_component', (req, res) => {
 })
 
 /**
- * Provide a pause synced Realm instance endpoint
+ * Provide a pause synced Realm endpoint
  */
 webserver.get('/pause_realm', (req, res) => {
   const result = realmApp.pauseRealm();
@@ -80,7 +78,7 @@ webserver.get('/pause_realm', (req, res) => {
 })
 
 /**
- * Provide a resume endpoint for a previously paused synced Realm instance
+ * Provide a resume endpoint for a previously paused synced Realm
  */
 webserver.get('/resume_realm', (req, res) => {
   const result = realmApp.resumeRealm();
@@ -109,7 +107,7 @@ webserver.listen(port, () => {
  */
 process.on("SIGINT", function () {
   console.log("Shutdown initiated!");
-  realmApp.cleanupRealm().then( () => { 
+  realmApp.cleanupRealm().then(() => {
     process.exit();
   });
 });
