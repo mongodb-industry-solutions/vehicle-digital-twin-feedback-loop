@@ -36,8 +36,7 @@
     }
 
     #number_components{
-      background-color: #00684A;
-      color: white;
+      border-style: solid;
       border-radius: 5px;
       width: 150px;
       text-align: center;
@@ -222,7 +221,7 @@
               <li class="short_tag" id="current"><p>Current: ${device.battery.current}</p></li>
               <li class="short_tag" id="ison"><p>isOn: ${device.isOn}</p></li>
               <li><img id="engine" src="engine_transparent.gif" alt="Engine GIF" /></li>
-              <li id="device_id"><p>_id: ${device._id}</p></li>
+              <li id="device_id"><p>VIN: ${device.vin}</p></li>
             </ul>
 
             <div class="alert_message">
@@ -257,7 +256,7 @@
       function updateComponent(device) {
         const numbers = `
           <div id="number_components">
-            <p>Components: ${device.components.length}</p>
+            <p>Components: <strong>${device.components.length}</strong></p>
           </div>`;
         $("#number_components").replaceWith(numbers);
       }
