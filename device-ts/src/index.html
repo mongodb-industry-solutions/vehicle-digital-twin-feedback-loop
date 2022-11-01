@@ -105,7 +105,7 @@
 
     #tooltip{
       visibility: hidden; 
-      background-color: #00ed64;
+      background-color: #ff0000;
       font-size: small;
       text-align: center;
       margin-left: 650px;
@@ -232,6 +232,13 @@
 
           </div>`;
         $("#device_state").replaceWith(content);
+
+        // Display alert if status NOK
+        if (device.battery.status == "NOK") {
+          $(".alert_message").show();
+        } else {
+          $(".alert_message").hide();
+        }
 
         //Change background to car with spoiler when a component is added
         if (device.components.length >= 1){
