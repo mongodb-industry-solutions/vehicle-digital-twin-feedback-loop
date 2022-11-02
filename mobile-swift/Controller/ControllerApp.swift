@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 // SwiftUI App Lifecycle
-// https://learnappmaking.com/swiftui-app-lifecycle-how-to/
+// MongoDB Sample Code: https://www.mongodb.com/docs/realm/sdk/swift/swiftui-tutorial/#complete-code
+
+let app: RealmSwift.App? = RealmSwift.App(id: Bundle.main.object(forInfoDictionaryKey:"Atlas_App_ID") as! String)
+
 
 @main
 struct EasyApp: SwiftUI.App {
@@ -16,7 +20,10 @@ struct EasyApp: SwiftUI.App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if let app = app {
+                ContentView(app: app)
+            } else {
+            }
         }
         .onChange(of: scenePhase) { phase in
             //print(phase)

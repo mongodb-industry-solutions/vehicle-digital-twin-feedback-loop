@@ -11,118 +11,256 @@
     body {
       padding-top: 50px;
     }
+
+    #device_state{
+      height:500px;
+      background-image: url("new_car.png");
+      background-repeat: no-repeat;
+      background-position: 70%;
+      background-color: white;
+      font-size: 30px;
+    }
+    
+    #device_state p{
+      color: black;
+      font-size: 16px;
+      padding: 5px;
+      text-align: center;
+    }
+
+    /*Tags*/
+    ul {
+    list-style: none;
+    padding-left: 0px;
+    padding-top: 40px;
+    }
+
+    #number_components{
+      border-style: solid;
+      border-radius: 5px;
+      width: 150px;
+      text-align: center;
+      margin-bottom: 0px;
+    }
+
+    #number_components p{
+      margin-bottom: 0px;
+    }
+
+    #device_id{
+      width: 300px;
+      margin-left: 39%;
+      margin-top: -30px;
+      border-radius: 5px;
+      border: 2px solid black;
+      height: 35px;
+    }
+
+    #voltage{
+      background-color: #E3FCF7;
+      border-radius: 5px;
+      width: 100px;
+      margin-left: 52%;
+      margin-top: 5%;
+    
+    }
+
+    #current{
+      background-color: #E3FCF7;
+      border-radius: 5px;
+      width: 100px;
+      margin-left: 52%;
+    }
+
+    #ison{
+      background-color: #F9EBFF;
+      border-radius: 5px;
+      width: 100px;
+      margin-left: 70%;
+      margin-top: -40px;
+    }
+
+    #engine {
+      display: none;
+      width: 120px;
+      margin-left: 80%;
+      margin-top: -70px;
+
+    }
+
+    /*Alert icon and tooltip display on hover*/
+    #alert {
+      width: 40px;
+      margin-left: 670px;
+      margin-top: -350px;
+    }
+
+    .alert_message:hover #tooltip{
+        clip: initial;
+        opacity: 1;
+        visibility: visible;
+       
+    }
+
+    #tooltip{
+      visibility: hidden; 
+      background-color: #ff0000;
+      font-size: small;
+      text-align: center;
+      margin-left: 650px;
+      margin-top: -165px;
+      border-radius: 5px;
+      width: 170px;
+    }
+    
+
+    /*Buttons*/
+    .col{
+      flex-grow: 0;
+      width: 200px;
+      margin-right: 30px;
+    }
+
+    #component_name{
+      width: 200px;
+    }
+
+    #number_components{
+      padding: 7px;
+    }
+    
+
+    .jumbotron{
+      background-color: white;
+    }
+
+    .btn {
+      background-color: #00ed64;
+      border: none;
+      color: black;
+      width: 200px;
+      margin: 0px;
+      
+    }
+
+    .btn:hover{
+      background-color: #00684A;
+    }
+
+    #battery_current{
+      background-color: #00ed64;
+    }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="container overflow-hidden">
     <div class="jumbotron">
-      <h1>Device Simulator</h1>
-      <hr class="my-4">
-      <label for="select_device">Selected device:</label>
-      <select id="select_device" type="select">
-        <option>Select</option>
-      </select>
       <div id="device_state">
         <p>Device State</p>
       </div>
+
       <hr class="my-4">
-      <table>
-        <tr>
-          <td>
-            <button id="create_device" type="button" class="btn btn-primary btn-block">Create Device</button>
-          </td>
-          <td>
-            <input id="device_name" type="text" class="form-control" placeholder="Device Name" aria-label="Device Name">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
-          </td>
-          <td>
-            <input id="component_name" type="text" class="form-control" placeholder="Component Name"
-              aria-label="Component Name">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button id="pause_realm" type="button" class="btn btn-primary btn-block">Pause Sync</button>
-          </td>
-          <td>
-            <button id="resume_realm" type="button" class="btn btn-primary btn-block">Resume Sync</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button id="add_listener" type="button" class="btn btn-primary btn-block">Add Device Listener</button>
-          </td>
-          <td>
-            <button id="remove_listener" type="button" class="btn btn-primary btn-block">Remove Device Listener</button>
-          </td>
-        </tr>
-      </table>
-      <hr class="my-4">
-      <table>
-        <tr>
-          <td>
-            <b>Device Sensor</b>
-          </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><label for="sensor_value_1">Voltage</label></td>
-          <td>
-            <input id="sensor_value_1" type="range" min="1" max="100" value="50">
-          </td>
-        <tr>
-          <td><label for="sensor_value_2">Current</label></td>
-          <td>
-            <input id="sensor_value_2" type="range" min="1" max="100" value="50">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p>(Range 1-100)</p>
-          </td>
-          <td>
-            <button id="add_sensor" type="button" class="btn btn-primary btn-block">Add Measurement</button>
-          </td>
-        </tr>
-      </table>
+      <div class="row mt-2">
+        
+        <div class="col">
+          <input id="component_name" type="text" class="form-control" placeholder="Component Name"
+            aria-label="Component Name">
+        </div>
+        <div class="col">
+          <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
+        </div>
+        <div class="col" >
+          <p id="number_components"> Number of Components </p>
+        </div>
+        
+        <div class="col">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          <button id="pause_realm" type="button" class="btn btn-primary btn-block">Pause Sync</button>
+        </div>
+        <div class="col">
+          <button id="resume_realm" type="button" class="btn btn-primary btn-block">Resume Sync</button>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          <button id="add_sensor" type="button" class="btn btn-primary btn-block">Track Telemetry</button>
+        </div>
+        <div class="col">
+          <label for="battery_current">Ampere: (0-100)</label>
+          <input id="battery_current" type="range" min="1" max="100" value="50">
+        </div>
+        <div class="col">
+          <label for="battery_voltage">Volt: (0-100)</label>
+          <input id="battery_voltage" type="range" min="1" max="100" value="50">
+        </div>
+      </div>
     </div>
   </div>
+  </div>
   <script>
-    let activeDevice;
     const port = window.location.port;
 
     $(document).ready(function () {
-      // Update device select menu
-      function updateSelect(event) {
-        const devices = JSON.parse(event.data);
-        let options = "";
-        if (Array.isArray(devices)) {
-          devices.forEach(element => {
-            let selected = "";
-            if (element._id === activeDevice) {
-              selected = 'selected ';
-            }
-            options += `<option ${selected}value="${element._id}">${element.name}</option>`
-          });
-          $("#select_device").empty().append(options)
-          // set selected option to previous value: https://stackoverflow.com/questions/13343566/set-select-option-selected-by-value
-          $("#select_device select").val("val2");
-        } else {
-          $("#select_device").empty().append("<option>None</option>")
-          console.log("no Array!");
-        }
-      }
 
       // Update device state section
-      function updateState(event) {
-        const content = `<div id="device_state"><p>${event}</p></div>`;
+      function updateState(device) {
+        const content = `
+          <div id="device_state">
+            
+              <h1>${device.name}</h1>
+              <hr class="my-4">
+
+            <ul>
+              <li id="voltage"><p>Voltage: ${device.battery.voltage}</p></li>
+              <li class="short_tag" id="current"><p>Current: ${device.battery.current}</p></li>
+              <li class="short_tag" id="ison"><p>isOn: ${device.isOn}</p></li>
+              <li><img id="engine" src="engine_transparent.gif" alt="Engine GIF" /></li>
+              <li id="device_id"><p>VIN: ${device.vin}</p></li>
+            </ul>
+
+            <div class="alert_message">
+              <img id="alert" src="alert_icon.png" alt="Alert Icon" />
+              <h3 id="tooltip">Your battery is not okay</h3>
+            </div>
+
+          </div>`;
         $("#device_state").replaceWith(content);
+
+        // Display alert if status NOK
+        if (device.battery.status == "NOK") {
+          $(".alert_message").show();
+        } else {
+          $(".alert_message").hide();
+        }
+
+        //Change background to car with spoiler when a component is added
+        if (device.components.length >= 1){
+          $("#device_state").css("background-image", "url(car_spoiler.png)");
+        }
+
+        //Show engine gif when isOn is true
+        if (device.isOn == true){
+          $("#engine").css("display", "block");
+        }
+
+        updateComponent(device);
       }
+
+      // Update number of components section
+      function updateComponent(device) {
+        const numbers = `
+          <div id="number_components">
+            <p>Components: <strong>${device.components.length}</strong></p>
+          </div>`;
+        $("#number_components").replaceWith(numbers);
+      }
+      
 
       const evtSource = new EventSource(`//localhost:${port}/subscribe`);
       evtSource.onmessage = function (event) {
@@ -130,23 +268,7 @@
       }
 
       evtSource.addEventListener("refresh", function (event) {
-        updateState(event.data);
-      });
-
-      evtSource.addEventListener("devices", function (event) {
-        updateSelect(event);
-      });
-
-      $("#create_device").click(function () {
-        $.ajax({
-          url: `http://localhost:${port}/create_device`,
-          type: "POST",
-          data: { name: $("#device_name").val() },
-          success: (result) => {
-            console.log('Device Created: ' + JSON.stringify(result));
-          },
-          error: (error) => { console.log(`${error}`) }
-        });
+        updateState(JSON.parse(event.data));
       });
 
       $("#add_component").click(function () {
@@ -158,6 +280,8 @@
           error: (error) => { console.log(`${error}`) }
         });
       });
+
+      
 
       $("#pause_realm").click(function () {
         $.ajax({
@@ -177,29 +301,11 @@
         });
       });
 
-      $("#add_listener").click(function () {
-        $.ajax({
-          url: `http://localhost:${port}/add_listener`,
-          type: "GET",
-          success: (result) => { console.log(JSON.stringify(result)) },
-          error: (error) => { console.log(`${error}`) }
-        });
-      });
-
-      $("#remove_listener").click(function () {
-        $.ajax({
-          url: `http://localhost:${port}/remove_listener`,
-          type: "GET",
-          success: (result) => { console.log(JSON.stringify(result)) },
-          error: (error) => { console.log(`${error}`) }
-        });
-      });
-
       $("#add_sensor").click(function () {
         $.ajax({
           url: `http://localhost:${port}/add_sensor`,
           type: "POST",
-          data: { value_1: parseInt($("#sensor_value_1").val()), value_2: parseInt($("#sensor_value_2").val()) },
+          data: { voltage: $("#battery_voltage").val(), current: $("#battery_current").val() },
           success: (result) => { console.log(JSON.stringify(result)) },
           error: (error) => { console.log(`Error: ${JSON.stringify(error)}`) }
         });

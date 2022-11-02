@@ -2,6 +2,15 @@
 
 This folder contains all the MongoDB Atlas backend configuration files.
 
+## Latest App Configuration in zip file!
+
+Due to time constraints please use the exported Atlas App zip file in this folder.
+I haven't tested importing it but all the configuration details are accessible directly through the files.
+
+
+Procedure below currently not tested or kept actual!!
+
+
 ## Setup The Digital-Twin-Backend MongoDB Backend
 
 1. You need a [MongoDB Cloud](https://cloud.mongodb.com/) user account and access to an organization/project

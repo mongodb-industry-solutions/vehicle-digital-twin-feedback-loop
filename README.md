@@ -1,5 +1,5 @@
-# MongoDB & Realm Connected-Devices Repository
-Code samples and demos around using the Realm database in combination with MongoDB Atlas and device sync.
+# MongoDB & AWS Connected Vehicle End to End Demo Repository
+Code samples and demos around using the Realm database in combination with MongoDB Atlas, Device Sync and AWS Sagemaker.
 
 **For the latest demo app ( work in progress though ) including pretty visuals choose the "aws-connected-vehicle" branch!**
 
@@ -9,11 +9,11 @@ Code samples and demos around using the Realm database in combination with Mongo
 
 [Setup MongoDB Atlas Backend](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/atlas-backend)
 
-## Device Simulator Application
+## Typescript Vehicle Simulator
 
 [Setup Device Simulator](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
 
-## iOS Mobile Application
+## iOS Swift Vehicle Controller
 
 [Setup iOS Mobile Application](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
 

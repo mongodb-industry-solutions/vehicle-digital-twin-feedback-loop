@@ -1,31 +1,37 @@
 import express from "express";
 import path from "path";
-import * as realmApp from "./realm/app";
+import RealmApp from "./realm/app";
 import bodyParser from 'body-parser'
 
-
+/**
+ * Instantiate Realm application
+ */
+const realmApp = new RealmApp();
+realmApp.login().catch(err => {
+  console.error(err);
+})
 
 /**
  * Instantiate express server
  */
-const app = express();
+const webserver = express();
 const port = 3000;
-app.use(bodyParser.urlencoded({ extended: true }));
 
-/**
- * Load index.html on root path
- */
-app.get("/", (req, res) => {
+webserver.use(bodyParser.urlencoded({ extended: true }));
+webserver.use(express.static(__dirname + '/img/'));
+
+// Load index.html on root path
+webserver.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 /**
- * Notify browser window
+ * Browser update notifications
  */
-let client: any = null;
+let client: any;
 
-app.get('/subscribe', (req, res) => {
-  // send headers to keep connection alive
+// Create event stream subscription endpoint
+webserver.get('/subscribe', (req, res) => {
   const headers = {
     'Content-Type': 'text/event-stream',
     'Connection': 'keep-alive',
@@ -38,100 +44,61 @@ app.get('/subscribe', (req, res) => {
   client = res;
   // listen for client 'close' requests
   req.on('close', () => { client = null; });
-
-  //Add devices collection change listener
-  realmApp.addDevicesChangeListener(sendDevicesEvent);
-
+  // Add vehicle change listener to send changes to browser
+  realmApp.realm?.objects("Vehicle").addListener(refreshDevice);
 });
 
-// send refresh event to browser
-function sendRefreshEvent(data:any) {
+// Callback for vehicle changes
+function refreshDevice() {
+  sendRefreshEvent(realmApp.getDeviceAsJSON());
+}
+
+// Publish vehicle refresh event to browser window
+function sendRefreshEvent(device: string) {
   client.write('event: refresh\n');
-  client.write(`data: ${data.name}\n\n`);
-}
-
-// send list of devices to browser
-function sendDevicesEvent() {
-  console.log("Device Change Detected!");
-  let event = "";
-  const devices = realmApp.getDevices();
-  console.log(JSON.stringify(devices));
-
-  client.write('event: devices\n');
-  client.write(`data: ${JSON.stringify(devices)}\n\n`);
+  client.write(`data: ${device}\n\n`);
 }
 
 /**
- * Provide get device names endpoint
+ * Provide add component endpoint
  */
-app.get('/get_device_names', (req, res) => {
-  const devices: string[] = realmApp.getDevices();
-  res.send({ devices });
-})
-
-/**
- * Provide create device endpoint
- */
-app.post('/create_device', (req, res) => {
-  const result = realmApp.createDevice(req.body.name);
-  res.send(result);
-  //console.log('Device created: ' + JSON.stringify(result));
-  sendRefreshEvent(result.result);
-})
-
-/**
- * Provide create component endpoint
- */
-app.post('/add_component', (req, res) => {
+webserver.post('/add_component', (req, res) => {
   const result = realmApp.addComponent(req.body.name);
+  console.log(result);
   res.send(result);
 })
 
 /**
- * Provide a pause synced Realm instance endpoint
+ * Provide a pause synced Realm endpoint
  */
-app.get('/pause_realm', (req, res) => {
+webserver.get('/pause_realm', (req, res) => {
   const result = realmApp.pauseRealm();
+  console.log(result);
   res.send(result);
 })
 
 /**
- * Provide a resume endpoint for a previously paused synced Realm instance
+ * Provide a resume endpoint for a previously paused synced Realm
  */
-app.get('/resume_realm', (req, res) => {
+webserver.get('/resume_realm', (req, res) => {
   const result = realmApp.resumeRealm();
-  res.send(result);
-})
-
-/**
- * Provide an add object change listener endpoint
- */
-app.get('/add_listener', (req, res) => {
-  const result = realmApp.addObjectChangeListener();
-  res.send(result);
-})
-
-/**
- * Provide a remove a previously added object change listener endpoint
- */
-app.get('/remove_listener', (req, res) => {
-  const result = realmApp.removeObjectChangeListener();
+  console.log(result);
   res.send(result);
 })
 
 /**
  * Provide add sensor measurement endpoint
  */
-app.post('/add_sensor', (req, res) => {
-  console.log(JSON.stringify(req.body));
+webserver.post('/add_sensor', (req, res) => {
   const result = realmApp.addSensor(req.body);
+  console.log(result);
   res.send(result);
 })
 
 /**
  * Run the express server on the provided port
  */
-app.listen(port, () => {
+webserver.listen(port, () => {
   console.log(`Digital-Twin app listening on port ${port}`);
 });
 
@@ -140,6 +107,7 @@ app.listen(port, () => {
  */
 process.on("SIGINT", function () {
   console.log("Shutdown initiated!");
-  realmApp.cleanupRealm();
-  process.exit();
+  realmApp.cleanupRealm().then(() => {
+    process.exit();
+  });
 });
