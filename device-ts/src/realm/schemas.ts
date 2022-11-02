@@ -154,10 +154,4 @@ export class Command {
     this.command = command;
     this.parameter = parameter
   }
-
-  constructor(device_id: string, command: string, parameter?: Dictionary) {
-    this.device_id = device_id;
-    this.command = command;
-    this.parameter = parameter
-  }
 }

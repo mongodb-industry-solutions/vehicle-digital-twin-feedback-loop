@@ -307,13 +307,8 @@
           type: "POST",
           data: { voltage: $("#battery_voltage").val(), current: $("#battery_current").val() },
           success: (result) => { console.log(JSON.stringify(result)) },
-          error: (error) => { console.log(`Error: ${JSON.stringify(error)}`) }
+          error: (error) => { console.log(`${error}`) }
         });
-      });
-
-      $("#select_device").on('change', function () {
-        activeDevice = $('#select_device').val();
-        console.log(`Device selected: _id: ${activeDevice}`);
       });
     });
   </script>
