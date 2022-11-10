@@ -18,14 +18,22 @@ struct VehicleDetailView: View {
             Form {
                 Section(header: Text("Attributes")) {
                     HStack {
-                        Text("Vehicle ID")
+                        Text("VIN")
                         Spacer()
                         Text(vehicle.vin)
                     }
                     HStack {
                         Text("Mixed Types")
                         Spacer()
-                        Text(vehicle.mixedTypes.stringValue ?? "No String: \(type(of: vehicle.mixedTypes))")
+                        switch vehicle.mixedTypes {
+                        case .string(_):
+                            Text(vehicle.mixedTypes.stringValue ?? "")
+                        case .int(_):
+                            Text(String(vehicle.mixedTypes.intValue!))
+                        default:
+                            Text("\(vehicle.mixedTypes.stringValue ?? "Not Implemented")")
+                        }
+
                     }
                     List(Array(vehicle.flexibleData.keys), id: \.self) { key in
                         HStack {
@@ -37,7 +45,7 @@ struct VehicleDetailView: View {
                 }
                 Section(header: Text("CONTROLS")) {
                     Toggle(isOn: $vehicle.isOn) {
-                        Text("Vehicle Status")
+                        Text("Engine")
                     }
                 }
                 Section(header: Text("Battery")) {
@@ -54,7 +62,15 @@ struct VehicleDetailView: View {
                     HStack {
                         Text("Status")
                         Spacer()
-                        Text( vehicle.battery?.status ?? "")
+                        if (vehicle.battery?.status == "NOK") {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundColor(.yellow)
+                                .imageScale(.large)
+                        } else {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundColor(.green)
+                                .imageScale(.large)
+                        }
                     }
                 }
                 Section(header: Text("Components: \(vehicle.components.count)")) {
