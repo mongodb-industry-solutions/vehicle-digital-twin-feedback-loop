@@ -28,10 +28,22 @@ struct VehicleDetailView: View {
                         switch vehicle.mixedTypes {
                         case .string(_):
                             Text(vehicle.mixedTypes.stringValue ?? "")
+                        case .bool(_):
+                            Text(String(vehicle.mixedTypes.boolValue!))
+                        case .double(_):
+                            Text(String(vehicle.mixedTypes.doubleValue!))
+                        case .float(_):
+                            Text(String(vehicle.mixedTypes.floatValue!))
                         case .int(_):
                             Text(String(vehicle.mixedTypes.intValue!))
+                        case .date(_):
+                            if #available(iOS 15.0, *) {
+                                Text(vehicle.mixedTypes.dateValue?.ISO8601Format() ?? "")
+                            } else {
+                                // Fallback on earlier versions
+                            }
                         default:
-                            Text("\(vehicle.mixedTypes.stringValue ?? "Not Implemented")")
+                            Text("\(vehicle.mixedTypes.stringValue ?? "other")")
                         }
 
                     }
