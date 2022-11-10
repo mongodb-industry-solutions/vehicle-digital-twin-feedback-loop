@@ -18,5 +18,5 @@ export const vehicleConfig = {
     device_id: "",
     vin: vin,
     isOn: false,
-    battery: { sn: "123", capacity: 1000 }
+    battery: { sn: "123", capacity: 1000, voltage: 50, current: 50 }
   }
