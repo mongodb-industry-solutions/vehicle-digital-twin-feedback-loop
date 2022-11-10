@@ -89,16 +89,22 @@
     }
 
     /*Alert icon and tooltip display on hover*/
-    #alert {
+    .alert_message{
+      height: 50px;
+    }
+
+   #alert {
       width: 40px;
       margin-left: 670px;
-      margin-top: -350px;
+      margin-top: -320px;
     }
 
     .alert_message:hover #tooltip{
+      display: block;
         clip: initial;
         opacity: 1;
         visibility: visible;
+        color: white;
        
     }
 
@@ -108,7 +114,7 @@
       font-size: small;
       text-align: center;
       margin-left: 650px;
-      margin-top: -165px;
+      margin-top: -155px;
       border-radius: 5px;
       width: 170px;
     }
@@ -210,6 +216,9 @@
 
       // Update device state section
       function updateState(device) {
+
+        
+
         const content = `
           <div id="device_state">
             
@@ -225,19 +234,30 @@
             </ul>
 
             <div class="alert_message">
-              <img id="alert" src="alert_icon.png" alt="Alert Icon" />
-              <h3 id="tooltip">Your battery is not okay</h3>
+              <img id="alert" src="alert_icon_gray.png" alt="Alert Icon" />
             </div>
 
           </div>`;
         $("#device_state").replaceWith(content);
 
-        // Display alert if status NOK
+        /* Display alert if status NOK
         if (device.battery.status == "NOK") {
           $(".alert_message").show();
         } else {
           $(".alert_message").hide();
-        }
+        }*/
+
+        const alertNok = `
+          <div class="alert_message">
+              <img id="alert" src="alert_icon_red.png" alt="Alert Icon" />
+              <h3 id="tooltip">Your battery is not okay</h3>
+            </div>`;
+
+        /* Display alert if status NOK*/
+        if (device.battery.status == "NOK") {
+          $(".alert_message").replaceWith(alertNok);
+        } 
+
 
         //Change background to car with spoiler when a component is added
         if (device.components.length >= 1){
