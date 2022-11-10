@@ -168,7 +168,7 @@
 
       <hr class="my-4">
       <div class="row mt-2">
-        
+
         <div class="col">
           <input id="component_name" type="text" class="form-control" placeholder="Component Name"
             aria-label="Component Name">
@@ -176,10 +176,10 @@
         <div class="col">
           <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
         </div>
-        <div class="col" >
+        <div class="col">
           <p id="number_components"> Number of Components </p>
         </div>
-        
+
         <div class="col">
         </div>
       </div>
@@ -216,8 +216,6 @@
 
       // Update device state section
       function updateState(device) {
-
-        
 
         const content = `
           <div id="device_state">
@@ -256,16 +254,16 @@
         /* Display alert if status NOK*/
         if (device.battery.status == "NOK") {
           $(".alert_message").replaceWith(alertNok);
-        } 
+        }
 
 
         //Change background to car with spoiler when a component is added
-        if (device.components.length >= 1){
+        if (device.components.length >= 1) {
           $("#device_state").css("background-image", "url(car_spoiler.png)");
         }
 
         //Show engine gif when isOn is true
-        if (device.isOn == true){
+        if (device.isOn == true) {
           $("#engine").css("display", "block");
         }
 
@@ -280,7 +278,7 @@
           </div>`;
         $("#number_components").replaceWith(numbers);
       }
-      
+
 
       const evtSource = new EventSource(`//localhost:${port}/subscribe`);
       evtSource.onmessage = function (event) {
@@ -301,7 +299,7 @@
         });
       });
 
-      
+
 
       $("#pause_realm").click(function () {
         $.ajax({
