@@ -76,7 +76,7 @@ struct VehicleDetailView: View {
                         Spacer()
                         if (vehicle.battery?.status == "NOK") {
                             Image(systemName: "exclamationmark.triangle.fill")
-                                .foregroundColor(.yellow)
+                                .foregroundColor(.red)
                                 .imageScale(.large)
                         } else {
                             Image(systemName: "checkmark.circle.fill")
