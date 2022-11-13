@@ -1,0 +1,44 @@
+{
+    "name": "eventbridge_publish_battery_telemetry",
+    "type": "DATABASE",
+    "config": {
+        "operation_types": [
+            "INSERT"
+        ],
+        "database": "Vehicles",
+        "collection": "Sensor",
+        "service_name": "mongodb-atlas",
+        "match": {},
+        "project": {
+            "operationType": {
+                "$numberInt": "1"
+            },
+            "vin": "$fullDocument.vin",
+            "read": {
+                "$map": {
+                    "input": "$fullDocument.measurements",
+                    "as": "item",
+                    "in": [
+                        "$$item.voltage",
+                        "$$item.current"
+                    ]
+                }
+            }
+        },
+        "full_document": true,
+        "full_document_before_change": false,
+        "unordered": false,
+        "skip_catchup_events": false,
+        "tolerate_resume_errors": true
+    },
+    "disabled": true,
+    "event_processors": {
+        "AWS_EVENTBRIDGE": {
+            "config": {
+                "account_id": "YOUR AWS ACCOUNT ID",
+                "extended_json_enabled": false,
+                "region": "us-east-1"
+            }
+        }
+    }
+}

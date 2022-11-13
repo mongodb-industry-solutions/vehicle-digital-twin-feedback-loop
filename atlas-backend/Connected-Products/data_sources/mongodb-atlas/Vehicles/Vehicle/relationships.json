@@ -1,0 +1,14 @@
+{
+    "commands": {
+        "ref": "#/relationship/mongodb-atlas/Vehicles/Command",
+        "source_key": "commands",
+        "foreign_key": "_id",
+        "is_list": true
+    },
+    "components": {
+        "ref": "#/relationship/mongodb-atlas/Vehicles/Component",
+        "source_key": "components",
+        "foreign_key": "_id",
+        "is_list": true
+    }
+}

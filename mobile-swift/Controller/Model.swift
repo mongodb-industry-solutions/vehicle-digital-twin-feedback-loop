@@ -16,7 +16,6 @@ class Vehicle: Object, ObjectKeyIdentifiable {
     @Persisted var current: Int?
     @Persisted var device_id: String = ""
     @Persisted var vin: String = ""
-    @Persisted var flexibleData: Map<String, AnyRealmValue>
     @Persisted var isOn: Bool = false
     @Persisted var mixedTypes: AnyRealmValue
     @Persisted var name: String = ""
