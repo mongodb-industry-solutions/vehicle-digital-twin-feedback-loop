@@ -1,7 +1,7 @@
 import { ObjectID } from 'bson';
 
 // Provide the Realm App ID
-export const appID = "connected-vehicle-nnafn"; //"digital-twin-backend-itfpm"; //"connected-vehicle-nnafn";
+export const appID = "<-- YOUR APP SERVICES APP ID-->" 
 
 // Provide the configured customer profile
 export const realmUser = {

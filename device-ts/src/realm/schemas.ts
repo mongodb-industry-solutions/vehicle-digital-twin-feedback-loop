@@ -1,6 +1,5 @@
 import { ObjectId } from 'bson';
 import Realm, { Dictionary } from 'realm';
-import { MessageChannel } from 'worker_threads';
 
 /**
  * Realm object schema/class definition for a device object within typescript
@@ -16,8 +15,6 @@ export class Vehicle extends Realm.Object<Vehicle> {
   public mixedTypes?: Realm.Mixed | null;
   // Lie because https://github.com/realm/realm-js/issues/2469
   public components?: Component[] = [];
-  // Dictionary which supports adding new key value pairs with support for the 'mixed' data types
-  public flexibleData?: Realm.Dictionary<Realm.Mixed> | null;
   // Embedded battery object
   public battery?: Unmanaged<Battery> | null;
 
@@ -32,7 +29,6 @@ export class Vehicle extends Realm.Object<Vehicle> {
       isOn: 'bool',
       commands: 'Command[]',
       mixedTypes: 'mixed?',
-      flexibleData: '{}',
       components: 'Component[]',
       battery: 'Battery?'
     }

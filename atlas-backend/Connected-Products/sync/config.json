@@ -1,0 +1,26 @@
+{
+    "type": "flexible",
+    "state": "enabled",
+    "development_mode_enabled": true,
+    "service_name": "mongodb-atlas",
+    "database_name": "Vehicles",
+    "is_recovery_mode_disabled": false,
+    "permissions": {
+        "rules": {},
+        "defaultRoles": [
+            {
+                "name": "read-write",
+                "applyWhen": {},
+                "read": true,
+                "write": true
+            }
+        ]
+    },
+    "queryable_fields_names": [
+        "vin",
+        "device_id"
+    ],
+    "asymmetric_tables": [
+        "Sensor"
+    ]
+}

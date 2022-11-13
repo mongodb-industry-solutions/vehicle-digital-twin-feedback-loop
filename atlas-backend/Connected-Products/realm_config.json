@@ -1,0 +1,8 @@
+{
+    "app_id": "connected-products-kknex",
+    "config_version": 20210101,
+    "name": "Connected-Products",
+    "location": "IE",
+    "provider_region": "aws-eu-west-1",
+    "deployment_model": "LOCAL"
+}

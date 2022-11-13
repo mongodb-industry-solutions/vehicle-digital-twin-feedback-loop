@@ -47,13 +47,6 @@ struct VehicleDetailView: View {
                         }
 
                     }
-                    List(Array(vehicle.flexibleData.keys), id: \.self) { key in
-                        HStack {
-                            Text(key)
-                            Spacer()
-                            Text(vehicle.flexibleData[key]?.stringValue ?? "No string but  \(type(of: vehicle.flexibleData[key]))")
-                        }
-                    }
                 }
                 Section(header: Text("CONTROLS")) {
                     Toggle(isOn: $vehicle.isOn) {
