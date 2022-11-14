@@ -21,7 +21,7 @@ Prerequisit:
 1. `docker build . -t device-ts`
 2. `docker run -p 3000:3000 device-ts`
 
-## Build and run "Device Simulator" on Amazon VM
+## Build and run "Device Simulator" on AWS VM
 
 1. `Sudo yum update`
 2. `Sudo yum install docker`
