@@ -1,1 +1,1 @@
-# Setup Instructions for AWS Integration
+# Setup Instructions for AWS Sagemaker Integration
