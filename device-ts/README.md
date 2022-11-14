@@ -13,7 +13,7 @@ Install [Node.js](https://nodejs.org/)
 6. `npm start`
 7. Open web console http://localhost:3000
 
-## Build and run "Device Simulator" in a container
+## Build and run "Device Simulator" locally in a container
 
 Prerequisit:
 - [Docker Desktop](https://www.docker.com/) (may require license!) or alternatively [Colima](https://github.com/abiosoft/colima)
