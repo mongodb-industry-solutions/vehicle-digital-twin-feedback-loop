@@ -280,7 +280,7 @@
       }
 
 
-      const evtSource = new EventSource(`//localhost:${port}/subscribe`);
+      const evtSource = new EventSource(`${window.location}subscribe`);
       evtSource.onmessage = function (event) {
         console.log("onmessage: " + event.data);
       }
@@ -291,7 +291,7 @@
 
       $("#add_component").click(function () {
         $.ajax({
-          url: `http://localhost:${port}/add_component`,
+          url: `${window.location}add_component`,
           type: "POST",
           data: { name: $("#component_name").val() },
           success: (result) => { console.log(JSON.stringify(result)) },
@@ -303,7 +303,7 @@
 
       $("#pause_realm").click(function () {
         $.ajax({
-          url: `http://localhost:${port}/pause_realm`,
+          url: `${window.location}pause_realm`,
           type: "GET",
           success: (result) => { console.log(JSON.stringify(result)) },
           error: (error) => { console.log(`${error}`) }
@@ -312,7 +312,7 @@
 
       $("#resume_realm").click(function () {
         $.ajax({
-          url: `http://localhost:${port}/resume_realm`,
+          url: `${window.location}resume_realm`,
           type: "GET",
           success: (result) => { console.log(JSON.stringify(result)) },
           error: (error) => { console.log(`${error}`) }
@@ -321,7 +321,7 @@
 
       $("#add_sensor").click(function () {
         $.ajax({
-          url: `http://localhost:${port}/add_sensor`,
+          url: `${window.location}add_sensor`,
           type: "POST",
           data: { voltage: $("#battery_voltage").val(), current: $("#battery_current").val() },
           success: (result) => { console.log(JSON.stringify(result)) },
