@@ -31,4 +31,4 @@ Prerequisit:
 6. Change the config file app id
 7. `sudo docker build . -t device-ts`
 8. `sudo docker run -p 80:3000 device-ts`
-9. Access simulator UI via http://PUBLIC IP:80
+9. Access simulator UI via http:// PUBLIC IP ADDRESS:80
