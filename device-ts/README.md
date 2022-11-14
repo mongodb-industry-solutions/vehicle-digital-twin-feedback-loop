@@ -27,7 +27,7 @@ Prerequisit:
 2. `Sudo yum install docker`
 3. `sudo systemctl enable docker.service`
 4. `sudo systemctl start docker.service``
-5. `git clone https://github.com/mongodb-industry-solutions/Connected-Products.git``
+5. `git clone https://github.com/mongodb-industry-solutions/Connected-Products.git`
 6. Change the config file app id
 7. `sudo docker build . -t device-ts`
 8. `sudo docker run -p 80:3000 device-ts`
