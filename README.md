@@ -11,12 +11,8 @@ Code samples and demos around using the Realm database in combination with Mongo
 
 [Setup Device Simulator](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
 
-## iOS Swift Vehicle Controller
+## iOS Swift Vehicle Controller Mobile App
 
 [Setup iOS Mobile Application](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
-
-## PDF Setup Guide and First Use Guidance
-
-[PDF Setup Guide](https://github.com/mongodb-industry-solutions/Connected-Devices/blob/main/Guide%20-%20Digital%20Twin%20Sanbox%20Environment.pdf)
 
 
