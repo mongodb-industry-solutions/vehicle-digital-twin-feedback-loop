@@ -14,4 +14,4 @@ This folder contains all the MongoDB Atlas backend configuration files.
 3. [Login with your API key](https://www.mongodb.com/docs/atlas/app-services/cli/#authenticate-with-an-api-key)
 4. Import the Connected-Products application `realm-cli push --local ./Connected-Products --remote Connected-Products` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs
 5. Copy the returned App ID and use it to create the demo user: `realm-cli users create --type email --email demo --password demopw`
-6. Copy the App ID `realm-cli apps list` and continue with configuring / running the ["Device-TS"](https://github.com/mongodb-industry-solutions/Connected-Devices/tree/main/device-ts).
+6. Copy the App ID `realm-cli apps list` and continue with configuring / running the vehicle simulator ["device-ts"](https://github.com/mongodb-industry-solutions/Connected-Devices/tree/main/device-ts).
