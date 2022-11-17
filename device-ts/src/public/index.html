@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="index.css">
-  </head>
+</head>
 
 <body>
   <div class="container overflow-hidden">
@@ -19,7 +19,7 @@
 
       <hr class="my-4">
       <div class="row mt-2">
-
+        
         <div class="col">
           <input id="component_name" type="text" class="form-control" placeholder="Component Name"
             aria-label="Component Name">
@@ -27,10 +27,10 @@
         <div class="col">
           <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
         </div>
-        <div class="col">
+        <div class="col" >
           <p id="number_components"> Number of Components </p>
         </div>
-
+        
         <div class="col">
         </div>
       </div>
@@ -68,6 +68,8 @@
       // Update device state section
       function updateState(device) {
 
+        
+
         const content = `
           <div id="device_state">
             
@@ -98,18 +100,24 @@
         /* Display alert if status NOK*/
         if (device.battery.status == "NOK") {
           $(".alert_message").replaceWith(alertNok);
-        }
-
+        } 
 
         //Change background to car with spoiler when a component is added
-        if (device.components.length >= 1) {
+        if (device.components.length >= 1){
           $("#device_state").css("background-image", "url(car_spoiler.png)");
         }
 
         //Show engine gif when isOn is true
-        if (device.isOn == true) {
+        if (device.isOn == true){
           $("#engine").css("display", "block");
         }
+
+        /* @Ainhoa: Replace code lines above with this
+        if (device.isOn == true){
+          $("#engine").attr("src", "engine_transparent.gif");
+        }
+        */
+
 
         updateComponent(device);
       }
@@ -122,9 +130,9 @@
           </div>`;
         $("#number_components").replaceWith(numbers);
       }
+      
 
-
-      const evtSource = new EventSource(`${window.location}subscribe`);
+      const evtSource = new EventSource(`//localhost:${port}/subscribe`);
       evtSource.onmessage = function (event) {
         console.log("onmessage: " + event.data);
       }
@@ -135,7 +143,7 @@
 
       $("#add_component").click(function () {
         $.ajax({
-          url: `${window.location}add_component`,
+          url: `http://localhost:${port}/add_component`,
           type: "POST",
           data: { name: $("#component_name").val() },
           success: (result) => { console.log(JSON.stringify(result)) },
@@ -143,11 +151,11 @@
         });
       });
 
-
+      
 
       $("#pause_realm").click(function () {
         $.ajax({
-          url: `${window.location}pause_realm`,
+          url: `http://localhost:${port}/pause_realm`,
           type: "GET",
           success: (result) => { console.log(JSON.stringify(result)) },
           error: (error) => { console.log(`${error}`) }
@@ -156,7 +164,7 @@
 
       $("#resume_realm").click(function () {
         $.ajax({
-          url: `${window.location}resume_realm`,
+          url: `http://localhost:${port}/resume_realm`,
           type: "GET",
           success: (result) => { console.log(JSON.stringify(result)) },
           error: (error) => { console.log(`${error}`) }
@@ -165,7 +173,7 @@
 
       $("#add_sensor").click(function () {
         $.ajax({
-          url: `${window.location}add_sensor`,
+          url: `http://localhost:${port}/add_sensor`,
           type: "POST",
           data: { voltage: $("#battery_voltage").val(), current: $("#battery_current").val() },
           success: (result) => { console.log(JSON.stringify(result)) },

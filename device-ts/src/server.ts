@@ -19,10 +19,11 @@ const port = 3000;
 
 webserver.use(bodyParser.urlencoded({ extended: true }));
 webserver.use(express.static(__dirname + '/img/'));
+webserver.use(express.static(__dirname + '/public/'));
 
 // Load index.html on root path
 webserver.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + '/index.html'));
+  res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 /**
