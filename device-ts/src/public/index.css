@@ -71,6 +71,7 @@ ul {
 }
 
 #engine {
+    display: none;
     width: 120px;
     margin-left: 80%;
     margin-top: -70px;
