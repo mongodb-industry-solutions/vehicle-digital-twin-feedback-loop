@@ -1,4 +1,4 @@
-import { Vehicle, Battery, Component, Sensor, Measurement, Command } from './schemas';
+import { Vehicle, Battery, Cmd, Component, Sensor, Measurement, Command } from './schemas';
 import { appID, realmUser, vehicleConfig } from './config';
 import { Collection, CollectionChangeSet } from 'realm';
 import { ObjectId } from 'bson';
@@ -24,7 +24,7 @@ class RealmApp {
   async login() {
     await this.app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
     this.realm = await Realm.open({
-      schema: [Vehicle, Battery, Component, Sensor, Measurement, Command.schema],
+      schema: [Vehicle, Battery, Cmd, Component, Sensor, Measurement, Command.schema],
       sync: {
         user: this.app.currentUser!,
         flexible: true

@@ -10,6 +10,7 @@ export class Vehicle extends Realm.Object<Vehicle> {
   public device_id!: string;
   public vin!: string;
   public isOn!: boolean;
+  public cmds?: Cmd[] = [];
   public commands?: Command[] = [];
   // Field type which supports multiple multiple data types
   public mixedTypes?: Realm.Mixed | null;
@@ -27,6 +28,7 @@ export class Vehicle extends Realm.Object<Vehicle> {
       device_id: 'string',
       vin: 'string',
       isOn: 'bool',
+      cmds: { type: 'list', objectType: 'Cmd' },
       commands: 'Command[]',
       mixedTypes: 'mixed?',
       components: 'Component[]',
@@ -58,6 +60,22 @@ export class Battery extends Realm.Object<Battery> {
     }
   }
 }
+
+export class Cmd extends Realm.Object<Cmd> {
+  
+  public command?: string;
+  public status?: string;
+
+  static schema = {
+    name: 'Cmd',
+    embedded: true,
+    properties: {
+      command: 'string?',
+      status: 'string?',
+    },
+  };
+}
+
 
 /**
  * Realm object schema/class definition for a component object within typescript

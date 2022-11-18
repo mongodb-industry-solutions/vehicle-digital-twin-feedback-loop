@@ -18,7 +18,7 @@ class Vehicle: Object, ObjectKeyIdentifiable {
     @Persisted var isOn: Bool = false
     @Persisted var mixedTypes: AnyRealmValue
     @Persisted var name: String = ""
-    @Persisted var cmds: List<CMD>
+    @Persisted var cmds: List<Cmd>
 }
 
 class Battery: EmbeddedObject {
@@ -35,7 +35,7 @@ class Component: Object {
     @Persisted var device_id: String = ""
 }
 
-class CMD: EmbeddedObject, Identifiable {
+class Cmd: EmbeddedObject, Identifiable {
     @Persisted var command: String?
     @Persisted var status: CmdStatus?
 }

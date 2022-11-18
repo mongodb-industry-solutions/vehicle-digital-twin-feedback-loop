@@ -51,6 +51,7 @@ webserver.get('/subscribe', (req, res) => {
 
 // Callback for vehicle changes
 function refreshDevice() {
+  console.log(realmApp.getDeviceAsJSON());
   sendRefreshEvent(realmApp.getDeviceAsJSON());
 }
 
