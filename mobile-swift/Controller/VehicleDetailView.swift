@@ -78,6 +78,17 @@ struct VehicleDetailView: View {
                         }
                     }
                 }
+                Section(header: Text("Commands: \(vehicle.cmds.count)")) {
+                    List {
+                        ForEach(vehicle.cmds) { cmd in
+                            HStack {
+                                Text(cmd.command ?? "")
+                                Spacer()
+                                Text(cmd.status?.rawValue ?? "")
+                            }
+                        }
+                    }
+                }
                 Section(header: Text("Components: \(vehicle.components.count)")) {
                     List {
                         ForEach(vehicle.components, id: \._id) { component in
@@ -92,14 +103,13 @@ struct VehicleDetailView: View {
         }
         .navigationBarTitle(vehicle.name)
         .sheet(isPresented: $showingCommandView) {
-            // show the add item view
-            CommandView(vehicle: vehicle.thaw()!, isPresented: $showingCommandView)
+            CommandView(vehicle: vehicle, isPresented: $showingCommandView)
         }
     }
 }
 
 struct CommandView: View {
-    @ObservedObject var vehicle: Vehicle
+    @ObservedRealmObject var vehicle: Vehicle
     @Binding var isPresented: Bool
     @State var command: String = ""
     @State var key: String = ""
@@ -108,41 +118,20 @@ struct CommandView: View {
     var body: some View {
         Text("Submit Command").font(.title)
         VStack() {
-            HStack(){
-                Text("Command")
-                    .font(.title3)
-                    .bold()
-                Spacer()
-            }.padding()
             HStack() {
                 TextField("Enter Command", text: $command)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 Spacer()
             }.padding()
             HStack() {
-                Text("Parameter")
-                    .font(.title3)
-                    .bold()
-                Spacer()
-            }.padding()
-            HStack() {
-                TextField("Enter Key", text: $key)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Text(":")
-                TextField("Enter Value", text: $value)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Button("Send", action: sendCommand)
+                Button("Dismiss", action: {isPresented = false})
             }
-        }.padding()
-        Button("Send", action: sendCommand)
-        Button("Dismiss", action: {isPresented = false})
+        }
     }
     
     func sendCommand(){
-        $vehicle.commands.append(Command(value: [
-            "device_id": vehicle.device_id,
-            "command": command,
-            "parameter": [key: value],
-            "status": "submitted"]))
+        $vehicle.cmds.append(CMD(value: ["command": command, "status": CmdStatus.submitted]))
         isPresented = false
     }
 }

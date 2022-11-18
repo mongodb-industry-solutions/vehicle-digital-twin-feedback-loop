@@ -30,7 +30,7 @@ struct VehiclesView: View {
             // The realm has been opened and is ready for use.
             // Show the content view.
         case .open(let realm):
-            DevicesListView().environment(\.realm, realm)
+            VehiclesListView().environment(\.realm, realm)
             // The realm is currently being downloaded from the server.
             // Show a progress view.
         case .progress(let progress):
@@ -44,7 +44,6 @@ struct VehiclesView: View {
 }
 struct ErrorView: View {
     var error: Error
-    
     var body: some View {
         VStack {
             Text("Error opening the realm: \(error.localizedDescription)")
@@ -53,10 +52,8 @@ struct ErrorView: View {
 }
 
 
-struct DevicesListView: View {
-    
+struct VehiclesListView: View {
     @ObservedResults(Vehicle.self) var vehicles
-    
     var body: some View {
         NavigationView {
             VStack{
@@ -65,7 +62,7 @@ struct DevicesListView: View {
                     ForEach(vehicles) { vehicle in
                         NavigationLink(vehicle.name, destination: VehicleDetailView(vehicle: vehicle))
                     }
-                    .onDelete(perform: $vehicles.remove)
+                        .onDelete(perform: $vehicles.remove)
                 }
             }
             .navigationTitle("Vehicles")

@@ -11,7 +11,6 @@ import RealmSwift
 class Vehicle: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var battery: Battery?
-    @Persisted var commands: List<Command>
     @Persisted var components: List<Component>
     @Persisted var current: Int?
     @Persisted var device_id: String = ""
@@ -19,6 +18,7 @@ class Vehicle: Object, ObjectKeyIdentifiable {
     @Persisted var isOn: Bool = false
     @Persisted var mixedTypes: AnyRealmValue
     @Persisted var name: String = ""
+    @Persisted var cmds: List<CMD>
 }
 
 class Battery: EmbeddedObject {
@@ -35,11 +35,14 @@ class Component: Object {
     @Persisted var device_id: String = ""
 }
 
-class Command: Object {
-    @Persisted(primaryKey: true) var _id: ObjectId
-    @Persisted var device_id: String
-    @Persisted var command: String
-    @Persisted var parameter: Map<String, String>
-    @Persisted var status: String
+class CMD: EmbeddedObject, Identifiable {
+    @Persisted var command: String?
+    @Persisted var status: CmdStatus?
+}
 
+enum CmdStatus: String, PersistableEnum {
+    case submitted
+    case inProgress
+    case completed
+    case failed
 }

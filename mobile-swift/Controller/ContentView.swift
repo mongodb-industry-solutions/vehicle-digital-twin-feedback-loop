@@ -35,9 +35,6 @@ struct ContentView: View {
                     subs.append(QuerySubscription<Component>(name: "Components") {
                         $0.device_id == user.id
                     })
-                    subs.append(QuerySubscription<Command>(name: "Commands") {
-                        $0.device_id == user.id
-                    })
                 }
             })
             VehiclesView()
