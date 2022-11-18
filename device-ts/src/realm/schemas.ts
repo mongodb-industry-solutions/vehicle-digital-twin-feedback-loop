@@ -11,7 +11,6 @@ export class Vehicle extends Realm.Object<Vehicle> {
   public vin!: string;
   public isOn!: boolean;
   public cmds?: Cmd[] = [];
-  public commands?: Command[] = [];
   // Field type which supports multiple multiple data types
   public mixedTypes?: Realm.Mixed | null;
   // Lie because https://github.com/realm/realm-js/issues/2469
@@ -29,7 +28,6 @@ export class Vehicle extends Realm.Object<Vehicle> {
       vin: 'string',
       isOn: 'bool',
       cmds: { type: 'list', objectType: 'Cmd' },
-      commands: 'Command[]',
       mixedTypes: 'mixed?',
       components: 'Component[]',
       battery: 'Battery?'
@@ -138,34 +136,5 @@ export class Measurement extends Realm.Object<Measurement> {
       voltage: 'int?',
       current: 'int?'
     }
-  }
-}
-
-/**
- * Command object to run operations on the device
- */
-export class Command {
-  public _id: ObjectId = new ObjectId;
-  public device_id!: string;
-  public command: string;
-  public parameter?: Dictionary;
-  public status?: string;
-
-  static schema: Realm.ObjectSchema = {
-    name: 'Command',
-    primaryKey: '_id',
-    properties: {
-      _id: 'objectId',
-      device_id: 'string',
-      command: 'string',
-      parameter: 'string{}',
-      status: 'string'
-    }
-  }
-
-  constructor(device_id: string, command: string, parameter?: Dictionary) {
-    this.device_id = device_id;
-    this.command = command;
-    this.parameter = parameter
   }
 }
