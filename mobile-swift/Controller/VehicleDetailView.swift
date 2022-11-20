@@ -23,7 +23,7 @@ struct VehicleDetailView: View {
                         Text(vehicle.vin)
                     }
                     HStack {
-                        Text("Mixed Types")
+                        Text("Miscellaneous")
                         Spacer()
                         switch vehicle.mixedTypes {
                         case .string(_):
@@ -98,7 +98,9 @@ struct VehicleDetailView: View {
                         }
                     }
                 }
-                Button("Send Command", action: {showingCommandView = true})
+                Button(action: {showingCommandView = true}){
+                    Text("Send Command").frame(maxWidth: .infinity, alignment: .center)
+                }
             }
         }
         .navigationBarTitle(vehicle.name)
@@ -111,27 +113,28 @@ struct VehicleDetailView: View {
 struct CommandView: View {
     @ObservedRealmObject var vehicle: Vehicle
     @Binding var isPresented: Bool
-    @State var command: String = ""
     @State var key: String = ""
     @State var value: String = ""
+    @State private var selectedCommand = "Reset Battery"
+    let commands = ["Reset Battery"]
     
     var body: some View {
-        Text("Submit Command").font(.title)
         VStack() {
-            HStack() {
-                TextField("Enter Command", text: $command)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Spacer()
-            }.padding()
+            List {
+                Picker("Commands", selection: $selectedCommand) {
+                    ForEach(commands, id: \.self) {
+                        Text($0)
+                    }
+                }
+            }
             HStack() {
                 Button("Send", action: sendCommand)
-                Button("Dismiss", action: {isPresented = false})
             }
         }
     }
     
     func sendCommand(){
-        $vehicle.cmds.append(Cmd(value: ["command": command, "status": CmdStatus.submitted]))
+        $vehicle.cmds.append(Cmd(value: ["command": selectedCommand, "status": CmdStatus.submitted]))
         isPresented = false
     }
 }

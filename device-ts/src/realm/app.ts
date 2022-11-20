@@ -118,7 +118,9 @@ class RealmApp {
    * Provide vehicle object as JSON string
    */
   getDeviceAsJSON(): string {
-    return JSON.stringify(this.vehicle!.toJSON());
+    let vehicle = this.vehicle!.toJSON();
+    vehicle['measurements'] = this.batteryMeasurements.length;
+    return JSON.stringify(vehicle);
   }
 
   /**
@@ -128,7 +130,6 @@ class RealmApp {
     console.log(`Changes: ${JSON.stringify(changes)}`);
     console.log(`Vehicle: ${JSON.stringify(vehicle)}`);
     if (changes.changedProperties == "cmds") {
-      //for await (const cmd of vehicle.cmds! ) {
       vehicle.cmds?.forEach(async (cmd) => {
         if (cmd.status == "submitted") {
           console.log(JSON.stringify(cmd));
@@ -136,6 +137,7 @@ class RealmApp {
             cmd.status = "inProgress";
           });
           await setTimeout(5000).then(() => {
+            this.resetBattery();
             this.self.realm.write(() => {
               cmd.status = "completed";
             });
@@ -146,7 +148,13 @@ class RealmApp {
     if (changes.deleted) {
       console.log(`Commands deleted: ${changes.deleted}`);
     }
+  }
 
+  // Set the battery status back to ok
+  resetBattery() {
+    this.self.realm.write(() => {
+      this.vehicle.battery!.status = "OK";
+    });
   }
 
   /**

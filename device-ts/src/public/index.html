@@ -16,10 +16,8 @@
       <div id="device_state">
         <p>Device State</p>
       </div>
-
       <hr class="my-4">
       <div class="row mt-2">
-        
         <div class="col">
           <input id="component_name" type="text" class="form-control" placeholder="Component Name"
             aria-label="Component Name">
@@ -27,10 +25,9 @@
         <div class="col">
           <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
         </div>
-        <div class="col" >
+        <div class="col">
           <p id="number_components"> Number of Components </p>
         </div>
-        
         <div class="col">
         </div>
       </div>
@@ -43,11 +40,10 @@
         </div>
         <div class="col">
         </div>
+        <div class="col">
+        </div>
       </div>
       <div class="row mt-2">
-        <div class="col">
-          <button id="add_sensor" type="button" class="btn btn-primary btn-block">Track Telemetry</button>
-        </div>
         <div class="col">
           <label for="battery_current">Ampere: (0-100)</label>
           <input id="battery_current" type="range" min="1" max="100" value="50">
@@ -55,6 +51,22 @@
         <div class="col">
           <label for="battery_voltage">Volt: (0-100)</label>
           <input id="battery_voltage" type="range" min="1" max="100" value="50">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          <button id="add_sensor" type="button" class="btn btn-primary btn-block">Track Telemetry</button>
+        </div>
+        <div class="col">
+          <p id="measurements">Bucket: 0</p>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
         </div>
       </div>
     </div>
@@ -68,26 +80,20 @@
       // Update device state section
       function updateState(device) {
 
-        
-
         const content = `
           <div id="device_state">
-            
               <h1>${device.name}</h1>
               <hr class="my-4">
-
             <ul>
-              <li id="voltage"><p>Voltage: ${device.battery.voltage}</p></li>
+              <li class="short_tag" id="voltage"><p>Voltage: ${device.battery.voltage}</p></li>
               <li class="short_tag" id="current"><p>Current: ${device.battery.current}</p></li>
               <li class="short_tag" id="ison"><p>isOn: ${device.isOn}</p></li>
               <li><img id="engine" src="engine_transparent.gif" alt="Engine GIF" /></li>
               <li id="device_id"><p>VIN: ${device.vin}</p></li>
             </ul>
-
             <div class="alert_message">
               <img id="alert" src="alert_icon_gray.png" alt="Alert Icon" />
             </div>
-
           </div>`;
         $("#device_state").replaceWith(content);
 
@@ -100,39 +106,43 @@
         /* Display alert if status NOK*/
         if (device.battery.status == "NOK") {
           $(".alert_message").replaceWith(alertNok);
-        } 
+        }
+
 
         //Change background to car with spoiler when a component is added
-        if (device.components.length >= 1){
+        if (device.components.length >= 1) {
           $("#device_state").css("background-image", "url(car_spoiler.png)");
         }
 
         //Show engine gif when isOn is true
-        if (device.isOn == true){
+        if (device.isOn == true) {
           $("#engine").css("display", "block");
         }
 
-        /* @Ainhoa: Replace code lines above with this
-        if (device.isOn == true){
-          $("#engine").attr("src", "engine_transparent.gif");
-        }
-        */
-
-
         updateComponent(device);
+        updateMeasurements(device);
       }
 
       // Update number of components section
       function updateComponent(device) {
         const numbers = `
-          <div id="number_components">
+          <div class="border_box" id="number_components">
             <p>Components: <strong>${device.components.length}</strong></p>
           </div>`;
         $("#number_components").replaceWith(numbers);
       }
-      
 
-      const evtSource = new EventSource(`//localhost:${port}/subscribe`);
+      // Update number of measurements
+      function updateMeasurements(device) {
+        const measurements = `
+          <div class="border_box" id="measurements">
+            <p>Bucket: <strong>${device.measurements}</strong></p>
+          </div>`;
+        $("#measurements").replaceWith(measurements);
+      }
+
+
+      const evtSource = new EventSource(`${window.location}subscribe`);
       evtSource.onmessage = function (event) {
         console.log("onmessage: " + event.data);
       }
@@ -143,7 +153,7 @@
 
       $("#add_component").click(function () {
         $.ajax({
-          url: `http://localhost:${port}/add_component`,
+          url: `${window.location}add_component`,
           type: "POST",
           data: { name: $("#component_name").val() },
           success: (result) => { console.log(JSON.stringify(result)) },
@@ -151,11 +161,11 @@
         });
       });
 
-      
+
 
       $("#pause_realm").click(function () {
         $.ajax({
-          url: `http://localhost:${port}/pause_realm`,
+          url: `${window.location}pause_realm`,
           type: "GET",
           success: (result) => { console.log(JSON.stringify(result)) },
           error: (error) => { console.log(`${error}`) }
@@ -164,7 +174,7 @@
 
       $("#resume_realm").click(function () {
         $.ajax({
-          url: `http://localhost:${port}/resume_realm`,
+          url: `${window.location}resume_realm`,
           type: "GET",
           success: (result) => { console.log(JSON.stringify(result)) },
           error: (error) => { console.log(`${error}`) }
@@ -173,7 +183,7 @@
 
       $("#add_sensor").click(function () {
         $.ajax({
-          url: `http://localhost:${port}/add_sensor`,
+          url: `${window.location}add_sensor`,
           type: "POST",
           data: { voltage: $("#battery_voltage").val(), current: $("#battery_current").val() },
           success: (result) => { console.log(JSON.stringify(result)) },
