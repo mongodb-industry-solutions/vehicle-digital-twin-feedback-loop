@@ -80,6 +80,14 @@
       // Update device state section
       function updateState(device) {
 
+        let engine_pic;
+
+        if (device.isOn) {
+          engine_pic = "engine_transparent.gif";
+        } else {
+          engine_pic = "engine_off.png";
+        }
+
         const content = `
           <div id="device_state">
               <h1>${device.name}</h1>
@@ -88,7 +96,7 @@
               <li class="short_tag" id="voltage"><p>Voltage: ${device.battery.voltage}</p></li>
               <li class="short_tag" id="current"><p>Current: ${device.battery.current}</p></li>
               <li class="short_tag" id="ison"><p>isOn: ${device.isOn}</p></li>
-              <li><img id="engine" src="engine_transparent.gif" alt="Engine GIF" /></li>
+              <li><img id="engine" src="${engine_pic}" alt="Engine GIF" /></li>
               <li id="device_id"><p>VIN: ${device.vin}</p></li>
             </ul>
             <div class="alert_message">
@@ -114,11 +122,6 @@
           $("#device_state").css("background-image", "url(car_spoiler.png)");
         }
 
-        //Show engine gif when isOn is true
-        if (device.isOn == true) {
-          $("#engine").css("display", "block");
-        }
-
         updateComponent(device);
         updateMeasurements(device);
       }
@@ -141,7 +144,6 @@
         $("#measurements").replaceWith(measurements);
       }
 
-
       const evtSource = new EventSource(`${window.location}subscribe`);
       evtSource.onmessage = function (event) {
         console.log("onmessage: " + event.data);
@@ -160,8 +162,6 @@
           error: (error) => { console.log(`${error}`) }
         });
       });
-
-
 
       $("#pause_realm").click(function () {
         $.ajax({

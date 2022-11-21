@@ -41,7 +41,7 @@ ul {
 #device_id {
     width: 300px;
     margin-left: 39%;
-    margin-top: -30px;
+    margin-top: -50px;
     border-radius: 5px;
     border: 2px solid black;
     height: 35px;
@@ -72,7 +72,6 @@ ul {
 }
 
 #engine {
-    display: none;
     width: 120px;
     margin-left: 80%;
     margin-top: -70px;
