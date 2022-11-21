@@ -78,9 +78,9 @@ struct VehicleDetailView: View {
                         }
                     }
                 }
-                Section(header: Text("Commands: \(vehicle.cmds.count)")) {
+                Section(header: Text("Commands: \(vehicle.commands.count)")) {
                     List {
-                        ForEach(vehicle.cmds) { cmd in
+                        ForEach(vehicle.commands) { cmd in
                             HStack {
                                 Text(cmd.command ?? "")
                                 Spacer()
@@ -134,7 +134,7 @@ struct CommandView: View {
     }
     
     func sendCommand(){
-        $vehicle.cmds.append(Cmd(value: ["command": selectedCommand, "status": CmdStatus.submitted]))
+        $vehicle.commands.append(Command(value: ["command": selectedCommand, "status": CmdStatus.submitted]))
         isPresented = false
     }
 }

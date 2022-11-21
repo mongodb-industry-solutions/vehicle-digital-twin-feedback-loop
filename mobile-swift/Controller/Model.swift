@@ -18,7 +18,7 @@ class Vehicle: Object, ObjectKeyIdentifiable {
     @Persisted var isOn: Bool = false
     @Persisted var mixedTypes: AnyRealmValue
     @Persisted var name: String = ""
-    @Persisted var cmds: List<Cmd>
+    @Persisted var commands: List<Command>
 }
 
 class Battery: EmbeddedObject {
@@ -35,9 +35,10 @@ class Component: Object {
     @Persisted var device_id: String = ""
 }
 
-class Cmd: EmbeddedObject, Identifiable {
+class Command: EmbeddedObject, Identifiable {
     @Persisted var command: String?
     @Persisted var status: CmdStatus?
+    @Persisted var ts: Date? = Date()
 }
 
 enum CmdStatus: String, PersistableEnum {

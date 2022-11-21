@@ -1,4 +1,4 @@
-import { Vehicle, Battery, Cmd, Component, Sensor, Measurement } from './schemas';
+import { Vehicle, Battery, Command, Component, Sensor, Measurement } from './schemas';
 import { appID, realmUser, vehicleConfig } from './config';
 import { ObjectId } from 'bson';
 import { setTimeout } from "timers/promises";
@@ -24,7 +24,7 @@ class RealmApp {
   async login() {
     await this.app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
     this.realm = await Realm.open({
-      schema: [Vehicle, Battery, Cmd, Component, Sensor, Measurement],
+      schema: [Vehicle, Battery, Command, Component, Sensor, Measurement],
       sync: {
         user: this.app.currentUser!,
         flexible: true
@@ -129,17 +129,17 @@ class RealmApp {
   processCommands(vehicle: Vehicle, changes: any) {
     console.log(`Changes: ${JSON.stringify(changes)}`);
     console.log(`Vehicle: ${JSON.stringify(vehicle)}`);
-    if (changes.changedProperties == "cmds") {
-      vehicle.cmds?.forEach(async (cmd) => {
-        if (cmd.status == "submitted") {
-          console.log(JSON.stringify(cmd));
+    if (changes.changedProperties == "commands") {
+      vehicle.commands?.forEach(async (command) => {
+        if (command.status == "submitted") {
+          console.log(JSON.stringify(command));
           await this.self.realm.write(() => {
-            cmd.status = "inProgress";
+            command.status = "inProgress";
           });
           await setTimeout(5000).then(() => {
             this.resetBattery();
             this.self.realm.write(() => {
-              cmd.status = "completed";
+              command.status = "completed";
             });
           });
         };

@@ -10,7 +10,7 @@ export class Vehicle extends Realm.Object<Vehicle> {
   public device_id!: string;
   public vin!: string;
   public isOn!: boolean;
-  public cmds?: Cmd[];
+  public commands?: Command[];
   // Field type which supports multiple multiple data types
   public mixedTypes?: Realm.Mixed | null;
   public components?: Component[];
@@ -25,7 +25,7 @@ export class Vehicle extends Realm.Object<Vehicle> {
       device_id: 'string',
       vin: 'string',
       isOn: 'bool',
-      cmds: 'Cmd[]',
+      commands: 'Command[]',
       mixedTypes: 'mixed?',
       components: 'Component[]',
       battery: 'Battery?'
@@ -57,17 +57,19 @@ export class Battery extends Realm.Object<Battery> {
   }
 }
 
-export class Cmd extends Realm.Object<Cmd> {
+export class Command extends Realm.Object<Command> {
   
   public command?: string;
   public status?: string;
+  public ts?: Date;
 
   static schema = {
-    name: 'Cmd',
+    name: 'Command',
     embedded: true,
     properties: {
       command: 'string?',
       status: 'string?',
+      ts: 'date?'
     },
   };
 }
