@@ -1,18 +1,18 @@
 import { ObjectId } from 'bson';
-import Realm, { Dictionary } from 'realm';
+import Realm from 'realm';
 
 /**
  * Realm object schema/class definition for a device object within typescript
  */
 export class Vehicle extends Realm.Object<Vehicle> {
-  public _id!: ObjectId | null;
+  public _id!: ObjectId;
   public name!: string;
   public device_id!: string;
   public vin!: string;
   public isOn!: boolean;
   public commands?: Command[];
   // Field type which supports multiple multiple data types
-  public mixedTypes?: Realm.Mixed | null;
+  public mixedTypes?: Realm.Mixed;
   public components?: Component[];
   public battery?: Unmanaged<Battery>;
 
@@ -37,12 +37,11 @@ export class Vehicle extends Realm.Object<Vehicle> {
  * Realm object schema/class definition for an embedded battery object
  */
 export class Battery extends Realm.Object<Battery> {
-  public sn: string = "n/a";
+  public sn?: string;
   public capacity?: number;
   public voltage?: number;
   public current?: number;
   public status?: string;
-
 
   static schema = {
     name: 'Battery',
