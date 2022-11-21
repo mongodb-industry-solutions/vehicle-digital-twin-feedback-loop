@@ -1,5 +1,9 @@
 exports = function(changeEvent) {
   
+  /**
+   * Function to bridge Sagemaker integration for simplification reasons
+   **/
+  
   // Transform changeEvent
   const sagemakerdoc = {
     value: 0.4,

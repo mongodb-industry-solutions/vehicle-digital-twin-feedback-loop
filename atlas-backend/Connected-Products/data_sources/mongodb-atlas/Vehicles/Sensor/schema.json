@@ -3,9 +3,6 @@
         "_id": {
             "bsonType": "objectId"
         },
-        "current": {
-            "bsonType": "long"
-        },
         "device_id": {
             "bsonType": "string"
         },
@@ -33,27 +30,15 @@
         "sn": {
             "bsonType": "string"
         },
-        "timestamp": {
-            "bsonType": "date"
-        },
         "type": {
             "bsonType": "string"
         },
-        "value": {
-            "bsonType": "int"
-        },
         "vin": {
             "bsonType": "string"
-        },
-        "voltage": {
-            "bsonType": "long"
         }
     },
     "required": [
-        "value",
         "vin",
-        "voltage",
-        "current",
         "device_id",
         "_id",
         "type"

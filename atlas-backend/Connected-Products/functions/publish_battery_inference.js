@@ -10,7 +10,7 @@ exports = function(arg){
    
    let status;
 
-   if (arg.fullDocument.value >=0.5) { 
+   if (arg.fullDocument.value >=55.5) { 
      status = "OK";
    } else {
      status = "NOK"

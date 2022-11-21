@@ -4,6 +4,7 @@
     "development_mode_enabled": true,
     "service_name": "mongodb-atlas",
     "database_name": "Vehicles",
+    "client_max_offline_days": 30,
     "is_recovery_mode_disabled": false,
     "permissions": {
         "rules": {},
