@@ -1,7 +1,7 @@
-import { Vehicle, Battery, Component, Sensor, Measurement, Command } from './schemas';
+import { Vehicle, Battery, Command, Component, Sensor, Measurement } from './schemas';
 import { appID, realmUser, vehicleConfig } from './config';
-import { Collection, CollectionChangeSet } from 'realm';
 import { ObjectId } from 'bson';
+import { setTimeout } from "timers/promises";
 
 class RealmApp {
 
@@ -24,7 +24,7 @@ class RealmApp {
   async login() {
     await this.app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
     this.realm = await Realm.open({
-      schema: [Vehicle, Battery, Component, Sensor, Measurement, Command.schema],
+      schema: [Vehicle, Battery, Command, Component, Sensor, Measurement],
       sync: {
         user: this.app.currentUser!,
         flexible: true
@@ -35,7 +35,6 @@ class RealmApp {
     this.realm.subscriptions.update(subscriptions => {
       subscriptions.add(this.realm!.objects('Vehicle').filtered(deviceID, { name: "device-filter" }));
       subscriptions.add(this.realm!.objects('Component').filtered(deviceID, { name: "component-filter" }));
-      subscriptions.add(this.realm!.objects('Command').filtered(deviceID, { name: "command-filter" }));
     });
 
     // Create vehicle object on application start
@@ -44,15 +43,7 @@ class RealmApp {
     this.realm.write(() => {
       this.vehicle = new Vehicle(this.realm, vehicleInit);
     });
-
-    // Add a change listener for command objects
-    try {
-      this.realm!.objects("Command").addListener(this.onCommand.bind(this));
-    } catch (error) {
-      console.error(
-        `An exception was thrown within the change listener: ${error}`
-      );
-    }
+    this.vehicle.addListener(this.processCommands.bind(this));
   }
 
   /**
@@ -102,7 +93,7 @@ class RealmApp {
     }
 
     try {
-      this.realm!.write(() => {
+      this.realm.write(() => {
         if (this.batteryMeasurements.length == 20) {
           const sensor = {
             _id: new ObjectId,
@@ -127,25 +118,42 @@ class RealmApp {
    * Provide vehicle object as JSON string
    */
   getDeviceAsJSON(): string {
-    return JSON.stringify(this.vehicle!.toJSON());
+    let vehicle = this.vehicle!.toJSON();
+    vehicle['measurements'] = this.batteryMeasurements.length;
+    return JSON.stringify(vehicle);
   }
 
   /**
-   * Add command listener
+   * Process commands
    */
-  onCommand(commands: Collection<any>, changes: CollectionChangeSet) {
-    // Handle newly added commands
-    changes.insertions.forEach((index) => {
-      const insertedCmd = commands[index];
-      console.log(`New command received: ${insertedCmd.command}, created at: ${insertedCmd._id.getTimestamp()}`);
-      try {
-        this.realm?.write(() => {
-          insertedCmd.status = "processed"
-          //this.realm?.delete(insertedCmd);
-        });
-      } catch (err) {
-        console.error(err);
-      }
+  processCommands(vehicle: Vehicle, changes: any) {
+    console.log(`Changes: ${JSON.stringify(changes)}`);
+    console.log(`Vehicle: ${JSON.stringify(vehicle)}`);
+    if (changes.changedProperties == "commands") {
+      vehicle.commands?.forEach(async (command) => {
+        if (command.status == "submitted") {
+          console.log(JSON.stringify(command));
+          await this.self.realm.write(() => {
+            command.status = "inProgress";
+          });
+          await setTimeout(5000).then(() => {
+            this.resetBattery();
+            this.self.realm.write(() => {
+              command.status = "completed";
+            });
+          });
+        };
+      });
+    }
+    if (changes.deleted) {
+      console.log(`Commands deleted: ${changes.deleted}`);
+    }
+  }
+
+  // Set the battery status back to ok
+  resetBattery() {
+    this.self.realm.write(() => {
+      this.vehicle.battery!.status = "OK";
     });
   }
 

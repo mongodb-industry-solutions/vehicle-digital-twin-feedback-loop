@@ -1,22 +1,20 @@
 import { ObjectId } from 'bson';
-import Realm, { Dictionary } from 'realm';
+import Realm from 'realm';
 
 /**
  * Realm object schema/class definition for a device object within typescript
  */
 export class Vehicle extends Realm.Object<Vehicle> {
-  public _id!: ObjectId | null;
+  public _id!: ObjectId;
   public name!: string;
   public device_id!: string;
   public vin!: string;
   public isOn!: boolean;
-  public commands?: Command[] = [];
+  public commands?: Command[];
   // Field type which supports multiple multiple data types
-  public mixedTypes?: Realm.Mixed | null;
-  // Lie because https://github.com/realm/realm-js/issues/2469
-  public components?: Component[] = [];
-  // Embedded battery object
-  public battery?: Unmanaged<Battery> | null;
+  public mixedTypes?: Realm.Mixed;
+  public components?: Component[];
+  public battery?: Unmanaged<Battery>;
 
   static schema = {
     name: 'Vehicle',
@@ -39,12 +37,11 @@ export class Vehicle extends Realm.Object<Vehicle> {
  * Realm object schema/class definition for an embedded battery object
  */
 export class Battery extends Realm.Object<Battery> {
-  public sn: string = "n/a";
+  public sn?: string;
   public capacity?: number;
   public voltage?: number;
   public current?: number;
   public status?: string;
-
 
   static schema = {
     name: 'Battery',
@@ -58,6 +55,24 @@ export class Battery extends Realm.Object<Battery> {
     }
   }
 }
+
+export class Command extends Realm.Object<Command> {
+  
+  public command?: string;
+  public status?: string;
+  public ts?: Date;
+
+  static schema = {
+    name: 'Command',
+    embedded: true,
+    properties: {
+      command: 'string?',
+      status: 'string?',
+      ts: 'date?'
+    },
+  };
+}
+
 
 /**
  * Realm object schema/class definition for a component object within typescript
@@ -120,34 +135,5 @@ export class Measurement extends Realm.Object<Measurement> {
       voltage: 'int?',
       current: 'int?'
     }
-  }
-}
-
-/**
- * Command object to run operations on the device
- */
-export class Command {
-  public _id: ObjectId = new ObjectId;
-  public device_id!: string;
-  public command: string;
-  public parameter?: Dictionary;
-  public status?: string;
-
-  static schema: Realm.ObjectSchema = {
-    name: 'Command',
-    primaryKey: '_id',
-    properties: {
-      _id: 'objectId',
-      device_id: 'string',
-      command: 'string',
-      parameter: 'string{}',
-      status: 'string'
-    }
-  }
-
-  constructor(device_id: string, command: string, parameter?: Dictionary) {
-    this.device_id = device_id;
-    this.command = command;
-    this.parameter = parameter
   }
 }

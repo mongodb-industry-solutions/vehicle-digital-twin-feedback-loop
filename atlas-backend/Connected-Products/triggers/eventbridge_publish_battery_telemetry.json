@@ -3,7 +3,8 @@
     "type": "DATABASE",
     "config": {
         "operation_types": [
-            "INSERT"
+            "INSERT",
+            "UPDATE"
         ],
         "database": "Vehicles",
         "collection": "Sensor",
@@ -28,14 +29,14 @@
         "full_document": true,
         "full_document_before_change": false,
         "unordered": false,
-        "skip_catchup_events": false,
+        "skip_catchup_events": true,
         "tolerate_resume_errors": true
     },
     "disabled": true,
     "event_processors": {
         "AWS_EVENTBRIDGE": {
             "config": {
-                "account_id": "YOUR AWS ACCOUNT ID",
+                "account_id": "Your AWS Account ID",
                 "extended_json_enabled": false,
                 "region": "us-east-1"
             }

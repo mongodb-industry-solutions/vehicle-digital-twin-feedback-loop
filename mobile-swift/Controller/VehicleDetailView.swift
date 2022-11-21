@@ -23,7 +23,7 @@ struct VehicleDetailView: View {
                         Text(vehicle.vin)
                     }
                     HStack {
-                        Text("Mixed Types")
+                        Text("Miscellaneous")
                         Spacer()
                         switch vehicle.mixedTypes {
                         case .string(_):
@@ -78,6 +78,17 @@ struct VehicleDetailView: View {
                         }
                     }
                 }
+                Section(header: Text("Commands: \(vehicle.commands.count)")) {
+                    List {
+                        ForEach(vehicle.commands) { cmd in
+                            HStack {
+                                Text(cmd.command ?? "")
+                                Spacer()
+                                Text(cmd.status?.rawValue ?? "")
+                            }
+                        }
+                    }
+                }
                 Section(header: Text("Components: \(vehicle.components.count)")) {
                     List {
                         ForEach(vehicle.components, id: \._id) { component in
@@ -87,62 +98,43 @@ struct VehicleDetailView: View {
                         }
                     }
                 }
-                Button("Send Command", action: {showingCommandView = true})
+                Button(action: {showingCommandView = true}){
+                    Text("Send Command").frame(maxWidth: .infinity, alignment: .center)
+                }
             }
         }
         .navigationBarTitle(vehicle.name)
         .sheet(isPresented: $showingCommandView) {
-            // show the add item view
-            CommandView(vehicle: vehicle.thaw()!, isPresented: $showingCommandView)
+            CommandView(vehicle: vehicle, isPresented: $showingCommandView)
         }
     }
 }
 
 struct CommandView: View {
-    @ObservedObject var vehicle: Vehicle
+    @ObservedRealmObject var vehicle: Vehicle
     @Binding var isPresented: Bool
-    @State var command: String = ""
     @State var key: String = ""
     @State var value: String = ""
+    @State private var selectedCommand = "Reset Battery"
+    let commands = ["Reset Battery"]
     
     var body: some View {
-        Text("Submit Command").font(.title)
         VStack() {
-            HStack(){
-                Text("Command")
-                    .font(.title3)
-                    .bold()
-                Spacer()
-            }.padding()
-            HStack() {
-                TextField("Enter Command", text: $command)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Spacer()
-            }.padding()
-            HStack() {
-                Text("Parameter")
-                    .font(.title3)
-                    .bold()
-                Spacer()
-            }.padding()
-            HStack() {
-                TextField("Enter Key", text: $key)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Text(":")
-                TextField("Enter Value", text: $value)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            List {
+                Picker("Commands", selection: $selectedCommand) {
+                    ForEach(commands, id: \.self) {
+                        Text($0)
+                    }
+                }
             }
-        }.padding()
-        Button("Send", action: sendCommand)
-        Button("Dismiss", action: {isPresented = false})
+            HStack() {
+                Button("Send", action: sendCommand)
+            }
+        }
     }
     
     func sendCommand(){
-        $vehicle.commands.append(Command(value: [
-            "device_id": vehicle.device_id,
-            "command": command,
-            "parameter": [key: value],
-            "status": "submitted"]))
+        $vehicle.commands.append(Command(value: ["command": selectedCommand, "status": CmdStatus.submitted]))
         isPresented = false
     }
 }

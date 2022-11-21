@@ -29,7 +29,20 @@
         "commands": {
             "bsonType": "array",
             "items": {
-                "bsonType": "objectId"
+                "bsonType": "object",
+                "properties": {
+                    "command": {
+                        "bsonType": "string"
+                    },
+                    "status": {
+                        "bsonType": "string"
+                    },
+                    "ts": {
+                        "bsonType": "date"
+                    }
+                },
+                "required": [],
+                "title": "Command"
             }
         },
         "components": {
@@ -53,14 +66,8 @@
         "name": {
             "bsonType": "string"
         },
-        "sensor": {
-            "bsonType": "long"
-        },
         "vin": {
             "bsonType": "string"
-        },
-        "voltage": {
-            "bsonType": "long"
         }
     },
     "required": [

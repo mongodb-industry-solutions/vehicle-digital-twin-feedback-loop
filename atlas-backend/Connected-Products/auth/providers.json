@@ -2,7 +2,7 @@
     "anon-user": {
         "name": "anon-user",
         "type": "anon-user",
-        "disabled": true
+        "disabled": false
     },
     "api-key": {
         "name": "api-key",

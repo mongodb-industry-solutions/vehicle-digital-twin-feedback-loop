@@ -25,15 +25,16 @@ ul {
     padding-top: 40px;
 }
 
-#number_components {
+.border_box {
     border-style: solid;
     border-radius: 5px;
     width: 150px;
     text-align: center;
     margin-bottom: 0px;
+    padding: 7px;
 }
 
-#number_components p {
+.border_box p {
     margin-bottom: 0px;
 }
 
@@ -75,7 +76,6 @@ ul {
     width: 120px;
     margin-left: 80%;
     margin-top: -70px;
-
 }
 
 /*Alert icon and tooltip display on hover*/
@@ -112,17 +112,13 @@ ul {
 
 /*Buttons*/
 .col {
-    flex-grow: 0;
+    flex-grow: 1;
     width: 200px;
     margin-right: 30px;
 }
 
 #component_name {
     width: 200px;
-}
-
-#number_components {
-    padding: 7px;
 }
 
 
