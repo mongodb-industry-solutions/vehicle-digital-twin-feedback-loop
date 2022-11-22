@@ -36,7 +36,7 @@
     "event_processors": {
         "AWS_EVENTBRIDGE": {
             "config": {
-                "account_id": "123456789123",
+                "account_id": "AWS Acct ID",
                 "extended_json_enabled": false,
                 "region": "us-east-1"
             }
