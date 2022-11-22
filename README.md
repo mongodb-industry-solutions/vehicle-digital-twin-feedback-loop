@@ -18,3 +18,6 @@ Code samples and demos around using the Realm database in combination with Mongo
 [Setup iOS Mobile Application](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
 
 
+## AWS Sagemaker Integration (WIP)
+
+[Setup AWS Sagemaker Integration](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/aws-sagemaker)
