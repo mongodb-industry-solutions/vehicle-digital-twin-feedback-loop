@@ -81,6 +81,8 @@
       function updateState(device) {
 
         let engine_pic;
+        let alert_pic;
+        let vehicle_pic;
 
         if (device.isOn) {
           engine_pic = "engine_transparent.gif";
@@ -101,6 +103,7 @@
             </ul>
             <div class="alert_message">
               <img id="alert" src="alert_icon_gray.png" alt="Alert Icon" />
+              <h3 id="tooltip">Your battery is not okay</h3>
             </div>
           </div>`;
         $("#device_state").replaceWith(content);
