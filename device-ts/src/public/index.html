@@ -89,14 +89,14 @@
         let alert_off_pic = "alert_icon_gray.png";
         let alert_on_tooltip = "Your battery is not okay";
         let alert_off_tooltip = "";
-        
+
         let vehicle_default_pic = "new_car.png";
         let vehicle_spoiler_pic = "car_spoiler.png";
 
         //Change image of car with spoiler when a component is added
         if (device.components.length >= 1) {
           vehicle_pic = vehicle_spoiler_pic;
-        }  else {
+        } else {
           vehicle_pic = vehicle_default_pic;
         }
 
@@ -113,7 +113,7 @@
         if (device.battery.status == "NOK") {
           alert_pic = alert_on_pic;
           alert_tooltip = alert_on_tooltip;
-        }else{
+        } else {
           alert_pic = alert_off_pic;
           alert_tooltip = alert_off_tooltip;
         }
@@ -139,8 +139,8 @@
 
         updateComponent(device);
         updateMeasurements(device);
-        }
-       
+      }
+
 
       // Update number of components section
       function updateComponent(device) {
