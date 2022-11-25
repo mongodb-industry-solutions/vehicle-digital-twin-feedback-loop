@@ -50,9 +50,13 @@ webserver.get('/subscribe', (req, res) => {
 });
 
 // Callback for vehicle changes
-function refreshDevice() {
-  console.log(realmApp.getDeviceAsJSON());
-  sendRefreshEvent(realmApp.getDeviceAsJSON());
+function refreshDevice(realm: any, string: any) {
+  if (string.deletions.length > 0) {
+    // Vehicle deleted
+  } else {
+    //console.log(realmApp.getDeviceAsJSON());
+    sendRefreshEvent(realmApp.getDeviceAsJSON());
+  }
 }
 
 // Publish vehicle refresh event to browser window

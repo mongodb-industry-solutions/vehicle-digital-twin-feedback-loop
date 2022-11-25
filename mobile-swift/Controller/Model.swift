@@ -9,12 +9,11 @@ import Foundation
 import RealmSwift
 
 class Vehicle: Object, ObjectKeyIdentifiable {
-    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted(primaryKey: true) var _id: String
     @Persisted var battery: Battery?
     @Persisted var components: List<Component>
     @Persisted var current: Int?
     @Persisted var device_id: String = ""
-    @Persisted var vin: String = ""
     @Persisted var isOn: Bool = false
     @Persisted var mixedTypes: AnyRealmValue
     @Persisted var name: String = ""

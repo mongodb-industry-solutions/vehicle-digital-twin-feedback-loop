@@ -5,10 +5,9 @@ import Realm from 'realm';
  * Realm object schema/class definition for a device object within typescript
  */
 export class Vehicle extends Realm.Object<Vehicle> {
-  public _id!: ObjectId;
+  public _id!: string;
   public name!: string;
   public device_id!: string;
-  public vin!: string;
   public isOn!: boolean;
   public commands?: Command[];
   // Field type which supports multiple multiple data types
@@ -20,10 +19,9 @@ export class Vehicle extends Realm.Object<Vehicle> {
     name: 'Vehicle',
     primaryKey: '_id',
     properties: {
-      _id: 'objectId',
+      _id: 'string',
       name: 'string',
       device_id: 'string',
-      vin: 'string',
       isOn: 'bool',
       commands: 'Command[]',
       mixedTypes: 'mixed?',

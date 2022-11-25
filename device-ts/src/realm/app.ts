@@ -57,7 +57,7 @@ class RealmApp {
         let component = new Component(this.realm, { _id: new ObjectId, name: name, device_id: this.app.currentUser!.id });
         this.vehicle.components!.push(component);
       });
-      return { result: "Component created and related to id: " + this.vehicle.name };
+      return { result: "Component created and related to " + this.vehicle.name };
     } catch (error) {
       console.error(error);
       return { result: "Add component failed, no vehicle available!" };
@@ -97,7 +97,7 @@ class RealmApp {
         if (this.batteryMeasurements.length == 20) {
           const sensor = {
             _id: new ObjectId,
-            vin: this.vehicle.vin,
+            vin: this.vehicle._id,
             type: "battery",
             measurements: this.batteryMeasurements
           };
@@ -111,7 +111,7 @@ class RealmApp {
     } catch (err) {
       console.error(err);
     }
-    return ({ result: `Battery status updated: voltage:${values.voltage}, current:${values.current}. Bucket: ${this.batteryMeasurements.length}/20` });
+    return ({ result: `Battery status updated: voltage:${values.voltage}, current:${values.current}, Bucket: ${this.batteryMeasurements.length}/20` });
   }
 
   /**
@@ -127,26 +127,26 @@ class RealmApp {
    * Process commands
    */
   processCommands(vehicle: Vehicle, changes: any) {
-    console.log(`Changes: ${JSON.stringify(changes)}`);
-    console.log(`Vehicle: ${JSON.stringify(vehicle)}`);
-    if (changes.changedProperties == "commands") {
-      vehicle.commands?.forEach(async (command) => {
-        if (command.status == "submitted") {
-          console.log(JSON.stringify(command));
-          await this.self.realm.write(() => {
-            command.status = "inProgress";
-          });
-          await setTimeout(5000).then(() => {
-            this.resetBattery();
-            this.self.realm.write(() => {
-              command.status = "completed";
-            });
-          });
-        };
-      });
-    }
     if (changes.deleted) {
-      console.log(`Commands deleted: ${changes.deleted}`);
+      console.log(`Vehicle removed! ${changes}`);
+    } else {
+      if (changes.changedProperties == "commands") {
+        vehicle.commands?.forEach(async (command) => {
+          if (command.status == "submitted") {
+            console.log(JSON.stringify(command));
+            await this.self.realm.write(() => {
+              command.status = "inProgress";
+            });
+            await setTimeout(5000).then(() => {
+              this.resetBattery();
+              this.self.realm.write(() => {
+                command.status = "completed";
+                console.log(JSON.stringify(command));
+              });
+            });
+          };
+        });
+      }
     }
   }
 
@@ -163,7 +163,7 @@ class RealmApp {
   async cleanupRealm() {
     try {
       // Remove all change listener
-      this.realm!.removeAllListeners();
+      this.vehicle.removeAllListeners();
       // Delete all device and component entries of the current subscription
       this.realm!.write(() => {
         this.realm!.deleteAll();
