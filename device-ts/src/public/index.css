@@ -1,113 +1,82 @@
 body {
-    padding-top: 50px;
+    padding-top: 10px;
 }
 
-#device_state {
-    height: 500px;
-    background-image: url("new_car.png");
-    background-repeat: no-repeat;
-    background-position: 70%;
-    background-color: white;
-    font-size: 30px;
-}
-
-#device_state p {
+#vehicle_section {
     color: black;
     font-size: 16px;
     padding: 5px;
     text-align: center;
 }
 
-/*Tags*/
-ul {
-    list-style: none;
-    padding-left: 0px;
-    padding-top: 40px;
-}
-
-.border_box {
-    border-style: solid;
-    border-radius: 5px;
-    width: 150px;
-    text-align: center;
-    margin-bottom: 0px;
-    padding: 7px;
-}
-
-.border_box p {
-    margin-bottom: 0px;
-}
-
-#device_id {
-    width: 300px;
+/*Information about tags*/
+#vin {
+    width: 250px;
     margin-left: 39%;
-    margin-top: -50px;
+    margin-top: -20px;
     border-radius: 5px;
     border: 2px solid black;
     height: 35px;
+}
+
+#engine_image {
+    width: 120px;
+    margin-left: 580px;
+    margin-top: -60px;
 }
 
 #voltage {
     background-color: #E3FCF7;
     border-radius: 5px;
     width: 100px;
-    margin-left: 52%;
-    margin-top: 5%;
-
+    margin-left: 500px;
+    margin-top: -240px;
 }
 
 #current {
     background-color: #E3FCF7;
     border-radius: 5px;
     width: 100px;
-    margin-left: 52%;
+    margin-left: 500px;
 }
 
 #ison {
     background-color: #F9EBFF;
     border-radius: 5px;
     width: 100px;
-    margin-left: 70%;
+    margin-left: 630px;
     margin-top: -40px;
-}
-
-#engine {
-    width: 120px;
-    margin-left: 80%;
-    margin-top: -70px;
-}
+} 
 
 /*Alert icon and tooltip display on hover*/
-.alert_message {
+.alert_section {
     height: 50px;
 }
 
-#alert {
+#alert_image {
     width: 40px;
-    margin-left: 670px;
-    margin-top: -320px;
+    margin-left: 250px;
+    margin-top: -350px;
 }
 
-.alert_message:hover #tooltip {
+.alert_section:hover #alert_tooltip {
     display: block;
     clip: initial;
     opacity: 1;
     visibility: visible;
     color: white;
-
 }
 
-#tooltip {
+#alert_tooltip {
     visibility: hidden;
     background-color: #ff0000;
     font-size: small;
     text-align: center;
-    margin-left: 650px;
-    margin-top: -155px;
+    margin-left: 620px;
+    margin-top: -160px;
     border-radius: 5px;
-    width: 170px;
+    width: 160px;
 }
-
 
 /*Buttons*/
 .col {
@@ -120,7 +89,6 @@ ul {
     width: 200px;
 }
 
-
 .jumbotron {
     background-color: white;
 }
@@ -131,13 +99,22 @@ ul {
     color: black;
     width: 200px;
     margin: 0px;
-
 }
 
 .btn:hover {
     background-color: #00684A;
 }
 
-#battery_current {
-    background-color: #00ed64;
+/* Bucket info */
+.border_box {
+    border-style: solid;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    margin-bottom: 0px;
+    padding: 7px;
+}
+
+.border_box p {
+    margin-bottom: 0px;
 }

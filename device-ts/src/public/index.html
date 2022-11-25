@@ -13,9 +13,11 @@
 <body>
   <div class="container overflow-hidden">
     <div class="jumbotron">
-      <div id="device_state">
-        <p>Device State</p>
+
+      <div id="vehicle_section">
+        <p>Vehicle</p>
       </div>
+
       <hr class="my-4">
       <div class="row mt-2">
         <div class="col">
@@ -77,54 +79,68 @@
 
     $(document).ready(function () {
 
-      // Update device state section
-      function updateState(device) {
+      // Update vehicle section NEW
+      function updateVehicle(device) {
 
-        let engine_pic;
+        let engine_on_pic = "engine_transparent.gif";
+        let engine_off_pic = "engine_off.png";
 
-        if (device.isOn) {
-          engine_pic = "engine_transparent.gif";
+        let alert_on_pic = "alert_icon_red.png";
+        let alert_off_pic = "alert_icon_gray.png";
+        let alert_on_tooltip = "Your battery is not okay";
+        let alert_off_tooltip = "";
+
+        let vehicle_default_pic = "new_car.png";
+        let vehicle_spoiler_pic = "car_spoiler.png";
+
+        //Change image of car with spoiler when a component is added
+        if (device.components.length >= 1) {
+          vehicle_pic = vehicle_spoiler_pic;
         } else {
-          engine_pic = "engine_off.png";
+          vehicle_pic = vehicle_default_pic;
+        }
+
+        //Display engine image on or off
+        if (device.isOn) {
+          engine_pic = engine_on_pic;
+          engine_status_tag = "Engine on";
+        } else {
+          engine_pic = engine_off_pic;
+          engine_status_tag = "Engine off";
+        }
+
+        //Display alert icon and message for battery status
+        if (device.battery.status == "NOK") {
+          alert_pic = alert_on_pic;
+          alert_tooltip = alert_on_tooltip;
+        } else {
+          alert_pic = alert_off_pic;
+          alert_tooltip = alert_off_tooltip;
         }
 
         const content = `
-          <div id="device_state">
+          <div id="vehicle_section">
               <h1>${device.name}</h1>
               <hr class="my-4">
-            <ul>
-              <li class="short_tag" id="voltage"><p>Voltage: ${device.battery.voltage}</p></li>
-              <li class="short_tag" id="current"><p>Current: ${device.battery.current}</p></li>
-              <li class="short_tag" id="ison"><p>isOn: ${device.isOn}</p></li>
-              <li><img id="engine" src="${engine_pic}" alt="Engine GIF" /></li>
-              <li id="device_id"><p>VIN: ${device.vin}</p></li>
-            </ul>
-            <div class="alert_message">
-              <img id="alert" src="alert_icon_gray.png" alt="Alert Icon" />
-            </div>
+              <img id="vehicle_image" src="${vehicle_pic}" alt="Image of vehicle">
+              <p id="voltage">Voltage: ${device.battery.voltage}</p>
+              <p id="current">Current: ${device.battery.current}</p>
+              <p id="ison">${engine_status_tag}</p>
+              <img id="engine_image" src="${engine_pic}" alt="Engine GIF" />
+              <p id="vin">VIN: ${device.vin}</p>
+            
+              <div class="alert_section">
+                <img id="alert_image" src="${alert_pic}" alt="Alert Icon" />
+                <h3 id="alert_tooltip">${alert_tooltip}</h3>
+              </div>
+              
           </div>`;
-        $("#device_state").replaceWith(content);
-
-        const alertNok = `
-          <div class="alert_message">
-              <img id="alert" src="alert_icon_red.png" alt="Alert Icon" />
-              <h3 id="tooltip">Your battery is not okay</h3>
-            </div>`;
-
-        /* Display alert if status NOK*/
-        if (device.battery.status == "NOK") {
-          $(".alert_message").replaceWith(alertNok);
-        }
-
-
-        //Change background to car with spoiler when a component is added
-        if (device.components.length >= 1) {
-          $("#device_state").css("background-image", "url(car_spoiler.png)");
-        }
+        $("#vehicle_section").replaceWith(content);
 
         updateComponent(device);
         updateMeasurements(device);
       }
+
 
       // Update number of components section
       function updateComponent(device) {
@@ -150,7 +166,7 @@
       }
 
       evtSource.addEventListener("refresh", function (event) {
-        updateState(JSON.parse(event.data));
+        updateVehicle(JSON.parse(event.data));
       });
 
       $("#add_component").click(function () {
