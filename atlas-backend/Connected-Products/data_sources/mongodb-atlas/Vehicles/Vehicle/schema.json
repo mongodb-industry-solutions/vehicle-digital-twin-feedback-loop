@@ -2,7 +2,7 @@
     "bsonType": "object",
     "properties": {
         "_id": {
-            "bsonType": "objectId"
+            "bsonType": "string"
         },
         "battery": {
             "bsonType": "object",
@@ -65,16 +65,12 @@
         },
         "name": {
             "bsonType": "string"
-        },
-        "vin": {
-            "bsonType": "string"
         }
     },
     "required": [
         "_id",
         "name",
         "isOn",
-        "vin",
         "device_id"
     ],
     "title": "Vehicle"

@@ -18,7 +18,7 @@ exports = function(arg){
   
   var collection = context.services.get("mongodb-atlas").db("Vehicles").collection("Vehicle");
     
-  const query = { "vin": arg.fullDocument.vin };
+  const query = { "_id": arg.fullDocument.vin };
   const update = {
     "$set": {
       "battery.status": status
