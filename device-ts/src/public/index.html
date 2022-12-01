@@ -64,7 +64,7 @@
           <button id="add_sensor" type="button" class="btn btn-primary btn-block">Track Telemetry</button>
         </div>
         <div class="col">
-          <p id="measurements">Bucket: 0</p>
+          <p id="measurements">Bucket: 0/20</p>
         </div>
         <div class="col">
         </div>
@@ -155,7 +155,7 @@
       function updateMeasurements(device) {
         const measurements = `
           <div class="border_box" id="measurements">
-            <p>Bucket: <strong>${device.measurements}</strong></p>
+            <p>Bucket: <strong>${device.measurements}/20</strong></p>
           </div>`;
         $("#measurements").replaceWith(measurements);
       }
