@@ -7,17 +7,17 @@ Code samples and demos around using the Realm database in combination with Mongo
 
 ## MongoDB Atlas Backend Setup
 
-[Setup MongoDB Atlas Backend](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/atlas-backend)
+[Setup MongoDB Atlas Backend](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/atlas-backend)
 
 ## Typescript Vehicle Simulator
 
-[Setup Device Simulator](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
+[Setup Device Simulator](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/device-ts)
 
 ## iOS Swift Vehicle Controller Mobile App
 
-[Setup iOS Mobile Application](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/device-ts)
+[Setup iOS Mobile Application](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/device-ts)
 
 
 ## AWS Sagemaker Integration (WIP)
 
-[Setup AWS Sagemaker Integration](https://github.com/mongodb-industry-solutions/connected-devices/tree/main/aws-sagemaker)
+[Setup AWS Sagemaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/aws-sagemaker)
