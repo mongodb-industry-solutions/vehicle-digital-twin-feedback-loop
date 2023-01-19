@@ -15,7 +15,7 @@ Code samples and demos around using the Realm database in combination with Mongo
 
 ## iOS Swift Vehicle Controller Mobile App
 
-[Setup iOS Mobile Application](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/device-ts)
+[Setup iOS Mobile Application](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/mobile-swift)
 
 
 ## AWS Sagemaker Integration (WIP)
