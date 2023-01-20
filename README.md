@@ -15,7 +15,7 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 
 # Step by Step Instructions 
 
-## MongoDB Atlas Backend Setup
+## Step 1: Setup the MongoDB Atlas Backend
 
 [Setup MongoDB Atlas Backend](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/atlas-backend)
 
