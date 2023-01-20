@@ -1,7 +1,15 @@
-# MongoDB & AWS Connected Vehicle End to End Demo Repository
+# Vehicle Digital Twin Demo with MongoDB & AWS 
 Code samples and demos around using the Realm database in combination with MongoDB Atlas, Device Sync and AWS Sagemaker.
 
 [Demo Video](https://youtu.be/8SztdPe6wJA)
+
+# Intro 
+
+A connected vehicle platform opens a window of analytical data that manufacturers can use to provide recommendations for safer, more efficient and improved driving experiences. Personalized driving experiences are made possible through bidirectional information exchange between applications in the car, mobile, webapps and machine learning interfaces in the cloud.
+
+However, creating such a cutting edge connected vehicle platform requires the best-in-class foundation. With MongoDB Atlas and the AWS ecosystem, you are provided with such building blocks. MongoDB is your end-to-end data layer for efficient bidirectional data exchange, ensuring consistency on a mobile device, vehicle, and the cloud. AWS, including SageMaker and its integration capabilities, is your public cloud infrastructure allowing you to gain value out of your data and produce the right recommendations for enhanced driving experiences.
+
+With these tools in mind, let’s begin creating a cutting edge connected vehicle platform!
 
 ![image](media/Overview2.png)
 
