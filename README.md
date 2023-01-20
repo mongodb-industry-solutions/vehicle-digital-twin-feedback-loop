@@ -1,5 +1,5 @@
 # Vehicle Digital Twin Demo with MongoDB & AWS 
-Code samples and demos around using the Realm database in combination with MongoDB Atlas, Device Sync and AWS Sagemaker.
+Code samples and demos using the Realm database with MongoDB Atlas, Device Sync and AWS Sagemaker.
 
 [Demo Video](https://youtu.be/8SztdPe6wJA)
 
