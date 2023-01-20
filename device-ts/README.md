@@ -1,4 +1,4 @@
-# Typescript Sample Code for IoT Device
+# Typescript Sample Code for Vehicle
 
 ## Prerequisites
 
