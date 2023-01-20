@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct LoginView: View {
     // Hold an error if one occurs so we can display it.
     @State var error: Error?
@@ -18,25 +19,28 @@ struct LoginView: View {
     @State var isLoggingIn = false
     var body: some View {
         VStack {
-            Image("LoginScreen")
-                .padding(.top, 50)
-                .padding(.bottom, 25)
-            Text("MongoDB Vehicle Controller")
-                .font(.largeTitle)
+            Image("LoginBack")
+                .padding(.top, 0)
+            Text("Welcome to the Vehicle Controller")
+                .font(.title)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 25)
+                .padding(.top, 25)
+            
             Form {
                 TextField("Username", text: $username)
                 SecureField("Password", text: $password)
             }
+            
             if isLoggingIn {
                 ProgressView()
             }
             if let error = error {
                 Text("Error: \(error.localizedDescription)")
             }
-            Button("Login") {
+            Button("Login")
+            {
                 // Button pressed, so log in
                 isLoggingIn = true
                 app!.login(credentials: .emailPassword(email: username, password: password)) { result in
@@ -52,6 +56,21 @@ struct LoginView: View {
                     print("Logged in")
                 }
             }.disabled(isLoggingIn)
+    
+                .padding()
+                .position(x:200, y:20)
+                .foregroundColor(.green)
+                
+            
+            HStack{
+                Text("Powered by ")
+                    .font(.caption)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 25)
+                Image("LoginAtlas")
+                    .padding(.bottom, 25)
+                    .imageScale(.small)
+            }
         }
     }
 }
