@@ -4,7 +4,7 @@
 
 Install [Node.js](https://nodejs.org/)
 
-## Prepare and run "Device Simulator"
+## Prepare and run "Device Simulator" locally
 
 1. Update Realm App ID in `./src/config.ts`
 2. `cd ./device-ts`
