@@ -1,6 +1,6 @@
 # Typescript Sample Code for IoT Device
 
-## Prerequisits
+## Prerequisites
 
 Install [Node.js](https://nodejs.org/)
 
@@ -15,7 +15,7 @@ Install [Node.js](https://nodejs.org/)
 
 ## Build and run "Device Simulator" locally in a container
 
-Prerequisit:
+Prerequisites:
 - [Docker Desktop](https://www.docker.com/) (may require license!) or alternatively [Colima](https://github.com/abiosoft/colima)
 
 1. `docker build . -t device-ts`
