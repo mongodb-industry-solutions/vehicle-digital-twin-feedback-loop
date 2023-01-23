@@ -8,8 +8,8 @@ This folder contains all the MongoDB Atlas backend configuration files and will 
 2. [Create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it **"Connected-Products"**. <br>Shared clusters should work. Serverless instances are **not yet** supported!
 
 ## Setup the AWS Backend
-1. Create an [AWS Account](https://portal.aws.amazon.com/billing/signup#/start/email)
-2. Take note of your AWS Account ID as you'll need it to set up your Digital Twin Application
+1. Create an [AWS Account](https://portal.aws.amazon.com/billing/signup#/start/email).
+2. Take note of your AWS Account ID as you'll need it to set up your Digital Twin Application.
 
 ## Setup the Digital-Twin Application
 
