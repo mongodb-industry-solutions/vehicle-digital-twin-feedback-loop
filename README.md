@@ -14,9 +14,9 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 
 # Step by Step Instructions 
 
-## Step 1: Set up the MongoDB Atlas Backend
+## Step 1: Set up the MongoDB Atlas Digital-Twin Backend
 
-[Set up the MongoDB Atlas Backend](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/atlas-backend)
+[Set up the MongoDB Atlas Digital-Twin Backend](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/atlas-backend)
 
 ## Step 2: Set up the Typescript Vehicle Simulator
 
