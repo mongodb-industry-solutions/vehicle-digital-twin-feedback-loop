@@ -51,3 +51,6 @@ Prerequisites:
       
       `sudo docker run -p 80:3000 vehicle-ts`
 4. Access simulator UI via http:// PUBLIC IP ADDRESS:80
+
+
+![image](media/Vehicle_Web_UI.png)
