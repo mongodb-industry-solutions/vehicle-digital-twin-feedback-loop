@@ -52,7 +52,7 @@ This folder contains all the MongoDB Atlas backend configuration files and will 
             "email": ,
             "type":
         }
-7. Run the following command: `realm-cli apps list`. 
+7. Run the following command: `realm-cli apps list` to check if your app has been created. 
     
     You should see the following appear: 
         
