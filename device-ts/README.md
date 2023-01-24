@@ -7,7 +7,7 @@ After you've completed one of the options, you should see the following:
 
 ## Prerequisites
 
-Install [Node.js](https://nodejs.org/)
+Install [Node.js v17.9.0 or higher](https://nodejs.org/)
 
 ## Option 1: Prepare and run "Vehicle Simulator" locally
 
