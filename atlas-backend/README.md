@@ -49,7 +49,7 @@ This folder contains all the MongoDB Atlas backend configuration files and will 
         {
             "id": , 
             "enabled": , 
-            "email": 
+            "email": ,
             "type":
         }
 8. Copy the App ID `realm-cli apps list` and continue with configuring / running the vehicle simulator ["device-ts"](https://github.com/mongodb-industry-solutions/Connected-Devices/tree/main/device-ts).
