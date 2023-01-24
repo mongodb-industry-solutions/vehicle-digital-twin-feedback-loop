@@ -14,19 +14,19 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 
 # Step by Step Instructions 
 
-## Step 1: Set up the MongoDB Atlas Digital-Twin Backend
+## Part 1: Set up the MongoDB Atlas Digital-Twin Backend
 
 [Set up the MongoDB Atlas Digital-Twin Backend](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/atlas-backend)
 
-## Step 2: Set up the Typescript Vehicle Simulator
+## Part 2: Set up the Typescript Vehicle Simulator
 
 [Set up the Device Simulator](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/device-ts)
 
-## iOS Swift Vehicle Controller Mobile App
+## Part 3: iOS Swift Vehicle Controller Mobile App
 
 [Setup iOS Mobile Application](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/mobile-swift)
 
 
-## AWS Sagemaker Integration (WIP)
+## Part 4: AWS Sagemaker Integration (WIP)
 
 [Set up AWS Sagemaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/aws-sagemaker)
