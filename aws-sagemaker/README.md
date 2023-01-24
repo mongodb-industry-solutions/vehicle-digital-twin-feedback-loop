@@ -9,6 +9,7 @@ For visualization purposes, the connected vehicle environment will function like
 ## Setup the AWS Backend
 1. Create an [AWS Account](https://portal.aws.amazon.com/billing/signup#/start/email).
 2. Take note of your AWS Account ID as you'll need it to set up your Digital Twin Application.
+3. Update your AWS Account ID in `./Connected-Products/triggers/eventbridge_publish_battery_telemetry.json`
 
 ## Please refer to the MongoDB Partner's team link. 
 
