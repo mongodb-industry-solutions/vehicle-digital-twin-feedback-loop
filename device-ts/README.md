@@ -56,5 +56,5 @@ Prerequisites:
       `sudo docker run -p 80:3000 vehicle-ts`
 4. Access simulator UI via http:// PUBLIC IP ADDRESS:80
 
-
+## After you've completed one of the options, you should see something like the gif below! 
 ![till](VehicleGIF.gif)
