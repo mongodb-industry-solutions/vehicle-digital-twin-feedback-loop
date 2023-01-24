@@ -26,6 +26,8 @@ In order to the make the demo work end-to-end, you will need to set up the backe
         ...
     
         Successfully pushed app up: Your App ID 
+    
+    Your App ID should be in the following format: YourAppName-XXXX
 
 
 6. Copy the returned App ID and use it to create the demo user by pasting the following into your command shell: `realm-cli users create --type email --email demo --password demopw`
