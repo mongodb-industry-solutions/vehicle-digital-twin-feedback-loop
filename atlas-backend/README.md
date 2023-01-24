@@ -17,25 +17,27 @@ This folder contains all the MongoDB Atlas backend configuration files and will 
 2. [Generate API key](https://www.mongodb.com/docs/atlas/app-services/cli/#generate-an-api-key)
 3. [Login with your API key](https://www.mongodb.com/docs/atlas/app-services/cli/#authenticate-with-an-api-key)
 4. Update your AWS Account ID in `./Connected-Products/triggers/eventbridge_publish_battery_telemetry.json`
-5. Navigate into the folder Digital-Twins-With-AWS/atlas-backend and import the Connected-Products application `realm-cli push --local ./Connected-Products --remote Connected-Products` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs. You should see the following questions appear: 
+5. Navigate into the folder Digital-Twins-With-AWS/atlas-backend and import the Connected-Products application `realm-cli push --local ./Connected-Products --remote Connected-Products` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs. 
 
-    'Do you wish to create a new app? 
+    You should see the following questions appear: 
 
-    App Name 
+        Do you wish to create a new app? 
 
-    App Location 
+        App Name 
 
-    App Deployment Model 
+        App Location 
 
-    App Environment 
+        App Deployment Model 
 
-    Please confirm the new app details show above 
+        App Environment 
 
-    App created successfully
+        Please confirm the new app details show above 
+
+        App created successfully
     
-    ...
+        ...
     
-    Successfully pushed app up: Your App ID '
+        Successfully pushed app up: Your App ID 
 
 
 6. Copy the returned App ID and use it to create the demo user: `realm-cli users create --type email --email demo --password demopw`
