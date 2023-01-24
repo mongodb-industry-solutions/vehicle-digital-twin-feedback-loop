@@ -25,8 +25,11 @@ Install [Node.js](https://nodejs.org/)
 Prerequisites:
 - [Docker Desktop](https://www.docker.com/) (may require license!) or alternatively [Colima](https://github.com/abiosoft/colima)
 
-1. `docker build . -t vehicle-ts`
-2. `docker run -p 3000:3000 vehicle-ts`
+1. Run the following commands: 
+    
+    `docker build . -t vehicle-ts`
+    
+    `docker run -p 3000:3000 vehicle-ts`
 
 ## Option 3: Build and run "Vehicle Simulator" on AWS VM
 
