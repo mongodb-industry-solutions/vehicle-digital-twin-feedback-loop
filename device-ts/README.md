@@ -6,7 +6,7 @@ Here you will set up your vehicle simulator. We've provided three options for yo
 
 Install [Node.js](https://nodejs.org/)
 
-## Prepare and run "Vehicle Simulator" locally
+## Option 1: Prepare and run "Vehicle Simulator" locally
 
 1. Update Realm App ID in `./src/config.ts`
 2. `cd ./device-ts`
@@ -15,7 +15,7 @@ Install [Node.js](https://nodejs.org/)
 6. `npm start`
 7. Open web console http://localhost:3000
 
-## Build and run "Vehicle Simulator" locally in a container
+## Option 2: Build and run "Vehicle Simulator" locally in a container
 
 Prerequisites:
 - [Docker Desktop](https://www.docker.com/) (may require license!) or alternatively [Colima](https://github.com/abiosoft/colima)
@@ -23,7 +23,7 @@ Prerequisites:
 1. `docker build . -t device-ts`
 2. `docker run -p 3000:3000 device-ts`
 
-## Build and run "Vehicle Simulator" on AWS VM
+## Option 3: Build and run "Vehicle Simulator" on AWS VM
 
 1. `Sudo yum update`
 2. `Sudo yum install docker`
