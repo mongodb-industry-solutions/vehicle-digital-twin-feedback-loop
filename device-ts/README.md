@@ -3,8 +3,7 @@
 Here you will set up your vehicle simulator. We've provided three options for you to do so: locally, locally in a container, or on AWS VM. The most straightforward way is to run it locally, but you are free to choose the option best fit for you! 
 
 After you've completed one of the options, you should see the following: 
-
-
+![till](VehicleGIF.gif)
 
 ## Prerequisites
 
@@ -56,5 +55,3 @@ Prerequisites:
       `sudo docker run -p 80:3000 vehicle-ts`
 4. Access simulator UI via http:// PUBLIC IP ADDRESS:80
 
-## After you've completed one of the options, you should see something like the gif below! 
-![till](VehicleGIF.gif)
