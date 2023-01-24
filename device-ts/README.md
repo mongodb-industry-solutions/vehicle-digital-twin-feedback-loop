@@ -18,7 +18,7 @@ Install [Node.js](https://nodejs.org/)
       `npm run build`
       
       `npm start`
-3. Open web console http://localhost:3000
+3. Open the web console http://localhost:3000
 
 ## Option 2: Build and run "Vehicle Simulator" locally in a container
 
