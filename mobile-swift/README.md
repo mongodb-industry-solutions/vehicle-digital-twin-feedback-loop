@@ -1,7 +1,7 @@
 
 # iOS Swift Sample IoT Device Controller App
 
-Congrats! You've finished part 1 and 2 where you set up the Atlas Backend and created the vehicle simulator. Now we'll create the Vehicle Controller Mobile Application. 
+Congrats! You've finished part 1 and 2 where you set up the Atlas Backend and created the vehicle simulator. Now we'll show you how to create the Vehicle Controller Mobile Application. 
 
 ## Prepare and run iOS mobile app
 
