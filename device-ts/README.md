@@ -33,12 +33,21 @@ Prerequisites:
 
 ## Option 3: Build and run "Vehicle Simulator" on AWS VM
 
-1. `Sudo yum update`
-2. `Sudo yum install docker`
-3. `sudo systemctl enable docker.service`
-4. `sudo systemctl start docker.service`
-5. `git clone https://github.com/mongodb-industry-solutions/Connected-Products.git`
-6. Change the config file app id
-7. `sudo docker build . -t vehicle-ts`
-8. `sudo docker run -p 80:3000 vehicle-ts`
-9. Access simulator UI via http:// PUBLIC IP ADDRESS:80
+1. Run the following commands: 
+      
+      `Sudo yum update`
+      
+      `Sudo yum install docker`
+      
+      `sudo systemctl enable docker.service`
+
+      `sudo systemctl start docker.service`
+
+      `git clone https://github.com/mongodb-industry-solutions/Connected-Products.git`
+2. Update your App ID (from Part 1) in `./src/config.ts`
+3. Run the following commands:
+
+      `sudo docker build . -t vehicle-ts`
+      
+      `sudo docker run -p 80:3000 vehicle-ts`
+4. Access simulator UI via http:// PUBLIC IP ADDRESS:80
