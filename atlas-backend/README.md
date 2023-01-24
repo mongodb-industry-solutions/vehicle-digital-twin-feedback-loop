@@ -1,6 +1,6 @@
 # MongoDB Atlas Digital-Twin Backend
 
-This folder contains all the MongoDB Atlas backend configuration files and will demonstrate how to set up the MongoDB Atlas backend and Digital-Twin Application.
+In order to the make the demo work end-to-end, you will need to set up the backend. Let's get started! 
 
 ## Setup the MongoDB Atlas Backend
 
