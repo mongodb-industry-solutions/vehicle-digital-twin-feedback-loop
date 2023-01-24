@@ -12,7 +12,7 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 
 ![image](media/Overview_New.png)
 
-# Step by Step Instructions 
+# Set Up Instructions 
 
 ## Part 1: Set up the MongoDB Atlas Digital-Twin Backend
 
@@ -30,3 +30,6 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 ## Part 4: AWS Sagemaker Integration (WIP)
 
 [Set up AWS Sagemaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/aws-sagemaker)
+
+# Step by Step Demonstration 
+[Step by Step Demonstration] ()
