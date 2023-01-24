@@ -19,19 +19,7 @@ In order to the make the demo work end-to-end, you will need to set up the backe
 4. Update your AWS Account ID in `./Connected-Products/triggers/eventbridge_publish_battery_telemetry.json`
 5. Navigate into the folder Digital-Twins-With-AWS/atlas-backend and import the Connected-Products application `realm-cli push --local ./Connected-Products --remote Connected-Products` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs. 
 
-    You should see the following questions appear: 
-
-        Do you wish to create a new app? 
-
-        App Name 
-
-        App Location 
-
-        App Deployment Model 
-
-        App Environment 
-
-        Please confirm the new app details show above 
+    You should see the following appear: 
 
         App created successfully
     
