@@ -10,7 +10,7 @@ However, creating such a cutting edge connected vehicle platform requires the be
 
 With these tools in mind, let’s begin creating a cutting edge connected vehicle platform!
 
-![image](media/Overview2.png)
+![image](media/Overview_New.png)
 
 # Step by Step Instructions 
 
