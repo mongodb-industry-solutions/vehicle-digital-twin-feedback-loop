@@ -2,7 +2,7 @@
 
 Here you will set up your vehicle simulator. We've provided three options for you to do so: locally, locally in a container, or on AWS VM. The most straightforward way is to run it locally, but you are free to choose the option best fit for you! 
 
-After you've completed one of the options, you should see the following! 
+After you've completed one of the options, you should see the following: 
 
 
 
