@@ -8,7 +8,7 @@ Install [Node.js](https://nodejs.org/)
 
 ## Option 1: Prepare and run "Vehicle Simulator" locally
 
-1. Update Realm App ID in `./src/config.ts`
+1. Update your App ID (from Part 1) in `./src/config.ts`
 2. `cd ./vehicle-ts`
 3. `npm install`
 4. `npm run build`
