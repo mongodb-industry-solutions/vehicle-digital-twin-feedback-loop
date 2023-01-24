@@ -10,5 +10,7 @@ Congrats! You've finished part 1 and 2 where you set up the Atlas Backend and cr
 3. Update ```Atlas_App_ID = <-- Your Atlas App ID -->```
 4. Run the the app. Sometimes it may be required to reset the package caches in Xcode -> ```'File -> Packages -> Reset Package Caches'```
 
+![image](Mobileapp.png)
+
 ## Continue with Part 4 where you will work on the AWS Sagemaker Integration
 Part 4: [Set up the AWS Sagemaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/aws-sagemaker)
