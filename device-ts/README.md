@@ -57,4 +57,4 @@ Prerequisites:
 4. Access simulator UI via http:// PUBLIC IP ADDRESS:80
 
 
-![image](Vehicle_Web_UI.png)
+![till](VehicleGIF.gif)
