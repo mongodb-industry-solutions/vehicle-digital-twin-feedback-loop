@@ -1,6 +1,8 @@
 
 # iOS Swift Sample IoT Device Controller App
 
+Congrats! You've finished part 1 and 2 where you set up the Atlas Backend and created 
+
 ## Prepare and run iOS mobile app
 
 1. Open the Controller.xcodeproj with XCode
