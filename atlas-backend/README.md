@@ -30,7 +30,7 @@ In order to the make the demo work end-to-end, you will need to set up the backe
     Your App ID should be in the following format: YourAppName-XXXX
 
 
-6. Copy the returned App ID and use it to create the demo user by pasting the following into your command shell: `realm-cli users create --type email --email demo --password demopw`
+6. Copy the returned App ID and use it to create the demo user by pasting the following into your command shell: `realm-cli users create --type email --email demo --password demopw`. Be sure to change the default password. 
 
     You should see the following appear: 
         
