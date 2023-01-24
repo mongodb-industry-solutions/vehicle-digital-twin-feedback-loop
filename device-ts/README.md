@@ -9,11 +9,16 @@ Install [Node.js](https://nodejs.org/)
 ## Option 1: Prepare and run "Vehicle Simulator" locally
 
 1. Update your App ID (from Part 1) in `./src/config.ts`
-2. `cd ./vehicle-ts`
-3. `npm install`
-4. `npm run build`
-6. `npm start`
-7. Open web console http://localhost:3000
+2. Run the following commands: 
+      
+      `cd ./vehicle-ts`
+      
+      `npm install`
+      
+      `npm run build`
+      
+      `npm start`
+3. Open web console http://localhost:3000
 
 ## Option 2: Build and run "Vehicle Simulator" locally in a container
 
