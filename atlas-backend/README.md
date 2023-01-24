@@ -7,10 +7,6 @@ In order to the make the demo work end-to-end, you will need to set up the backe
 1. Create a [MongoDB Cloud](https://cloud.mongodb.com/) user account and ensure that you have access to an organization/project. 
 2. [Create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it **"Connected-Products"**. <br>Shared clusters should work. Serverless instances are **not yet** supported!
 
-## Setup the AWS Backend
-1. Create an [AWS Account](https://portal.aws.amazon.com/billing/signup#/start/email).
-2. Take note of your AWS Account ID as you'll need it to set up your Digital Twin Application.
-
 ## Setup the Digital-Twin Application
 
 1. [Install realm-cli](https://www.mongodb.com/docs/atlas/app-services/cli/#installation)
