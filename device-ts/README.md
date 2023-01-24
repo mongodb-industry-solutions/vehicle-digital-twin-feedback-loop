@@ -47,7 +47,7 @@ Prerequisites:
       `sudo systemctl start docker.service`
 
       `git clone https://github.com/mongodb-industry-solutions/Connected-Products.git`
-2. Update your App ID (from Part 1) in `./src/config.ts`
+2. Update your App ID (from [Part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/atlas-backend/README.md)) in `./src/config.ts`
 3. Run the following commands:
 
       `sudo docker build . -t vehicle-ts`
