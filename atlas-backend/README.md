@@ -60,4 +60,4 @@ This folder contains all the MongoDB Atlas backend configuration files and will 
             Your App ID (Session ID) 
 
 
-8. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["device-ts"](https://github.com/mongodb-industry-solutions/Connected-Devices/tree/main/device-ts).
+8. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["device-ts"](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/device-ts).
