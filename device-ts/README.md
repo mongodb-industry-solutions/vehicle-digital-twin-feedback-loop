@@ -9,7 +9,7 @@ Install [Node.js](https://nodejs.org/)
 ## Option 1: Prepare and run "Vehicle Simulator" locally
 
 1. Update Realm App ID in `./src/config.ts`
-2. `cd ./device-ts`
+2. `cd ./vehicle-ts`
 3. `npm install`
 4. `npm run build`
 6. `npm start`
@@ -20,8 +20,8 @@ Install [Node.js](https://nodejs.org/)
 Prerequisites:
 - [Docker Desktop](https://www.docker.com/) (may require license!) or alternatively [Colima](https://github.com/abiosoft/colima)
 
-1. `docker build . -t device-ts`
-2. `docker run -p 3000:3000 device-ts`
+1. `docker build . -t vehicle-ts`
+2. `docker run -p 3000:3000 vehicle-ts`
 
 ## Option 3: Build and run "Vehicle Simulator" on AWS VM
 
@@ -31,6 +31,6 @@ Prerequisites:
 4. `sudo systemctl start docker.service`
 5. `git clone https://github.com/mongodb-industry-solutions/Connected-Products.git`
 6. Change the config file app id
-7. `sudo docker build . -t device-ts`
-8. `sudo docker run -p 80:3000 device-ts`
+7. `sudo docker build . -t vehicle-ts`
+8. `sudo docker run -p 80:3000 vehicle-ts`
 9. Access simulator UI via http:// PUBLIC IP ADDRESS:80
