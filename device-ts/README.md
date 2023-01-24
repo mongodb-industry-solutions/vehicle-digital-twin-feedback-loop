@@ -2,6 +2,10 @@
 
 Here you will set up your vehicle simulator. We've provided three options for you to do so: locally, locally in a container, or on AWS VM. The most straightforward way is to run it locally, but you are free to choose the option best fit for you! 
 
+After you've completed one of the options, you should see the following! 
+
+
+
 ## Prerequisites
 
 Install [Node.js](https://nodejs.org/)
@@ -18,7 +22,7 @@ Install [Node.js](https://nodejs.org/)
       `npm run build`
       
       `npm start`
-3. Open the web console http://localhost:3000. You should see the following image: 
+3. Open the web console http://localhost:3000. 
 
 ## Option 2: Build and run "Vehicle Simulator" locally in a container
 
