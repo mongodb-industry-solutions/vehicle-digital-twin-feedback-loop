@@ -4,7 +4,7 @@ Now that you've finished the first three parts, you can start setting up your AW
 
 For visualization purposes, the connected vehicle environment will function like the image below. But we'll get into more detail on that in the demo section! For now let's set up the AWS Sagemaker Integration. 
 
-(https://user-images.githubusercontent.com/114057324/199659004-49177737-3e80-4656-9a5b-e219dbedc296.png) 
+![image](https://user-images.githubusercontent.com/114057324/199659004-49177737-3e80-4656-9a5b-e219dbedc296.png) 
 
 ## Please refer to the MongoDB Partner's team link. 
 
