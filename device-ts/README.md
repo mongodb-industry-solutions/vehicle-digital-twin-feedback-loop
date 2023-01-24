@@ -11,7 +11,7 @@ Install [Node.js v17.9.0 or higher](https://nodejs.org/)
 
 ## Option 1: Prepare and run "Vehicle Simulator" locally
 
-1. Update your App ID (from Part 1) in `./src/config.ts`
+1. Update your App ID (from [Part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/atlas-backend/README.md)) in `./src/config.ts`
 2. Run the following commands: 
       
       `cd ./vehicle-ts`
