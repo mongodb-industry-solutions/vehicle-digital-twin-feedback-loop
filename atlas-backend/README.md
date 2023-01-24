@@ -12,8 +12,7 @@ In order to the make the demo work end-to-end, you will need to set up the backe
 1. [Install realm-cli](https://www.mongodb.com/docs/atlas/app-services/cli/#installation)
 2. [Generate API key](https://www.mongodb.com/docs/atlas/app-services/cli/#generate-an-api-key)
 3. [Login with your API key](https://www.mongodb.com/docs/atlas/app-services/cli/#authenticate-with-an-api-key)
-4. Update your AWS Account ID in `./Connected-Products/triggers/eventbridge_publish_battery_telemetry.json`
-5. Navigate into the folder Digital-Twins-With-AWS/atlas-backend and import the Connected-Products application `realm-cli push --local ./Connected-Products --remote Connected-Products` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs. If you are unsure which options to choose, the default ones are usually a good way to start! 
+4. Navigate into the folder Digital-Twins-With-AWS/atlas-backend and import the Connected-Products application `realm-cli push --local ./Connected-Products --remote Connected-Products` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs. If you are unsure which options to choose, the default ones are usually a good way to start! 
 
     After you've chosen your options, you should see the following appear: 
 
@@ -26,7 +25,7 @@ In order to the make the demo work end-to-end, you will need to set up the backe
     Your App ID should be in the following format: YourAppName-XXXX
 
 
-6. Copy the returned App ID and use it to create the demo user by pasting the following into your command shell: `realm-cli users create --type email --email demo --password demopw`. Be sure to change the default password. 
+5. Copy the returned App ID and use it to create the demo user by pasting the following into your command shell: `realm-cli users create --type email --email demo --password demopw`. Be sure to change the default password. 
 
     You should see the following appear: 
         
@@ -38,7 +37,7 @@ In order to the make the demo work end-to-end, you will need to set up the backe
             "email": ,
             "type":
         }
-7. Run the following command: `realm-cli apps list` to check if your app has been created. 
+6. Run the following command: `realm-cli apps list` to check if your app has been created. 
     
     You should see the following appear: 
         
@@ -46,4 +45,4 @@ In order to the make the demo work end-to-end, you will need to set up the backe
             Your App ID (Session ID) 
 
 
-8. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["device-ts"](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/device-ts).
+7. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["device-ts"](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/device-ts).
