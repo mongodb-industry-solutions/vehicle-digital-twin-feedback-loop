@@ -28,7 +28,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 
 ## Web UI and Mobile app
     
-   1. Open the web console [http://localhost:3000]( http://localhost:3000). You should see the following WebUI of the connected vehicle
+   1. Open the web console [http://localhost:3000]( http://localhost:3000). You should see the below WebUI of the connected vehicle:
    
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/vehicle.png)
    
