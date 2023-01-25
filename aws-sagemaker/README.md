@@ -13,7 +13,7 @@ For visualization purposes, the connected vehicle environment will function like
 
 ## Please refer to the MongoDB Partner's team link. 
 
-You can skip directly to the "Setup Eventbridge triggers from MongoDB Atlas" section: [Vehicle-Digital-Twin Solution](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
+You can skip directly to the *"Setup Eventbridge triggers from MongoDB Atlas"* section: [Vehicle-Digital-Twin Solution](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
 
 ## 
 
