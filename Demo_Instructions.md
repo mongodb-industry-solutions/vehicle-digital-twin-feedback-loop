@@ -28,7 +28,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
     
    1. Open the web console [http://localhost:3000]( http://localhost:3000). You should see the following WebUI of the connected vehicle
    
-   [screenshot of WebUI] 
+![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/vehicle.png)
    
    2. **Turning your engine on/off:** 
   To illustratate how fast data is synchronized between the vehicle model and the mobile app you can for example turn on the engine, by clicking on the       toggle button on your app and see how the engine gif starts moving indicated the negine has been turned on. 
