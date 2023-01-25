@@ -6,7 +6,7 @@ Now that we’ve set up data management in the vehicle, the cloud, and how to sy
 
 (If you're interested in watching the video format of this, feel free to click [Demo Video](https://youtu.be/8SztdPe6wJA).) 
 
-![image](https://user-images.githubusercontent.com/114057324/199659004-49177737-3e80-4656-9a5b-e219dbedc296.png) 
+![image](media/EndToEnd2.png) 
 
 *Quick Take* 
 
