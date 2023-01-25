@@ -53,7 +53,8 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
    
     [screenshot here] 
 
-## App Services 
+## App Services & Telemetry Information 
+
 1. Navigate to App Services. 
 2. Navigate to Triggers under App Services. You'll see three triggers: 
     * publish_battery_inference 
@@ -66,12 +67,14 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
     * etc. 
     
     [insert Screenshot here] 
+ 
+ 4. You'll see that the publish battery inference function is run. If you want, you can navigate to the Functions tab in Atlas and you'll see that the publish_battery_inference JavaScrip function updates the vehicle model. 
+ 
+    [insert screenshot here] 
     
+## WebUI and Mobile App 
 
 
 
-
-## Telemetry information
-We can then synchronize Telemetry information, you see the vehicle is updated to the same information is shared with the mobile app as well. 
 
 ## Status alerts
