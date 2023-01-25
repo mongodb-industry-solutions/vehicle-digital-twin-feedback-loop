@@ -7,7 +7,7 @@ For visualization purposes, the connected vehicle environment will function like
 ![image](https://user-images.githubusercontent.com/114057324/199659004-49177737-3e80-4656-9a5b-e219dbedc296.png) 
 
 ## Set up the AWS Integration
-1. You can skip directly to the *"Setup Eventbridge triggers from MongoDB Atlas"* section: [Vehicle-Digital-Twin Solution](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
+[Setup Instructions for MongoDB and AWS Sagemaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
 
 ## Congrats!
 You've now successfully set up everything you need to run a Digital Twin demonstration:  
