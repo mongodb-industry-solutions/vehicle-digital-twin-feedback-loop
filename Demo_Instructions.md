@@ -18,7 +18,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 
    * In the MongoDB Atlas Cloud dashboard we can see 3 collections: Vehicle information, Sensor, Components.
     
-     ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/Atlas.png)
+     ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/collections.png)
 
 ## To start the vehicle
 
@@ -37,7 +37,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
   
    3. **Adding components**:To further explain a little bit of the data modeling, we've also added a functionality to create related components. You can add a component by clicking "add component" in in the web UI and you will see that information (that object) which is created for the spoiler is immediately synchronized with the mobile device as well. 
     
-    [screenshot of add component part and mobile app] 
+![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/component.png)   
    
    4. **Offline capablities**: You can also simulate what happens when the vehicle is not online. Since we are using a database inside the vehicle, all the   data changes are tracked and once you resume and click "sync", you will see that the status is immediately updated. Offline capabilities are intact! This is exciting, because you get actual live information about the vehicle. Think of how many sensors change way too frequently and need to be synchronized with every single change to the cloud backend. What we've implemented here with MongoDB Realm's offline capabilities is a bucketing pattern. 
    
@@ -77,7 +77,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 1. Navigate back to App Services into "Schema" 
 2. Click on "Vehicle" schema. You will then see the JSON schema for the object. The object is automatically converted into classes for the different Realm SDKs. Below you'll see the relationship between the component and the vehicle: 
 
-    [insert screenshot here] 
+![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/schema.png)
     
  3. This schema is automatically synchronized with the GraphQL schema. And if you navgigate into the GraphQL button, you'll see that you can directly query all of the relevant information across these different collections without doing any joins! 
   
