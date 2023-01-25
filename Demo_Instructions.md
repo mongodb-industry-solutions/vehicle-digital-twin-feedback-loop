@@ -39,19 +39,13 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
     
     [screenshot of add component part and mobile app] 
    
-   4. **Offline capablities**: You can also simulate what happens when the vehicle is not online. Since we are using a database inside the vehicle, all the   data changes are tracked and once you resume and click "sync", you will see that the status is immediately updated. Offline capabilities are intact! 
-
-    [screenshot of sync here] 
+   4. **Offline capablities**: You can also simulate what happens when the vehicle is not online. Since we are using a database inside the vehicle, all the   data changes are tracked and once you resume and click "sync", you will see that the status is immediately updated. Offline capabilities are intact! This is exciting, because you get actual live information about the vehicle. Think of how many sensors change way too frequently and need to be synchronized with every single change to the cloud backend. What we've implemented here with MongoDB Realm's offline capabilities is a bucketing pattern. 
    
-   5. **Offline capablities**: You can also simulate what happens when the vehicle is not online. Since we are using a database inside the vehicle, all the   data changes are tracked and once you resume and click "sync", you will see that the status is immediately updated. Offline capabilities are intact! This is exciting, because you get actual live information about the vehicle. Think of how many sensors change way too frequently and need to be synchronized with every single change to the cloud backend. What we've implemented here with MongoDB Realm's offline capabilities is a bucketing pattern. 
-   
-   [screenshot here] 
-   
-   6. **Bucketing pattern in action**: Let's store 20 records in our bucket. You'll see this number on the "Bucket: x number" button. Click the "Track Telemetry Button" until you've reached 20 items in the "Bucket" button. 
+   5. **Bucketing pattern in action**: Let's store 20 records in our bucket. You'll see this number on the "Bucket: x number" button. Click the "Track Telemetry Button" until you've reached 20 items in the "Bucket" button. 
 
     [screenshot here] 
 
-   8. **Sensor record**: Navigate back to your MongoDB Atlas account and into the Sensor collection. There you'll see under "measurements" 20 different objects representing: timestamp, voltage and current. 
+   6. **Sensor record**: Navigate back to your MongoDB Atlas account and into the Sensor collection. There you'll see under "measurements" 20 different objects representing: timestamp, voltage and current. 
    
     [screenshot here] 
 
@@ -67,8 +61,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
     * Database Name: Integrations 
     * Collection Name: Sagemaker 
     * etc. 
-    
-    [insert Screenshot here] 
+  
  
  4. You'll see that the publish battery inference function ran. If you want, you can navigate to the Functions tab in Atlas and you'll see that the publish_battery_inference JavaScrip function updates the vehicle model. You should see a red exclamation symbol on the WebUI as well as the mobile app. 
  
