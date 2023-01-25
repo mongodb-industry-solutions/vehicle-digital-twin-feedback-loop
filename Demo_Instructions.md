@@ -20,9 +20,11 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
     
      ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/Atlas.png)
 
-## Run npm start to start the vehicle
-   
-   [screenshot here of code starting the vehicle] 
+## To start the vehicle
+
+   Open the terminal window in the following path: Digital-Twins-With-AWS/device-ts/. And then run the following command: 
+      
+      npm start
 
 ## Web UI and Mobile app
     
