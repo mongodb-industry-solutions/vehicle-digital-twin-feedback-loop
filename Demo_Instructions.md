@@ -26,7 +26,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 
 ## Web UI and Mobile app
     
-   1. Type localhost:3000 in your browser, and you should see the following WebUI of the connected vehicle
+   1. Open the web console [http://localhost:3000]( http://localhost:3000). You should see the following WebUI of the connected vehicle
    
    [screenshot of WebUI] 
    
