@@ -1,6 +1,6 @@
 # Setup Instructions for AWS Sagemaker Integration
 
-Now that you've finished the first three parts ([part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/atlas-backend), part 2, part 3) , you can start setting up your AWS Sagemaker integration. The AWS Sagemaker integration allows you to analyze your data and then send that analyzed data back to MongoDB Atlas and consequently to the the users of the devices. 
+Now that you've finished the first three parts ([part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/atlas-backend), [part 2](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/device-ts), part 3) , you can start setting up your AWS Sagemaker integration. The AWS Sagemaker integration allows you to analyze your data and then send that analyzed data back to MongoDB Atlas and consequently to the the users of the devices. 
 
 For visualization purposes, the connected vehicle environment will function like the image below. But we'll get into more detail on that in the demo section! For now let's set up the AWS Sagemaker Integration. 
 
