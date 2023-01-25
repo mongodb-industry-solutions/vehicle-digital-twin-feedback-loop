@@ -35,7 +35,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
    2. **Turning your engine on/off:** 
   To illustrate how fast data is synchronized between the vehicle model and the mobile app you can for example turn on the engine, by clicking on the       toggle button on your app and see how the engine gif starts moving indicating that the engine has been turned on. 
   
-   3. **Adding components**:To further explain a little bit of the data modeling, we've also added a functionality to create related components. You can add a component by clicking "add component" in in the web UI and you see that information (that object) which is created for the spoiler is immediately synchronized with the mobile device as well. 
+   3. **Adding components**:To further explain a little bit of the data modeling, we've also added a functionality to create related components. You can add a component by clicking "add component" in in the web UI and you will see that information (that object) which is created for the spoiler is immediately synchronized with the mobile device as well. 
     
     [screenshot of add component part and mobile app] 
    
