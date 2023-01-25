@@ -18,7 +18,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 
    * In the MongoDB Atlas Cloud dashboard we can see 3 collections: Vehicle information, Sensor, Components.
     
-      [screenshot here with red box around Vehicles, Component, Sensor, Vehicle] 
+     ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/Atlas.png)
 
 ## Run npm start to start the vehicle
    
