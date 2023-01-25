@@ -4,7 +4,7 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
 
 For visualization purposes, the connected vehicle environment will function like the image below. But we'll get into more detail on that in the [demo section](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/Demo_Instructions.md)! For now let's set up the AWS Sagemaker Integration. 
 
-![image](https://user-images.githubusercontent.com/114057324/199659004-49177737-3e80-4656-9a5b-e219dbedc296.png) 
+![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/EndToEnd.png) 
 
 ## Set up the AWS Integration
 [Setup Instructions for MongoDB and AWS Sagemaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
