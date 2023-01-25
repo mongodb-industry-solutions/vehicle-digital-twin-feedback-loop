@@ -1,5 +1,5 @@
 
-# iOS Swift Vehicle Controller App
+# Vehicle Controller App (iOS Swift)
 
 Congrats! You've finished [part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/atlas-backend) and [part 2](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/device-ts) where you set up the Atlas Backend and created the vehicle simulator. Now we'll show you how to create the Vehicle Controller Mobile Application. 
 
