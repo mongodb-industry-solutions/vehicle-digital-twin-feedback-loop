@@ -1,12 +1,10 @@
-# Vehicle Digital Twin Set Up with MongoDB & AWS 
-
-[Demo Video](https://youtu.be/8SztdPe6wJA)
-
-# Intro 
+# Vehicle Digital Twin Set Up with MongoDB & AWS  
 
 A connected vehicle platform opens a window of analytical data that manufacturers can use to provide recommendations for safer, more efficient and improved driving experiences. Personalized driving experiences are made possible through bidirectional information exchange between applications in the car, mobile, webapps and machine learning interfaces in the cloud.
 
 However, creating such a cutting edge connected vehicle platform requires the best-in-class foundation. With MongoDB Atlas and the AWS ecosystem, you are provided with such building blocks. MongoDB is your end-to-end data layer for efficient bidirectional data exchange, ensuring consistency on a mobile device, vehicle, and the cloud. AWS, including SageMaker and its integration capabilities, is your public cloud infrastructure allowing you to gain value out of your data and produce the right recommendations for enhanced driving experiences.
+
+[Demo Video](https://youtu.be/8SztdPe6wJA)
 
 With these tools in mind, let’s begin creating a cutting edge connected vehicle platform!
 
