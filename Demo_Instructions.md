@@ -59,7 +59,13 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
     * publish_battery_inference 
     * sagemaker_demo_workaround 
     * eventbridge_publish_battery
-3. 
+3. Navigate into the publish_battery_inference Trigger. This database trigger pushes the sensor record information to AWS Eventbridge. You'll notice the following: 
+    * Cluster Name: Connected-Products 
+    * Database Name: Integrations 
+    * Collection Name: Sagemaker 
+    * etc. 
+    
+    [insert Screenshot here] 
     
 
 
