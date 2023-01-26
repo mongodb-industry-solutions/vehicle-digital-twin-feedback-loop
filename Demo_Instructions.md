@@ -71,6 +71,8 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 1. Navigate back to the Vehicle Collection in MongoDB Atlas. In the battery status, you'll notice "NOK" which stands for "not ok." 
 2. Navigate to your mobile app and click the "send command" button. This will reset your battery status within seconds. With MongoDB Atlas you can build a direct relationship between the commands related to a device, a vehicle, and the command object itself. It doesn't get easier than this! 
 
+![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/command.png)
+
 ## GraphQL schema - avoiding the dreaded joins 
 1. Navigate back to App Services into "Schema" 
 2. Click on "Vehicle" schema. You will then see the JSON schema for the object. The object is automatically converted into classes for the different Realm SDKs. Below you'll see the relationship between the component and the vehicle: 
