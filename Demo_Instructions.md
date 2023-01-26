@@ -43,7 +43,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
    
    5. **Bucketing pattern in action**: Let's store 20 records in our bucket. You'll see this number on the "Bucket: x number" button. Click the "Track Telemetry Button" until you've reached 20 items in the "Bucket" button. 
 
-![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/bucket.png)
+![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/track_telemetry.png)
 
    6. **Sensor record**: Navigate back to your MongoDB Atlas account and into the Sensor collection. There you'll see under "measurements" 20 different objects representing: timestamp, voltage and current. 
    
