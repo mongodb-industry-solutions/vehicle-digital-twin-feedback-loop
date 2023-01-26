@@ -45,4 +45,4 @@ In order to the make the demo work end-to-end, you will need to set up the backe
             Your App ID (Session ID) 
 
 
-7. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["device-ts"](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/device-ts).
+7. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["Part 2: Set up the Typescript Vehicle Simulator"](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/device-ts).
