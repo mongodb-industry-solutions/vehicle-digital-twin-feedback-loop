@@ -12,10 +12,8 @@ After you've completed one of the options, you should see the following:
 
 ## Option 1: Prepare and run "Vehicle Simulator" locally
 
-1. Update your App ID (from [Part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/atlas-backend/README.md)) in `./src/realm/config.ts`
+1. Navigate to the vehicle-ts folder and update your App ID (from [Part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/atlas-backend/README.md)) in `./src/realm/config.ts`
 2. Run the following commands: 
-      
-      `cd ./vehicle-ts`
       
       `npm install`
       
