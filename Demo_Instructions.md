@@ -81,7 +81,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
     
  3. This schema is automatically synchronized with the GraphQL schema. And if you navgigate into the GraphQL button, you'll see that you can directly query all of the relevant information across these different collections without doing any joins! 
   
-    [insert screenshot here] 
+![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/graphql.png)
     
 # Congrats on completing the demo! 
 You've ran through the demo and are now able to see how easily you can create a Digital Twin with MongoDB and AWS. Telemetry was just one use case, but consider how this can apply to improving customer experiences in: 
