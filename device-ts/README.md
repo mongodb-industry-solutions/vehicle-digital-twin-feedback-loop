@@ -12,15 +12,16 @@ After you've completed one of the options, you should see the following:
 
 ## Option 1: Prepare and run "Vehicle Simulator" locally
 
-1. Navigate to the vehicle-ts folder and update your App ID (from [Part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/atlas-backend/README.md)) in `./src/realm/config.ts`
-2. Run the following commands: 
+1. Navigate into the vehicle-ts folder 
+2. Update your App ID (from [Part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/atlas-backend/README.md)) in `./src/realm/config.ts`
+3. Run the following commands: 
       
       `npm install`
       
       `npm run build`
       
       `npm start`
-3. Open the web console http://localhost:3000. 
+4. Open the web console http://localhost:3000. 
 
 ## Option 2: Build and run "Vehicle Simulator" locally in a container
 
