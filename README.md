@@ -23,7 +23,7 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 [Set up the iOS Swift Vehicle Controller Mobile Application](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/mobile-swift)
 
 
-## Part 4: Set up the AWS Sagemaker Integration
+## Part 4: Set up the AWS SageMaker Integration
 
 [Set up the AWS Sagemaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/aws-sagemaker)
 
