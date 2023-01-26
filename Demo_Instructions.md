@@ -65,7 +65,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
  
  4. You'll see that the publish battery inference function ran. If you want, you can navigate to the Functions tab in Atlas and you'll see that the publish_battery_inference JavaScrip function updates the vehicle model. You should see a red exclamation symbol on the WebUI as well as the mobile app. 
  
-    [insert screenshot here] 
+![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/status.png)
     
 ## How to clear status alerts 
 1. Navigate back to the Vehicle Collection in MongoDB Atlas. In the battery status, you'll notice "NOK" which stands for "not ok." 
