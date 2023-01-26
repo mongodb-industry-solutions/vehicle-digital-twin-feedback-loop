@@ -6,8 +6,8 @@ For visualization purposes, the connected vehicle environment will function like
 
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/EndToEnd.png) 
 
-## Set up the AWS Integration
-[Setup Instructions for MongoDB and AWS SageMaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
+## Set up the Amazon SageMaker Integration
+[Setup Instructions for MongoDB and Amazon SageMaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
 
 ## Congrats!
 You've now successfully set up everything you need to run a Digital Twin demonstration:  
