@@ -1,6 +1,4 @@
-# Step by Step Demonstration: 
-
-## Building your Digital Twin with MongoDB and AWS: Telemetry Feedback Loop Use Case 
+# Step by Step Walk Through
 
 Now that we’ve set up data management in the vehicle, the cloud, and how to sync those worlds, let’s bring it all together with an example use case and architecture demonstrating how vehicle battery telemetry can be collected within the vehicle, moved to the cloud backend for inference and how the result is then shared with the driver, owner and workshop people in real time.
 
