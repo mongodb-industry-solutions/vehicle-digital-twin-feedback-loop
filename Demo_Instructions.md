@@ -33,7 +33,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
    2. **Turning your engine on/off:** 
   To illustrate how fast data is synchronized between the vehicle model and the mobile app you can for example turn on the engine, by clicking on the       toggle button on your app and see how the engine gif starts moving indicating that the engine has been turned on. 
   
-   3. **Adding components**:To further explain a little bit of the data modeling, we've also added a functionality to create related components. You can add a component by clicking "add component" in the web UI and you will see that information (that object),which is created for the spoiler, is immediately synchronized with the mobile device. 
+   3. **Adding components**:To further explain a little bit of the data modeling, we've also added a functionality to create related components. You can add a component by clicking "add component" in in the web UI and you will see that information (that object) which is created for the spoiler is immediately synchronized with the mobile device as well. 
     
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/spoiler.png)   
    
@@ -66,7 +66,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
     
 ## How to clear status alerts 
 1. Navigate back to the Vehicle Collection in MongoDB Atlas. In the battery status, you'll notice "NOK" which stands for "not ok." 
-2. Navigate to your mobile app and click the "send command" button. This will reset your battery status within seconds. With MongoDB Atlas you can build a direct relationship between the commands related to a device, a vehicle, and the command object itself. It doesn't get easier than this! 
+2. Navigate to your mobile app and click the "send command" button. This will reset your battery status within seconds while tracking the different phases from the vehicle receiving the command to its completion. It also shows nicely how the object oriented document model allows you to keep your data together making software development easy and efficient.
 
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/command.png)
 
