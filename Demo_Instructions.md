@@ -45,7 +45,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 
    6. **Sensor record**: Navigate back to your MongoDB Atlas account and into the Sensor collection. There you'll see under "measurements" 20 different objects representing: timestamp, voltage and current. 
    
-![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/measurements.png) 
+![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/sensor_telemetry.png) 
 
 ## App Services Database Triggers and AWS Eventbridge 
 
@@ -68,7 +68,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 1. Navigate back to App Services into "Schema" 
 2. Click on "Vehicle" schema. You will then see the JSON schema for the object. The object is automatically converted into classes for the different Realm SDKs. Below you'll see the relationship between the component and the vehicle: 
 
-![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/schema.png)
+![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/vehicle_schema.png)
     
  3. This schema is automatically synchronized with the GraphQL schema. And if you navgigate into the GraphQL button, you'll see that you can directly query all of the relevant information across these different collections without doing any joins! 
   
