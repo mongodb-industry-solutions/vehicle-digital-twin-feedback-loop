@@ -39,7 +39,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
    
    4. **Offline capablities**: You can also simulate what happens when the vehicle is not online. Since we are using a database inside the vehicle, all the   data changes are tracked and once you resume and click "sync", you will see that the status is immediately updated. Offline capabilities are intact! This is exciting, because you get actual live information and historical information about the vehicle.
    
-   5. **Bucketing pattern in action**: Some sensors change way too frequently and synchronizing every single change to the backend would be inefficient. What we've implemented here with MongoDB Realm's offline capabilities is a bucketing pattern, where we cache 20 measurements and store them as an array in a single document. We have configured the bucket size to be 20 "Bucket: x number". Click the "Track Telemetry Button" until you've reached 20 items in the "Bucket" and you will see an entry in the Sensor collection. 
+   5. **Bucketing pattern in action**: Some sensors change way too frequently and synchronizing every single change to the backend would be inefficient. What we've implemented here with MongoDB Realm's offline capabilities is a bucketing pattern, where we cache 20 measurements and store them as an array in a single document. We have configured the bucket size to be 20 "Bucket: x number". Click the "Track Telemetry Button" until you've reached 20 items in the "Bucket". 
 
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/track_telemetry.png)
 
