@@ -60,7 +60,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
     * etc. 
   
  
- 4. You'll see that the publish battery inference function ran. If you want, you can navigate to the Functions tab in Atlas and you'll see that the publish_battery_inference JavaScrip function updates the vehicle model. You should see a red exclamation symbol on the WebUI as well as the mobile app. 
+ 4. You'll see that the analyze_batter_telemetry function ran. If you want, you can navigate to the Functions tab in Atlas and you'll see that the publish_battery_inference JavaScrip function updates the vehicle model. You should see a red exclamation symbol on the WebUI as well as the mobile app. 
  
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/status.png)
     
