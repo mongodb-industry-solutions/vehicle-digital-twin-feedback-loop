@@ -50,11 +50,10 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 ## App Services Database Triggers and AWS Eventbridge 
 
 1. Navigate to App Services. 
-2. Navigate to Triggers under App Services. You'll see three triggers: 
-    * publish_battery_inference 
-    * sagemaker_demo_workaround 
-    * eventbridge_publish_battery
-3. Navigate into the publish_battery_inference Trigger. This database trigger pushes the sensor record information to AWS Eventbridge. You'll notice the following: 
+2. Navigate to Triggers under App Services. You'll see two triggers: 
+    * analyze_battery_telemetry 
+    * publish_battery_inference
+3. Navigate into the analyze_battery_telemetry Trigger. This database trigger pushes the sensor record information to AWS Eventbridge. You'll notice the following: 
     * Cluster Name: Connected-Products 
     * Database Name: Integrations 
     * Collection Name: Sagemaker 
