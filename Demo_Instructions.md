@@ -1,6 +1,6 @@
-# Step by Step Walk Through
+# Demo Environment Walk Through
 
-Now that we’ve set up data management in the vehicle, the cloud, and how to sync those worlds, let’s bring it all together with an example use case and architecture demonstrating how vehicle battery telemetry can be collected within the vehicle, moved to the cloud backend for inference and how the result is then shared with the driver, owner and workshop people in real time.
+Now that we’ve set up the cloud backend, connected the vehicle and the mobile app, let’s walk through the demo setup and architecture to bring it all together.
 
 (If you're interested in watching the video format of this, feel free to click [Demo Video](https://youtu.be/8SztdPe6wJA).) 
 
