@@ -53,14 +53,8 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 2. Navigate to Triggers under App Services. You'll see two triggers: 
     * analyze_battery_telemetry 
     * publish_battery_inference
-3. Navigate into the analyze_battery_telemetry Trigger. This database trigger pushes the sensor record information to AWS Eventbridge. You'll notice the following: 
-    * Cluster Name: Connected-Products 
-    * Database Name: Integrations 
-    * Collection Name: Sagemaker 
-    * etc. 
-  
- 
- 4. You'll see that the analyze_batter_telemetry function ran. If you want, you can navigate to the Functions tab in Atlas and you'll see that the publish_battery_inference JavaScrip function updates the vehicle model. You should see a red exclamation symbol on the WebUI as well as the mobile app. 
+3. Navigate into the analyze_battery_telemetry Trigger that you set up in [Part 4](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution). This database trigger pushes the sensor record information to AWS Eventbridge. 
+4. Navigate to the Functions tab in Atlas and you'll see that other trigger (publish_battery_inference) will use the publish_battery_inference JavaScrip **function** to update the vehicle model. Now you should see a red exclamation symbol on the WebUI as well as on the mobile app. 
  
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/status.png)
     
