@@ -14,7 +14,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 
 ## Navigate to your [MongoDB Atlas Account](https://account.mongodb.com/account/login) 
 
-   * In the MongoDB Atlas Cloud dashboard we can see 3 collections: Vehicle information, Sensor, Components.
+   * In the MongoDB Atlas Cloud dashboard we can see 3 collections: Vehicle information, Sensor, Components. (Collections might not be visible until you have started the vehicle simulator and submitted telemetry data)
     
      ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/collections.png)
 
