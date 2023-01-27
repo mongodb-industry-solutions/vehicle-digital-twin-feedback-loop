@@ -59,7 +59,7 @@ struct LoginView: View {
     
                 .padding()
                 .position(x:200, y:20)
-                .foregroundColor(.green)
+                .foregroundColor(.accentColor)
                 
             
             HStack{
