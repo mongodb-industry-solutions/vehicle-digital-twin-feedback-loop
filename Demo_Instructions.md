@@ -20,7 +20,7 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 
 ## To start the vehicle
 
-   Open the terminal window in the path: Digital-Twins-With-AWS/device-ts/. And then run the following command: 
+   Open the terminal window in the path: Vehicle-Digital-Twin-Feedback-Loop/device-ts/. And then run the following command: 
       
       npm start
 
