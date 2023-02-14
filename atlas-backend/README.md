@@ -5,7 +5,7 @@ In order to the make the demo work end-to-end, you will need to set up the backe
 ## Setup the MongoDB Atlas Backend
 
 1. Create a [MongoDB Cloud](https://cloud.mongodb.com/) user account and ensure that you have access to an organization/project. 
-2. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it **"Connected-Products"**. <br>Shared clusters should work. Serverless instances are **not yet** supported!
+2. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it **"Connected-Vehicle-DB"**. <br>Shared clusters should work. Serverless instances are **not yet** supported!
 
 ## Setup the Digital-Twin Application
 
