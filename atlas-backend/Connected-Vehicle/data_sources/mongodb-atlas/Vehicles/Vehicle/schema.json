@@ -1,0 +1,74 @@
+{
+    "bsonType": "object",
+    "properties": {
+        "_id": {
+            "bsonType": "string"
+        },
+        "battery": {
+            "bsonType": "object",
+            "properties": {
+                "capacity": {
+                    "bsonType": "long"
+                },
+                "current": {
+                    "bsonType": "long"
+                },
+                "sn": {
+                    "bsonType": "string"
+                },
+                "status": {
+                    "bsonType": "string"
+                },
+                "voltage": {
+                    "bsonType": "long"
+                }
+            },
+            "required": [],
+            "title": "Battery"
+        },
+        "commands": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "object",
+                "properties": {
+                    "command": {
+                        "bsonType": "string"
+                    },
+                    "status": {
+                        "bsonType": "string"
+                    },
+                    "ts": {
+                        "bsonType": "date"
+                    }
+                },
+                "required": [],
+                "title": "Command"
+            }
+        },
+        "components": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "objectId"
+            }
+        },
+        "device_id": {
+            "bsonType": "string"
+        },
+        "isOn": {
+            "bsonType": "bool"
+        },
+        "mixedTypes": {
+            "bsonType": "mixed"
+        },
+        "name": {
+            "bsonType": "string"
+        }
+    },
+    "required": [
+        "_id",
+        "name",
+        "device_id",
+        "isOn"
+    ],
+    "title": "Vehicle"
+}
