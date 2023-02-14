@@ -16,7 +16,7 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 
 ## Part 2: Set up the Typescript Vehicle Simulator
 
-[Set up the Typescript Vehicle Simulator](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/device-ts)
+[Set up the Typescript Vehicle Simulator](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/main/vehicle-ts)
 
 ## Part 3: Set up the iOS Swift Vehicle Controller Mobile Application
 
