@@ -3,8 +3,7 @@
     "type": "DATABASE",
     "config": {
         "operation_types": [
-            "INSERT",
-            "UPDATE"
+            "INSERT"
         ],
         "database": "Vehicles",
         "collection": "Sensor",
@@ -14,17 +13,17 @@
             "operationType": {
                 "$numberInt": "1"
             },
-            "vin": "$fullDocument.vin",
             "read": {
                 "$map": {
-                    "input": "$fullDocument.measurements",
                     "as": "item",
                     "in": [
                         "$$item.voltage",
                         "$$item.current"
-                    ]
+                    ],
+                    "input": "$fullDocument.measurements"
                 }
-            }
+            },
+            "vin": "$fullDocument.vin"
         },
         "full_document": true,
         "full_document_before_change": false,
@@ -32,13 +31,11 @@
         "skip_catchup_events": true,
         "tolerate_resume_errors": true
     },
-    "disabled": true,
+    "disabled": false,
     "event_processors": {
-        "AWS_EVENTBRIDGE": {
+        "FUNCTION": {
             "config": {
-                "account_id": "AWS Acct ID",
-                "extended_json_enabled": false,
-                "region": "us-east-1"
+                "function_name": "copyToSagemakerCollection"
             }
         }
     }

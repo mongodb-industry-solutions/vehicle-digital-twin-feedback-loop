@@ -1,7 +1,7 @@
 {
-    "app_id": "connected-products-kknex",
+    "app_id": "connected-vehicle-wwdhr",
     "config_version": 20210101,
-    "name": "Connected-Products",
+    "name": "Connected-Vehicle",
     "location": "IE",
     "provider_region": "aws-eu-west-1",
     "deployment_model": "LOCAL"
