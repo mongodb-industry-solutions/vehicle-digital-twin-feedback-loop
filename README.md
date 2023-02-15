@@ -6,7 +6,7 @@ However, creating such a cutting edge connected vehicle platform requires the be
 
 ![image](media/Overview_New.png)
 
-Under the hood we use a mix of MongoDB and AWS components nicely put together to create this end to end scenario [demo section](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/Demo_Instructions.md). 
+Under the hood we use a mix of MongoDB and AWS components nicely put together to create this end to end scenario. If you are curious and want to learn how it works you can jump directly to the [demo section](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/Demo_Instructions.md). 
 
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/EndToEnd.png) 
 
