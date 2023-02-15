@@ -16,6 +16,8 @@ For demonstration purposes, we've set up a quick intermediary step so that you d
 * Under the Functions section, select "Function" and "copyToSagemakerCollection" 
 ![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/copytosagemaker.png) 
 
+This intermediary step will allow you to run the demo quickly in that we've bridged the SageMaker environment with MongoDB. You can always come back to [Part 4 and configure the AWS SageMaker integration]((https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/aws-sagemaker)fully! 
+
 ## Congrats!
 You've now successfully set up everything you need to run a Digital Twin demonstration:  
   * [Part 1: The MongoDB Atlas Digital-Twin Backend](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/atlas-backend) 
