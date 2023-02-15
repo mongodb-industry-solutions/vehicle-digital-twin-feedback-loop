@@ -60,7 +60,7 @@ For demonstration purposes, we've set up a quick intermediary step so that you d
 
 However, if you are interested in running the demo with AWS integration, please refer to our Partner repository: [Setup Instructions for MongoDB and Amazon SageMaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution). There we'll instruct you how to connect the whole feedback loop. 
 
-For now,let's bridge the Amazon SageMaker loop with MongoDB. 
+For now, let's bridge the Amazon SageMaker loop with MongoDB. 
 
 * Navigate to App Services 
 * Navigate to Triggers 
@@ -68,5 +68,7 @@ For now,let's bridge the Amazon SageMaker loop with MongoDB.
 ![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/eventbridge.png)
 * Under the Functions section, select "Function" and "copyToSagemakerCollection" 
 ![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/copytosagemaker.png) 
+
+This trigger will then "fire" a function that will add all of the sensor data into the "copyToSagemakerCollection". 
 
 Congrats! The second part is completed. Now you'll continue setting up the iOS Swift Vehicle Controller Mobile Application in [Part 3](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/mobile-swift).
