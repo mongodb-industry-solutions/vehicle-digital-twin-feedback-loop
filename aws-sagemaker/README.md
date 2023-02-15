@@ -6,18 +6,6 @@ For visualization purposes, the connected vehicle environment will function like
 
 Now that you've finished the first three parts ([part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/atlas-backend), [part 2](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/device-ts), [part 3](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/mobile-swift)) , you can start setting up your AWS SageMaker integration. The AWS SageMaker integration allows you to analyze your data and then send that analyzed data back to MongoDB Atlas and consequently to the the users of the devices.
 
-For demonstration purposes, we've set up a quick intermediary step so that you do not have to create an AWS account and can quickly see the demo come into action! However, if you are interested in running the demo with AWS integration, please refer to our Partner repository: [Setup Instructions for MongoDB and Amazon SageMaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
-
-## Intermediary Step:
-* Navigate to App Services 
-* Navigate to Triggers 
-* Select the Database trigger type and name it "eventbridge_publish_battery_telemetry" 
-![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/eventbridge.png)
-* Under the Functions section, select "Function" and "copyToSagemakerCollection" 
-![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/copytosagemaker.png) 
-
-This intermediary step will allow you to run the demo quickly in that we've bridged the SageMaker environment with MongoDB. You can always come back to [Part 4 and configure the AWS SageMaker integration](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/aws-sagemaker) fully! 
-
 ## Congrats!
 You've now successfully set up everything you need to run a Digital Twin demonstration:  
   * [Part 1: The MongoDB Atlas Digital-Twin Backend](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/atlas-backend) 
