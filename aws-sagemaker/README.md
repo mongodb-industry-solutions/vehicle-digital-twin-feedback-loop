@@ -10,7 +10,7 @@ For demonstration purposes, we've set up a quick workaround so that you do not h
 * Select the Database trigger type and name it "eventbridge_publish_battery_telemetry" 
 [screenshot here] 
 * Under the Functions section, select "Function" and "copyToSagemakerCollection" 
-[screenshot here] 
+![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/copytosagemaker.png)
 
 
 
