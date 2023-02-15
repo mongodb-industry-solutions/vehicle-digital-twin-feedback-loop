@@ -55,4 +55,4 @@ Prerequisites:
       `sudo docker run -p 3000:3000 vehicle-ts`
 4. Access simulator UI via http:// PUBLIC IP ADDRESS:3000
 
-Congrats! The second part is completed. Now you'll continue setting up the iOS Swift Vehicle Controller Mobile Application in [Part 3](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/mobile-swift)
+Congrats! The second part is completed. Now you'll continue setting up the iOS Swift Vehicle Controller Mobile Application in [Part 3](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/mobile-swift).
