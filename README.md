@@ -8,6 +8,12 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 
 ![image](media/Overview_New.png)
 
+For visualization purposes, the connected vehicle environment will function like the image below. But we'll get into more detail on that in the [demo section](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/Demo_Instructions.md). 
+
+![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/EndToEnd.png) 
+
+Now let's get started with the set up! 
+
 # Set Up Instructions 
 
 ## Part 1: Set up the MongoDB Atlas Digital-Twin Backend
