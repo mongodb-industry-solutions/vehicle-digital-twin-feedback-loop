@@ -52,6 +52,6 @@ Prerequisites:
 
       `sudo docker build . -t vehicle-ts`
       
-      `sudo docker run -p 80:3000 vehicle-ts`
-4. Access simulator UI via http:// PUBLIC IP ADDRESS:80
+      `sudo docker run -p 3000:3000 vehicle-ts`
+4. Access simulator UI via http:// PUBLIC IP ADDRESS:3000
 
