@@ -23,6 +23,22 @@ After you've completed one of the options, you should see the following:
       `npm start`
 4. Open the web console http://localhost:3000. 
 
+## Intermediary Step:
+For demonstration purposes, we've set up a quick intermediary step so that you do not have to create an AWS account and can quickly see the demo come into action! This means you can already test the demonstration as we have bridged the Amazon SageMaker loop with MongoDB to have the first feeling of success!  
+
+However, if you are interested in running the demo with AWS integration, please refer to our Partner repository: [Setup Instructions for MongoDB and Amazon SageMaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution). There we'll instruct you how to connect the whole feedback loop. 
+
+For now, let's bridge the Amazon SageMaker loop with MongoDB. 
+
+* Navigate to App Services 
+* Navigate to Triggers 
+* Select the Database trigger type and name it "eventbridge_publish_battery_telemetry" 
+![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/eventbridge.png)
+* Under the Functions section, select "Function" and "copyToSagemakerCollection" 
+![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/copytosagemaker.png) 
+
+This trigger will then "fire" a function that will add all of the sensor data into the "copyToSagemakerCollection". 
+
 ## Option 2: Build and run "Vehicle Simulator" locally in a container
 
 Prerequisites:
@@ -54,21 +70,5 @@ Prerequisites:
       
       `sudo docker run -p 3000:3000 vehicle-ts`
 4. Access simulator UI via http:// PUBLIC IP ADDRESS:3000
-
-## Intermediary Step:
-For demonstration purposes, we've set up a quick intermediary step so that you do not have to create an AWS account and can quickly see the demo come into action! This means you can already test the demonstration as we have bridged the Amazon SageMaker loop with MongoDB to have the first feeling of success!  
-
-However, if you are interested in running the demo with AWS integration, please refer to our Partner repository: [Setup Instructions for MongoDB and Amazon SageMaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution). There we'll instruct you how to connect the whole feedback loop. 
-
-For now, let's bridge the Amazon SageMaker loop with MongoDB. 
-
-* Navigate to App Services 
-* Navigate to Triggers 
-* Select the Database trigger type and name it "eventbridge_publish_battery_telemetry" 
-![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/eventbridge.png)
-* Under the Functions section, select "Function" and "copyToSagemakerCollection" 
-![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/copytosagemaker.png) 
-
-This trigger will then "fire" a function that will add all of the sensor data into the "copyToSagemakerCollection". 
 
 Congrats! The second part is completed. Now you'll continue setting up the iOS Swift Vehicle Controller Mobile Application in [Part 3](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/mobile-swift).
