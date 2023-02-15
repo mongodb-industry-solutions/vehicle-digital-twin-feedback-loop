@@ -12,8 +12,6 @@ Under the hood we use a mix of MongoDB and AWS components nicely put together to
 
 With these tools in mind, let’s begin creating a cutting edge connected vehicle platform!
 
-Now let's get started with the set up! 
-
 # Set Up Instructions 
 
 ## Part 1: Set up the MongoDB Atlas Digital-Twin Backend
