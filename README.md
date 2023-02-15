@@ -4,13 +4,13 @@ A connected vehicle platform opens a window of analytical data that manufacturer
 
 However, creating such a cutting edge connected vehicle platform requires the best-in-class foundation. With MongoDB Atlas and the AWS ecosystem, you are provided with such building blocks. MongoDB is your end-to-end data layer for efficient bidirectional data exchange, ensuring consistency on a mobile device, vehicle, and the cloud. AWS, including SageMaker and its integration capabilities, is your public cloud infrastructure allowing you to gain value out of your data and produce the right recommendations for enhanced driving experiences.
 
-With these tools in mind, let’s begin creating a cutting edge connected vehicle platform!
-
 ![image](media/Overview_New.png)
 
-For visualization purposes, the connected vehicle environment will function like the image below. But we'll get into more detail on that in the [demo section](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/Demo_Instructions.md). 
+Under the hood we use a mix of MongoDB and AWS components nicely put together to create this end to end scenario [demo section](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/Demo_Instructions.md). 
 
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/EndToEnd.png) 
+
+With these tools in mind, let’s begin creating a cutting edge connected vehicle platform!
 
 Now let's get started with the set up! 
 
