@@ -21,8 +21,7 @@ You've now successfully set up everything you need to run a Digital Twin demonst
   * [Part 1: The MongoDB Atlas Digital-Twin Backend](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/atlas-backend) 
   * [Part 2: The Typescript Vehicle Simulator](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/device-ts) 
   * [Part 3: The iOS Swift Vehicle Controller Mobile Application](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/mobile-swift)
-  * [Part 4 - Quick demo](
-     [Part 4 - AWS: The Amazon SageMaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/aws-sagemaker) 
+  * [Part 4 - AWS: The Amazon SageMaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/aws-sagemaker) 
 
 ## Let's run the demo! 
 [Step by Step Demonstration: Building your Digital Twin with MongoDB and AWS](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/Demo_Instructions.md)
