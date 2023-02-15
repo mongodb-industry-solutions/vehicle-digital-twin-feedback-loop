@@ -55,12 +55,12 @@ Prerequisites:
       `sudo docker run -p 3000:3000 vehicle-ts`
 4. Access simulator UI via http:// PUBLIC IP ADDRESS:3000
 
-For demonstration purposes, we've set up a quick intermediary step so that you do not have to create an AWS account and can quickly see the demo come into action! This means you can already test the demonstration as we have bridged the Amazon SageMaker loop to have the first feeling of success!  
+## Intermediary Step:
+For demonstration purposes, we've set up a quick intermediary step so that you do not have to create an AWS account and can quickly see the demo come into action! This means you can already test the demonstration as we have bridged the Amazon SageMaker loop with MongoDB to have the first feeling of success!  
 
 However, if you are interested in running the demo with AWS integration, please refer to our Partner repository: [Setup Instructions for MongoDB and Amazon SageMaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution). There we'll instruct you how to connect the whole feedback loop. 
 
-## Intermediary Step:
-This intermediary step will allow you to run the demo quickly in that we've bridged the SageMaker environment with MongoDB. You can always come back to [Part 4 and configure the AWS SageMaker integration](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/aws-sagemaker) fully! 
+For now,let's bridge the Amazon SageMaker loop with MongoDB. 
 
 * Navigate to App Services 
 * Navigate to Triggers 
