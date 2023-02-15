@@ -51,10 +51,10 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
 
 1. Navigate to App Services. 
 2. Navigate to Triggers under App Services. You'll see two triggers: 
-    * analyze_battery_telemetry 
-    * publish_battery_inference
-3. Navigate into the analyze_battery_telemetry Trigger that you set up in [Part 4](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution). This database trigger pushes the sensor measurements via Eventbridge to Amazon SageMaker for analysis. Amazon SageMaker will then write the result via AWS Lambda function into the MongoDB SageMaker collection.
-4. Navigate to the Functions tab in Atlas and you'll see that other trigger (publish_battery_inference) will use the publish_battery_inference JavaScript **function** to update the vehicle model's battery status. Now you should see a red exclamation symbol on the WebUI as well as on the mobile app. 
+    * eventbridge_publish_battery_telemetry 
+    * vehicle_publish_battery_inference
+3. Navigate into the eventbridge_publish_battery_telemetry Trigger. If you've set up [Part 4](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution), this database trigger pushes the sensor measurements via Eventbridge to Amazon SageMaker for analysis. Amazon SageMaker will then write the result via AWS Lambda function into the MongoDB SageMaker collection. If you completed the intermediary step in [Part 3](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/mobile-swift), it will do so automatically without the AWS integration. 
+4. Navigate to the Functions tab in Atlas and you'll see that other trigger (vehicle_publish_battery_inference) will use the publish_battery_inference JavaScript **function** to update the vehicle model's battery status. Now you should see a red exclamation symbol on the WebUI as well as on the mobile app. 
  
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/status.png)
     
