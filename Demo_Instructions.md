@@ -47,8 +47,19 @@ Looking at the architecture above, the demo setup includes a vehicle simulator b
    
 ![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/sensor_telemetry.png) 
 
-## App Services Database Triggers and AWS Eventbridge 
+## App Services Database Triggers (Intermediary Step) 
 
+1. Navigate to App Services. 
+2. Select the Database trigger type and name it "eventbridge_publish_battery_telemetry" 
+![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/eventbridge.png)
+3. Under the Functions section, select "Function" and "copyToSagemakerCollection" 
+![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/media/copytosagemaker.png) 
+
+This trigger will then "fire" a function that will add all of the sensor data into the "copyToSagemakerCollection". 
+
+4. Navigate to the Functions tab in Atlas and you'll see that other trigger (vehicle_publish_battery_inference) will use the publish_battery_inference JavaScript function to update the vehicle model's battery status. Now you should see a red exclamation symbol on the WebUI as well as on the mobile app.
+
+## App Services Database Triggers and AWS Eventbridge 
 1. Navigate to App Services. 
 2. Navigate to Triggers under App Services. You'll see two triggers: 
     * eventbridge_publish_battery_telemetry 
