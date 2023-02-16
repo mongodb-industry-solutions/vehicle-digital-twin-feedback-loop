@@ -30,10 +30,10 @@ struct ContentView: View {
                     subs.append(QuerySubscription<Vehicle>(name: "Vehicles") {
                         // Query for objects where the ownerId is equal to the app's current user's id
                         // This means the app's current user can read and write their own data
-                        $0.device_id == user.id
+                        $0.owner_id == user.id
                     })
                     subs.append(QuerySubscription<Component>(name: "Components") {
-                        $0.device_id == user.id
+                        $0.owner_id == user.id
                     })
                 }
             })

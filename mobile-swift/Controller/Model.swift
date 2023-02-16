@@ -13,7 +13,7 @@ class Vehicle: Object, ObjectKeyIdentifiable {
     @Persisted var battery: Battery?
     @Persisted var components: List<Component>
     @Persisted var current: Int?
-    @Persisted var device_id: String = ""
+    @Persisted var owner_id: String = ""
     @Persisted var isOn: Bool = false
     @Persisted var mixedTypes: AnyRealmValue
     @Persisted var name: String = ""
@@ -31,7 +31,7 @@ class Battery: EmbeddedObject {
 class Component: Object {
     @Persisted(primaryKey: true) var _id: ObjectId?
     @Persisted var name: String?
-    @Persisted var device_id: String = ""
+    @Persisted var owner_id: String = ""
 }
 
 class Command: EmbeddedObject, Identifiable {
