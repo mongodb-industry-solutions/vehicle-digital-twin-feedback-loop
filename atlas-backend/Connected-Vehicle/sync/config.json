@@ -4,6 +4,7 @@
     "development_mode_enabled": true,
     "service_name": "mongodb-atlas",
     "database_name": "Vehicles",
+    "last_disabled": 1676584288,
     "is_recovery_mode_disabled": false,
     "permissions": {
         "rules": {},
@@ -18,7 +19,7 @@
     },
     "queryable_fields_names": [
         "vin",
-        "device_id"
+        "owner_id"
     ],
     "asymmetric_tables": [
         "Sensor"

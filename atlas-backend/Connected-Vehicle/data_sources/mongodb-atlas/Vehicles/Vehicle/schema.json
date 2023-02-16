@@ -51,9 +51,6 @@
                 "bsonType": "objectId"
             }
         },
-        "device_id": {
-            "bsonType": "string"
-        },
         "isOn": {
             "bsonType": "bool"
         },
@@ -62,13 +59,16 @@
         },
         "name": {
             "bsonType": "string"
+        },
+        "owner_id": {
+            "bsonType": "string"
         }
     },
     "required": [
         "_id",
         "name",
-        "device_id",
-        "isOn"
+        "isOn",
+        "owner_id"
     ],
     "title": "Vehicle"
 }

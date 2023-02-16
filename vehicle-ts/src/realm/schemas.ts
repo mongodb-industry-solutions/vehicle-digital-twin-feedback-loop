@@ -2,12 +2,12 @@ import { ObjectId } from 'bson';
 import Realm from 'realm';
 
 /**
- * Realm object schema/class definition for a device object within typescript
+ * Realm object schema/class definition for a vehicle object within typescript
  */
 export class Vehicle extends Realm.Object<Vehicle> {
   public _id!: string;
   public name!: string;
-  public device_id!: string;
+  public owner_id!: string;
   public isOn!: boolean;
   public commands?: Command[];
   // Field type which supports multiple multiple data types
@@ -21,7 +21,7 @@ export class Vehicle extends Realm.Object<Vehicle> {
     properties: {
       _id: 'string',
       name: 'string',
-      device_id: 'string',
+      owner_id: 'string',
       isOn: 'bool',
       commands: 'Command[]',
       mixedTypes: 'mixed?',
@@ -78,7 +78,7 @@ export class Command extends Realm.Object<Command> {
 export class Component extends Realm.Object<Component> {
   public _id?: ObjectId;
   public name?: string | null;
-  public device_id!: string;
+  public owner_id!: string;
 
   static schema = {
     name: 'Component',
@@ -86,7 +86,7 @@ export class Component extends Realm.Object<Component> {
     properties: {
       _id: 'objectId?',
       name: 'string?',
-      device_id: 'string'
+      owner_id: 'string'
     }
   }
 }

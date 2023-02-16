@@ -15,7 +15,7 @@ export const vin = "5UXFE83578L342684"; // https://vingenerator.org/brand
 export const vehicleConfig = {
     _id: vin,
     name: "My Car",
-    device_id: "",
+    owner_id: "",
     mixedTypes: "Change Type",
     isOn: false,
     commands: [],

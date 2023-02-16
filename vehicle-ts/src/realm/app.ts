@@ -31,15 +31,15 @@ class RealmApp {
       }
     });
     // Add flexible sync subscriptions
-    const deviceID = `device_id = ${JSON.stringify(this.app.currentUser!.id)}`;
+    const ownerID = `owner_id = ${JSON.stringify(this.app.currentUser!.id)}`;
     this.realm.subscriptions.update(subscriptions => {
-      subscriptions.add(this.realm!.objects('Vehicle').filtered(deviceID, { name: "device-filter" }));
-      subscriptions.add(this.realm!.objects('Component').filtered(deviceID, { name: "component-filter" }));
+      subscriptions.add(this.realm!.objects('Vehicle').filtered(ownerID, { name: "vehicle-filter" }));
+      subscriptions.add(this.realm!.objects('Component').filtered(ownerID, { name: "component-filter" }));
     });
 
     // Create vehicle object on application start
     let vehicleInit = vehicleConfig;
-    vehicleInit.device_id = this.app.currentUser!.id;
+    vehicleInit.owner_id = this.app.currentUser!.id;
     this.realm.write(() => {
       this.vehicle = new Vehicle(this.realm, vehicleInit);
     });
@@ -54,7 +54,7 @@ class RealmApp {
   addComponent(name: string) {
     try {
       this.realm!.write(() => {
-        let component = new Component(this.realm, { _id: new ObjectId, name: name, device_id: this.app.currentUser!.id });
+        let component = new Component(this.realm, { _id: new ObjectId, name: name, owner_id: this.app.currentUser!.id });
         this.vehicle.components!.push(component);
       });
       return { result: "Component created and related to " + this.vehicle.name };
@@ -117,7 +117,7 @@ class RealmApp {
   /**
    * Provide vehicle object as JSON string
    */
-  getDeviceAsJSON(): string {
+  getVehicleAsJSON(): string {
     let vehicle = this.vehicle!.toJSON();
     vehicle['measurements'] = this.batteryMeasurements.length;
     return JSON.stringify(vehicle);
@@ -158,13 +158,13 @@ class RealmApp {
   }
 
   /**
-   * Remove all change listeners,delete created devices/components
+   * Remove all change listeners,delete created vehicles/components
    */
   async cleanupRealm() {
     try {
       // Remove all change listener
       this.vehicle.removeAllListeners();
-      // Delete all device and component entries of the current subscription
+      // Delete all vehicle and component entries of the current subscription
       this.realm!.write(() => {
         this.realm!.deleteAll();
       });

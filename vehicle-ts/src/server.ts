@@ -21,17 +21,15 @@ webserver.use(bodyParser.urlencoded({ extended: true }));
 webserver.use(express.static(__dirname + '/img/'));
 webserver.use(express.static(__dirname + '/public/'));
 
-// Load index.html on root path
 webserver.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 /**
- * Browser update notifications
+ * Create server-sent event endpoint
  */
 let client: any;
 
-// Create event stream subscription endpoint
 webserver.get('/subscribe', (req, res) => {
   const headers = {
     'Content-Type': 'text/event-stream',
@@ -46,23 +44,22 @@ webserver.get('/subscribe', (req, res) => {
   // listen for client 'close' requests
   req.on('close', () => { client = null; });
   // Add vehicle change listener to send changes to browser
-  realmApp.realm?.objects("Vehicle").addListener(refreshDevice);
+  realmApp.realm?.objects("Vehicle").addListener(refreshVehicle);
 });
 
 // Callback for vehicle changes
-function refreshDevice(realm: any, string: any) {
+function refreshVehicle(realm: any, string: any) {
   if (string.deletions.length > 0) {
     // Vehicle deleted
   } else {
-    //console.log(realmApp.getDeviceAsJSON());
-    sendRefreshEvent(realmApp.getDeviceAsJSON());
+    sendRefreshEvent(realmApp.getVehicleAsJSON());
   }
 }
 
 // Publish vehicle refresh event to browser window
-function sendRefreshEvent(device: string) {
+function sendRefreshEvent(vehicle: string) {
   client.write('event: refresh\n');
-  client.write(`data: ${device}\n\n`);
+  client.write(`data: ${vehicle}\n\n`);
 }
 
 /**
@@ -93,7 +90,7 @@ webserver.get('/resume_realm', (req, res) => {
 })
 
 /**
- * Provide add sensor measurement endpoint
+ * Provide add battery measurement endpoint
  */
 webserver.post('/add_sensor', (req, res) => {
   const result = realmApp.addSensor(req.body);
