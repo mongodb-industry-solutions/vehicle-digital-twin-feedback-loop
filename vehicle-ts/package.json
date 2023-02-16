@@ -1,16 +1,15 @@
 {
-  "name": "device",
+  "name": "vehicle",
   "version": "1.0.0",
-  "description": "## Initialize Typescript Project",
+  "description": "Realm Vehicle Simulator",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p .",
     "postbuild": "copyfiles -u 1 \"src/public/*\" build && copyfiles -u 1 \"src/img/* \" build",
-    "start": "node build/server.js",
-    "wireshark": "node --tls-cipher-list=\"AES128-SHA\" --tls-keylog=$(pwd)/keylog.txt build/server.js"
+    "start": "node build/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Felix Reichenbach",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^17.0.33",
