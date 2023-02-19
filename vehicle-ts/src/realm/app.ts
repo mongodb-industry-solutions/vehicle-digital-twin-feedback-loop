@@ -8,10 +8,8 @@ class RealmApp {
   self;
   app;
   realm!: Realm;
-  // Reference to the vehicle object
-  vehicle!: Vehicle;
-  // Battery measurements bucket
-  batteryMeasurements: Array<Unmanaged<Measurement>> = []
+  vehicle!: Vehicle; // Reference to the vehicle object
+  batteryMeasurements: Array<Unmanaged<Measurement>> = []   // Battery measurements bucket
 
   constructor() {
     this.app = new Realm.App({ id: appID });
@@ -81,13 +79,19 @@ class RealmApp {
     return ({ result: 'Sync resumed!' });
   }
 
+
   /**
    * Store and sync battery sensor values
+   * @param values 
    */
   addSensor(values: { voltage: string, current: string }) {
 
     const measurement = { ts: new Date(), voltage: Number(values.voltage), current: Number(values.current) };
-    // Collect 20 measurements before using asymmetric sync for pushing to backend
+    // Collect 20 measurements before sending to backend
+
+    /**
+     * @todo review code -> first if can be put inline with write transaction
+     */
     if (this.batteryMeasurements.length < 20) {
       this.batteryMeasurements.push(measurement)
     }

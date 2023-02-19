@@ -2,7 +2,7 @@ import { ObjectId } from 'bson';
 import Realm from 'realm';
 
 /**
- * Realm object schema/class definition for a vehicle object within typescript
+ * Schema/class definition for the vehicle object
  */
 export class Vehicle extends Realm.Object<Vehicle> {
   public _id!: string;
@@ -10,8 +10,7 @@ export class Vehicle extends Realm.Object<Vehicle> {
   public owner_id!: string;
   public isOn!: boolean;
   public commands?: Command[];
-  // Field type which supports multiple multiple data types
-  public mixedTypes?: Realm.Mixed;
+  public mixedTypes?: Realm.Mixed;  // Field type which supports multiple data types
   public components?: Component[];
   public battery?: Unmanaged<Battery>;
 
@@ -32,7 +31,7 @@ export class Vehicle extends Realm.Object<Vehicle> {
 }
 
 /**
- * Realm object schema/class definition for an embedded battery object
+ * Schema/class definition for an embedded battery object
  */
 export class Battery extends Realm.Object<Battery> {
   public sn?: string;
@@ -54,8 +53,10 @@ export class Battery extends Realm.Object<Battery> {
   }
 }
 
+/**
+ * Schema/class definition for a commands list command object
+ */
 export class Command extends Realm.Object<Command> {
-  
   public command?: string;
   public status?: string;
   public ts?: Date;
@@ -71,9 +72,8 @@ export class Command extends Realm.Object<Command> {
   };
 }
 
-
 /**
- * Realm object schema/class definition for a component object within typescript
+ * Schema/class definition for a component object
  */
 export class Component extends Realm.Object<Component> {
   public _id?: ObjectId;
@@ -92,14 +92,13 @@ export class Component extends Realm.Object<Component> {
 }
 
 /**
- * Realm object schema/class definition for a sensor measurement object within typescript
+ * Schema/class definition for a sensor measurement object
  */
 export class Sensor extends Realm.Object<Component> {
   public _id!: ObjectId;
   public vin!: string;
   public type = 'battery';
   public sn?: string;
-
   public measurements!: Realm.List<Measurement>;
 
   static schema = {
@@ -117,13 +116,12 @@ export class Sensor extends Realm.Object<Component> {
 }
 
 /**
- * Realm object schema/class definition for measurement object
+ * Schema/class definition for measurement object
  */
 export class Measurement extends Realm.Object<Measurement> {
   public ts!: Date;
   public voltage?: number;
   public current?: number;
-
 
   static schema: Realm.ObjectSchema = {
     name: 'Measurement',
