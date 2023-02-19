@@ -62,7 +62,6 @@ class RealmApp {
     }
   }
 
-
   /**
    * Pause synchronization of the Realm
    */
@@ -79,26 +78,27 @@ class RealmApp {
     return ({ result: 'Sync resumed!' });
   }
 
-
   /**
    * Store and sync battery sensor values
-   * @param values 
    */
   addSensor(values: { voltage: string, current: string }) {
-
     const measurement = { ts: new Date(), voltage: Number(values.voltage), current: Number(values.current) };
-    // Collect 20 measurements before sending to backend
-
-    /**
-     * @todo review code -> first if can be put inline with write transaction
-     */
-    if (this.batteryMeasurements.length < 20) {
-      this.batteryMeasurements.push(measurement)
-    }
-
+    // Update vehicle battery fields on the vehicle object
     try {
       this.realm.write(() => {
-        if (this.batteryMeasurements.length == 20) {
+        this.vehicle.battery!.voltage = Number(measurement.voltage);
+        this.vehicle.battery!.current = Number(measurement.current);
+      })
+    } catch (err) {
+      console.error(err);
+    }
+    // An example for a bucket pattern, when sensor measurements are too frequent to be sent to the backend
+    if (this.batteryMeasurements.length < 20) {
+      this.batteryMeasurements.push(measurement)
+    } else if (this.batteryMeasurements.length == 20) {
+      // When batteryMeasurements bucket contains 20 measurements, push it to the backend
+      try {
+        this.realm.write(() => {
           const sensor = {
             _id: new ObjectId,
             vin: this.vehicle._id,
@@ -107,13 +107,10 @@ class RealmApp {
           };
           this.realm.create("Sensor", sensor);
           this.batteryMeasurements = [];
-        }
-        // Update vehicle battery fields and sync with backend
-        this.vehicle.battery!.voltage = Number(measurement.voltage);
-        this.vehicle.battery!.current = Number(measurement.current);
-      });
-    } catch (err) {
-      console.error(err);
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
     return ({ result: `Battery status updated: voltage:${values.voltage}, current:${values.current}, Bucket: ${this.batteryMeasurements.length}/20` });
   }

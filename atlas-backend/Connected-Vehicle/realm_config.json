@@ -1,8 +1,7 @@
 {
-    "app_id": "connected-vehicle-znunq",
     "config_version": 20210101,
+    "app_id": "connected-vehicle-comgd",
     "name": "Connected-Vehicle",
     "location": "IE",
-    "provider_region": "aws-eu-west-1",
     "deployment_model": "LOCAL"
 }
