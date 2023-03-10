@@ -58,7 +58,7 @@ Deploy the SageMaker model "Predictive Maintenance for Vehicle Fleets" to get th
 ![image](https://user-images.githubusercontent.com/114057324/199463222-dcacd80d-1e84-494a-99a7-ba2a5a0f7914.png)
 
 ## Building the Code
-Replace the SageMaker end-point with the one generated above [here](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution/blob/main/code/push_to_mdb/write_to_mdb.py#L13).
+Replace the SageMaker end-point with the one generated above [here](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/code/push_to_mdb/write_to_mdb.py).
 
 ## Lambda Functions
 Create two lambda functions:
