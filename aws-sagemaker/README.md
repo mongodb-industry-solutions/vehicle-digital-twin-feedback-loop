@@ -8,7 +8,7 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
 
 ## Setup the AWS Backend
 1. Create an [AWS Account](https://portal.aws.amazon.com/billing/signup#/start/email).
-2. Take note of your AWS Account ID as you'll need it to update your AWS Account ID in the Atlas UI. 
+2. Take note of your AWS Account ID as you'll need it to update your AWS Account ID in the Atlas UI as seen in Step 3. 
 3. To publish battery telemetry information to Eventbridge, please follow these steps in MongoDB Atlas under the App Services tab: 
        
       * Navigate to the "Triggers" tab
