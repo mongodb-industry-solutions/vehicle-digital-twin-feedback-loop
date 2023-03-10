@@ -64,7 +64,7 @@ Replace the SageMaker end-point with the one generated above [here](https://gith
 Create two lambda functions:
 
 1. For pulling the data from MongoDB cluster, refer this [function](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/code/pull_from_mdb).
-2. For pushing the predicted data back to MongoDB cluster, refer this [function](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution/blob/main/code/push_to_mdb).
+2. For pushing the predicted data back to MongoDB cluster, refer this [function](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/code/push_to_mdb).
 
 Please follow this [guide](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html).
 
