@@ -48,6 +48,18 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
      ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/project_expression.png)
 
 
+
+      * After saving the trigger, head on to AWS Console and go-to Amazon EventBridge and choose Partner event sources in the navigation pane. In the Partner event sources table, find and select the **Pending trigger** source and then click Associate with event bus.
+      ![image](https://user-images.githubusercontent.com/114057324/224977374-2fded319-8433-4dcd-8c93-7ae2468445ac.png)
+
+      * On the Associate with event bus screen, define any required access permissions for other accounts and organizations and then click Associate.
+      ![image](https://user-images.githubusercontent.com/114057324/224977547-bf66e9fb-d545-4db3-8f3c-2b65aee35d80.png)
+      
+      * Once confirmed, the status of the trigger event source changes from Pending to Active, and the name of the event bus get updated.
+      ![image](https://user-images.githubusercontent.com/114057324/224977702-5a8f861b-4877-4cb5-ad7e-414f239f3ab6.png)
+
+
+
 ## Setup SageMaker 
 
 If not already completed, please refer to the [link](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-launch.html#studio-launch-console-prerequisites) for prerequisites and setup of SageMaker domain. 
