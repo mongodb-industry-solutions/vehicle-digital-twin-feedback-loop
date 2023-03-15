@@ -11,7 +11,7 @@ def push_to_eventbus(predicted_value, EVENTBUS_NAME, REGION_NAME, vin):
     detailJsonString = {"predicted_value": predicted_value, "vin": vin}
 
     print(detailJsonString)
-    #Putting events to eventbus - sagemaker-lambda-partner
+    #Putting events to eventbus
     response = client.put_events(
         Entries=[
             {
@@ -42,8 +42,8 @@ def handler(event, context):
         runtime=boto3.client('runtime.sagemaker',region_name=REGION_NAME)
 
         #Read data and format 
-        read_arr = event['detail']['fullDocument']['read']
-        vin = event['detail']['fullDocument']['vin']
+        read_arr = event['detail']['read']
+        vin = event['detail']['vin']
         data = np.delete(read_arr,0,1).astype('float64').tolist()
 
         payload = json.dumps([data])
@@ -53,7 +53,7 @@ def handler(event, context):
                                         Body=payload)
 
         out = json.loads(response['Body'].read().decode())[0]
-        #Update result in mongo db
+        #Update result in mongodb
         prediction = 100*(1.0-out[0])
         response = push_to_eventbus(prediction, EVENTBUS_NAME, REGION_NAME, vin)
         return response
