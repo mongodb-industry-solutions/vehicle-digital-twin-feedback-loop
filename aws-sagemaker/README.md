@@ -15,6 +15,10 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
        
       * Click on your eventbridge_publish_battery_telemetry trigger: 
       
+      * Make sure the Full Document is turned ON 
+        <img width="692" alt="image" src="https://user-images.githubusercontent.com/114057324/225280604-ac9d0ad5-17f6-4f1c-b096-ffb91ed5048b.png">
+
+      
       * Under the "Function" Section select "EventBridge" as the Event Type
       
            * Update your AWS Account ID 
