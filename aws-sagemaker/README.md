@@ -138,11 +138,7 @@ Set the target of the Rule as the lambda function which you created earlier i.e.
 
 ![image](https://user-images.githubusercontent.com/114057324/225212873-490792e0-9b50-4105-a60f-f00641540f66.png)
 
-Save the rule and simulate the application.
-
-### 3. Creating environment variables for Lambda function 
-
-![image](https://user-images.githubusercontent.com/114057324/225339802-c0f59da3-15e3-41c9-9275-da3c0374b3f7.png)
+Verify and save the rule.
 
 
 ## Sample output
