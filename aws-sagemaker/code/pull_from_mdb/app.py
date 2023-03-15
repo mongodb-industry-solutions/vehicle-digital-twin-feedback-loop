@@ -2,7 +2,6 @@ import boto3
 import json
 import numpy as np
 import pymongo
-import os
 
 def push_to_eventbus(predicted_value, EVENTBUS_NAME, REGION_NAME, vin):
     #Setting up client for AWS
@@ -29,9 +28,15 @@ def push_to_eventbus(predicted_value, EVENTBUS_NAME, REGION_NAME, vin):
 #lambda function start
 def handler(event, context):
     try:
-        ENDPOINT_NAME= os.environ['model_endpoint'] 
-        REGION_NAME = os.environ['region_name']
-        EVENTBUS_NAME = os.environ['eventbus_name']
+        values = {
+            "region-name": "XXXX",  # Update your region
+            "eventbus-name": "XXXXX", # Update the event-bus created 
+            "model-endpoint": "sagemaker-soln-XXXX",  # Update your sagemaker model endpoint
+        }
+        
+        ENDPOINT_NAME= values['model-endpoint'] 
+        REGION_NAME = values['region-name']
+        EVENTBUS_NAME = values['eventbus-name']
 
         #enable the sagemaker runtime
         runtime=boto3.client('runtime.sagemaker',region_name=REGION_NAME)
@@ -55,4 +60,4 @@ def handler(event, context):
 
     except Exception as e:
         print("Exception: " + str(e))
-        raise e
+        
