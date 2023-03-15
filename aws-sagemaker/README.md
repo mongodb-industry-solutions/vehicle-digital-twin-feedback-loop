@@ -78,20 +78,22 @@ Deploy the SageMaker model "Predictive Maintenance for Vehicle Fleets" to get th
 ![image](https://user-images.githubusercontent.com/114057324/199462770-84305e10-2a3b-4f10-9f56-7a8cd61e8ee3.png)
 ![image](https://user-images.githubusercontent.com/114057324/199463222-dcacd80d-1e84-494a-99a7-ba2a5a0f7914.png)
 
-## Building the Code
-Replace the SageMaker end-point with the one generated above [here](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/main/aws-sagemaker/code/push_to_mdb/write_to_mdb.py).
 
 ## Lambda Functions
+
+Update the _values dictonary_ with appropriate values in both functions before creating Docker images and put `pushing_to_mongodb` for eventbus-name (this will be created in next step)
+
+
 Create two lambda functions:
 
 1. For pulling the data from MongoDB cluster, refer this [function](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/aws-sagemaker/code/pull_from_mdb).
 
 2. For pushing the predicted data back to MongoDB cluster, refer this [function](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/aws-sagemaker/code/push_to_mdb).
 
-Please follow this [guide](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html).
+Please follow this [guide](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) to create Lambda functions using Docker images.
 
 ## Create Rules for AWS Eventbus
-### 1. Eventbus for capturing MongoDB changes
+### 1.  Eventbus for capturing MongoDB changes
 
 Add the rule name, description and the eventbus from the dropdown.
 
@@ -109,7 +111,7 @@ Add previously created Lambda as target and create the rule.
 
 ![image](https://user-images.githubusercontent.com/114057324/199439940-f122ef69-b105-40ed-a255-d89e05b91133.png)
 
-### 2. Eventbus for capturing events sent from Lambda function  
+### 2.  Eventbus for capturing events sent from Lambda function  
 
 In the navigation pane, choose Event buses.
 
@@ -142,15 +144,15 @@ Verify and save the rule.
 
 
 ## Sample output
-On simulating the connected vehichle application the volatage and current of the vehichle are analysed for percentage of failure. The inference is stored back in MongoDB Atlas.
+*  On simulating the connected vehichle application the volatage and current of the vehichle are analysed for percentage of failure. The inference is stored back in MongoDB Atlas.
 
 ![image](https://user-images.githubusercontent.com/114057324/199904767-1fb432dc-af21-44aa-a236-31d84ad031f2.png)
 
 
 ## Conclusion
-This gives a working template to setup an end-to-end flow for connected vehicles, to analyze its telemetric data using MongoDB Atlas and AWS Services. 
+* This gives a working template to setup an end-to-end flow for connected vehicles, to analyze its telemetric data using MongoDB Atlas and AWS Services. 
 
-For any further information in regards to setting up the AWS integration, please contact partners@mongodb.com
+* For any further information in regards to setting up the AWS integration, please contact partners@mongodb.com
 
 
 # Congrats!
