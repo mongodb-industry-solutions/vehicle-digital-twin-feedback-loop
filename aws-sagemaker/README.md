@@ -140,6 +140,11 @@ Set the target of the Rule as the lambda function which you created earlier i.e.
 
 Save the rule and simulate the application.
 
+### 3. Creating environment variables for Lambda function 
+
+![image](https://user-images.githubusercontent.com/114057324/225339802-c0f59da3-15e3-41c9-9275-da3c0374b3f7.png)
+
+
 ## Sample output
 On simulating the connected vehichle application the volatage and current of the vehichle are analysed for percentage of failure. The inference is stored back in MongoDB Atlas.
 
