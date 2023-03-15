@@ -81,6 +81,7 @@ Replace the SageMaker end-point with the one generated above [here](https://gith
 Create two lambda functions:
 
 1. For pulling the data from MongoDB cluster, refer this [function](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/aws-sagemaker/code/pull_from_mdb).
+
 2. For pushing the predicted data back to MongoDB cluster, refer this [function](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/aws-sagemaker/code/push_to_mdb).
 
 Please follow this [guide](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html).
@@ -106,8 +107,16 @@ Add previously created Lambda as target and create the rule.
 
 ### 2. Eventbus for capturing events sent from Lambda function  
 
-This rule is created to move data between lambda functions.
-![image](https://user-images.githubusercontent.com/114057324/214270431-89650ccf-63d1-43a5-916f-88fa3f97f147.png)
+In the navigation pane, choose Event buses.
+
+Choose Create event bus.
+
+Create an Event bus with name `pushing_to_mongodb` 
+
+![image](https://user-images.githubusercontent.com/114057324/225210796-3517b008-836e-4d08-b36a-6ca6f5b54131.png)
+
+Next, create a rule to move data between lambda functions.
+![image](https://user-images.githubusercontent.com/114057324/225212123-f48df2ac-2f02-41ea-96ab-1409a1ad07ae.png)
 
 Select other when selecting event source.
 ![image](https://user-images.githubusercontent.com/114057324/214270442-c722e775-082f-4f60-862a-bef7d5bcebac.png)
@@ -120,6 +129,12 @@ Add below event pattern to be able to send data using python function.
 }
 ```
 ![image](https://user-images.githubusercontent.com/114057324/214270448-4651a768-4c43-4cb6-95cb-6b0044c517ee.png)
+
+Set the target of the Rule as the lambda function which you created earlier i.e. `push_to_mdb` as shown below.
+
+![image](https://user-images.githubusercontent.com/114057324/225212873-490792e0-9b50-4105-a60f-f00641540f66.png)
+
+Save the rule and simulate the application.
 
 ## Sample output
 On simulating the connected vehichle application the volatage and current of the vehichle are analysed for percentage of failure. The inference is stored back in MongoDB Atlas.
