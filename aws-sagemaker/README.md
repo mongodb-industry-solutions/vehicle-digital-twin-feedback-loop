@@ -81,7 +81,7 @@ Deploy the SageMaker model "Predictive Maintenance for Vehicle Fleets" to get th
 
 ## Lambda Functions
 
-Update the lambda code for  _values dictonary_ with appropriate values in both functions before creating Docker images
+Update the lambda code for  _values dictonary_ with appropriate values in both functions before creating Docker images. Reference of the value dictionary is shown below.
 
 <img width="793" alt="image" src="https://user-images.githubusercontent.com/101570105/226828968-44fe7f20-69b8-4286-9f32-5f924e7e2df3.png">
 
