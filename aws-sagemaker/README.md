@@ -62,7 +62,7 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
 
           ![image](https://user-images.githubusercontent.com/114057324/224977547-bf66e9fb-d545-4db3-8f3c-2b65aee35d80.png)
       
-      * Once confirmed, the status of the trigger event source changes from Pending to Active, and the name of the event bus get updated.
+      * Once confirmed, the status of the trigger event source changes from Pending to Active, and the name of the event bus get updated. Note down the event bus name for future reference.
 
 
           ![image](https://user-images.githubusercontent.com/114057324/224977702-5a8f861b-4877-4cb5-ad7e-414f239f3ab6.png)
@@ -90,41 +90,73 @@ create the two repositories for the lambda functions.
 <img width="659" alt="image" src="https://user-images.githubusercontent.com/101570105/226830962-1adf2c2c-166f-4162-a1db-3aa3c80e7957.png">
 
 
-upload the docker image to ECR
+## Upload the docker image to ECR
+              
 
-Open the lamdba function in the VSCode update the region-name, eventbus-name and model-endpoint to your values. Sample reference shown below.
+Update the region-name, eventbus-name and model-endpoint to your values. Sample reference shown below.
 
+
+Change to the _pull_from_mdb_ directory 
+
+       cd aws-sagemaker/code/pull_from_mdb
+
+
+Update the configuration parameter in the lambda code (line 32 to 34). Ensure the eventbus-name in the above code is  `pushing_to_mongodb` as the same name is used in the next step. Otherwise, please note down the name you entered.
 
 <img width="1233" alt="image" src="https://user-images.githubusercontent.com/101570105/226831670-682fb2f2-4aa7-47fc-8a25-78805b0345a3.png">
+ 
+ 
+
+ 
+ 
+Connect to ECR repository. 
+
+Note: to connect to the ECR repo, the docker should be up and running. Please refer the [link](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) for further assistance. 
+
+       aws ecr get-login-password --region <region-name> | docker login --username AWS --password-stdin <account-name>.dkr.ecr.<region>.amazonaws.com
+
+       docker build -t connected_vehicle_atlas_to_sagemaker .
+       
+       docker tag connected_vehicle_atlas_to_sagemaker:latest <accoutn_id>.dkr.ecr.<region>.amazonaws.com/connected_vehicle_atlas_to_sagemaker:latest
+       
+       docker push <account_id>.dkr.ecr.<region>.amazonaws.com/connected_vehicle_atlas_to_sagemaker:latest
+
+Ensure the image is successfully loaded to the ECR 
+
+<img width="1497" alt="image" src="https://user-images.githubusercontent.com/101570105/226839993-62b80f37-0727-4fa1-bb92-0dfaa95dfa47.png">
 
 
-Connect to the AWS Account for the AWS CLI to work and then connect to ECR repository. Note to connect to the ECR repo, the docker should be up and running. Please refer the link (https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) for further assistance. 
-
-              aws ecr get-login-password --region <region-name> | docker login --username AWS --password-stdin <account-name>.dkr.ecr.<region>.amazonaws.com
+Simillarly repeate the steps for "push_to_mdb" also and ensure it's image is uploaded successfully into connected_vehicle_sagemaker_to_atlas repo. 
 
 
-## Lambda Functions
-
-Update the lambda code for  _values dictonary_ with appropriate values in both functions before creating Docker images. Reference of the value dictionary is shown below.
-
-<img width="793" alt="image" src="https://user-images.githubusercontent.com/101570105/226828968-44fe7f20-69b8-4286-9f32-5f924e7e2df3.png">
+Note the code needs to be updated for the Database credentials. Refer to the screenshot below for reference (line no 11 to 15).
 
 
+<img width="1347" alt="image" src="https://user-images.githubusercontent.com/101570105/226841365-8667820a-6b82-46d2-ac69-01af2ee78a65.png">
 
 
+<img width="1518" alt="image" src="https://user-images.githubusercontent.com/101570105/226843032-72d3a39c-8d2b-4f74-b971-ff97ed731dd5.png">
 
-Ensure the eventbus-name in the above code is  `pushing_to_mongodb` as the same name is used in the next step. Otherwise, please note down the name you entered. 
 
-
-Create two lambda functions:
+## Lambda Functions 
 
 1. For pulling the data from MongoDB cluster, refer this [function](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/aws-sagemaker/code/pull_from_mdb).
 
+
+<img width="1624" alt="image" src="https://user-images.githubusercontent.com/101570105/226857255-2f9d7945-44ff-48ad-90e4-0a7fab6ce634.png">
+
+
+
 2. For pushing the predicted data back to MongoDB cluster, refer this [function](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/aws-sagemaker/code/push_to_mdb).
+
+
+<img width="1624" alt="image" src="https://user-images.githubusercontent.com/101570105/226858124-3bf4c09d-a3da-4b99-8fe4-4f2265c80279.png">
+
 
 Please follow this [guide](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) to create Lambda functions using Docker images.
 
 ## Create Rules for AWS Eventbus
+
 ### 1.  Eventbus for capturing MongoDB changes
 
 Add the rule name, description and the eventbus from the dropdown.
