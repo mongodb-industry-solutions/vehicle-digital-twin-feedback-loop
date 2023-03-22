@@ -146,14 +146,15 @@ Note the code needs to be updated for the Database credentials. Refer to the scr
 <img width="1624" alt="image" src="https://user-images.githubusercontent.com/101570105/226857255-2f9d7945-44ff-48ad-90e4-0a7fab6ce634.png">
 
 
-Note down the execution role name from Lamdba permission tab
+Note down the execution role name from Lamdba Permission tab
 
 <img width="1101" alt="image" src="https://user-images.githubusercontent.com/101570105/226877911-3c081fd9-6828-4c3d-bca5-3604b26db8ac.png">
 
 
-Grant the SageMaker and Lambda permissions to the above role
+Grant the SageMaker and Lambda permissions to the above role. Add an in-line policy for permissions to Events.
 
-<img width="1494" alt="image" src="https://user-images.githubusercontent.com/101570105/226878023-02507b5a-e15f-4b5a-af71-2e74ca9732fc.png">
+<img width="1494" alt="image" src="https://user-images.githubusercontent.com/101570105/226893184-089f637d-111f-49fe-b827-4182e576b85e.png">
+
 
 
 
