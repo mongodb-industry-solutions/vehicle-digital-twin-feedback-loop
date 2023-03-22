@@ -79,11 +79,38 @@ Deploy the SageMaker model "Predictive Maintenance for Vehicle Fleets" to get th
 ![image](https://user-images.githubusercontent.com/114057324/199463222-dcacd80d-1e84-494a-99a7-ba2a5a0f7914.png)
 
 
+
+## Create Elastic Container Registry (ECR)
+
+create the two repositories for the lambda functions.
+
+<img width="659" alt="image" src="https://user-images.githubusercontent.com/101570105/226830565-83c5a921-0a5b-4382-bce9-3e99f84c4bf5.png">
+
+
+<img width="659" alt="image" src="https://user-images.githubusercontent.com/101570105/226830962-1adf2c2c-166f-4162-a1db-3aa3c80e7957.png">
+
+
+upload the docker image to ECR
+
+Open the lamdba function in the VSCode update the region-name, eventbus-name and model-endpoint to your values. Sample reference shown below.
+
+
+<img width="1233" alt="image" src="https://user-images.githubusercontent.com/101570105/226831670-682fb2f2-4aa7-47fc-8a25-78805b0345a3.png">
+
+
+Connect to the AWS Account for the AWS CLI to work and then connect to ECR repository. Note to connect to the ECR repo, the docker should be up and running. Please refer the link (https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) for further assistance. 
+
+              aws ecr get-login-password --region <region-name> | docker login --username AWS --password-stdin <account-name>.dkr.ecr.<region>.amazonaws.com
+
+
 ## Lambda Functions
 
 Update the lambda code for  _values dictonary_ with appropriate values in both functions before creating Docker images. Reference of the value dictionary is shown below.
 
 <img width="793" alt="image" src="https://user-images.githubusercontent.com/101570105/226828968-44fe7f20-69b8-4286-9f32-5f924e7e2df3.png">
+
+
+
 
 
 Ensure the eventbus-name in the above code is  `pushing_to_mongodb` as the same name is used in the next step. Otherwise, please note down the name you entered. 
