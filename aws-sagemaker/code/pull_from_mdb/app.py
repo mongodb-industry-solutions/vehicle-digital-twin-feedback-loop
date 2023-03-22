@@ -44,9 +44,8 @@ def handler(event, context):
         #Read data and format 
         read_arr = event['detail']['read']
         vin = event['detail']['vin']
-        data = np.delete(read_arr,0,1).astype('float64').tolist()
 
-        payload = json.dumps([data])
+        payload = json.dumps([read_arr])
         #Prediction from model
         response = runtime.invoke_endpoint(EndpointName=ENDPOINT_NAME,
                                         ContentType='application/json',
