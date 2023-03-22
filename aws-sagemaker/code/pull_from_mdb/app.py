@@ -46,6 +46,8 @@ def handler(event, context):
         vin = event['detail']['vin']
 
         payload = json.dumps([read_arr])
+        
+        print("payload for ML Model : " + str(payload))
         #Prediction from model
         response = runtime.invoke_endpoint(EndpointName=ENDPOINT_NAME,
                                         ContentType='application/json',
