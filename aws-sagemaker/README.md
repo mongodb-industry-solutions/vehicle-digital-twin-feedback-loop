@@ -250,6 +250,24 @@ Verify and save the rule.
 ![image](https://user-images.githubusercontent.com/114057324/199904767-1fb432dc-af21-44aa-a236-31d84ad031f2.png)
 
 
+## Troubleshoot
+
+a.(Mandatory) Redeploy the correct/latest docker image, when a new image is pushed into Elastic Container Repository(ECS).
+
+<img width="1105" alt="image" src="https://user-images.githubusercontent.com/101570105/236819974-965a683d-a48c-4865-987c-b08627429b0c.png">
+
+b.check the log of Atlas Application Services to confirm all the triggers are working properly.
+
+<img width="1304" alt="image" src="https://user-images.githubusercontent.com/101570105/236820267-49489d99-8b31-4ff4-a085-deff90b44bf7.png">
+
+
+c. Check the cloudwatch log of lambda to confirm if the lambda execution is successful.
+
+<img width="1087" alt="image" src="https://user-images.githubusercontent.com/101570105/236820537-180ee097-e4b3-4157-802b-85dda3e6d604.png">
+
+
+
+
 ## Conclusion
 * This gives a working template to setup an end-to-end flow for connected vehicles, to analyze its telemetric data using MongoDB Atlas and AWS Services. 
 
