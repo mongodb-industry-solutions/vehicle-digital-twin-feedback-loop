@@ -126,13 +126,23 @@ Ensure the image is successfully loaded to the ECR
 <img width="1497" alt="image" src="https://user-images.githubusercontent.com/101570105/226839993-62b80f37-0727-4fa1-bb92-0dfaa95dfa47.png">
 
 
-Simillarly repeate the steps for "push_to_mdb" also and ensure it's image is uploaded successfully into connected_vehicle_sagemaker_to_atlas repo. 
+Simillarly repeat the steps for "push_to_mdb" also and ensure it's image is uploaded successfully into connected_vehicle_sagemaker_to_atlas repo. 
 
 
 Note the code needs to be updated for the Database credentials. Refer to the screenshot below for reference (line no 11 to 15).
 
 
 <img width="1347" alt="image" src="https://user-images.githubusercontent.com/101570105/226841365-8667820a-6b82-46d2-ac69-01af2ee78a65.png">
+
+       aws ecr get-login-password --region <region-name> | docker login --username AWS --password-stdin <account-name>.dkr.ecr.<region>.amazonaws.com
+       
+       docker build -t connected_vehicle_sagemaker_to_atlas .
+       
+       docker tag connected_vehicle_sagemaker_to_atlas:latest <account_id>.dkr.ecr.<region>.amazonaws.com/connected_vehicle_sagemaker_to_atlas:latest
+       
+       docker push <account_id>.dkr.ecr.<region>.amazonaws.com/connected_vehicle_sagemaker_to_atlas:latest
+              
+              
 
 
 <img width="1518" alt="image" src="https://user-images.githubusercontent.com/101570105/226843032-72d3a39c-8d2b-4f74-b971-ff97ed731dd5.png">
