@@ -252,11 +252,11 @@ Verify and save the rule.
 
 ## Troubleshoot
 
-a.(Mandatory) Redeploy the correct/latest docker image, when a new image is pushed into Elastic Container Repository(ECS).
+a. (Mandatory) Redeploy the correct/latest docker image, when a new image is pushed into Elastic Container Repository(ECS).
 
 <img width="1105" alt="image" src="https://user-images.githubusercontent.com/101570105/236819974-965a683d-a48c-4865-987c-b08627429b0c.png">
 
-b.check the log of Atlas Application Services to confirm all the triggers are working properly.
+b. Check the log of Atlas Application Services to confirm all the triggers are working properly.
 
 <img width="1304" alt="image" src="https://user-images.githubusercontent.com/101570105/236820267-49489d99-8b31-4ff4-a085-deff90b44bf7.png">
 
