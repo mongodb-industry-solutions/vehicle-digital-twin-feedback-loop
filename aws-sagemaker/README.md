@@ -163,7 +163,23 @@ Note down the execution role name from Lamdba Permission tab
 
 Grant the SageMaker and Lambda permissions to the above role. Add an in-line policy for permissions to Events.
 
+                 {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                      {
+                          "Effect" : "allow",
+                          "Action" :"events:*",
+                          "Resources": "arn:aws:logs:<region>:<account_ID>:*"
+
+                      }
+
+                      ]
+                }
+
+
 <img width="1494" alt="image" src="https://user-images.githubusercontent.com/101570105/226893184-089f637d-111f-49fe-b827-4182e576b85e.png">
+
+
 
 
 
