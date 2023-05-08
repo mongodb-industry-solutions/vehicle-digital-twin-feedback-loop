@@ -167,9 +167,9 @@ Grant the SageMaker and Lambda permissions to the above role. Add an in-line pol
                   "Version": "2012-10-17",
                   "Statement": [
                       {
-                          "Effect" : "allow",
+                          "Effect" : "Allow",
                           "Action" :"events:*",
-                          "Resources": "arn:aws:logs:<region>:<account_ID>:*"
+                          "Resource": "arn:aws:logs:<region>:<account_ID>:*"
 
                       }
 
