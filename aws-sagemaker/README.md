@@ -6,6 +6,14 @@ For visualization purposes, the connected vehicle environment will function like
 
 Now that you've finished the first three parts ([part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/atlas-backend), [part 2](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/vehicle-ts), [part 3](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/mobile-swift)) , you can start setting up your AWS SageMaker integration. The AWS SageMaker integration allows you to analyze your data and then send that analyzed data back to MongoDB Atlas and consequently to the the users of the devices. 
 
+## Prerequisite 
+
+1. AWS Account access for Amazon SageMaker, Amazon EventBridge, ECR, Lambda
+2. AWS CLI
+3. Docker (or) Docker Desktop
+4. Ensure the Atlas Triggers are in valid state.
+
+
 ## Setup the AWS Backend
 1. Create an [AWS Account](https://portal.aws.amazon.com/billing/signup#/start/email).
 2. Take note of your AWS Account ID as you'll need it to update your AWS Account ID in the Triggers tab of the Atlas UI as seen in Step 3. 
@@ -265,7 +273,7 @@ c. Check the cloudwatch log of lambda to confirm if the lambda execution is succ
 
 <img width="1087" alt="image" src="https://user-images.githubusercontent.com/101570105/236820537-180ee097-e4b3-4157-802b-85dda3e6d604.png">
 
-
+d. Please ensure your docker environment is running before trying out the ECR push.
 
 
 ## Conclusion
