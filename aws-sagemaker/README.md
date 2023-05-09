@@ -11,7 +11,7 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
 1. AWS Account access for Amazon SageMaker, Amazon EventBridge, ECR, Lambda
 2. AWS CLI
 3. Docker (or) Docker Desktop
-4. Ensure the Atlas Triggers are in valid state.
+4. Ensure the Atlas Application service Triggers (created in the previous steps) are in valid state.
 
 
 ## Setup the AWS Backend
