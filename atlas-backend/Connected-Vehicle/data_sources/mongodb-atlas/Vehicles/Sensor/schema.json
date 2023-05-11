@@ -1,44 +1,44 @@
 {
     "bsonType": "object",
     "properties": {
-        "_id": {
-            "bsonType": "objectId"
-        },
-        "measurements": {
-            "bsonType": "array",
-            "items": {
-                "bsonType": "object",
-                "properties": {
-                    "current": {
-                        "bsonType": "long"
-                    },
-                    "ts": {
-                        "bsonType": "date"
-                    },
-                    "voltage": {
-                        "bsonType": "long"
-                    }
-                },
-                "required": [
-                    "ts"
-                ],
-                "title": "Measurement"
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "measurements": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "current": {
+              "bsonType": "long"
+            },
+            "ts": {
+              "bsonType": "date"
+            },
+            "voltage": {
+              "bsonType": "long"
             }
-        },
-        "sn": {
-            "bsonType": "string"
-        },
-        "type": {
-            "bsonType": "string"
-        },
-        "vin": {
-            "bsonType": "string"
+          },
+          "required": [
+            "ts"
+          ],
+          "title": "Measurement"
         }
+      },
+      "sn": {
+        "bsonType": "string"
+      },
+      "type": {
+        "bsonType": "string"
+      },
+      "vin": {
+        "bsonType": "string"
+      }
     },
     "required": [
-        "_id",
-        "vin",
-        "type"
+      "_id",
+      "vin",
+      "type"
     ],
     "title": "Sensor"
-}
+  }
