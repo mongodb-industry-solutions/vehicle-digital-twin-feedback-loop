@@ -137,10 +137,10 @@ Ensure the image is successfully loaded to the ECR
 Simillarly repeat the steps for "push_to_mdb" also and ensure it's image is uploaded successfully into connected_vehicle_sagemaker_to_atlas repo. 
 
 
-Note the code needs to be updated for the Database credentials. Refer to the screenshot below for reference (line no 11 to 15).
+Note the code needs to be updated for the Database credentials. Refer to the screenshot below for reference (line no 16).
 
 
-<img width="1347" alt="image" src="https://user-images.githubusercontent.com/101570105/226841365-8667820a-6b82-46d2-ac69-01af2ee78a65.png">
+<img width="1720" alt="image" src="https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/assets/101570105/dbd7c6d0-d9fa-46e0-a9fa-f1d6fa46382f">
 
        aws ecr get-login-password --region <region-name> | docker login --username AWS --password-stdin <account-name>.dkr.ecr.<region>.amazonaws.com
        
