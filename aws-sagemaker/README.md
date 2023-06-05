@@ -10,7 +10,7 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
 
 1. AWS Account access for Amazon SageMaker, Amazon EventBridge, ECR, Lambda
 2. AWS CLI
-3. Setup Amazon SageMaker Domain and create an endpoint for "Predictive Maintenance for Vehicle Fleets" [Link](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-launch.html#studio-launch-console-prerequisites)
+3. Setup Amazon SageMaker Domain and create an endpoint for "Predictive Maintenance for Vehicle Fleets" [Link](AmazonSageMaker.md)
 4. Docker (or) Docker Desktop
 
 
