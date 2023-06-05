@@ -134,7 +134,7 @@ struct CommandView: View {
     }
     
     func sendCommand(){
-        $vehicle.commands.append(Command(value: ["command": selectedCommand, "status": CmdStatus.submitted]))
+        $vehicle.commands.append(Command(value: ["command": selectedCommand, "status": CmdStatus.submitted] as [String : Any]))
         isPresented = false
     }
 }
