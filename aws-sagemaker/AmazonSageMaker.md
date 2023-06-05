@@ -1,4 +1,4 @@
-## Setup SageMaker 
+## Setup Amazon SageMaker 
 
 Please refer to the [link](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-launch.html#studio-launch-console-prerequisites) for prerequisites and setup of SageMaker domain. 
 
