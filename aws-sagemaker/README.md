@@ -34,34 +34,8 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
            * Select an AWS Region 
 
      ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/function.png)
-       
-      * Now expand the advanced options and copy/paste the following code into the Project Expression: 
-      
-      ```json 
-               {
-                     "operationType": {
-                      "$numberInt": "1"
-                  },
-                  "vin": "$fullDocument.vin",
-                  "read": {
-                      "$map": {
-                          "input": "$fullDocument.measurements",
-                          "as": "item",
-                          "in": [
-                              "$$item.voltage",
-                              "$$item.current"
-                          ]
-                      }
-                  }
-              }
-      ```
-       
-      * You should see the following: 
-     ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/project_expression.png)
 
-
-
-      * After saving the trigger, head on to AWS Console and go-to Amazon EventBridge and choose Partner event sources in the navigation pane. In the Partner event sources table, find and select the **Pending trigger** source and then click Associate with event bus.
+      * Then save the trigger, head on to AWS Console and go-to Amazon EventBridge and choose Partner event sources in the navigation pane. In the Partner event sources table, find and select the **Pending trigger** source and then click Associate with event bus.
 
           ![image](https://user-images.githubusercontent.com/114057324/224977374-2fded319-8433-4dcd-8c93-7ae2468445ac.png)
 
