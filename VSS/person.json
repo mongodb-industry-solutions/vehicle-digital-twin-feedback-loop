@@ -1,0 +1,19 @@
+{
+    "_id": {
+        "$oid": "644805bd3d972b0d50ced606"
+    },
+    "first_name": "Sam",
+    "middle_name": "Francis",
+    "last_name": "Huber",
+    "address": {
+        "street": "Sea View",
+        "postal_code": "8000",
+        "city": "Porto",
+        "country": "Portugal"
+    },
+    "vehicles": [
+        {
+            "$oid": "6447c7471982dca53597071e"
+        }
+    ]
+}
