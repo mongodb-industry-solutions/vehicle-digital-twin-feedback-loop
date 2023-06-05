@@ -79,7 +79,7 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
 
 ## Setup SageMaker 
 
-If not already completed, please refer to the [link](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-launch.html#studio-launch-console-prerequisites) for prerequisites and setup of SageMaker domain. 
+If not already completed under prerequisites, please refer to the [link](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-launch.html#studio-launch-console-prerequisites) for prerequisites and setup of SageMaker domain. 
 
 Deploy the SageMaker model "Predictive Maintenance for Vehicle Fleets" to get the end-point.
 
