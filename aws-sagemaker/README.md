@@ -10,11 +10,11 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
 
 1. AWS Account access for Amazon SageMaker, Amazon EventBridge, ECR, Lambda
 2. AWS CLI
-3. Docker (or) Docker Desktop
-4. Ensure the Atlas Application service Triggers (created in the previous steps) are in valid state.
+3. Setup Amazon SageMaker Domain and create an endpoint for "Predictive Maintenance for Vehicle Fleets"
+4. Docker (or) Docker Desktop
 
 
-## Setup the AWS Backend
+## Setup the Amazon EventBridge Integration
 1. Create an [AWS Account](https://portal.aws.amazon.com/billing/signup#/start/email).
 2. Take note of your AWS Account ID as you'll need it to update your AWS Account ID in the Triggers tab of the Atlas UI as seen in Step 3. 
 3. To publish battery telemetry information to Eventbridge, please follow these steps in MongoDB Atlas under the App Services tab: 
@@ -79,7 +79,7 @@ Now that you've finished the first three parts ([part 1](https://github.com/mong
 
 ## Setup SageMaker 
 
-If not already completed, please refer to the [link](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-launch.html#studio-launch-console-prerequisites) for prerequisites and setup of SageMaker domain. 
+If not already completed under prerequisites, please refer to the [link](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-launch.html#studio-launch-console-prerequisites) for prerequisites and setup of SageMaker domain. 
 
 Deploy the SageMaker model "Predictive Maintenance for Vehicle Fleets" to get the end-point.
 
