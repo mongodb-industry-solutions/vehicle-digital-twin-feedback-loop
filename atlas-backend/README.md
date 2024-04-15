@@ -9,10 +9,12 @@ In order to the make the demo work end-to-end, you will need to set up the backe
 
 ## Setup the Digital-Twin Application
 
-1. [Install realm-cli](https://www.mongodb.com/docs/atlas/app-services/cli/#installation)
+1. [Install appservice-cli](https://www.mongodb.com/docs/atlas/app-services/cli/#app-services-cli)
 2. [Generate API key](https://www.mongodb.com/docs/atlas/app-services/cli/#generate-an-api-key), assign the ```Project Owner``` permission and add your IP address to the access list
-3. [Login with your API key](https://www.mongodb.com/docs/atlas/app-services/cli/#authenticate-with-an-api-key)
-4. Navigate into the folder Vehicle-Digital-Twin-Feedback-Loop/atlas-backend and import the Connected-Vehicle application `realm-cli push --local ./Connected-Vehicle --remote Connected-Vehicle` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs. If you are unsure which options to choose, the default ones are usually a good way to start! 
+3. [Login with your API key](https://www.mongodb.com/docs/atlas/app-services/realm-cli/v2/#authenticate-with-an-api-key)
+   
+    `appservices login --api-key="<API-Key>" --private-api-key="<Private-Key>"`
+4. Navigate into the folder Vehicle-Digital-Twin-Feedback-Loop/atlas-backend and import the Connected-Vehicle application `appservices push --local ./Connected-Vehicle --remote Connected-Vehicle` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs. If you are unsure which options to choose, the default ones are usually a good way to start! 
 
     After you've chosen your options, you should see the following appear: 
 
