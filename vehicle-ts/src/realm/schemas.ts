@@ -1,5 +1,5 @@
-import { ObjectId } from 'bson';
-import Realm from 'realm';
+
+import Realm, {BSON} from 'realm';
 
 /**
  * Schema/class definition for the vehicle object
@@ -9,10 +9,10 @@ export class Vehicle extends Realm.Object<Vehicle> {
   public name!: string;
   public owner_id!: string;
   public isOn!: boolean;
-  public commands?: Command[];
+  public commands!: Realm.List<Command>;
   public mixedTypes?: Realm.Mixed;  // Field type which supports multiple data types
-  public components?: Component[];
-  public battery?: Unmanaged<Battery>;
+  public components!: Realm.List<Component>;
+  public battery?: Battery;
 
   static schema = {
     name: 'Vehicle',
@@ -76,7 +76,7 @@ export class Command extends Realm.Object<Command> {
  * Schema/class definition for a component object
  */
 export class Component extends Realm.Object<Component> {
-  public _id?: ObjectId;
+  public _id?: BSON.ObjectId;
   public name?: string | null;
   public owner_id!: string;
 
@@ -95,7 +95,7 @@ export class Component extends Realm.Object<Component> {
  * Schema/class definition for a sensor measurement object
  */
 export class Sensor extends Realm.Object<Component> {
-  public _id!: ObjectId;
+  public _id!: BSON.ObjectId;
   public vin!: string;
   public type = 'battery';
   public sn?: string;

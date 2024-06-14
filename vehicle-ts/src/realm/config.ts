@@ -1,6 +1,6 @@
 
 // Provide the Realm App ID
-export const appID = "<--YOUR APP SERVICES ID-->"
+export const appID = "connected-products-kknex"
 
 // Provide the configured Email/Password user account. 
 // If you have changed the password while creating the user you must update it here too
@@ -20,5 +20,5 @@ export const vehicleConfig = {
     mixedTypes: "Change Type",
     isOn: false,
     commands: [],
-    battery: { sn: "123", capacity: 1000, voltage: 50, current: 50 }
+    battery: { sn: "123", capacity: 1000, voltage: 50, current: 50, status: "OK"  }
 }
