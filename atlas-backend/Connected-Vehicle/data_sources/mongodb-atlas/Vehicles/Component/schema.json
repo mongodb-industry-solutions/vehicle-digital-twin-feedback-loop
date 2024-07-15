@@ -1,8 +1,16 @@
 {
-    "bsonType": "object",
+    "title": "Component",
+    "type": "object",
+    "required": [
+        "device_id",
+        "owner_id"
+    ],
     "properties": {
         "_id": {
             "bsonType": "objectId"
+        },
+        "device_id": {
+            "bsonType": "string"
         },
         "name": {
             "bsonType": "string"
@@ -10,9 +18,5 @@
         "owner_id": {
             "bsonType": "string"
         }
-    },
-    "required": [
-        "owner_id"
-    ],
-    "title": "Component"
+    }
 }

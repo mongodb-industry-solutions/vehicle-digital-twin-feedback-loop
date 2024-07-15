@@ -1,0 +1,19 @@
+{
+    "database": "Vehicles",
+    "collection": "Vehicle",
+    "roles": [
+        {
+            "name": "readAndWriteAll",
+            "apply_when": {},
+            "document_filters": {
+                "read": true,
+                "write": true
+            },
+            "insert": true,
+            "delete": true,
+            "search": true,
+            "read": true,
+            "write": true
+        }
+    ]
+}

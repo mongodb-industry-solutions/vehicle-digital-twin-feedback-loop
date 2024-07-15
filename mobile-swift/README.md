@@ -11,7 +11,7 @@ Congrats! You've finished [part 1](https://github.com/mongodb-industry-solutions
 4. Run the the app. Sometimes it may be required to reset the package caches in Xcode -> ```'File -> Packages -> Reset Package Caches'```
 5. If you have changed the password for the user created in [part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/atlas-backend) update the password on the login screen!
 
-![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/Mobileapp.png)
+![image](../media/Mobileapp.png)
 
 ## Continue with Part 4 where you will integrate Amazon SageMaker
 Part 4: [Set up the Amazon SageMaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/aws-sagemaker)

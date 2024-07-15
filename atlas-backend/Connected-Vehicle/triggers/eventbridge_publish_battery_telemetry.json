@@ -1,14 +1,17 @@
 {
     "name": "eventbridge_publish_battery_telemetry",
     "type": "DATABASE",
+    "disabled": false,
     "config": {
+        "collection": "Sensor",
+        "database": "Vehicles",
+        "full_document": true,
+        "full_document_before_change": false,
+        "match": {},
+        "maximum_throughput": false,
         "operation_types": [
             "INSERT"
         ],
-        "database": "Vehicles",
-        "collection": "Sensor",
-        "service_name": "mongodb-atlas",
-        "match": {},
         "project": {
             "operationType": {
                 "$numberInt": "1"
@@ -25,13 +28,11 @@
             },
             "vin": "$fullDocument.vin"
         },
-        "full_document": true,
-        "full_document_before_change": false,
-        "unordered": false,
+        "service_name": "mongodb-atlas",
         "skip_catchup_events": true,
-        "tolerate_resume_errors": true
+        "tolerate_resume_errors": true,
+        "unordered": false
     },
-    "disabled": false,
     "event_processors": {
         "FUNCTION": {
             "config": {

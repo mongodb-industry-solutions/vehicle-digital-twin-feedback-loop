@@ -10,11 +10,13 @@ exports = function(arg){
    
    let status;
 
-   if (arg.fullDocument.value >=55.5) { 
+  /* if (arg.fullDocument.prediction >=54) { 
      status = "OK";
    } else {
      status = "NOK"
-   }
+   }*/
+   
+   status = "NOK"
   
   var collection = context.services.get("mongodb-atlas").db("Vehicles").collection("Vehicle");
     

@@ -1,26 +1,22 @@
 {
     "type": "flexible",
     "state": "enabled",
-    "development_mode_enabled": true,
+    "development_mode_enabled": false,
     "service_name": "mongodb-atlas",
     "database_name": "Vehicles",
-    "last_disabled": 1676584288,
     "is_recovery_mode_disabled": false,
-    "permissions": {
-        "rules": {},
-        "defaultRoles": [
-            {
-                "name": "read-write",
-                "applyWhen": {},
-                "read": true,
-                "write": true
-            }
-        ]
-    },
     "queryable_fields_names": [
         "vin",
         "owner_id"
     ],
+    "collection_queryable_fields_names": {
+        "Component": [
+            "device_id"
+        ],
+        "Vehicle": [
+            "device_id"
+        ]
+    },
     "asymmetric_tables": [
         "Sensor"
     ]

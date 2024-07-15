@@ -1,6 +1,6 @@
 
 // Provide the Realm App ID
-export const appID = "connected-products-kknex"
+export const appID = "connected-vehicle-luopuzd"
 
 // Provide the configured Email/Password user account. 
 // If you have changed the password while creating the user you must update it here too

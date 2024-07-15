@@ -1,22 +1,23 @@
 {
     "name": "vehicle_publish_battery_inference",
     "type": "DATABASE",
+    "disabled": false,
     "config": {
+        "collection": "Sagemaker",
+        "database": "Integrations",
+        "full_document": true,
+        "full_document_before_change": false,
+        "match": {},
+        "maximum_throughput": false,
         "operation_types": [
             "INSERT"
         ],
-        "database": "Integrations",
-        "collection": "Sagemaker",
-        "service_name": "mongodb-atlas",
-        "match": {},
         "project": {},
-        "full_document": true,
-        "full_document_before_change": false,
-        "unordered": false,
+        "service_name": "mongodb-atlas",
         "skip_catchup_events": true,
-        "tolerate_resume_errors": true
+        "tolerate_resume_errors": true,
+        "unordered": false
     },
-    "disabled": false,
     "event_processors": {
         "FUNCTION": {
             "config": {

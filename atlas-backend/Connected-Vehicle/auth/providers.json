@@ -12,13 +12,13 @@
     "local-userpass": {
         "name": "local-userpass",
         "type": "local-userpass",
+        "disabled": false,
         "config": {
             "autoConfirm": true,
             "resetPasswordSubject": "https://sample.com",
             "resetPasswordUrl": "https://sample.com",
             "runConfirmationFunction": false,
             "runResetFunction": false
-        },
-        "disabled": false
+        }
     }
 }

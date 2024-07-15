@@ -1,18 +1,18 @@
 {
-    "bsonType": "object",
+    "title": "Inference",
+    "type": "object",
+    "required": [
+        "vin"
+    ],
     "properties": {
         "_id": {
             "bsonType": "objectId"
         },
-        "vin": {
-            "bsonType": "string"
-        },
         "prediction": {
             "bsonType": "string"
+        },
+        "vin": {
+            "bsonType": "string"
         }
-    },
-    "required": [
-        "vin"
-    ],
-    "title": "Inference"
+    }
 }
