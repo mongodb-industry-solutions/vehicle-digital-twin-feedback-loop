@@ -27,7 +27,7 @@ In order to the make the demo work end-to-end, you will need to set up the backe
     Your App ID should be in the following format: YourAppName-XXXXX
 
 
-5. Create the demo user by pasting the following into your command shell: `realm-cli users create --type email --email demo --password demopw`. Be sure to change the default password. You then have to provide the previously received App ID or just type the application name `Connected-Vehicle`.
+5. Create the demo user by pasting the following into your command shell: `appservices users create --type email --email demo --password demopw`. Be sure to change the default password. You then have to provide the previously received App ID or just type the application name `Connected-Vehicle`.
 
     You should see the following appear: 
         
@@ -39,7 +39,7 @@ In order to the make the demo work end-to-end, you will need to set up the backe
             "email": ,
             "type":
         }
-6. Run the following command: `realm-cli apps list` to check if your app has been created. 
+6. Run the following command: `appservices apps list` to check if your app has been created. 
     
     You should see the following appear: 
         
