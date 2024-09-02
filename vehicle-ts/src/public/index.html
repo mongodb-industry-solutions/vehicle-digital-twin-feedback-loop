@@ -2,38 +2,38 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <title>Vehicle Simulator</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Vehicle Simulator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-  <div class="container overflow-hidden">
-    <div class="jumbotron">
+    <div class="container overflow-hidden">
+        <div class="jumbotron">
 
-      <div id="vehicle_section">
-        <p>Vehicle</p>
-      </div>
+            <div id="vehicle_section">
+                <p>Vehicle</p>
+            </div>
 
-      <hr class="my-4">
-      <div class="row mt-2">
-        <div class="col">
-          <input id="component_name" type="text" class="form-control" placeholder="Component Name"
-            aria-label="Component Name">
-        </div>
-        <div class="col">
-          <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
-        </div>
-        <div class="col">
-          <p id="number_components"> Number of Components </p>
-        </div>
-        <div class="col">
-        </div>
-      </div>
-      <!----<div class="row mt-2">
+            <hr class="my-4">
+            <div class="row mt-2">
+                <div class="col">
+                    <input id="component_name" type="text" class="form-control" placeholder="Component Name"
+                        aria-label="Component Name">
+                </div>
+                <div class="col">
+                    <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
+                </div>
+                <div class="col">
+                    <p id="number_components"> Number of Components </p>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <!----<div class="row mt-2">
         <div class="col">
           <button id="pause_realm" type="button" class="btn btn-primary btn-block">Pause Sync</button>
         </div>
@@ -45,169 +45,163 @@
         <div class="col">
         </div>
       </div>--->
-      <div class="row mt-2">
-        <div class="col">
-          <label for="battery_current">Ampere: (0-100)</label>
-          <input id="battery_current" type="range" min="1" max="100" value="50">
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="battery_current">Ampere: (0-100)</label>
+                    <input id="battery_current" type="range" min="1" max="100" value="50">
+                </div>
+                <div class="col">
+                    <label for="battery_voltage">Volt: (0-100)</label>
+                    <input id="battery_voltage" type="range" min="1" max="100" value="50">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <button id="add_sensor" type="button" class="btn btn-primary btn-block">Track Telemetry</button>
+                </div>
+                <div class="col">
+                    <p id="measurements">Bucket: 0/20</p>
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+            </div>
         </div>
-        <div class="col">
-          <label for="battery_voltage">Volt: (0-100)</label>
-          <input id="battery_voltage" type="range" min="1" max="100" value="50">
-        </div>
-        <div class="col">
-        </div>
-        <div class="col">
-        </div>
-      </div>
-      <div class="row mt-2">
-        <div class="col">
-          <button id="add_sensor" type="button" class="btn btn-primary btn-block">Track Telemetry</button>
-        </div>
-        <div class="col">
-          <p id="measurements">Bucket: 0/20</p>
-        </div>
-        <div class="col">
-        </div>
-        <div class="col">
-        </div>
-      </div>
     </div>
-  </div>
-  </div>
-  <script>
-    const port = window.location.port;
+    </div>
+    <script>
+        const port = window.location.port;
 
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-      // Update vehicle section NEW
-      function updateVehicle(device) {
+            // Update vehicle section NEW
+            function updateVehicle(device) {
+                let engine_on_pic = "engine_transparent.gif";
+                let engine_off_pic = "engine_off.png";
+                let alert_on_pic = "alert_icon_red.png";
+                let alert_off_pic = "alert_icon_gray.png";
+                let alert_on_tooltip = "Your battery is not okay";
+                let alert_off_tooltip = "";
 
-        let engine_on_pic = "engine_transparent.gif";
-        let engine_off_pic = "engine_off.png";
+                let vehicle_default_pic = "new_car.png";
+                let vehicle_spoiler_pic = "car_spoiler.png";
 
-        let alert_on_pic = "alert_icon_red.png";
-        let alert_off_pic = "alert_icon_gray.png";
-        let alert_on_tooltip = "Your battery is not okay";
-        let alert_off_tooltip = "";
+                const componentsCount = device.components ? device.components.length : 0;
+                const measurementsCount = device.measurements ? device.measurements.length : 0;
 
-        let vehicle_default_pic = "new_car.png";
-        let vehicle_spoiler_pic = "car_spoiler.png";
+                let vehicle_pic = componentsCount > 0 ? vehicle_spoiler_pic : vehicle_default_pic;
+                let engine_pic = device.isOn ? engine_on_pic : engine_off_pic;
+                let engine_status_tag = device.isOn ? "Engine on" : "Engine off";
 
-        //Change image of car with spoiler when a component is added
-        if (device.components.length >= 1) {
-          vehicle_pic = vehicle_spoiler_pic;
-        } else {
-          vehicle_pic = vehicle_default_pic;
-        }
+                // Safely handle missing battery data
+                let battery = device.battery || {}; // Use an empty object as a fallback
+                let alert_pic = battery.status === "NOK" ? alert_on_pic : alert_off_pic;
+                let alert_tooltip = battery.status === "NOK" ? alert_on_tooltip : alert_off_tooltip;
 
-        //Display engine image on or off
-        if (device.isOn) {
-          engine_pic = engine_on_pic;
-          engine_status_tag = "Engine on";
-        } else {
-          engine_pic = engine_off_pic;
-          engine_status_tag = "Engine off";
-        }
-
-        //Display alert icon and message for battery status
-        if (device.battery.status == "NOK") {
-          alert_pic = alert_on_pic;
-          alert_tooltip = alert_on_tooltip;
-        } else {
-          alert_pic = alert_off_pic;
-          alert_tooltip = alert_off_tooltip;
-        }
-
-        const content = `
-          <div id="vehicle_section">
-              <h1>${device.name}</h1>
-              <hr class="my-4">
-              <img id="vehicle_image" src="${vehicle_pic}" alt="Image of vehicle">
-              <p id="voltage">Voltage: ${device.battery.voltage}</p>
-              <p id="current">Current: ${device.battery.current}</p>
-              <p id="ison">${engine_status_tag}</p>
-              <img id="engine_image" src="${engine_pic}" alt="Engine GIF" />
-              <p id="vin">VIN: ${device._id}</p>
-            
-              <div class="alert_section">
+                const content = `
+        <div id="vehicle_section">
+            <h1>${device.name}</h1>
+            <hr class="my-4">
+            <img id="vehicle_image" src="${vehicle_pic}" alt="Image of vehicle">
+            <p id="voltage">Voltage: ${battery.voltage || 'N/A'}</p>
+            <p id="current">Current: ${battery.current || 'N/A'}</p>
+            <p id="ison">${engine_status_tag}</p>
+            <img id="engine_image" src="${engine_pic}" alt="Engine GIF" />
+            <p id="vin">${device._id}</p>
+            <div class="alert_section">
                 <img id="alert_image" src="${alert_pic}" alt="Alert Icon" />
                 <h3 id="alert_tooltip">${alert_tooltip}</h3>
-              </div>
-              
-          </div>`;
-        $("#vehicle_section").replaceWith(content);
+            </div>
+        </div>`;
+                $("#vehicle_section").replaceWith(content);
 
-        updateComponent(device);
-        updateMeasurements(device);
-      }
+                updateComponent(componentsCount);
+                updateMeasurements(measurementsCount);
+            }
 
 
-      // Update number of components section
-      function updateComponent(device) {
-        const numbers = `
+
+
+            // Update number of components section
+            function updateComponent(device) {
+                const numbers = `
           <div class="border_box" id="number_components">
             <p>Components: <strong>${device.components.length}</strong></p>
           </div>`;
-        $("#number_components").replaceWith(numbers);
-      }
+                $("#number_components").replaceWith(numbers);
+            }
 
-      // Update number of measurements
-      function updateMeasurements(device) {
-        const measurements = `
+            // Update number of measurements
+            function updateMeasurements(device) {
+                const measurements = `
           <div class="border_box" id="measurements">
             <p>Bucket: <strong>${device.measurements}/20</strong></p>
           </div>`;
-        $("#measurements").replaceWith(measurements);
-      }
+                $("#measurements").replaceWith(measurements);
+            }
 
-      const evtSource = new EventSource(`${window.location}subscribe`);
-      evtSource.onmessage = function (event) {
-        console.log("onmessage: " + event.data);
-      }
+            eventSource.onmessage = function (event) {
+                try {
+                    const vehicleData = JSON.parse(event.data);
+                    updateVehicle(vehicleData);
+                } catch (error) {
+                    console.error('Error parsing JSON:', error, 'Received data:', event.data);
+                }
+            };
 
-      evtSource.addEventListener("refresh", function (event) {
-        updateVehicle(JSON.parse(event.data));
-      });
+            eventSource.onerror = function (error) {
+                console.error('SSE error:', error);
+            };
 
-      $("#add_component").click(function () {
-        $.ajax({
-          url: `${window.location}add_component`,
-          type: "POST",
-          data: { name: $("#component_name").val() },
-          success: (result) => { console.log(JSON.stringify(result)) },
-          error: (error) => { console.log(`${error}`) }
+
+            evtSource.addEventListener("refresh", function (event) {
+                updateVehicle(JSON.parse(event.data));
+            });
+
+            $("#add_component").click(function () {
+                $.ajax({
+                    url: `${window.location}add_component`,
+                    type: "POST",
+                    data: { name: $("#component_name").val() },
+                    success: (result) => { console.log(JSON.stringify(result)) },
+                    error: (error) => { console.log(`${error}`) }
+                });
+            });
+
+            $("#pause_realm").click(function () {
+                $.ajax({
+                    url: `${window.location}pause_realm`,
+                    type: "GET",
+                    success: (result) => { console.log(JSON.stringify(result)) },
+                    error: (error) => { console.log(`${error}`) }
+                });
+            });
+
+            $("#resume_realm").click(function () {
+                $.ajax({
+                    url: `${window.location}resume_realm`,
+                    type: "GET",
+                    success: (result) => { console.log(JSON.stringify(result)) },
+                    error: (error) => { console.log(`${error}`) }
+                });
+            });
+
+            $("#add_sensor").click(function () {
+                $.ajax({
+                    url: `${window.location}add_sensor`,
+                    type: "POST",
+                    data: { voltage: $("#battery_voltage").val(), current: $("#battery_current").val() },
+                    success: (result) => { console.log(JSON.stringify(result)) },
+                    error: (error) => { console.log(`${error}`) }
+                });
+            });
         });
-      });
-
-      $("#pause_realm").click(function () {
-        $.ajax({
-          url: `${window.location}pause_realm`,
-          type: "GET",
-          success: (result) => { console.log(JSON.stringify(result)) },
-          error: (error) => { console.log(`${error}`) }
-        });
-      });
-
-      $("#resume_realm").click(function () {
-        $.ajax({
-          url: `${window.location}resume_realm`,
-          type: "GET",
-          success: (result) => { console.log(JSON.stringify(result)) },
-          error: (error) => { console.log(`${error}`) }
-        });
-      });
-
-      $("#add_sensor").click(function () {
-        $.ajax({
-          url: `${window.location}add_sensor`,
-          type: "POST",
-          data: { voltage: $("#battery_voltage").val(), current: $("#battery_current").val() },
-          success: (result) => { console.log(JSON.stringify(result)) },
-          error: (error) => { console.log(`${error}`) }
-        });
-      });
-    });
-  </script>
+    </script>
 
 </body>
 
