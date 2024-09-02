@@ -13,11 +13,9 @@
 <body>
     <div class="container overflow-hidden">
         <div class="jumbotron">
-
             <div id="vehicle_section">
                 <p>Vehicle</p>
             </div>
-
             <hr class="my-4">
             <div class="row mt-2">
                 <div class="col">
@@ -28,36 +26,21 @@
                     <button id="add_component" type="button" class="btn btn-primary btn-block">Add Component</button>
                 </div>
                 <div class="col">
-                    <p id="number_components"> Number of Components </p>
+                    <p id="number_components">Number of Components</p>
                 </div>
-                <div class="col">
-                </div>
+                <div class="col"></div>
             </div>
-            <!----<div class="row mt-2">
-        <div class="col">
-          <button id="pause_realm" type="button" class="btn btn-primary btn-block">Pause Sync</button>
-        </div>
-        <div class="col">
-          <button id="resume_realm" type="button" class="btn btn-primary btn-block">Resume Sync</button>
-        </div>
-        <div class="col">
-        </div>
-        <div class="col">
-        </div>
-      </div>--->
             <div class="row mt-2">
                 <div class="col">
                     <label for="battery_current">Ampere: (0-100)</label>
-                    <input id="battery_current" type="range" min="1" max="100" value="50">
+                    <input id="battery_current" type="range" min="0" max="100" value="50">
                 </div>
                 <div class="col">
                     <label for="battery_voltage">Volt: (0-100)</label>
-                    <input id="battery_voltage" type="range" min="1" max="100" value="50">
+                    <input id="battery_voltage" type="range" min="0" max="100" value="50">
                 </div>
-                <div class="col">
-                </div>
-                <div class="col">
-                </div>
+                <div class="col"></div>
+                <div class="col"></div>
             </div>
             <div class="row mt-2">
                 <div class="col">
@@ -66,20 +49,15 @@
                 <div class="col">
                     <p id="measurements">Bucket: 0/20</p>
                 </div>
-                <div class="col">
-                </div>
-                <div class="col">
-                </div>
+                <div class="col"></div>
+                <div class="col"></div>
             </div>
         </div>
     </div>
-    </div>
     <script>
-        const port = window.location.port;
-
         $(document).ready(function () {
+            const eventSource = new EventSource(`/subscribe`);
 
-            // Update vehicle section NEW
             function updateVehicle(device) {
                 let engine_on_pic = "engine_transparent.gif";
                 let engine_off_pic = "engine_off.png";
@@ -92,57 +70,51 @@
                 let vehicle_spoiler_pic = "car_spoiler.png";
 
                 const componentsCount = device.components ? device.components.length : 0;
-                const measurementsCount = device.measurements ? device.measurements.length : 0;
-
                 let vehicle_pic = componentsCount > 0 ? vehicle_spoiler_pic : vehicle_default_pic;
                 let engine_pic = device.isOn ? engine_on_pic : engine_off_pic;
                 let engine_status_tag = device.isOn ? "Engine on" : "Engine off";
 
-                // Safely handle missing battery data
-                let battery = device.battery || {}; // Use an empty object as a fallback
+                let battery = device.battery || {};
                 let alert_pic = battery.status === "NOK" ? alert_on_pic : alert_off_pic;
                 let alert_tooltip = battery.status === "NOK" ? alert_on_tooltip : alert_off_tooltip;
 
                 const content = `
-        <div id="vehicle_section">
-            <h1>${device.name}</h1>
-            <hr class="my-4">
-            <img id="vehicle_image" src="${vehicle_pic}" alt="Image of vehicle">
-            <p id="voltage">Voltage: ${battery.voltage || 'N/A'}</p>
-            <p id="current">Current: ${battery.current || 'N/A'}</p>
-            <p id="ison">${engine_status_tag}</p>
-            <img id="engine_image" src="${engine_pic}" alt="Engine GIF" />
-            <p id="vin">${device._id}</p>
-            <div class="alert_section">
-                <img id="alert_image" src="${alert_pic}" alt="Alert Icon" />
-                <h3 id="alert_tooltip">${alert_tooltip}</h3>
-            </div>
-        </div>`;
-                $("#vehicle_section").replaceWith(content);
+                    <div id="vehicle_section">
+                        <h1>${device.name}</h1>
+                        <hr class="my-4">
+                        <img id="vehicle_image" src="${vehicle_pic}" alt="Image of vehicle">
+                        <p id="voltage">Voltage: ${battery.voltage || 'N/A'}</p>
+                        <p id="current">Current: ${battery.current || 'N/A'}</p>
+                        <p id="ison">${engine_status_tag}</p>
+                        <img id="engine_image" src="${engine_pic}" alt="Engine GIF" />
+                        <p id="vin">${device._id}</p>
+                        <div class="alert_section">
+                            <img id="alert_image" src="${alert_pic}" alt="Alert Icon" />
+                            <h3 id="alert_tooltip">${alert_tooltip}</h3>
+                        </div>
+                    </div>`;
+                $("#vehicle_section").html(content);
 
-                updateComponent(componentsCount);
-                updateMeasurements(measurementsCount);
+                updateComponent(device);
+                updateMeasurements(device);
             }
 
-
-
-
-            // Update number of components section
             function updateComponent(device) {
+                const componentsCount = device.components ? device.components.length : 0;
                 const numbers = `
-          <div class="border_box" id="number_components">
-            <p>Components: <strong>${device.components.length}</strong></p>
-          </div>`;
-                $("#number_components").replaceWith(numbers);
+                    <div class="border_box" id="number_components">
+                        <p>Components: <strong>${componentsCount}</strong></p>
+                    </div>`;
+                $("#number_components").html(numbers);
             }
 
-            // Update number of measurements
             function updateMeasurements(device) {
+                const measurementsCount = device.measurements ? device.measurements.length : 0;
                 const measurements = `
-          <div class="border_box" id="measurements">
-            <p>Bucket: <strong>${device.measurements}/20</strong></p>
-          </div>`;
-                $("#measurements").replaceWith(measurements);
+                    <div class="border_box" id="measurements">
+                        <p>Bucket: <strong>${measurementsCount}/20</strong></p>
+                    </div>`;
+                $("#measurements").html(measurements);
             }
 
             eventSource.onmessage = function (event) {
@@ -158,51 +130,45 @@
                 console.error('SSE error:', error);
             };
 
-
-            evtSource.addEventListener("refresh", function (event) {
-                updateVehicle(JSON.parse(event.data));
-            });
-
             $("#add_component").click(function () {
                 $.ajax({
-                    url: `${window.location}add_component`,
+                    url: `${window.location.origin}/add_component`,
                     type: "POST",
                     data: { name: $("#component_name").val() },
                     success: (result) => { console.log(JSON.stringify(result)) },
-                    error: (error) => { console.log(`${error}`) }
+                    error: (error) => { console.error(`${error}`) }
                 });
             });
 
             $("#pause_realm").click(function () {
                 $.ajax({
-                    url: `${window.location}pause_realm`,
+                    url: `${window.location.origin}/pause_realm`,
                     type: "GET",
                     success: (result) => { console.log(JSON.stringify(result)) },
-                    error: (error) => { console.log(`${error}`) }
+                    error: (error) => { console.error(`${error}`) }
                 });
             });
 
             $("#resume_realm").click(function () {
                 $.ajax({
-                    url: `${window.location}resume_realm`,
+                    url: `${window.location.origin}/resume_realm`,
                     type: "GET",
                     success: (result) => { console.log(JSON.stringify(result)) },
-                    error: (error) => { console.log(`${error}`) }
+                    error: (error) => { console.error(`${error}`) }
                 });
             });
 
             $("#add_sensor").click(function () {
                 $.ajax({
-                    url: `${window.location}add_sensor`,
+                    url: `${window.location.origin}/add_sensor`,
                     type: "POST",
                     data: { voltage: $("#battery_voltage").val(), current: $("#battery_current").val() },
                     success: (result) => { console.log(JSON.stringify(result)) },
-                    error: (error) => { console.log(`${error}`) }
+                    error: (error) => { console.error(`${error}`) }
                 });
             });
         });
     </script>
-
 </body>
 
 </html>
