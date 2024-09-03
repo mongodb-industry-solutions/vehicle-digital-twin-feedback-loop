@@ -23,6 +23,7 @@ app.get("/subscribe", (req, res) => {
     Connection: "keep-alive",
     "Cache-Control": "no-cache",
   };
+  console.log("Client connection opened");
   res.writeHead(200, headers);
   res.write("data: Event listener subscribed!\n\n");
   dittoApp.addClient(res);
@@ -33,10 +34,21 @@ app.get("/subscribe", (req, res) => {
   });
 });
 
+app.post("/add_sensor", async (req, res) => {
+  try {
+    const result = await dittoApp.addSensor(req.body);
+    console.log(result);
+    res.send(result);
+  } catch (error) {
+    console.error("Error adding sensor data:", error);
+    res.status(500).send("Failed to add sensor data.");
+  }
+});
+
 app.get("/vehicle", async (req, res) => {
   try {
     const vehicleData = await dittoApp.getVehicleAsJSON();
-    console.log(JSON.parse(vehicleData));
+    //console.log(JSON.parse(vehicleData));
     res.json(JSON.parse(vehicleData));
   } catch (error) {
     console.error("Error fetching vehicle data:", error);

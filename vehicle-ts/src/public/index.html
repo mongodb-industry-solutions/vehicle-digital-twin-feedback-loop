@@ -48,6 +48,7 @@
                 </div>
                 <div class="col">
                     <p id="measurements">Bucket: 0/20</p>
+                    <p id="reset_message" style="display: none; color: green;">Bucket of data saved!</p>
                 </div>
                 <div class="col"></div>
                 <div class="col"></div>
@@ -56,9 +57,16 @@
     </div>
     <script>
         $(document).ready(function () {
-            const eventSource = new EventSource(`/subscribe`);
+
+            let bucketCount = 0;
+
 
             function updateVehicle(device) {
+                if (!device) {
+                    $("#vehicle_section").html("<p>No vehicle data available</p>");
+                    return;
+                }
+
                 let engine_on_pic = "engine_transparent.gif";
                 let engine_off_pic = "engine_off.png";
                 let alert_on_pic = "alert_icon_red.png";
@@ -99,24 +107,42 @@
                 updateMeasurements(device);
             }
 
+
             function updateComponent(device) {
                 const componentsCount = device.components ? device.components.length : 0;
-                const numbers = `
-                    <div class="border_box" id="number_components">
-                        <p>Components: <strong>${componentsCount}</strong></p>
-                    </div>`;
-                $("#number_components").html(numbers);
+                $("#number_components").html(`Components: <strong>${componentsCount}</strong>`);
             }
 
-            function updateMeasurements(device) {
-                const measurementsCount = device.measurements ? device.measurements.length : 0;
-                const measurements = `
-                    <div class="border_box" id="measurements">
-                        <p>Bucket: <strong>${measurementsCount}/20</strong></p>
-                    </div>`;
-                $("#measurements").html(measurements);
+            // Function to update the measurements bucket
+            function updateMeasurements() {
+                $("#measurements").html(`Bucket: ${bucketCount}/20`);
+
+                if (bucketCount === 0) {
+                    $("#reset_message").show();
+                    setTimeout(() => {
+                        $("#reset_message").hide();
+                    }, 2000);
+                }
             }
 
+            $.ajax({
+                url: `${window.location.origin}/vehicle`,
+                type: "GET",
+                success: (result) => {
+                    try {
+                        const vehicle = result;
+                        updateVehicle(vehicle);
+                    } catch (error) {
+                        console.error('Error parsing vehicle data:', error);
+                    }
+                },
+                error: (error) => {
+                    console.error('Error fetching initial vehicle data:', error);
+                }
+            });
+
+            // Server-Sent Events (SSE) for real-time updates
+            const eventSource = new EventSource(`/subscribe`);
             eventSource.onmessage = function (event) {
                 try {
                     const vehicleData = JSON.parse(event.data);
@@ -130,45 +156,49 @@
                 console.error('SSE error:', error);
             };
 
+
             $("#add_component").click(function () {
                 $.ajax({
                     url: `${window.location.origin}/add_component`,
                     type: "POST",
                     data: { name: $("#component_name").val() },
-                    success: (result) => { console.log(JSON.stringify(result)) },
+                    success: (result) => {
+                        console.log(JSON.stringify(result));
+                        // Update vehicle components if necessary
+                        const vehicle = JSON.parse(result);
+                        updateComponent(vehicle);
+                    },
                     error: (error) => { console.error(`${error}`) }
                 });
             });
 
-            $("#pause_realm").click(function () {
-                $.ajax({
-                    url: `${window.location.origin}/pause_realm`,
-                    type: "GET",
-                    success: (result) => { console.log(JSON.stringify(result)) },
-                    error: (error) => { console.error(`${error}`) }
-                });
-            });
-
-            $("#resume_realm").click(function () {
-                $.ajax({
-                    url: `${window.location.origin}/resume_realm`,
-                    type: "GET",
-                    success: (result) => { console.log(JSON.stringify(result)) },
-                    error: (error) => { console.error(`${error}`) }
-                });
-            });
 
             $("#add_sensor").click(function () {
+                const voltage = $("#battery_voltage").val();
+                const current = $("#battery_current").val();
+
+                bucketCount++;
+                if (bucketCount > 20) {
+                    bucketCount = 0;
+                }
+
                 $.ajax({
                     url: `${window.location.origin}/add_sensor`,
                     type: "POST",
-                    data: { voltage: $("#battery_voltage").val(), current: $("#battery_current").val() },
-                    success: (result) => { console.log(JSON.stringify(result)) },
-                    error: (error) => { console.error(`${error}`) }
+                    data: { voltage, current },
+                    success: (result) => {
+                        console.log(JSON.stringify(result));
+                        updateMeasurements();
+                    },
+                    error: (error) => {
+                        console.error(`${error}`);
+                    }
                 });
             });
         });
     </script>
+
+
 </body>
 
 </html>
