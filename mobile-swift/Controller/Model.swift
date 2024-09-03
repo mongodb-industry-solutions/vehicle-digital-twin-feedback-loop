@@ -8,19 +8,20 @@
 import Foundation
 import RealmSwift
 
+
 class Vehicle: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: String
-    @Persisted var battery: Battery?
+    @Persisted var battery: BatteryOld?
     @Persisted var components: List<Component>
     @Persisted var current: Int?
     @Persisted var owner_id: String = ""
     @Persisted var isOn: Bool = false
     @Persisted var mixedTypes: AnyRealmValue
     @Persisted var name: String = ""
-    @Persisted var commands: List<Command>
+    @Persisted var commands: List<CommandOld>
 }
 
-class Battery: EmbeddedObject {
+class BatteryOld: EmbeddedObject {
     @Persisted var capacity: Int?
     @Persisted var current: Int?
     @Persisted var sn: String?
@@ -34,7 +35,7 @@ class Component: Object {
     @Persisted var owner_id: String = ""
 }
 
-class Command: EmbeddedObject, Identifiable {
+class CommandOld: EmbeddedObject, Identifiable {
     @Persisted var command: String?
     @Persisted var status: CmdStatus?
     @Persisted var ts: Date? = Date()

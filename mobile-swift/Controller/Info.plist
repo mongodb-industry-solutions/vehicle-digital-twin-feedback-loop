@@ -22,6 +22,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Uses Bluetooth to connect and sync with nearby devices</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Uses Bluetooth to connect and sync with nearby devices</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_http-alt._tcp.</string>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Uses WiFi to connect and sync with nearby devices</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -31,6 +41,11 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UIRequiredDeviceCapabilities</key>
