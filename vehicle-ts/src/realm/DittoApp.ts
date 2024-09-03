@@ -61,10 +61,9 @@ class DittoApp {
       voltage: Number(values.voltage),
       current: Number(values.current),
     };
-    console.log("Current vehicle data:", this.vehicle);
     if (this.vehicle) {
       try {
-        console.log("Current vehicle data:", this.vehicle);
+        //console.log(this.vehicle);
         const updateQuery = `
           UPDATE COLLECTION vehicle SET battery=(:doc1) WHERE _id=='${this.vehicle._id}'
           `;
