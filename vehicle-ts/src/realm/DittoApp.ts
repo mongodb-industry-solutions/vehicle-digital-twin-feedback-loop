@@ -63,31 +63,28 @@ class DittoApp {
       current: Number(values.current),
     };
 
-    // if (this.vehicle) {
-    //   try {
-    //     await this.ditto.store.execute(
-    //       `
-    //       INSERT INTO vehicle
-    //       DOCUMENTS (
-    //         _id: :id,
-    //         battery: {
-    //           voltage: :voltage,
-    //           current: :current
-    //         }
-    //       )
-    //     `,
-    //       {
-    //         id: this.vehicle._id,
-    //         voltage: measurement.voltage,
-    //         current: measurement.current,
-    //       }
-    //     );
-    //   } catch (err) {
-    //     console.error("Error updating vehicle battery status in Ditto:", err);
-    //   }
-    // } else {
-    //   console.error("Vehicle not found in Ditto store.");
-    // }
+    if (this.vehicle) {
+      try {
+        const updateQuery = `
+            UPDATE COLLECTION vehicle (battery MAP)
+            SET battery -> (
+                capacity = ${this.vehicle.battery.capacity},
+                current = ${measurement.current},
+                sn = '${this.vehicle.battery.sn}',
+                status = '${this.vehicle.battery.status}',
+                voltage = ${measurement.voltage}
+            )
+            WHERE _id = '${this.vehicle._id}'
+        `;
+
+        await this.ditto.store.execute(updateQuery);
+        console.log("Vehicle battery status updated successfully.");
+      } catch (err) {
+        console.error("Error updating vehicle battery status in Ditto:", err);
+      }
+    } else {
+      console.error("Vehicle not found in Ditto store.");
+    }
 
     if (this.batteryMeasurements.length < 20) {
       this.batteryMeasurements.push(measurement);
