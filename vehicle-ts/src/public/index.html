@@ -50,7 +50,9 @@
                     <p id="measurements">Bucket: 0/20</p>
                     <p id="reset_message" style="display: none; color: green;">Bucket of data saved!</p>
                 </div>
-                <div class="col"></div>
+                <div class="col">
+                    <button id="reset_battery" type="button" class="btn btn-danger btn-block">Reset Battery</button>
+                </div>
                 <div class="col"></div>
             </div>
         </div>
@@ -60,7 +62,7 @@
 
             let bucketCount = 0;
 
-
+            // Function to update the vehicle information
             function updateVehicle(device) {
                 if (!device) {
                     $("#vehicle_section").html("<p>No vehicle data available</p>");
@@ -107,7 +109,7 @@
                 updateMeasurements(device);
             }
 
-
+            // Function to update the number of components
             function updateComponent(device) {
                 const componentsCount = device.components ? device.components.length : 0;
                 $("#number_components").html(`Components: <strong>${componentsCount}</strong>`);
@@ -125,6 +127,7 @@
                 }
             }
 
+            // Initial vehicle data fetch
             $.ajax({
                 url: `${window.location.origin}/vehicle`,
                 type: "GET",
@@ -156,7 +159,7 @@
                 console.error('SSE error:', error);
             };
 
-
+            // Add component button click event
             $("#add_component").click(function () {
                 $.ajax({
                     url: `${window.location.origin}/add_component`,
@@ -172,7 +175,7 @@
                 });
             });
 
-
+            // Track telemetry button click event
             $("#add_sensor").click(function () {
                 const voltage = $("#battery_voltage").val();
                 const current = $("#battery_current").val();
@@ -195,10 +198,37 @@
                     }
                 });
             });
+
+            // Reset battery button click event
+            $("#reset_battery").click(function () {
+                $.ajax({
+                    url: `${window.location.origin}/reset`,
+                    type: "GET",
+                    success: (result) => {
+                        console.log("Battery reset successful.");
+                        $.ajax({
+                            url: `${window.location.origin}/vehicle`,
+                            type: "GET",
+                            success: (result) => {
+                                try {
+                                    const vehicle = result;
+                                    updateVehicle(vehicle);
+                                } catch (error) {
+                                    console.error('Error parsing vehicle data:', error);
+                                }
+                            },
+                            error: (error) => {
+                                console.error('Error fetching updated vehicle data:', error);
+                            }
+                        });
+                    },
+                    error: (error) => {
+                        console.error('Error resetting battery:', error);
+                    }
+                });
+            });
         });
     </script>
-
-
 </body>
 
 </html>
