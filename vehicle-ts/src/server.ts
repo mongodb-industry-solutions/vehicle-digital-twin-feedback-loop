@@ -45,6 +45,17 @@ app.post("/add_sensor", async (req, res) => {
   }
 });
 
+app.get("/reset", async (req, res) => {
+  try {
+    const result = await dittoApp.resetBattery();
+    res.send(result);
+    //console.log(JSON.parse(vehicleData));
+  } catch (error) {
+    console.error("Error reseting battery data:", error);
+    res.status(500).send("Failed to reset battery data.");
+  }
+});
+
 app.get("/vehicle", async (req, res) => {
   try {
     const vehicleData = await dittoApp.getVehicleAsJSON();

@@ -56,6 +56,34 @@ class DittoApp {
     });
   }
 
+  async resetBattery() {
+    if (this.vehicle) {
+      try {
+        //console.log(this.vehicle);
+        const updateQuery = `
+          UPDATE COLLECTION vehicle SET battery=(:doc1) WHERE _id=='${this.vehicle._id}'
+          `;
+
+        const args = {
+          doc1: {
+            capacity: 1000,
+            current: 50,
+            sn: "123",
+            status: "OK",
+            voltage: 60,
+          },
+        };
+
+        await this.ditto.store.execute(updateQuery, args);
+        console.log("Vehicle battery reseted updated successfully.");
+      } catch (err) {
+        console.error("Error reseting vehicle battery in Ditto:", err);
+      }
+    } else {
+      console.error("Vehicle not found in Ditto store.");
+    }
+  }
+
   async addSensor(values: { voltage: string; current: string }) {
     const measurement = {
       voltage: Number(values.voltage),
