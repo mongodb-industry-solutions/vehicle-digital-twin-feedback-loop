@@ -58,26 +58,28 @@ class DittoApp {
 
   async addSensor(values: { voltage: string; current: string }) {
     const measurement = {
-      ts: new Date(),
       voltage: Number(values.voltage),
       current: Number(values.current),
     };
-
+    console.log("Current vehicle data:", this.vehicle);
     if (this.vehicle) {
       try {
+        console.log("Current vehicle data:", this.vehicle);
         const updateQuery = `
-            UPDATE COLLECTION vehicle (battery MAP)
-            SET battery -> (
-                capacity = ${this.vehicle.battery.capacity},
-                current = ${measurement.current},
-                sn = '${this.vehicle.battery.sn}',
-                status = '${this.vehicle.battery.status}',
-                voltage = ${measurement.voltage}
-            )
-            WHERE _id = '${this.vehicle._id}'
-        `;
+          UPDATE COLLECTION vehicle SET battery=(:doc1) WHERE _id=='${this.vehicle._id}'
+          `;
 
-        await this.ditto.store.execute(updateQuery);
+        const args = {
+          doc1: {
+            capacity: this.vehicle.battery.capacity,
+            current: measurement.current,
+            sn: this.vehicle.battery.sn,
+            status: this.vehicle.battery.status,
+            voltage: measurement.voltage,
+          },
+        };
+
+        await this.ditto.store.execute(updateQuery, args);
         console.log("Vehicle battery status updated successfully.");
       } catch (err) {
         console.error("Error updating vehicle battery status in Ditto:", err);
@@ -99,7 +101,7 @@ class DittoApp {
 
         await this.ditto.store.execute(
           `
-          INSERT INTO sensors
+          INSERT INTO sensor
           DOCUMENTS (:newSensor)
         `,
           { newSensor }
