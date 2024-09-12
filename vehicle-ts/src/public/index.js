@@ -1,4 +1,3 @@
-console.log("Index.js")
 $(document).ready(function () {
 
     let bucketCount = 0;
@@ -183,5 +182,6 @@ $(document).ready(function () {
     $("#battery_voltage_current_value_label").text($("#battery_voltage").val())
     $("#battery_voltage").change(function (e){
         $("#battery_voltage_current_value_label").text(e.target.value);
+        onAddSensor();
     })
 });
