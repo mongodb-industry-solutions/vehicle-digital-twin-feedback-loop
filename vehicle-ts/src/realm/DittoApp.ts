@@ -1,5 +1,11 @@
-import { init, Ditto } from "@dittolive/ditto";
+import { init, Ditto, MutableDocument } from "@dittolive/ditto";
 import { BSON } from "bson";
+
+interface Component {
+  _id: string;
+  name: string
+  owner_id: string;
+}
 
 class DittoApp {
   private ditto: Ditto;
@@ -143,6 +149,38 @@ class DittoApp {
 
     return {
       result: `Battery status updated: voltage: ${values.voltage}, current: ${values.current}, Bucket: ${this.batteryMeasurements.length}/20`,
+    };
+  }
+
+  async addComponent(values: { name: string }) {
+    if (this.vehicle) {
+      try {
+        const doc1: Component = {
+          _id: new BSON.ObjectId().toString(),
+          name: values.name,
+          owner_id: this.vehicle.owner_id
+        }
+
+        let updateResultsMap = await this.ditto.store.collection("vehicle")
+          .find("_id == $args._id", { _id: this.vehicle._id })
+          .update((mutableDocs: MutableDocument[]) => {
+            mutableDocs.forEach(doc => {
+              doc.at('components').set([doc1])
+            })
+          });
+        if(updateResultsMap['updateResultsByDocumentIDString'][this.vehicle._id].length > 0)
+          console.log("Vehicle components updated successfully.");
+        else  
+          console.log("Vehicle components did not updated.");
+      } catch (err) {
+        console.error("Error updating vehicle components in Ditto:", err);
+      }
+    } else {
+      console.error("Vehicle not found in Ditto store.");
+    }
+
+    return {
+      result: `Component with name ${values.name} added to vehicle ${this.vehicle.name}`,
     };
   }
 
