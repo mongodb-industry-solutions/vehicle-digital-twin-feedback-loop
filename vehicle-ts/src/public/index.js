@@ -131,11 +131,11 @@ $(document).ready(function () {
             type: "POST",
             data: { name: $("#component_name").val() },
             success: (result) => {
-                console.log(JSON.stringify(result));
+                console.log(result.message);
                 updateMeasurements();
                 // Update vehicle components if necessary
-                // TODO UNCOMMENT const vehicle = JSON.parse(result);
-                // TODO UNCOMMENT updateComponent(vehicle);
+                const vehicle = result.vehicle;
+                updateComponent(vehicle);
             },
             error: (error) => { console.error(`${error}`) }
         });

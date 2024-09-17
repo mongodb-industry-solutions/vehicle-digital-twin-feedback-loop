@@ -18,8 +18,8 @@ class DittoApp {
 
     this.ditto = new Ditto({
       type: "onlinePlayground",
-      appID: "", // Replace with your actual app ID
-      token: "", // Replace with your actual token
+      appID: "",// Replace with your actual app ID
+      token: "",// Replace with your actual token
     });
     this.ditto.disableSyncWithV3();
     this.ditto.startSync();
@@ -153,6 +153,7 @@ class DittoApp {
   }
 
   async addComponent(values: { name: string }) {
+    let vehicleUpdated = null;
     if (this.vehicle) {
       try {
         const doc1: Component = {
@@ -160,17 +161,17 @@ class DittoApp {
           name: values.name,
           owner_id: this.vehicle.owner_id
         }
-
         let updateResultsMap = await this.ditto.store.collection("vehicle")
           .find("_id == $args._id", { _id: this.vehicle._id })
           .update((mutableDocs: MutableDocument[]) => {
             mutableDocs.forEach(doc => {
               doc.at('components').set([doc1])
+              vehicleUpdated = doc.value
             })
           });
         if(updateResultsMap['updateResultsByDocumentIDString'][this.vehicle._id].length > 0)
           console.log("Vehicle components updated successfully.");
-        else  
+        else
           console.log("Vehicle components did not updated.");
       } catch (err) {
         console.error("Error updating vehicle components in Ditto:", err);
@@ -178,9 +179,9 @@ class DittoApp {
     } else {
       console.error("Vehicle not found in Ditto store.");
     }
-
     return {
-      result: `Component with name ${values.name} added to vehicle ${this.vehicle.name}`,
+      message: `Component with name ${values.name} added to vehicle ${this.vehicle.name}`,
+      vehicle: vehicleUpdated
     };
   }
 
