@@ -1,0 +1,3196 @@
+{
+  "ADAS": {
+    "ABS": {
+      "Error": false,
+      "IsActive": true,
+      "IsEngaged": false
+    },
+    "CruiseControl": {
+      "Error": false,
+      "IsActive": true,
+      "SpeedSet": {
+        "$numberDouble": "0"
+      }
+    },
+    "ESC": {
+      "Error": false,
+      "IsActive": true,
+      "IsEngaged": false
+    },
+    "LaneDepartureDetection": {
+      "Error": false,
+      "IsActive": true,
+      "Warning": false
+    },
+    "ObstacleDetection": {
+      "Error": false,
+      "IsActive": true
+    },
+    "TCS": {
+      "Error": false,
+      "IsActive": true,
+      "IsEngaged": false
+    }
+  },
+  "Acceleration": {
+    "Lateral": {
+      "$numberDouble": "0"
+    },
+    "Longitudinal": {
+      "$numberDouble": "0"
+    },
+    "Vertical": {
+      "$numberDouble": "0"
+    }
+  },
+  "AmbientAirTemperature": {
+    "$numberDouble": "0"
+  },
+  "AngularVelocity": {
+    "Pitch": {
+      "$numberInt": "0"
+    },
+    "Roll": {
+      "$numberInt": "0"
+    },
+    "Yaw": {
+      "$numberDouble": "0"
+    }
+  },
+  "AverageSpeed": {
+    "$numberDouble": "0"
+  },
+  "Body": {
+    "BodyType": "",
+    "ChargingPort": {
+      "Type": ""
+    },
+    "Hood": {
+      "IsOpen": false
+    },
+    "Horn": {
+      "IsActive": false
+    },
+    "Lights": {
+      "IsBackupOn": false,
+      "IsBrakeOn": false,
+      "IsFrontFogOn": false,
+      "IsHazardOn": false,
+      "IsHighBeamOn": false,
+      "IsLeftIndicatorOn": false,
+      "IsLowBeamOn": false,
+      "IsParkingOn": false,
+      "IsRearFogOn": false,
+      "IsRightIndicatorOn": false,
+      "IsRunningOn": false
+    },
+    "Mirrors": {
+      "Left": {
+        "Heating": {
+          "Status": false
+        },
+        "Pan": {
+          "$numberInt": "0"
+        },
+        "Tilt": {
+          "$numberInt": "0"
+        }
+      },
+      "Right": {
+        "Heating": {
+          "Status": false
+        },
+        "Pan": {
+          "$numberInt": "0"
+        },
+        "Tilt": {
+          "$numberInt": "0"
+        }
+      }
+    },
+    "Raindetection": {
+      "intensity": {
+        "$numberInt": "0"
+      }
+    },
+    "RefuelPosition": "",
+    "Trunk": {
+      "IsLocked": false,
+      "IsOpen": false
+    },
+    "Windshield": {
+      "Front": {
+        "Heating": {
+          "Status": false
+        },
+        "WasherFluid": {
+          "Level": {
+            "$numberInt": "0"
+          },
+          "LevelLow": false
+        },
+        "Wiping": {
+          "Status": ""
+        }
+      },
+      "Rear": {
+        "Heating": {
+          "Status": false
+        },
+        "WasherFluid": {
+          "Level": {
+            "$numberInt": "0"
+          },
+          "LevelLow": false
+        },
+        "Wiping": {
+          "Status": ""
+        }
+      }
+    }
+  },
+  "Cabin": {
+    "Convertible": {
+      "Status": ""
+    },
+    "Door": {
+      "Row1": {
+        "Left": {
+          "IsChildLockActive": false,
+          "IsLocked": false,
+          "IsOpen": false,
+          "Shade": {
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": ""
+          },
+          "Window": {
+            "ChildLock": false,
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": "",
+            "isOpen": false
+          }
+        },
+        "LeftCount": {
+          "$numberInt": "0"
+        },
+        "Right": {
+          "IsChildLockActive": false,
+          "IsLocked": false,
+          "IsOpen": false,
+          "Shade": {
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": ""
+          },
+          "Window": {
+            "ChildLock": false,
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": "",
+            "isOpen": false
+          }
+        },
+        "RightCount": {
+          "$numberInt": "0"
+        }
+      },
+      "Row2": {
+        "Left": {
+          "IsChildLockActive": false,
+          "IsLocked": false,
+          "IsOpen": false,
+          "Shade": {
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": ""
+          },
+          "Window": {
+            "ChildLock": false,
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": "",
+            "isOpen": false
+          }
+        },
+        "LeftCount": {
+          "$numberInt": "0"
+        },
+        "Right": {
+          "IsChildLockActive": false,
+          "IsLocked": false,
+          "IsOpen": false,
+          "Shade": {
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": ""
+          },
+          "Window": {
+            "ChildLock": false,
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": "",
+            "isOpen": false
+          }
+        },
+        "RightCount": {
+          "$numberInt": "0"
+        }
+      },
+      "Row3": {
+        "Left": {
+          "IsChildLockActive": false,
+          "IsLocked": false,
+          "IsOpen": false,
+          "Shade": {
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": ""
+          },
+          "Window": {
+            "ChildLock": false,
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": "E",
+            "isOpen": false
+          }
+        },
+        "LeftCount": {
+          "$numberInt": "0"
+        },
+        "Right": {
+          "IsChildLockActive": false,
+          "IsLocked": false,
+          "IsOpen": false,
+          "Shade": {
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": ""
+          },
+          "Window": {
+            "ChildLock": false,
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": "",
+            "isOpen": false
+          }
+        },
+        "RightCount": {
+          "$numberInt": "0"
+        }
+      },
+      "Row4": {
+        "Left": {
+          "IsChildLockActive": false,
+          "IsLocked": false,
+          "IsOpen": false,
+          "Shade": {
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": ""
+          },
+          "Window": {
+            "ChildLock": false,
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": "",
+            "isOpen": false
+          }
+        },
+        "LeftCount": {
+          "$numberInt": "0"
+        },
+        "Right": {
+          "IsChildLockActive": false,
+          "IsLocked": false,
+          "IsOpen": false,
+          "Shade": {
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": ""
+          },
+          "Window": {
+            "ChildLock": false,
+            "Position": {
+              "$numberInt": "0"
+            },
+            "Switch": "",
+            "isOpen": false
+          }
+        },
+        "RightCount": {
+          "$numberInt": "0"
+        }
+      }
+    },
+    "DriverPosition": {
+      "$numberInt": "0"
+    },
+    "HVAC": {
+      "AmbientAirTemperature": {
+        "$numberDouble": "0"
+      },
+      "IsAirConditioningActive": false,
+      "IsFrontDefrosterActive": false,
+      "IsRearDefrosterActive": false,
+      "IsRecirculationActive": false,
+      "Station": {
+        "Row1": {
+          "Left": {
+            "AirDistribution": "",
+            "FanSpeed": {
+              "$numberInt": "0"
+            },
+            "Temperature": {
+              "$numberInt": "0"
+            }
+          },
+          "Right": {
+            "AirDistribution": "",
+            "FanSpeed": {
+              "$numberInt": "0"
+            },
+            "Temperature": {
+              "$numberInt": "0"
+            }
+          }
+        },
+        "Row2": {
+          "Left": {
+            "AirDistribution": "",
+            "FanSpeed": {
+              "$numberInt": "0"
+            },
+            "Temperature": {
+              "$numberInt": "0"
+            }
+          },
+          "Right": {
+            "AirDistribution": "",
+            "FanSpeed": {
+              "$numberInt": "0"
+            },
+            "Temperature": {
+              "$numberInt": "0"
+            }
+          }
+        },
+        "Row3": {
+          "Left": {
+            "AirDistribution": "",
+            "FanSpeed": {
+              "$numberInt": "0"
+            },
+            "Temperature": {
+              "$numberInt": "0"
+            }
+          },
+          "Right": {
+            "AirDistribution": "",
+            "FanSpeed": {
+              "$numberInt": "0"
+            },
+            "Temperature": {
+              "$numberInt": "0"
+            }
+          }
+        },
+        "Row4": {
+          "Left": {
+            "AirDistribution": "",
+            "FanSpeed": {
+              "$numberInt": "0"
+            },
+            "Temperature": {
+              "$numberInt": "0"
+            }
+          },
+          "Right": {
+            "AirDistribution": "",
+            "FanSpeed": {
+              "$numberInt": "0"
+            },
+            "Temperature": {
+              "$numberInt": "0"
+            }
+          }
+        }
+      }
+    },
+    "Infotainment": {
+      "HMI": {
+        "CurrentLanguage": "",
+        "DateFormat": "",
+        "DayNightMode": "",
+        "DistanceUnit": "",
+        "EVEconomyUnits": "",
+        "FuelEconomyUnits": "",
+        "TemperatureUnit": "",
+        "TimeFormat": ""
+      },
+      "Media": {
+        "Action": "",
+        "DeclinedURI": "",
+        "Played": {
+          "Album": "",
+          "Artist": "",
+          "Source": "",
+          "Track": "",
+          "URI": ""
+        },
+        "SelectedURI": "",
+        "Volume": {
+          "$numberInt": "0"
+        }
+      },
+      "Navigation": {
+        "CurrentLocation": {
+          "Accuracy": {
+            "$numberDouble": "0"
+          },
+          "Altitude": {
+            "$numberDouble": "0"
+          },
+          "Heading": {
+            "$numberDouble": "0"
+          },
+          "Latitude": {
+            "$numberDouble": "0"
+          },
+          "Longitude": {
+            "$numberDouble": "0"
+          },
+          "Speed": {
+            "$numberInt": "0"
+          }
+        },
+        "DestinationSet": {
+          "Latitude": {
+            "$numberDouble": "0"
+          },
+          "Longitude": {
+            "$numberDouble": "0"
+          }
+        }
+      }
+    },
+    "Lights": {
+      "AmbientLight": {
+        "$numberInt": "0"
+      },
+      "IsDomeOn": false,
+      "IsGloveBoxOn": false,
+      "IsTrunkOn": false,
+      "LightIntensity": {
+        "$numberInt": "0"
+      },
+      "Spotlight": {
+        "Row1": {
+          "IsLeftOn": false,
+          "IsRightOn": false,
+          "IsSharedOn": false
+        },
+        "Row2": {
+          "IsLeftOn": false,
+          "IsRightOn": false,
+          "IsSharedOn": false
+        }
+      },
+      "Row3": {
+        "IsLeftOn": false,
+        "IsRightOn": false,
+        "IsSharedOn": false
+      },
+      "Row4": {
+        "IsLeftOn": false,
+        "IsRightOn": false,
+        "IsSharedOn": false
+      }
+    },
+    "RearShade": {
+      "Position": {
+        "$numberInt": "0"
+      },
+      "Switch": ""
+    },
+    "RearviewMirror": {
+      "DimmingLevel": {
+        "$numberInt": "0"
+      }
+    },
+    "Seat": {
+      "Row1": {
+        "Pos1": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos2": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos3": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos4": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos5": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        }
+      },
+      "Row2": {
+        "Pos1": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos2": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos3": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos4": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos5": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        }
+      },
+      "Row3": {
+        "Pos1": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos2": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos3": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos4": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos5": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        }
+      },
+      "Row4": {
+        "Pos1": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos2": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos3": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos4": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        },
+        "Pos5": {
+          "Airbag": {
+            "IsDeployed": false
+          },
+          "Cushion": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Length": {
+              "$numberInt": "0"
+            }
+          },
+          "HasPassenger": false,
+          "HeadRestraint": {
+            "Height": {
+              "$numberInt": "0"
+            }
+          },
+          "Heating": {
+            "$numberInt": "0"
+          },
+          "IsBelted": false,
+          "Lumbar": {
+            "Height": {
+              "$numberInt": "0"
+            },
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Massage": {
+            "$numberInt": "0"
+          },
+          "Occupant": {
+            "Identifier": {
+              "Issuer": "",
+              "Subject": ""
+            }
+          },
+          "Position": {
+            "$numberInt": "0"
+          },
+          "Recline": {
+            "$numberInt": "0"
+          },
+          "SideBolster": {
+            "Inflation": {
+              "$numberInt": "0"
+            }
+          },
+          "Switch": {
+            "Backward": false,
+            "Cooler": false,
+            "Cushion": {
+              "Backward": false,
+              "Down": false,
+              "Forward": false,
+              "Up": false
+            },
+            "Down": false,
+            "Forward": false,
+            "HeadRestraint": {
+              "Down": false,
+              "Up": false
+            },
+            "Lumbar": {
+              "Deflate": false,
+              "Down": false,
+              "Inflate": false,
+              "Up": false
+            },
+            "Massage": {
+              "Decrease": false,
+              "Increase": false
+            },
+            "Recline": {
+              "Backward": false,
+              "Forward": false
+            },
+            "SideBolster": {
+              "Deflate": false,
+              "Inflate": false
+            },
+            "Up": false,
+            "Warmer": false
+          }
+        }
+      }
+    },
+    "SeatPosCount": {
+      "$numberInt": "0"
+    },
+    "SeatRowCount": {
+      "$numberInt": "0"
+    },
+    "Sunroof": {
+      "Position": {
+        "$numberInt": "0"
+      },
+      "Shade": {
+        "Position": {
+          "$numberInt": "0"
+        },
+        "Switch": ""
+      },
+      "Switch": ""
+    }
+  },
+  "Chassis": {
+    "Accelerator": {
+      "PedalPosition": {
+        "$numberInt": "0"
+      }
+    },
+    "Axle": {
+      "Row1": {
+        "TireDiameter": {
+          "$numberInt": "0"
+        },
+        "TireWidth": {
+          "$numberInt": "0"
+        },
+        "Wheel": {
+          "Left": {
+            "Brake": {
+              "BrakesWorn": false,
+              "FluidLevel": {
+                "$numberInt": "0"
+              },
+              "FluidLevelLow": false,
+              "PadWear": {
+                "$numberInt": "0"
+              }
+            },
+            "Tire": {
+              "Pressure": {
+                "$numberInt": "0"
+              },
+              "PressureLow": false,
+              "Temperature": {
+                "$numberDouble": "0"
+              }
+            }
+          },
+          "Right": {
+            "Brake": {
+              "BrakesWorn": false,
+              "FluidLevel": {
+                "$numberInt": "0"
+              },
+              "FluidLevelLow": false,
+              "PadWear": {
+                "$numberInt": "0"
+              }
+            },
+            "Tire": {
+              "Pressure": {
+                "$numberInt": "0"
+              },
+              "PressureLow": false,
+              "Temperature": {
+                "$numberDouble": "0"
+              }
+            }
+          }
+        },
+        "WheelCount": {
+          "$numberInt": "0"
+        },
+        "WheelDiameter": {
+          "$numberInt": "0"
+        },
+        "WheelWidth": {
+          "$numberInt": "0"
+        }
+      },
+      "Row1Count": {
+        "$numberInt": "0"
+      },
+      "Row2": {
+        "TireDiameter": {
+          "$numberInt": "0"
+        },
+        "TireWidth": {
+          "$numberInt": "0"
+        },
+        "Wheel": {
+          "Left": {
+            "Brake": {
+              "BrakesWorn": false,
+              "FluidLevel": {
+                "$numberInt": "0"
+              },
+              "FluidLevelLow": false,
+              "PadWear": {
+                "$numberInt": "0"
+              }
+            },
+            "Tire": {
+              "Pressure": {
+                "$numberInt": "0"
+              },
+              "PressureLow": false,
+              "Temperature": {
+                "$numberDouble": "0"
+              }
+            }
+          },
+          "Right": {
+            "Brake": {
+              "BrakesWorn": false,
+              "FluidLevel": {
+                "$numberInt": "0"
+              },
+              "FluidLevelLow": false,
+              "PadWear": {
+                "$numberInt": "0"
+              }
+            },
+            "Tire": {
+              "Pressure": {
+                "$numberInt": "0"
+              },
+              "PressureLow": false,
+              "Temperature": {
+                "$numberDouble": "0"
+              }
+            }
+          }
+        },
+        "WheelCount": {
+          "$numberInt": "0"
+        },
+        "WheelDiameter": {
+          "$numberInt": "0"
+        },
+        "WheelWidth": {
+          "$numberInt": "0"
+        }
+      },
+      "Row2Count": {
+        "$numberInt": "0"
+      }
+    },
+    "Brake": {
+      "PedalPosition": {
+        "$numberInt": "0"
+      }
+    },
+    "CurbWeight": {
+      "$numberInt": "0"
+    },
+    "GrossWeight": {
+      "$numberInt": "0"
+    },
+    "Height": {
+      "$numberInt": "0"
+    },
+    "Length": {
+      "$numberInt": "0"
+    },
+    "ParkingBrake": {
+      "IsEngaged": false
+    },
+    "SteeringWheel": {
+      "Angle": {
+        "$numberInt": "0"
+      },
+      "Extension": {
+        "$numberInt": "0"
+      },
+      "Position": "",
+      "Tilt": {
+        "$numberInt": "0"
+      }
+    },
+    "TowWeight": {
+      "$numberInt": "0"
+    },
+    "Track": {
+      "$numberInt": "0"
+    },
+    "Trailer": {
+      "Connected": false
+    },
+    "Wheelbase": {
+      "$numberInt": "0"
+    },
+    "Width": {
+      "$numberInt": "0"
+    }
+  },
+  "CurbWeight": {
+    "$numberInt": "0"
+  },
+  "CurrentLocation": {
+    "Accuracy": {
+      "$numberDouble": "0"
+    },
+    "Altitude": {
+      "$numberDouble": "0"
+    },
+    "Heading": {
+      "$numberDouble": "0"
+    },
+    "Latitude": {
+      "$numberDouble": "0"
+    },
+    "Longitude": {
+      "$numberDouble": "0"
+    }
+  },
+  "CurrentOverallWeight": {
+    "$numberInt": "0"
+  },
+  "DriveTime": {
+    "$numberInt": "0"
+  },
+  "Driver": {
+    "AttentiveProbability": {
+      "$numberDouble": "0"
+    },
+    "DistractionLevel": {
+      "$numberDouble": "0"
+    },
+    "EyesOnRoad": false,
+    "FatigueLevel": {
+      "$numberDouble": "0"
+    },
+    "HeartRate": {
+      "$numberInt": "0"
+    },
+    "Identifier": {
+      "Issuer": "",
+      "Subject": ""
+    }
+  },
+  "GrossWeight": {
+    "$numberInt": "0"
+  },
+  "Height": {
+    "$numberInt": "0"
+  },
+  "IdleTime": {
+    "$numberInt": "0"
+  },
+  "IgnitionOffTime": {
+    "$numberInt": "0"
+  },
+  "IgnitionOn": false,
+  "IgnitionOnTime": {
+    "$numberInt": "0"
+  },
+  "IsMoving": false,
+  "Length": {
+    "$numberInt": "0"
+  },
+  "MaxTowBallWeight": {
+    "$numberInt": "0"
+  },
+  "MaxTowWeight": {
+    "$numberInt": "0"
+  },
+  "Media": "",
+  "OBD": {
+    "AbsoluteLoad": {
+      "$numberDouble": "0"
+    },
+    "AcceleratorPositionD": {
+      "$numberDouble": "0"
+    },
+    "AcceleratorPositionE": {
+      "$numberDouble": "0"
+    },
+    "AcceleratorPositionF": {
+      "$numberDouble": "0"
+    },
+    "AirStatus": "",
+    "AmbientAirTemperature": {
+      "$numberDouble": "0"
+    },
+    "AuxInputStatus": false,
+    "BarometricPressure": {
+      "$numberDouble": "0"
+    },
+    "Catalyst": {
+      "Bank1": {
+        "Temperature1": {
+          "$numberDouble": "0"
+        },
+        "Temperature2": {
+          "$numberDouble": "0"
+        }
+      },
+      "Bank2": {
+        "Temperature1": {
+          "$numberDouble": "0"
+        },
+        "Temperature2": {
+          "$numberDouble": "0"
+        }
+      }
+    },
+    "CommandedEGR": {
+      "$numberDouble": "0"
+    },
+    "CommandedEVAP": {
+      "$numberDouble": "0"
+    },
+    "CommandedEquivalenceRatio": {
+      "$numberDouble": "0"
+    },
+    "ControlModuleVoltage": {
+      "$numberDouble": "0"
+    },
+    "CoolantTemperature": {
+      "$numberDouble": "0"
+    },
+    "DTCList": "",
+    "DistanceSinceDTCClear": {
+      "$numberDouble": "0"
+    },
+    "DistanceWithMIL": {
+      "$numberDouble": "0"
+    },
+    "DriveCycleStatus": {
+      "DTCCount": {
+        "$numberInt": "0"
+      },
+      "IgnitionType": "",
+      "MIL": false
+    },
+    "EGRError": {
+      "$numberDouble": "0"
+    },
+    "EVAPVaporPressure": {
+      "$numberDouble": "0"
+    },
+    "EVAPVaporPressureAbsolute": {
+      "$numberDouble": "0"
+    },
+    "EVAPVaporPressureAlternate": {
+      "$numberDouble": "0"
+    },
+    "EngineLoad": {
+      "$numberDouble": "0"
+    },
+    "EngineSpeed": {
+      "$numberDouble": "0"
+    },
+    "EthanolPercent": {
+      "$numberDouble": "0"
+    },
+    "FreezeDTC": "",
+    "FuelInjectionTiming": {
+      "$numberDouble": "0"
+    },
+    "FuelLevel": {
+      "$numberDouble": "0"
+    },
+    "FuelPressure": {
+      "$numberDouble": "0"
+    },
+    "FuelRailPressureAbsolute": {
+      "$numberDouble": "0"
+    },
+    "FuelRailPressureDirect": {
+      "$numberDouble": "0"
+    },
+    "FuelRailPressureVac": {
+      "$numberDouble": "0"
+    },
+    "FuelRate": {
+      "$numberDouble": "0"
+    },
+    "FuelStatus": "",
+    "FuelType": "",
+    "HybridBatteryRemaining": {
+      "$numberDouble": "0"
+    },
+    "IntakeTemp": {
+      "$numberDouble": "0"
+    },
+    "LongTermFuelTrim1": {
+      "$numberDouble": "0"
+    },
+    "LongTermFuelTrim2": {
+      "$numberDouble": "0"
+    },
+    "LongTermO2Trim1": {
+      "$numberDouble": "0"
+    },
+    "LongTermO2Trim2": {
+      "$numberDouble": "0"
+    },
+    "MAF": {
+      "$numberDouble": "0"
+    },
+    "MAP": {
+      "$numberDouble": "0"
+    },
+    "MaxMAF": {
+      "$numberDouble": "0"
+    },
+    "O2": {
+      "Bank1": {
+        "Sensor1": {
+          "Voltage": {
+            "$numberDouble": "0"
+          }
+        },
+        "Sensor2": {
+          "Voltage": {
+            "$numberDouble": "0"
+          }
+        },
+        "Sensor3": {
+          "Voltage": {
+            "$numberDouble": "0"
+          }
+        },
+        "Sensor4": {
+          "Voltage": {
+            "$numberDouble": "0"
+          }
+        }
+      },
+      "Bank2": {
+        "Sensor1": {
+          "Voltage": {
+            "$numberDouble": "0"
+          }
+        },
+        "Sensor2": {
+          "Voltage": {
+            "$numberDouble": "0"
+          }
+        },
+        "Sensor3": {
+          "Voltage": {
+            "$numberDouble": "0"
+          }
+        },
+        "Sensor4": {
+          "Voltage": {
+            "$numberDouble": "0"
+          }
+        }
+      }
+    },
+    "O2Alt": {
+      "Bank1": {
+        "Sensor1": "",
+        "Sensor2": "",
+        "Sensor3": "",
+        "Sensor4": ""
+      },
+      "Bank2": {
+        "Sensor1": "",
+        "Sensor2": "",
+        "Sensor3": "",
+        "Sensor4": ""
+      }
+    },
+    "O2WR": {
+      "Sensor1": {
+        "Current": {
+          "$numberDouble": "0"
+        },
+        "Voltage": {
+          "$numberDouble": "0"
+        }
+      },
+      "Sensor2": {
+        "Current": {
+          "$numberDouble": "0"
+        },
+        "Voltage": {
+          "$numberDouble": "0"
+        }
+      },
+      "Sensor3": {
+        "Current": {
+          "$numberDouble": "0"
+        },
+        "Voltage": {
+          "$numberDouble": "0"
+        }
+      },
+      "Sensor4": {
+        "Current": {
+          "$numberDouble": "0"
+        },
+        "Voltage": {
+          "$numberDouble": "0"
+        }
+      },
+      "Sensor5": {
+        "Current": {
+          "$numberDouble": "0"
+        },
+        "Voltage": {
+          "$numberDouble": "0"
+        }
+      },
+      "Sensor6": {
+        "Current": {
+          "$numberDouble": "0"
+        },
+        "Voltage": {
+          "$numberDouble": "0"
+        }
+      },
+      "Sensor7": {
+        "Current": {
+          "$numberDouble": "0"
+        },
+        "Voltage": {
+          "$numberDouble": "0"
+        }
+      },
+      "Sensor8": {
+        "Current": {
+          "$numberDouble": "0"
+        },
+        "Voltage": {
+          "$numberDouble": "0"
+        }
+      }
+    },
+    "OilTemperature": {
+      "$numberDouble": "0"
+    },
+    "PidsA": {
+      "$numberInt": "0"
+    },
+    "PidsB": {
+      "$numberInt": "0"
+    },
+    "PidsC": {
+      "$numberInt": "0"
+    },
+    "RelativeAcceleratorPosition": {
+      "$numberDouble": "0"
+    },
+    "RelativeThrottlePosition": {
+      "$numberDouble": "0"
+    },
+    "RunTime": {
+      "$numberDouble": "0"
+    },
+    "RunTimeMIL": {
+      "$numberDouble": "0"
+    },
+    "ShortTermFuelTrim1": {
+      "$numberDouble": "0"
+    },
+    "ShortTermFuelTrim2": {
+      "$numberDouble": "0"
+    },
+    "ShortTermO2Trim1": {
+      "$numberDouble": "0"
+    },
+    "ShortTermO2Trim2": {
+      "$numberDouble": "0"
+    },
+    "Speed": {
+      "$numberDouble": "0"
+    },
+    "Status": {
+      "DTCCount": {
+        "$numberInt": "0"
+      },
+      "IgnitionType": "",
+      "MIL": false
+    },
+    "ThrottleActuator": {
+      "$numberDouble": "0"
+    },
+    "ThrottlePosition": {
+      "$numberDouble": "0"
+    },
+    "ThrottlePositionB": {
+      "$numberDouble": "0"
+    },
+    "ThrottlePositionC": {
+      "$numberDouble": "0"
+    },
+    "TimeSinceDTCCleared": {
+      "$numberDouble": "0"
+    },
+    "TimingAdvance": {
+      "$numberDouble": "0"
+    },
+    "WarmupsSinceDTCClear": {
+      "$numberInt": "0"
+    }
+  },
+  "Powertrain": {
+    "AccumulatedBrakingEnergy": {
+      "$numberDouble": "0"
+    },
+    "Battery": {
+      "AccumulatedChargedEnergy": {
+        "$numberDouble": "0"
+      },
+      "AccumulatedConsumedEnergy": {
+        "$numberDouble": "0"
+      },
+      "Charging": {
+        "ChargeCurrent": {
+          "$numberDouble": "0"
+        },
+        "ChargeLimit": {
+          "$numberInt": "0"
+        },
+        "ChargePlugStatus": false,
+        "ChargePlugType": "",
+        "ChargePortFlap": "",
+        "ChargeRate": {
+          "$numberDouble": "0"
+        },
+        "ChargeVoltage": {
+          "$numberDouble": "0"
+        },
+        "MaximumChargingCurrent": {
+          "$numberDouble": "0"
+        },
+        "Mode": "",
+        "StartStopCharging": "",
+        "Status": false,
+        "TimeToComplete": {
+          "$numberInt": "0"
+        },
+        "Timer": {
+          "Mode": "",
+          "Time": {
+            "$numberInt": "0"
+          }
+        }
+      },
+      "GrossCapacity": {
+        "$numberInt": "0"
+      },
+      "NetCapacity": {
+        "$numberInt": "0"
+      },
+      "NominalVoltage": {
+        "$numberInt": "0"
+      },
+      "Range": {
+        "$numberInt": "0"
+      },
+      "ReferentVoltage": {
+        "$numberInt": "0"
+      },
+      "StateOfCharge": {
+        "Current": {
+          "$numberDouble": "0"
+        },
+        "Displayed": {
+          "$numberDouble": "0"
+        },
+        "Target": {
+          "$numberInt": "0"
+        }
+      },
+      "Temperature": {
+        "$numberDouble": "0"
+      }
+    },
+    "CombustionEngine": {
+      "AspirationType": "",
+      "Bore": {
+        "$numberDouble": "0"
+      },
+      "CompressionRatio": "",
+      "Configuration": "",
+      "DieselParticulateFilter": {
+        "DeltaPressure": {
+          "$numberDouble": "0"
+        },
+        "InletTemperature": {
+          "$numberDouble": "0"
+        },
+        "OutletTemperature": {
+          "$numberDouble": "0"
+        }
+      },
+      "Displacement": {
+        "$numberInt": "0"
+      },
+      "Engine": {
+        "ECT": {
+          "$numberInt": "0"
+        },
+        "EOP": {
+          "$numberInt": "0"
+        },
+        "EOT": {
+          "$numberInt": "0"
+        },
+        "MAF": {
+          "$numberInt": "0"
+        },
+        "MAP": {
+          "$numberInt": "0"
+        },
+        "Power": {
+          "$numberInt": "0"
+        },
+        "Speed": {
+          "$numberInt": "0"
+        },
+        "TPS": {
+          "$numberInt": "0"
+        },
+        "Torque": {
+          "$numberInt": "0"
+        }
+      },
+      "EngineCoolantCapacity": {
+        "$numberDouble": "0"
+      },
+      "EngineOilCapacity": {
+        "$numberDouble": "0"
+      },
+      "FuelType": "",
+      "MaxPower": {
+        "$numberInt": "0"
+      },
+      "MaxTorque": {
+        "$numberInt": "0"
+      },
+      "NumberOfCylinders": {
+        "$numberInt": "0"
+      },
+      "NumberOfValvesPerCylinder": {
+        "$numberInt": "0"
+      },
+      "OilLifeRemaining": {
+        "$numberInt": "0"
+      },
+      "StrokeLength": {
+        "$numberDouble": "0"
+      }
+    },
+    "ElectricMotor": {
+      "MaxPower": {
+        "$numberInt": "0"
+      },
+      "MaxRegenPower": {
+        "$numberInt": "0"
+      },
+      "MaxRegenTorque": {
+        "$numberInt": "0"
+      },
+      "MaxTorque": {
+        "$numberInt": "0"
+      },
+      "Motor": {
+        "CoolantTemperature": {
+          "$numberInt": "0"
+        },
+        "Power": {
+          "$numberInt": "0"
+        },
+        "Rpm": {
+          "$numberInt": "0"
+        },
+        "Temperature": {
+          "$numberInt": "0"
+        },
+        "Torque": {
+          "$numberInt": "0"
+        }
+      }
+    },
+    "FuelCell": "",
+    "FuelSystem": {
+      "AverageConsumption": {
+        "$numberDouble": "0"
+      },
+      "ConsumptionSinceStart": {
+        "$numberDouble": "0"
+      },
+      "EngineStopStartEnabled": false,
+      "FuelType": "",
+      "HybridType": "",
+      "InstantConsumption": {
+        "$numberDouble": "0"
+      },
+      "Level": {
+        "$numberInt": "0"
+      },
+      "LowFuelLevel": false,
+      "Range": {
+        "$numberInt": "0"
+      },
+      "TankCapacity": {
+        "$numberDouble": "0"
+      },
+      "TimeSinceStart": {
+        "$numberInt": "0"
+      }
+    },
+    "Range": {
+      "$numberInt": "0"
+    },
+    "Transmission": {
+      "ClutchWear": {
+        "$numberInt": "0"
+      },
+      "DriveType": "",
+      "Gear": {
+        "$numberInt": "0"
+      },
+      "GearChangeMode": "",
+      "GearCount": {
+        "$numberInt": "0"
+      },
+      "PerformanceMode": "",
+      "Speed": {
+        "$numberInt": "0"
+      },
+      "Temperature": {
+        "$numberInt": "0"
+      },
+      "TravelledDistance": {
+        "$numberDouble": "0"
+      },
+      "Type": ""
+    }
+  },
+  "Private": "",
+  "RoofLoad": {
+    "$numberInt": "0"
+  },
+  "Speed": {
+    "$numberDouble": "0"
+  },
+  "Trailer": {
+    "Connected": false
+  },
+  "TravelledDistance": {
+    "$numberDouble": "0"
+  },
+  "TripMeterReading": {
+    "$numberDouble": "0"
+  },
+  "VehicleIdentification": {
+    "ACRISSCode": "",
+    "Brand": "",
+    "Model": "",
+    "VIN": "",
+    "WMI": "",
+    "Year": {
+      "$numberInt": "0"
+    },
+    "bodyType": "",
+    "dateVehicleFirstRegistered": "",
+    "knownVehicleDamages": "",
+    "meetsEmissionStandard": "",
+    "productionDate": "",
+    "purchaseDate": "",
+    "vehicleConfiguration": "",
+    "vehicleModelDate": "",
+    "vehicleSeatingCapacity": {
+      "$numberInt": "0"
+    },
+    "vehicleSpecialUsage": "",
+    "vehicleinteriorColor": "",
+    "vehicleinteriorType": ""
+  },
+  "VersionVSS": {
+    "Label": "",
+    "Major": {
+      "$numberInt": "0"
+    },
+    "Minor": {
+      "$numberInt": "0"
+    },
+    "Patch": {
+      "$numberInt": "0"
+    }
+  },
+  "Width": {
+    "$numberInt": "0"
+  },
+  "accelerationTime": {
+    "$numberInt": "0"
+  },
+  "cargoVolume": {
+    "$numberDouble": "0"
+  },
+  "emissionsCO2": {
+    "$numberInt": "0"
+  }
+}

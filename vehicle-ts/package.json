@@ -1,0 +1,33 @@
+{
+  "name": "vehicle",
+  "version": "1.0.0",
+  "description": "Realm Vehicle Simulator",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p .",
+    "postbuild": "copyfiles -u 1 \"src/public/*\" build && copyfiles -u 1 \"src/img/* \" build",
+    "start": "node build/server.js"
+  },
+  "keywords": [],
+  "author": "Felix Reichenbach",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.45",
+    "@typescript-eslint/eslint-plugin": "^5.59.9",
+    "@typescript-eslint/parser": "^5.59.9",
+    "eslint": "^8.42.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@dittolive/ditto": "^4.5.0",
+    "@types/express": "^4.17.17",
+    "body-parser": "^1.20.2",
+    "bson": "^6.8.0",
+    "copyfiles": "^2.4.1",
+    "express": "^4.18.2",
+    "path": "^0.12.7",
+    "realm": "^12.9.0"
+  }
+}

@@ -1,0 +1,12 @@
+
+vehicle-ts/node_modules/
+vehicle-ts/build
+vehicle-ts/.DS_Store
+vehicle-ts/mongodb-realm/
+.DS_Store
+atlas-backend/credentials.txt
+mobile-swift/Controller.xcodeproj/project.xcworkspace/xcuserdata/
+mobile-swift/Controller.xcodeproj/xcuserdata/felix.reichenbach.xcuserdatad/xcschemes/xcschememanagement.plist
+ditto
+mobile-swift/Controller/Env.swift
+mobile-swift/.env*

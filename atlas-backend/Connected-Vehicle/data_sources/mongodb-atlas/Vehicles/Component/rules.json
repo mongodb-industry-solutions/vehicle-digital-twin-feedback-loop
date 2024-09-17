@@ -1,0 +1,34 @@
+{
+    "database": "Vehicles",
+    "collection": "Component",
+    "roles": [
+        {
+            "name": "readAll",
+            "apply_when": {
+                "email": "rulestest"
+            },
+            "document_filters": {
+                "read": true,
+                "write": false
+            },
+            "insert": false,
+            "delete": false,
+            "search": true,
+            "read": true,
+            "write": false
+        },
+        {
+            "name": "readAndWriteAll",
+            "apply_when": {},
+            "document_filters": {
+                "read": true,
+                "write": true
+            },
+            "insert": true,
+            "delete": true,
+            "search": true,
+            "read": true,
+            "write": true
+        }
+    ]
+}
