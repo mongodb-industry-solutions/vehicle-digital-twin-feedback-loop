@@ -3,7 +3,7 @@
 Now that we’ve set up the MongoDB Atlas cloud backend, the Amazon SageMaker Integration, connected the vehicle and the mobile app, let’s walk through the demo setup and architecture to bring it all together.
 
 
-![image](media/EndToEnd2.png) <!--+ Ditto -->
+![image](media/EndToEnd2.png)
 
 *Quick Take* 
 
