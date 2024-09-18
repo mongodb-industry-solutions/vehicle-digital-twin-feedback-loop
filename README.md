@@ -44,7 +44,7 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 
 ## Part 4: Set up the Amazon SageMaker Integration
 
-[Set up the Amazon SageMaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/feature/ReadMe/main/aws-sagemaker)
+[Set up the Amazon SageMaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/feature/ReadMe/aws-sagemaker)
 
 # Step by Step Demonstration
 [Step by Step Demonstration: Telemetry Feedback Loop Use Case](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/feature/ReadMe/Demo_Instructions.md)
