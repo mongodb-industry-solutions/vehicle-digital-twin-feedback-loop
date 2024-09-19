@@ -12,7 +12,7 @@ import RealmSwift
 class Vehicle: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: String
     @Persisted var battery: BatteryOld?
-    @Persisted var components: List<Component>
+    @Persisted var components: List<ComponentRealm>
     @Persisted var current: Int?
     @Persisted var owner_id: String = ""
     @Persisted var isOn: Bool = false
@@ -29,7 +29,7 @@ class BatteryOld: EmbeddedObject {
     @Persisted var status: String?
 }
 
-class Component: Object {
+class ComponentRealm: Object {
     @Persisted(primaryKey: true) var _id: ObjectId?
     @Persisted var name: String?
     @Persisted var owner_id: String = ""

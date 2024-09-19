@@ -17,7 +17,7 @@ class VehicleDetailViewModel: ObservableObject {
     @Published var batteryCurrent: Int
     @Published var batteryStatus: String
     @Published var commands: [Command]
-    @Published var components: [String]
+    @Published var components: [Component]
 
     private let dittoStore = DittoManager.shared.ditto.store
     private var storeObserver: DittoStoreObserver?
@@ -195,7 +195,7 @@ struct VehicleDetailView: View {
                 }
                 Section(header: Text("Components: \(viewModel.components.count)")) {
                     List(viewModel.components, id: \.self) { component in
-                        Text(component)  // Display each component directly if it's a String
+                        Text(component.name)  // Display each component directly if it's a String
                     }
                 }
                 Button(action: {showingCommandView = true}){
@@ -252,7 +252,7 @@ struct DeviceDetailView_Previews: PreviewProvider {
             mixedTypes: "Change Type",
             name: "My Car",
             owner_id: "6508d7bc73e92d4da43bb271",
-            components: ["66cf4893d415318ebae5a4de"],
+            components: [],
             commands: [Command(command: "Reset Battery", status: "completed", ts: "2024-08-28T16:43:48.201Z")]
         )
         
