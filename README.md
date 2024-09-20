@@ -1,4 +1,4 @@
-# Vehicle Digital Twin Set Up with MongoDB & AWS  
+# Vehicle Digital Twin Set Up with MongoDB, Ditto & AWS  
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -14,7 +14,7 @@
 
 A connected vehicle platform opens a window of analytical data that manufacturers can use to provide recommendations for safer, more efficient and improved driving experiences. Personalized driving experiences are made possible through bidirectional information exchange between applications in the car, mobile, webapps and machine learning interfaces in the cloud.
 
-However, creating such a cutting edge connected vehicle platform requires the best-in-class foundation. With MongoDB Atlas and the AWS ecosystem, you are provided with such building blocks. MongoDB is your end-to-end data layer for efficient bidirectional data exchange, ensuring consistency on a mobile device, vehicle, and the cloud. AWS, including SageMaker and its integration capabilities, is your public cloud infrastructure allowing you to gain value out of your data and produce the right recommendations for enhanced driving experiences.
+However, creating such a cutting edge connected vehicle platform requires the best-in-class foundation. With MongoDB Atlas, AWS ecosystem and Ditto's Big Peer syncing with Mobile Apps & the connected vehicle, you are provided with such building blocks. MongoDB is your end-to-end data layer for efficient bidirectional data exchange, ensuring consistency on a mobile device, vehicle, and the cloud. AWS, including SageMaker and its integration capabilities, is your public cloud infrastructure allowing you to gain value out of your data and produce the right recommendations for enhanced driving experiences. As for Ditto, it performs as a trusted peer in the distributed peer-to-peer network, allowed by its platform and the "Big Peer" enabling the sync engine in this by being splited in many different nodes (physical or virtual), making this the game-changer tool for an efficient syncing between your MongoDB data consistency and offline updates that can be performed with Ditto inside the AWS environment.
 
 ![image](media/Overview_New.png)
 
