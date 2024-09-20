@@ -43,6 +43,18 @@ let p = {
               else: "$$REMOVE"
             }
         },
+        components: {
+          $cond: {
+            if: {
+              $ne: [
+                "$change.newValue.components",
+                "$change.oldValue.components"
+              ]
+            },
+            then: "$change.newValue.components",
+            else: "$$REMOVE"
+          }
+      },
       }
 }
 
