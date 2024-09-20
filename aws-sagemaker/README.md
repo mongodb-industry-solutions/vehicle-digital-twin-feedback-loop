@@ -1,6 +1,6 @@
 # Setup Instructions for Integrating Amazon SageMaker
 
-For visualization purposes, the connected vehicle environment will function like the image below. But we'll get into more detail on that in the [demo section](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/Demo_Instructions.md). 
+For visualization purposes, the connected vehicle environment will function like the image below. But we'll get into more detail on that in the [demo section](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/feature/ReadMe/Demo_Instructions.md). 
 
 ![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/feature/ReadMe/media/EndToEnd2.png)
 
@@ -255,6 +255,6 @@ You've now successfully set up everything you need to run a Digital Twin demonst
   * [Part 4: The Amazon SageMaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
 
 ## Let's run the demo! 
-[Step by Step Demonstration: Building your Digital Twin with MongoDB and AWS](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/Demo_Instructions.md)
+[Step by Step Demonstration: Building your Digital Twin with MongoDB and AWS](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/feature/ReadMe/Demo_Instructions.md)
 
 
