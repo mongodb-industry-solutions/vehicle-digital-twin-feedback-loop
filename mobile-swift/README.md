@@ -14,4 +14,4 @@ Congrats! You've finished [part 1](https://github.com/mongodb-industry-solutions
 ![image](../media/Mobileapp.png)
 
 ## Continue with Part 4 where you will integrate Amazon SageMaker
-Part 4: [Set up the Amazon SageMaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/aws-sagemaker)
+Part 4: [Set up the Amazon SageMaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/aws-sagemaker)
