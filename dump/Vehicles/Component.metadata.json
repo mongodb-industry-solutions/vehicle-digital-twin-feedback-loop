@@ -1,0 +1,1 @@
+{"options":{"changeStreamPreAndPostImages":{"enabled":true}},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"8e56b0a08bc648aabed97f96ba076d54","collectionName":"Component","type":"collection"}
