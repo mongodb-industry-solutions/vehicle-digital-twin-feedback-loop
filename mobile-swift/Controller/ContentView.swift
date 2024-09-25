@@ -32,7 +32,7 @@ struct ContentView: View {
                         // This means the app's current user can read and write their own data
                         $0.owner_id == user.id
                     })
-                    subs.append(QuerySubscription<Component>(name: "Components") {
+                    subs.append(QuerySubscription<ComponentRealm>(name: "Components") {
                         $0.owner_id == user.id
                     })
                 }

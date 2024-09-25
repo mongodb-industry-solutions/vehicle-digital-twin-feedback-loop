@@ -98,6 +98,7 @@ $(document).ready(function () {
         success: (result) => {
             try {
                 const vehicle = result;
+                console.log('init vehicle data, ', vehicle)
                 updateVehicle(vehicle);
             } catch (error) {
                 console.error('Error parsing vehicle data:', error);
@@ -130,9 +131,10 @@ $(document).ready(function () {
             type: "POST",
             data: { name: $("#component_name").val() },
             success: (result) => {
-                console.log(JSON.stringify(result));
+                console.log(result.message);
+                updateMeasurements();
                 // Update vehicle components if necessary
-                const vehicle = JSON.parse(result);
+                const vehicle = result.vehicle;
                 updateComponent(vehicle);
             },
             error: (error) => { console.error(`${error}`) }
