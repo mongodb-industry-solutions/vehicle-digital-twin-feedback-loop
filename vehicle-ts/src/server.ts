@@ -1,5 +1,5 @@
 import express from "express";
-import DittoApp from "./realm/DittoApp";
+import DittoApp from "./ditto/DittoApp";
 import path from "path";
 import bodyParser from "body-parser";
 
