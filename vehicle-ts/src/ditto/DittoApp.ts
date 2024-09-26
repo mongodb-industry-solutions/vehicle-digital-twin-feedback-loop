@@ -18,8 +18,8 @@ class DittoApp {
 
     this.ditto = new Ditto({
       type: "onlinePlayground",
-      appID: "",// Replace with your actual app ID
-      token: "",// Replace with your actual token
+      appID: "", // Replace with your actual app ID
+      token: "", // Replace with your actual token
     });
     this.ditto.disableSyncWithV3();
     this.ditto.startSync();
