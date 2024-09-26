@@ -7,6 +7,6 @@ vehicle-ts/mongodb-realm/
 atlas-backend/credentials.txt
 mobile-swift/Controller.xcodeproj/project.xcworkspace/xcuserdata/
 mobile-swift/Controller.xcodeproj/xcuserdata/felix.reichenbach.xcuserdatad/xcschemes/xcschememanagement.plist
-ditto
+vehicle-ts/ditto
 mobile-swift/Controller/Env.swift
 mobile-swift/.env*
