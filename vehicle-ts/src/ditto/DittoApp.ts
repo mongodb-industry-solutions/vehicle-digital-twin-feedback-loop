@@ -1,5 +1,20 @@
-import { init, Ditto } from "@dittolive/ditto";
+import { init, Ditto, MutableDocument } from "@dittolive/ditto";
 import { BSON } from "bson";
+import * as dotenv from 'dotenv';
+import { resolve } from 'path';
+
+// Load environment variables from .env file
+dotenv.config({ path: resolve(__dirname, '../../src/.env') });
+
+// Now you can access the variables using process.env
+const appID = process.env.DITTO_APP_ID || 'cant read env var DITTO_APP_ID';
+const token = process.env.DITTO_PLAYGROUND_TOKEN || 'cant read env var DITTO_PLAYGROUND_TOKEN';;
+
+interface Component {
+  _id: string;
+  name: string
+  owner_id: string;
+}
 
 class DittoApp {
   private ditto: Ditto;
@@ -12,8 +27,8 @@ class DittoApp {
 
     this.ditto = new Ditto({
       type: "onlinePlayground",
-      appID: "", // Replace with your actual app ID
-      token: "", // Replace with your actual token
+      appID: appID,
+      token: token,
     });
     this.ditto.disableSyncWithV3();
     this.ditto.startSync();
@@ -143,6 +158,39 @@ class DittoApp {
 
     return {
       result: `Battery status updated: voltage: ${values.voltage}, current: ${values.current}, Bucket: ${this.batteryMeasurements.length}/20`,
+    };
+  }
+
+  async addComponent(values: { name: string }) {
+    let vehicleUpdated = null;
+    if (this.vehicle) {
+      try {
+        const doc1: Component = {
+          _id: new BSON.ObjectId().toString(),
+          name: values.name,
+          owner_id: this.vehicle.owner_id
+        }
+        let updateResultsMap = await this.ditto.store.collection("vehicle")
+          .find("_id == $args._id", { _id: this.vehicle._id })
+          .update((mutableDocs: MutableDocument[]) => {
+            mutableDocs.forEach(doc => {
+              doc.at('components').set([doc1])
+              vehicleUpdated = doc.value
+            })
+          });
+        if(updateResultsMap['updateResultsByDocumentIDString'][this.vehicle._id].length > 0)
+          console.log("Vehicle components updated successfully.");
+        else
+          console.log("Vehicle components did not updated.");
+      } catch (err) {
+        console.error("Error updating vehicle components in Ditto:", err);
+      }
+    } else {
+      console.error("Vehicle not found in Ditto store.");
+    }
+    return {
+      message: `Component with name ${values.name} added to vehicle ${this.vehicle.name}`,
+      vehicle: vehicleUpdated
     };
   }
 

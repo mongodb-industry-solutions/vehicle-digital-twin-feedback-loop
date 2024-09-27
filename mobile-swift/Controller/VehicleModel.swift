@@ -21,6 +21,12 @@ struct Command: Codable, Hashable {
     var ts: String
 }
 
+struct Component: Codable, Hashable {
+    var _id: String
+    var name: String
+    var owner_id: String
+}
+
 struct VehicleModel {
     let _id: String
     var battery: Battery
@@ -29,7 +35,7 @@ struct VehicleModel {
     var mixedTypes: String
     var name: String
     var owner_id: String
-    var components: [String]
+    var components: [Component]
     var commands: [Command]
 }
 
@@ -57,8 +63,23 @@ extension VehicleModel {
         self.mixedTypes = value["mixedTypes"] as? String ?? ""
         self.name = value["name"] as? String ?? ""
         self.owner_id = value["owner_id"] as? String ?? ""
-        self.components = value["components"] as? [String] ?? []
         
+        // Parse components array into array of Component structs
+        if let componentsArray = value["components"] as? [[String: Any?]] {
+            self.components = componentsArray.compactMap { componentDict in
+                guard
+                    let _id = componentDict["_id"] as? String,
+                    let name = componentDict["name"] as? String,
+                    let owner_id = componentDict["owner_id"] as? String
+                else {
+                    return nil
+                }
+                return Component(_id: _id, name: name, owner_id: owner_id)
+            }
+        } else {
+            self.components = []
+        }
+
         // Parse commands array into array of Command structs
         if let commandsArray = value["commands"] as? [[String: Any?]] {
             self.commands = commandsArray.compactMap { commandDict in
@@ -149,7 +170,7 @@ extension VehicleModel {
         mixedTypes: String = "",
         name: String = "",
         owner_id: String = "",
-        components: [String] = [],
+        components: [Component] = [],
         commands: [Command] = []
     ) {
         self._id = UUID().uuidString

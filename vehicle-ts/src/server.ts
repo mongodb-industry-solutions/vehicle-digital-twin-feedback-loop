@@ -1,5 +1,5 @@
 import express from "express";
-import DittoApp from "./realm/DittoApp";
+import DittoApp from "./ditto/DittoApp";
 import path from "path";
 import bodyParser from "body-parser";
 
@@ -37,6 +37,17 @@ app.get("/subscribe", (req, res) => {
 app.post("/add_sensor", async (req, res) => {
   try {
     const result = await dittoApp.addSensor(req.body);
+    console.log(result);
+    res.send(result);
+  } catch (error) {
+    console.error("Error adding sensor data:", error);
+    res.status(500).send("Failed to add sensor data.");
+  }
+});
+
+app.post("/add_component", async (req, res) => {
+  try {
+    const result = await dittoApp.addComponent(req.body);
     console.log(result);
     res.send(result);
   } catch (error) {

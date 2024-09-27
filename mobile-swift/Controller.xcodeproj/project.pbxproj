@@ -14,7 +14,6 @@
 		63C9ABBE266948D200069D38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C9ABBD266948D200069D38 /* ContentView.swift */; };
 		63C9ABC0266948D300069D38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C9ABBF266948D300069D38 /* Assets.xcassets */; };
 		63C9ABC3266948D300069D38 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C9ABC2266948D300069D38 /* Preview Assets.xcassets */; };
-		63C9ABD0266967E100069D38 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C9ABCF266967E100069D38 /* Model.swift */; };
 		725642562C8226C800F6A23D /* DittoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725642552C8226C800F6A23D /* DittoManager.swift */; };
 		725642582C82282600F6A23D /* DittoObjC in Frameworks */ = {isa = PBXBuildFile; productRef = 725642572C82282600F6A23D /* DittoObjC */; };
 		7256425A2C82282600F6A23D /* DittoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 725642592C82282600F6A23D /* DittoSwift */; };
@@ -22,7 +21,6 @@
 		72B4D3DF2C85BBDF00BC6984 /* ComponentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4D3DE2C85BBDF00BC6984 /* ComponentModel.swift */; };
 		72B4D3E12C85BBF000BC6984 /* SensorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4D3E02C85BBF000BC6984 /* SensorModel.swift */; };
 		72B4D3E32C85BC0200BC6984 /* VehicleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B4D3E22C85BC0200BC6984 /* VehicleModel.swift */; };
-		BAF109462C45BCE900FB315C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BAF109452C45BCE900FB315C /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +34,6 @@
 		63C9ABBF266948D300069D38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63C9ABC2266948D300069D38 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		63C9ABC4266948D300069D38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63C9ABCF266967E100069D38 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		725642552C8226C800F6A23D /* DittoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DittoManager.swift; sourceTree = "<group>"; };
 		72B4D3DC2C85BB6700BC6984 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		72B4D3DE2C85BBDF00BC6984 /* ComponentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentModel.swift; sourceTree = "<group>"; };
@@ -50,7 +47,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7256425A2C82282600F6A23D /* DittoSwift in Frameworks */,
-				BAF109462C45BCE900FB315C /* RealmSwift in Frameworks */,
 				725642582C82282600F6A23D /* DittoObjC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,7 +87,6 @@
 				725642552C8226C800F6A23D /* DittoManager.swift */,
 				631657E32675F70B00D397C5 /* VehiclesView.swift */,
 				630D2376282F058000EAD0C5 /* VehicleDetailView.swift */,
-				63C9ABCF266967E100069D38 /* Model.swift */,
 				63C9ABBF266948D300069D38 /* Assets.xcassets */,
 				63C9ABC4266948D300069D38 /* Info.plist */,
 				63C9ABC1266948D300069D38 /* Preview Content */,
@@ -130,7 +125,6 @@
 			);
 			name = Controller;
 			packageProductDependencies = (
-				BAF109452C45BCE900FB315C /* RealmSwift */,
 				725642572C82282600F6A23D /* DittoObjC */,
 				725642592C82282600F6A23D /* DittoSwift */,
 			);
@@ -162,7 +156,6 @@
 			);
 			mainGroup = 63C9ABAF266948D200069D38;
 			packageReferences = (
-				BAF109442C45BCE900FB315C /* XCRemoteSwiftPackageReference "realm-swift" */,
 				725642542C82232900F6A23D /* XCRemoteSwiftPackageReference "DittoSwiftPackage" */,
 			);
 			productRefGroup = 63C9ABB9266948D200069D38 /* Products */;
@@ -224,7 +217,6 @@
 				72B4D3E12C85BBF000BC6984 /* SensorModel.swift in Sources */,
 				631657E22675F6B300D397C5 /* LoginView.swift in Sources */,
 				72B4D3DD2C85BB6700BC6984 /* Env.swift in Sources */,
-				63C9ABD0266967E100069D38 /* Model.swift in Sources */,
 				725642562C8226C800F6A23D /* DittoManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,14 +438,6 @@
 				version = 4.7.1;
 			};
 		};
-		BAF109442C45BCE900FB315C /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.52.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -466,11 +450,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 725642542C82232900F6A23D /* XCRemoteSwiftPackageReference "DittoSwiftPackage" */;
 			productName = DittoSwift;
-		};
-		BAF109452C45BCE900FB315C /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BAF109442C45BCE900FB315C /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

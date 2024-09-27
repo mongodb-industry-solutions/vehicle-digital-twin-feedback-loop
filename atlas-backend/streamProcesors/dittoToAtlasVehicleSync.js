@@ -30,7 +30,31 @@ let p = {
               then: "$change.newValue.battery",
               else: "$$REMOVE"
             }
-        }
+        },
+        isOn: {
+            $cond: {
+              if: {
+                $ne: [
+                  "$change.newValue.isOn",
+                  "$change.oldValue.isOn"
+                ]
+              },
+              then: "$change.newValue.isOn",
+              else: "$$REMOVE"
+            }
+        },
+        components: {
+          $cond: {
+            if: {
+              $ne: [
+                "$change.newValue.components",
+                "$change.oldValue.components"
+              ]
+            },
+            then: "$change.newValue.components",
+            else: "$$REMOVE"
+          }
+      },
       }
 }
 
