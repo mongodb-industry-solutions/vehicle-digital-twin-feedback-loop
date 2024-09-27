@@ -4,7 +4,7 @@ export const appID = "connected-vehicle-sizck"
 
 // Provide the configured Email/Password user account. 
 // If you have changed the password while creating the user you must update it here too
-export const realmUser = {
+export const dittoUser = {
     username: "demo",
     password: "demopw"
 }
