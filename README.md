@@ -20,6 +20,7 @@ Creating such a cutting edge connected vehicle platform requires the best-in-cla
 
 **MongoDB** is your end-to-end data layer for efficient bidirectional data exchange, ensuring consistency on a mobile device, vehicle, and the cloud. **AWS**, including SageMaker and its integration capabilities, is your public cloud infrastructure allowing you to gain value out of your data and produce the right recommendations for enhanced driving experiences. As for **Ditto**, it performs as a trusted peer in the distributed peer-to-peer network, allowed by its platform and the "Big Peer" enabling the sync engine in this by being splited in many different nodes (physical or virtual), making this the game-changer tool for an efficient syncing between your **MongoDB** data consistency and offline updates that can be performed with Ditto inside the AWS environment.
 
+
 ![image](media/Overview_New.png)
 
 Under the hood we use a mix of MongoDB and AWS components nicely put together to create this end to end scenario. If you are curious and want to learn how it works you can jump directly to the [demo section](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/feature/ReadMe/Demo_Instructions.md). 
