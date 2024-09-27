@@ -4,13 +4,17 @@ In order to the make the demo work end-to-end, you will need to set up the backe
 Let's get started! 
 
 ## Installations
-1. Inside your `vehicle-ts` folder, execute the following command in the terminal to install your `build` folder: `npm run build`.
+1. Inside your `vehicle-ts` folder, execute the following command in the terminal to install your `build` folder:
+   
+```bash
+npm run build
+```
 
 ## Install **Mongo Database Tools**
 
 2. Run this commands in the terminal at the `root` folder of the project. If you prefer, they can be installed at your main user's folder to execute in other projects:
 
-```
+```bash
 brew tap mongodb/brew
 brew install mongodb-database-tools
 ```
@@ -20,9 +24,12 @@ To learn more about Mongo Database Tools [click here](https://www.mongodb.com/do
 
 ## Setup the MongoDB Atlas Backend
 
-3. Create a [MongoDB Cloud](https://cloud.mongodb.com/) user account and ensure that you have access to an organization/project. 
+1. Create a [MongoDB Cloud](https://cloud.mongodb.com/) user account and ensure that you have access to an organization/project. 
+2. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it ```Connected-Vehicle-DB```. <br>You can choose a Free Tier (Shared), Serverless, or Dedicated cluster.
 
-4. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it ```Connected-Vehicle-DB```. <br>You can choose a Free Tier (Shared), Serverless, or Dedicated cluster.
+4. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it ```Connected-Vehicle-DB```.
+<a></a>
+<li>        You can choose a Free Tier (Shared), Serverless, or Dedicated cluster.</li>
 
 ### Obtain your Connection String
 
@@ -47,15 +54,19 @@ For a deeper understanding into **Ditto**, you can see [React Native Guide](http
 
 9. Inside your `vehicle-ts` folder, run the following commands:
 
-```
+```bash
 npm install @dittolive/ditto
 ```
 
-10. Once you've finalized the aboce installations, navigate towards your `root` folder in the terminal and also run: `npm install`.
+10. Once you've finalized the aboce installations, navigate towards your `root` folder in the terminal and also run:
+    
+```bash
+    npm install
+```
 
 11. Remember that for the proper execution and sync of **Ditto's Big Peer**, you'll need to create a `.env` file with:
 
-```
+```bash
 DITTO_APP_ID=<yourID>
 DITTO_PLAYGROUND_TOKEN=<yourtokenID>
 ```
