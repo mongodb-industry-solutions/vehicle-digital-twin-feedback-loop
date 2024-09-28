@@ -68,6 +68,7 @@ $(document).ready(function () {
         }
     }
 
+    // Function to update the telemetry values
     function updateTelemetrySliders(device){
         $("#battery_voltage").val(device.battery.voltage)
         $("#battery_voltage_current_value_label").text(device.battery.voltage);
@@ -191,5 +192,23 @@ $(document).ready(function () {
     $("#battery_voltage").change(function (e){
         $("#battery_voltage_current_value_label").text(e.target.value);
         onAddSensor();
+    })
+
+    // Trigger to toggle the sync status
+    $("#sync_toggle").change(function (e){
+        const startSync = e.target.checked
+        $.ajax({
+            url: `${window.location.origin}/${startSync ? 'start_sync' : 'stop_sync'}`,
+            type: "POST",
+            data: {},
+            success: (result) => {
+                console.log(JSON.stringify(result));
+            },
+            error: (error) => {
+                console.error(`${error}`);
+                alert('Oops, something went wrong, please try again.')
+                $("#sync_toggle").prop('checked', !startSync)
+            }
+        });
     })
 });
