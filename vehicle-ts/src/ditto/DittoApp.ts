@@ -1,5 +1,14 @@
 import { init, Ditto, MutableDocument } from "@dittolive/ditto";
 import { BSON } from "bson";
+import * as dotenv from 'dotenv';
+import { resolve } from 'path';
+
+// Load environment variables from .env file
+dotenv.config({ path: resolve(__dirname, '../../src/.env') });
+
+// Now you can access the variables using process.env
+const appID = process.env.DITTO_APP_ID || 'cant read env var DITTO_APP_ID';
+const token = process.env.DITTO_PLAYGROUND_TOKEN || 'cant read env var DITTO_PLAYGROUND_TOKEN';;
 
 interface Component {
   _id: string;
@@ -18,8 +27,8 @@ class DittoApp {
 
     this.ditto = new Ditto({
       type: "onlinePlayground",
-      appID: "", // Replace with your actual app ID
-      token: "", // Replace with your actual token
+      appID: appID,
+      token: token,
     });
     this.ditto.disableSyncWithV3();
     this.ditto.startSync();
@@ -203,6 +212,24 @@ class DittoApp {
     } catch (error) {
       console.error("Error fetching vehicle data:", error);
       throw error;
+    }
+  }
+
+  async startSync() {
+    try {
+      this.ditto.startSync()
+      return true
+    } catch (err) {
+      return false
+    }
+  }
+
+  async stopSync() {
+    try {
+      this.ditto.stopSync()
+      return true
+    } catch (err) {
+      return false
     }
   }
 }

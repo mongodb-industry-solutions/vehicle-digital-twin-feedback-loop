@@ -70,11 +70,30 @@ app.get("/reset", async (req, res) => {
 app.get("/vehicle", async (req, res) => {
   try {
     const vehicleData = await dittoApp.getVehicleAsJSON();
-    //console.log(JSON.parse(vehicleData));
     res.json(JSON.parse(vehicleData));
   } catch (error) {
     console.error("Error fetching vehicle data:", error);
     res.status(500).send("Failed to fetch vehicle data.");
+  }
+});
+
+app.post("/start_sync", async (req, res) => {
+  try {
+    const result = await dittoApp.startSync();
+    res.send(result);
+  } catch (error) {
+    console.error("Error starting ditto sync:", error);
+    res.status(500).send("Failed to start sync.");
+  }
+});
+
+app.post("/stop_sync", async (req, res) => {
+  try {
+    const result = await dittoApp.stopSync();
+    res.send(result);
+  } catch (error) {
+    console.error("Error stopping ditto sync:", error);
+    res.status(500).send("Failed to stop sync.");
   }
 });
 
