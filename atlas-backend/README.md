@@ -19,7 +19,7 @@ brew tap mongodb/brew
 brew install mongodb-database-tools
 ```
 
-To learn more about Mongo Database Tools [click here](https://www.mongodb.com/docs/database-tools/)
+To learn more about Mongo Database Tools ☞ [click here](https://www.mongodb.com/docs/database-tools/)
 
 
 ## Setup the MongoDB Atlas Backend
@@ -47,12 +47,18 @@ To learn more about Mongo Database Tools [click here](https://www.mongodb.com/do
 
 7. Create your **Ditto** account ([here](https://ditto.live/)) 
 
-8. Set-up a new App by selecting `New App` under `Apps` tab and assign it as *"Playgorund"* Auth mode.
-You'll be given your **App ID** and **Playground token** as well as an URL (store it safely since you'll only see it once).
+8. Set-up a new App by selecting `New App` under `Apps` tab and assign it as *"Playground"* Auth mode.
+You'll be given your **App ID** and **Playground token** as well as an URL
+
+---
+**ⓘ :**
+Store it safely since you'll only see it once and won't be able to retrieve them in the future.
+---
+
 
 For a deeper understanding into **Ditto**, you can see [React Native Guide](https://docs.ditto.live/install-guides/react-native) & [API Auth](https://docs.ditto.live/cloud/http-api/authorization)
 
-9. Inside your `vehicle-ts` folder, run the following commands:
+10. Inside your `vehicle-ts` folder, run the following commands:
 
 ```bash
 npm install @dittolive/ditto
@@ -70,9 +76,6 @@ npm install @dittolive/ditto
 DITTO_APP_ID=<yourID>
 DITTO_PLAYGROUND_TOKEN=<yourtokenID>
 ```
-<!-- Make sure to replace `<your-connection-string>` with your MongoDB Atlas connection string. If you've already followed the initial configuration steps, you should have obtained this connection string. Ensure that the URI includes the username, password, and cluster details. -->
-
-<!-- After executing these commands, you can verify the successful restoration of the demo database by checking the last line of the command output -->
 
 12. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["Part 2: Set up the Typescript Vehicle Simulator"](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/vehicle-ts).
 
