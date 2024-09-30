@@ -47,6 +47,7 @@ $(document).ready(function () {
 
         updateComponent(device);
         updateMeasurements(device);
+        updateTelemetrySliders(device)
     }
 
     // Function to update the number of components
@@ -65,6 +66,13 @@ $(document).ready(function () {
                 $("#reset_message").hide();
             }, 2000);
         }
+    }
+
+    function updateTelemetrySliders(device){
+        $("#battery_voltage").val(device.battery.voltage)
+        $("#battery_voltage_current_value_label").text(device.battery.voltage);
+        $("#battery_current").val(device.battery.current)
+        $("#battery_current_value_label").text(device.battery.current);
     }
 
     // Function to add sensor. It is the "Track Telemetry button"
@@ -174,14 +182,12 @@ $(document).ready(function () {
     });
 
     // trigger the battery update on the on change event of the input
-    $("#battery_current_value_label").text($("#battery_current").val())
     $("#battery_current").change(function (e){
         $("#battery_current_value_label").text(e.target.value);
         onAddSensor();
     })
 
     // trigger the voltage update only on the label when slide input changes
-    $("#battery_voltage_current_value_label").text($("#battery_voltage").val())
     $("#battery_voltage").change(function (e){
         $("#battery_voltage_current_value_label").text(e.target.value);
         onAddSensor();

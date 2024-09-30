@@ -1,7 +1,7 @@
 {
   "name": "vehicle",
   "version": "1.0.0",
-  "description": "Realm Vehicle Simulator",
+  "description": "Vehicle Simulator with MongoDB and Ditto",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p .",
@@ -27,7 +27,6 @@
     "bson": "^6.8.0",
     "copyfiles": "^2.4.1",
     "express": "^4.18.2",
-    "path": "^0.12.7",
-    "realm": "^12.9.0"
+    "path": "^0.12.7"
   }
 }
