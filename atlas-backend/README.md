@@ -24,20 +24,20 @@ To learn more about Mongo Database Tools ☞ [click here](https://www.mongodb.co
 
 ## Setup the MongoDB Atlas Backend
 
-1. Create a [MongoDB Cloud](https://cloud.mongodb.com/) user account and ensure that you have access to an organization/project. 
-2. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it ```Connected-Vehicle-DB```. <br>You can choose a Free Tier (Shared), Serverless, or Dedicated cluster.
+3. Create a [MongoDB Cloud](https://cloud.mongodb.com/) user account and ensure that you have access to an organization/project. 
+4. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it ```Connected-Vehicle-DB```. <br>You can choose a Free Tier (Shared), Serverless, or Dedicated cluster.
 
-4. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it ```Connected-Vehicle-DB```.
+5. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it ```Connected-Vehicle-DB```.
 <a></a>
 <li>        You can choose a Free Tier (Shared), Serverless, or Dedicated cluster.</li>
 
 ### Obtain your Connection String
 
-5. Once the MongoDB Atlas Cluster is set up, locate your newly created cluster, click the "Connect" button and select the "Compass" section. 
+6. Once the MongoDB Atlas Cluster is set up, locate your newly created cluster, click the "Connect" button and select the "Compass" section. 
 
 ### Replicate the Demo Database
 
-6. To replicate the demo database on your MongoDB Atlas cluster, run the following command in your terminal:
+7. To replicate the demo database on your MongoDB Atlas cluster, run the following command in your terminal:
 
    ```bash
    mongorestore --uri <your-connection-string> dump/
@@ -45,9 +45,9 @@ To learn more about Mongo Database Tools ☞ [click here](https://www.mongodb.co
 
 ## Setup the Digital-Twin Application + Ditto
 
-7. Create your **Ditto** account ([here](https://ditto.live/)) 
+8. Create your **Ditto** account ([here](https://ditto.live/)) 
 
-8. Set-up a new App by selecting `New App` under `Apps` tab and assign it as *"Playground"* Auth mode.
+9. Set-up a new App by selecting `New App` under `Apps` tab and assign it as *"Playground"* Auth mode.
 You'll be given your **App ID** and **Playground token** as well as an URL
 
 ---
@@ -64,18 +64,18 @@ For a deeper understanding into **Ditto**, you can see [React Native Guide](http
 npm install @dittolive/ditto
 ```
 
-10. Once you've finalized the aboce installations, navigate towards your `root` folder in the terminal and also run:
+11. Once you've finalized the aboce installations, navigate towards your `root` folder in the terminal and also run:
     
 ```bash
     npm install
 ```
 
-11. Remember that for the proper execution and sync of **Ditto's Big Peer**, you'll need to create a `.env` file with:
+12. Remember that for the proper execution and sync of **Ditto's Big Peer**, you'll need to create a `.env` file with:
 
 ```bash
 DITTO_APP_ID=<yourID>
 DITTO_PLAYGROUND_TOKEN=<yourtokenID>
 ```
 
-12. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["Part 2: Set up the Typescript Vehicle Simulator"](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/vehicle-ts).
+13. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["Part 2: Set up the Typescript Vehicle Simulator"](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/vehicle-ts).
 

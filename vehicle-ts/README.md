@@ -7,11 +7,18 @@ After you've completed one of the options, you should see the following:
 
 ## Prerequisites
 
-1. Install [Node.js](https://nodejs.org/)
-* Tested with Node.js v19.6.0
+* Installation of [Node.js](https://nodejs.org/) (Tested with Node.js v19.6.0)
 
-2. Set Up your [Atlas Stream Processing](https://www.mongodb.com/docs/atlas/atlas-stream-processing/tutorial/)
-* You'll need your Atlas account and project up to date and created for a proper execution.
+* MongoDB Shell ([mongosh](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)) installed (at least version 2.0)
+
+* [Atlas Stream Processing](https://www.mongodb.com/docs/atlas/atlas-stream-processing/tutorial/) set up, taht'll require you to:
+* Have your Atlas account & project, previosuly created in [Part 1](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/feature/ReadMe/atlas-backend) with either a `Project Owner`or `Project Stream Processing Owner` role for a proper execution.
+
+* A Database user with `atlasAdmin` role.
+
+* An Atlas cluster.
+
+
 
 ## Option 1: Prepare and run "Vehicle Simulator" locally
 
