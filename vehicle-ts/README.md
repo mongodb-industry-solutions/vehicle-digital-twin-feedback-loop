@@ -12,11 +12,11 @@ After you've completed one of the options, you should see the following:
 * MongoDB Shell ([mongosh](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)) installed (at least version 2.0)
 
 * [Atlas Stream Processing](https://www.mongodb.com/docs/atlas/atlas-stream-processing/tutorial/) set up, that will require you to:
-* Have your Atlas account & project, previosuly created in [Part 1](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/feature/ReadMe/atlas-backend) with either a `Project Owner`or `Project Stream Processing Owner` role for a proper execution.
+      * Have your Atlas account & project, previosuly created in [Part 1](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/feature/ReadMe/atlas-backend) with either a `Project Owner`or `Project Stream Processing Owner` role for a proper execution.
 
-* A Database user with `atlasAdmin` role.
+      * A Database user with `atlasAdmin` role.
 
-* An Atlas cluster.
+      * An Atlas cluster.
 
 
 
