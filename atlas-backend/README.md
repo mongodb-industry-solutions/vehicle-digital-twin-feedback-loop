@@ -70,7 +70,7 @@ npm install @dittolive/ditto
     npm install
 ```
 
-12. Remember that for the proper execution and sync of **Ditto's Big Peer**, you'll need to create a `.env` file with:
+12. Remember that for the proper execution and sync of **Ditto's Big Peer**, you'll need to create two `.env` files, one inside `vehicle-ts` and the other inside `mobile-swift`, both with:
 
 ```bash
 DITTO_APP_ID=<yourID>
