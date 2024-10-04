@@ -77,5 +77,5 @@ DITTO_APP_ID=<yourID>
 DITTO_PLAYGROUND_TOKEN=<yourtokenID>
 ```
 
-13. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["Part 2: Set up the Typescript Vehicle Simulator"](..//vehicle-ts/README.md).
+13. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["Part 2: Set up the Typescript Vehicle Simulator"](..//vehicle-ts).
 

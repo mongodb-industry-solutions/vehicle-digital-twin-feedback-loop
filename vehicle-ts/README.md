@@ -18,7 +18,7 @@ After you've completed one of the options, you should see the following:
 * MongoDB Shell ([mongosh](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)) installed (at least version 2.0)
 
 * [Atlas Stream Processing](https://www.mongodb.com/docs/atlas/atlas-stream-processing/tutorial/) set up, in the detailed step by step that will require you to have prior:
-* Have your Atlas account & project, previosuly created in [Part 1](../atlas-backend/README.md) with either a `Project Owner`or `Project Stream Processing Owner` role for a proper execution.
+* Have your Atlas account & project, previosuly created in [Part 1](../atlas-backend) with either a `Project Owner`or `Project Stream Processing Owner` role for a proper execution.
 
 * A Database user with `atlasAdmin` role.
 
@@ -29,7 +29,7 @@ After you've completed one of the options, you should see the following:
 ## Option 1: Prepare and run "Vehicle Simulator" locally
 
 1. Navigate into the vehicle-ts folder 
-2. Update your App ID and the Atlas password if you have changed it while creating the atlas-backend (from [Part 1](../atlas-backend/README.md)) in `./src/ditto/DittoApp.ts`
+2. Update your App ID and the Atlas password if you have changed it while creating the atlas-backend (from [Part 1](../atlas-backend)) in `./src/ditto/DittoApp.ts`
 
 3. Run the following command: 
       ```
@@ -71,7 +71,7 @@ Prerequisites:
       git clone https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop.git
       ```
 
-2. Update your App ID (from [Part 1](../atlas-backend/README.md)) in `./src/ditto/DittoApp.ts`
+2. Update your App ID (from [Part 1](../atlas-backend)) in `./src/ditto/DittoApp.ts`
 
 3. Run the following commands:
 
@@ -83,4 +83,4 @@ Prerequisites:
 
 4. Access simulator UI via `http:// PUBLIC IP ADDRESS:3000`
 
-Congrats! The second part is completed. Now you'll continue setting up the iOS Swift Vehicle Controller Mobile Application in [Part 3](../mobile-swift/README.md).
+Congrats! The second part is completed. Now you'll continue setting up the iOS Swift Vehicle Controller Mobile Application in [Part 3](../mobile-swift).

@@ -4,7 +4,7 @@ For visualization purposes, the connected vehicle environment will function like
 
 ![image](../media/EndToEnd2.png)
 
-Now that you've finished the first three parts ([part 1](../atlas-backend/README.md), [part 2](../vehicle-ts/README.md), [part 3](../mobile-swift/README.md)) , you can start setting up your AWS SageMaker integration. The AWS SageMaker integration allows you to analyze your data and then send that analyzed data back to MongoDB Atlas and consequently to the the users of the devices. 
+Now that you've finished the first three parts ([part 1](../atlas-backend), [part 2](../vehicle-ts), [part 3](../mobile-swift)) , you can start setting up your AWS SageMaker integration. The AWS SageMaker integration allows you to analyze your data and then send that analyzed data back to MongoDB Atlas and consequently to the the users of the devices. 
 
 ## Prerequisite 
 
@@ -249,11 +249,11 @@ d. Please ensure your docker environment is running before trying out the ECR pu
 
 # Congrats!
 You've now successfully set up everything you need to run a Digital Twin demonstration:  
-  * [Part 1: The MongoDB Atlas Digital-Twin Backend](../atlas-backend/README.md)
+  * [Part 1: The MongoDB Atlas Digital-Twin Backend](../atlas-backend)
 
-  * [Part 2: The Typescript Vehicle Simulator](../vehicle-ts/README.md)
+  * [Part 2: The Typescript Vehicle Simulator](../vehicle-ts)
 
-  * [Part 3: The iOS Swift Vehicle Controller Mobile Application](../mobile-swift/README.md)
+  * [Part 3: The iOS Swift Vehicle Controller Mobile Application](../mobile-swift)
 
   * [Part 4: The Amazon SageMaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
 
