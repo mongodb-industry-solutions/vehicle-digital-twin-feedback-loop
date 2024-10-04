@@ -2,13 +2,12 @@
 
 Now that we’ve set up the MongoDB Atlas cloud backend, the Amazon SageMaker Integration, connected the vehicle and the mobile app, let’s walk through the demo setup and architecture to bring it all together.
 
-(If you're interested in watching the video format of this, feel free to click [Demo Video](https://youtu.be/8SztdPe6wJA).) 
 
-![image](media/EndToEnd2.png) 
+![image](media/EndToEnd2.png)
 
 *Quick Take* 
 
-Looking at the architecture above, the demo setup includes a vehicle simulator built in TypeScript, which connects to a mobile device and a MongoDB Atlas backend using the Realm JavaScript SDK. The telemetry data collected from the vehicle is stored in MongoDB Atlas and sent to Amazon SageMaker for analysis through database triggers, and Event Bridge. The analyzed results are then returned to MongoDB and shared with all connected devices, including the mobile device, in near real-time.
+Looking at the architecture above, the demo setup includes a vehicle simulator built in TypeScript, which connects to a mobile device and a MongoDB Atlas backend and using Ditto for mobile sync. The telemetry data collected from the vehicle is stored in MongoDB Atlas and sent to Amazon SageMaker for analysis through database triggers, and Event Bridge. The analyzed results are then returned to MongoDB and shared with all connected devices, including the mobile device, in near real-time.
 
 # Let's get started!
 

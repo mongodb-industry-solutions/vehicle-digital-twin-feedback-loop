@@ -1,26 +1,40 @@
 # Vehicle Simulator (TypeScript)
 
-Here you will set up your vehicle simulator. We've provided three options for you to do so: locally, locally in a container, or on AWS VM. The most straightforward way is to run it locally, but you are free to choose the option best fit for you! 
+Here you will set up your vehicle simulator. We've provided three options for you to do so: 
+
+* Locally
+* Locally in a container
+* On AWS VM. 
+
+The most straightforward way is to run it locally, but you are free to choose the option best fit for you! 
 
 After you've completed one of the options, you should see the following: 
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/vehicle.png)
 
 ## Prerequisites
 
-1. Install [Node.js](https://nodejs.org/)
-* Tested with Node.js v19.6.0
+* Installation of [Node.js](https://nodejs.org/) (Tested with Node.js v19.6.0)
+
+* MongoDB Shell ([mongosh](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)) installed (at least version 2.0)
+
+* [Atlas Stream Processing](https://www.mongodb.com/docs/atlas/atlas-stream-processing/tutorial/) set up, in the detailed step by step that will require you to have prior:
+* Have your Atlas account & project, previosuly created in [Part 1](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/feature/ReadMe/atlas-backend) with either a `Project Owner`or `Project Stream Processing Owner` role for a proper execution.
+
+* A Database user with `atlasAdmin` role.
+
+* An Atlas cluster.
+
+
 
 ## Option 1: Prepare and run "Vehicle Simulator" locally
 
 1. Navigate into the vehicle-ts folder 
-2. Update your App ID and the realmUser password if you have changed it while creating the atlas-backend (from [Part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/atlas-backend/README.md)) in `./src/realm/config.ts`
-3. Run the following commands: 
-      
-      `npm install`
-      
-      `npm run build`
-      
-      `npm start`
+2. Update your App ID and the Atlas password if you have changed it while creating the atlas-backend (from [Part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/atlas-backend/README.md)) in `./src/ditto/DittoApp.ts`
+
+3. Run the following command: 
+      ```
+      npm start
+      ```
 4. Open the web console http://localhost:3000. 
 
 ## Intermediary Step:
@@ -35,29 +49,38 @@ Prerequisites:
 
 1. Run the following commands: 
     
-    `docker build . -t vehicle-ts`
-    
-    `docker run -p 3000:3000 vehicle-ts`
+    ```
+    docker build . -t vehicle-ts 
+
+    docker run -p 3000:3000 vehicle-ts
+    ```
 
 ## Option 3: Build and run "Vehicle Simulator" on AWS VM
 
 1. Run the following commands: 
-      
-      `Sudo yum update`
-      
-      `Sudo yum install docker`
-      
-      `sudo systemctl enable docker.service`
 
-      `sudo systemctl start docker.service`
+      ```
+      Sudo yum update
+      
+      Sudo yum install docker
+      
+      sudo systemctl enable docker.service
 
-      `git clone https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop.git`
-2. Update your App ID (from [Part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/atlas-backend/README.md)) in `./src/config.ts`
+      sudo systemctl start docker.service
+
+      git clone https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop.git
+      ```
+
+2. Update your App ID (from [Part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/atlas-backend/README.md)) in `./src/ditto/DittoApp.ts`
+
 3. Run the following commands:
 
-      `sudo docker build . -t vehicle-ts`
-      
-      `sudo docker run -p 3000:3000 vehicle-ts`
-4. Access simulator UI via http:// PUBLIC IP ADDRESS:3000
+      ```
+      sudo docker build . -t vehicle-ts
 
-Congrats! The second part is completed. Now you'll continue setting up the iOS Swift Vehicle Controller Mobile Application in [Part 3](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/main/mobile-swift).
+      sudo docker run -p 3000:3000 vehicle-ts
+      ```
+
+4. Access simulator UI via `http:// PUBLIC IP ADDRESS:3000`
+
+Congrats! The second part is completed. Now you'll continue setting up the iOS Swift Vehicle Controller Mobile Application in [Part 3](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/feature/ReadMe/mobile-swift).
