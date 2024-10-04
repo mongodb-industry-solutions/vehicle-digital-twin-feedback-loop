@@ -36,20 +36,20 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 
 ## Part 1: Set up the MongoDB Atlas Digital-Twin Backend
 
-[Set up the MongoDB Atlas Digital-Twin Backend](.//atlas-backend/README.md)
+[Set up the MongoDB Atlas Digital-Twin Backend](.//atlas-backend)
 
 ## Part 2: Set up the Typescript Vehicle Simulator
 
-[Set up the Typescript Vehicle Simulator](.//vehicle-ts/README.md)
+[Set up the Typescript Vehicle Simulator](.//vehicle-ts)
 
 ## Part 3: Set up the iOS Swift Vehicle Controller Mobile Application
 
-[Set up the iOS Swift Vehicle Controller Mobile Application](.//mobile-swift/README.md)
+[Set up the iOS Swift Vehicle Controller Mobile Application](.//mobile-swift)
 
 
 ## Part 4: Set up the Amazon SageMaker Integration
 
-[Set up the Amazon SageMaker Integration](.//aws-sagemaker/README.md)
+[Set up the Amazon SageMaker Integration](.//aws-sagemaker)
 
 # Step by Step Demonstration
 [Step by Step Demonstration: Telemetry Feedback Loop Use Case](.//Demo_Instructions.md)
