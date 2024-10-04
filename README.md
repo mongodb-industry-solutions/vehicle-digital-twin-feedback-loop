@@ -23,9 +23,9 @@ Creating such a cutting edge connected vehicle platform requires the best-in-cla
 
 ![image](media/Overview_New.png)
 
-Under the hood we use a mix of MongoDB and AWS components nicely put together to create this end to end scenario. If you are curious and want to learn how it works you can jump directly to the [demo section](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/feature/ReadMe/Demo_Instructions.md). 
+Under the hood we use a mix of MongoDB and AWS components nicely put together to create this end to end scenario. If you are curious and want to learn how it works you can jump directly to the [demo section](.//Demo_Instructions.md) 
 
-![image](media/EndToEnd2.png)
+![image](./media/EndToEnd2.png)
 
 With these tools in mind, let’s begin creating a cutting edge connected vehicle platform!
 
@@ -36,20 +36,20 @@ With these tools in mind, let’s begin creating a cutting edge connected vehicl
 
 ## Part 1: Set up the MongoDB Atlas Digital-Twin Backend
 
-[Set up the MongoDB Atlas Digital-Twin Backend](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/feature/ReadMe/atlas-backend)
+[Set up the MongoDB Atlas Digital-Twin Backend](.//atlas-backend/README.md)
 
 ## Part 2: Set up the Typescript Vehicle Simulator
 
-[Set up the Typescript Vehicle Simulator](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/feature/ReadMe/vehicle-ts)
+[Set up the Typescript Vehicle Simulator](.//vehicle-ts/README.md)
 
 ## Part 3: Set up the iOS Swift Vehicle Controller Mobile Application
 
-[Set up the iOS Swift Vehicle Controller Mobile Application](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/feature/ReadMe/mobile-swift)
+[Set up the iOS Swift Vehicle Controller Mobile Application](.//mobile-swift/README.md)
 
 
 ## Part 4: Set up the Amazon SageMaker Integration
 
-[Set up the Amazon SageMaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twin-AWS-Blog/tree/feature/ReadMe/aws-sagemaker)
+[Set up the Amazon SageMaker Integration](.//aws-sagemaker/README.md)
 
 # Step by Step Demonstration
-[Step by Step Demonstration: Telemetry Feedback Loop Use Case](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/feature/ReadMe/Demo_Instructions.md)
+[Step by Step Demonstration: Telemetry Feedback Loop Use Case](.//Demo_Instructions.md)

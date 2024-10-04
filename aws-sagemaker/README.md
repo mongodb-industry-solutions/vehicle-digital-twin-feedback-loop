@@ -1,10 +1,10 @@
 # Setup Instructions for Integrating Amazon SageMaker
 
-For visualization purposes, the connected vehicle environment will function like the image below. But we'll get into more detail on that in the [demo section](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/feature/ReadMe/Demo_Instructions.md). 
+For visualization purposes, the connected vehicle environment will function like the image below. But we'll get into more detail on that in the [demo section](../Demo_Instructions.md). 
 
-![image](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/blob/feature/ReadMe/media/EndToEnd2.png)
+![image](../media/EndToEnd2.png)
 
-Now that you've finished the first three parts ([part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/atlas-backend), [part 2](https://github.com/mongodb-industry-solutions/Vehicle-Digital-Twin-Feedback-Loop/tree/feature/ReadMe/vehicle-ts), [part 3](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/mobile-swift)) , you can start setting up your AWS SageMaker integration. The AWS SageMaker integration allows you to analyze your data and then send that analyzed data back to MongoDB Atlas and consequently to the the users of the devices. 
+Now that you've finished the first three parts ([part 1](../atlas-backend/README.md), [part 2](../vehicle-ts/README.md), [part 3](../mobile-swift/README.md)) , you can start setting up your AWS SageMaker integration. The AWS SageMaker integration allows you to analyze your data and then send that analyzed data back to MongoDB Atlas and consequently to the the users of the devices. 
 
 ## Prerequisite 
 
@@ -35,7 +35,7 @@ Setting up Amazon Sagemaker will take some time! Please find the instructions to
               
            * Select an AWS Region 
 
-     ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/function.png)
+     ![image](../media/function.png)
 
       * Then save the trigger, head on to AWS Console and go-to Amazon EventBridge and choose Partner event sources in the navigation pane. In the Partner event sources table, find and select the **Pending trigger** source and then click Associate with event bus.
 
@@ -249,12 +249,15 @@ d. Please ensure your docker environment is running before trying out the ECR pu
 
 # Congrats!
 You've now successfully set up everything you need to run a Digital Twin demonstration:  
-  * [Part 1: The MongoDB Atlas Digital-Twin Backend](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/atlas-backend) 
-  * [Part 2: The Typescript Vehicle Simulator](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/vehicle-ts) 
-  * [Part 3: The iOS Swift Vehicle Controller Mobile Application](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/mobile-swift)
+  * [Part 1: The MongoDB Atlas Digital-Twin Backend](../atlas-backend/README.md)
+
+  * [Part 2: The Typescript Vehicle Simulator](../vehicle-ts/README.md)
+
+  * [Part 3: The iOS Swift Vehicle Controller Mobile Application](../mobile-swift/README.md)
+
   * [Part 4: The Amazon SageMaker Integration](https://github.com/mongodb-partners/Vehicle-Digital-Twin-Solution)
 
 ## Let's run the demo! 
-[Step by Step Demonstration: Building your Digital Twin with MongoDB and AWS](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/feature/ReadMe/Demo_Instructions.md)
+[Step by Step Demonstration: Building your Digital Twin with MongoDB and AWS](../Demo_Instructions.md)
 
 
