@@ -80,7 +80,7 @@ This trigger will then "fire" a function that will add all of the sensor data in
 
 ![image](./media/vehicle_schema.png)
     
- 3. This schema is automatically synchronized with the GraphQL schema. And if you navgigate into the GraphQL button, you'll see that you can directly query all of the relevant information across these different collections without doing any joins! 
+ 3. This schema is automatically synchronized with the schema. And if you navgigate into the button, you'll see that you can directly query all of the relevant information across these different collections without doing any joins! 
   
 ![image](./media/graphql.png)
     
