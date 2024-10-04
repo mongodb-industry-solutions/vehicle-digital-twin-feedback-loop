@@ -1,50 +1,81 @@
 # MongoDB Atlas Digital-Twin Backend
 
-In order to the make the demo work end-to-end, you will need to set up the backend. Let's get started! 
+In order to the make the demo work end-to-end, you will need to set up the backendas part of prerequisites to run the project Demo.
+Let's get started! 
+
+## Installations
+1. Inside your `vehicle-ts` folder, execute the following command in the terminal to install your `build` folder:
+   
+```bash
+npm run build
+```
+
+## Install **Mongo Database Tools**
+
+2. Run this commands in the terminal at the `root` folder of the project. If you prefer, they can be installed at your main user's folder to execute in other projects:
+
+```bash
+brew tap mongodb/brew
+brew install mongodb-database-tools
+```
+
+To learn more about Mongo Database Tools ☞ [click here](https://www.mongodb.com/docs/database-tools/)
+
 
 ## Setup the MongoDB Atlas Backend
 
-1. Create a [MongoDB Cloud](https://cloud.mongodb.com/) user account and ensure that you have access to an organization/project. 
-2. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it ```Connected-Vehicle-DB```. <br>You can choose a Free Tier (Shared), Serverless, or Dedicated cluster.
+3. Create a [MongoDB Cloud](https://cloud.mongodb.com/) user account and ensure that you have access to an organization/project. 
+4. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it ```Connected-Vehicle-DB```. <br>You can choose a Free Tier (Shared), Serverless, or Dedicated cluster.
 
-## Setup the Digital-Twin Application
+5. Under the Database tab, click "Build A Database" and [create a free MongoDB cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) in your preferred region and call it ```Connected-Vehicle-DB```.
+<a></a>
+<li>        You can choose a Free Tier (Shared), Serverless, or Dedicated cluster.</li>
 
-1. [Install appservice-cli](https://www.mongodb.com/docs/atlas/app-services/cli/#app-services-cli)
-2. [Generate API key](https://www.mongodb.com/docs/atlas/app-services/cli/#generate-an-api-key), assign the ```Project Owner``` permission and add your IP address to the access list
-3. [Login with your API key](https://www.mongodb.com/docs/atlas/app-services/realm-cli/v2/#authenticate-with-an-api-key)
-   
-    `appservices login --api-key="<API-Key>" --private-api-key="<Private-Key>"`
-4. Navigate into the folder Vehicle-Digital-Twin-Feedback-Loop/atlas-backend and import the Connected-Vehicle application `appservices push --local ./Connected-Vehicle --remote Connected-Vehicle` and configure the [options](https://www.mongodb.com/docs/atlas/app-services/manage-apps/create/create-with-cli/#run-the-app-creation-command) according your needs. If you are unsure which options to choose, the default ones are usually a good way to start! 
+### Obtain your Connection String
 
-    After you've chosen your options, you should see the following appear: 
+6. Once the MongoDB Atlas Cluster is set up, locate your newly created cluster, click the "Connect" button and select the "Compass" section. 
 
-        App created successfully
+### Replicate the Demo Database
+
+7. To replicate the demo database on your MongoDB Atlas cluster, run the following command in your terminal:
+
+   ```bash
+   mongorestore --uri <your-connection-string> dump/
+   ```
+
+## Setup the Digital-Twin Application + Ditto
+
+8. Create your **Ditto** account ([here](https://ditto.live/)) 
+
+9. Set-up a new App by selecting `New App` under `Apps` tab and assign it as *"Playground"* Auth mode.
+You'll be given your **App ID** and **Playground token** as well as an URL
+
+---
+**ⓘ :**
+Store it safely since you'll only see it once and won't be able to retrieve them in the future.
+---
+
+
+For a deeper understanding into **Ditto**, you can see [React Native Guide](https://docs.ditto.live/install-guides/react-native) & [API Auth](https://docs.ditto.live/cloud/http-api/authorization)
+
+10. Inside your `vehicle-ts` folder, run the following commands:
+
+```bash
+npm install @dittolive/ditto
+```
+
+11. Once you've finalized the above installations, navigate towards your `root` folder in the terminal and also run:
     
-        ...
-    
-        Successfully pushed app up: Your App ID 
-    
-    Your App ID should be in the following format: YourAppName-XXXXX
+```bash
+    npm install
+```
 
+12. Remember that for the proper execution and sync of **Ditto's Big Peer**, you'll need to create two `.env` files, one inside `vehicle-ts` and the other inside `mobile-swift`, both with:
 
-5. Create the demo user by pasting the following into your command shell: `appservices users create --type email --email demo --password demopw`. Be sure to change the default password. You then have to provide the previously received App ID or just type the application name `Connected-Vehicle`.
+```bash
+DITTO_APP_ID=<yourID>
+DITTO_PLAYGROUND_TOKEN=<yourtokenID>
+```
 
-    You should see the following appear: 
-        
-        App ID or Name (here you'll insert your App ID) 
-        Successfully created user
-        {
-            "id": , 
-            "enabled": , 
-            "email": ,
-            "type":
-        }
-6. Run the following command: `appservices apps list` to check if your app has been created. 
-    
-    You should see the following appear: 
-        
-        Found 1 apps 
-            Your App ID  
+13. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["Part 2: Set up the Typescript Vehicle Simulator"](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/vehicle-ts).
 
-
-7. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["Part 2: Set up the Typescript Vehicle Simulator"](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/vehicle-ts).

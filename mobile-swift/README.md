@@ -6,12 +6,12 @@ Congrats! You've finished [part 1](https://github.com/mongodb-industry-solutions
 ## Prepare and run the iOS Vehicle Controller mobile app
 
 1. Open the Controller.xcodeproj with XCode
-2. Open the config file  ```./mobile-swift/Controller/Config.xcconfig```
-3. Update ```Atlas_App_ID = <-- Your Atlas App ID -->```
+2. Open the config file  ```./mobile-swift/Controller/.env```
+3. Update ```Ditto_App_ID = <-- Your Ditto App ID -->``` and ```DITTO_PLAYGROUND_TOKEN=<-- Your Ditto App ID -->```
 4. Run the the app. Sometimes it may be required to reset the package caches in Xcode -> ```'File -> Packages -> Reset Package Caches'```
-5. If you have changed the password for the user created in [part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/atlas-backend) update the password on the login screen!
+5. If you have changed the password for the user created in [part 1](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/atlas-backend) update the password on the login screen!
 
 ![image](../media/Mobileapp.png)
 
 ## Continue with Part 4 where you will integrate Amazon SageMaker
-Part 4: [Set up the Amazon SageMaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/main/aws-sagemaker)
+Part 4: [Set up the Amazon SageMaker Integration](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/tree/feature/ReadMe/aws-sagemaker)

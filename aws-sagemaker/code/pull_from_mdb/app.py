@@ -29,9 +29,9 @@ def push_to_eventbus(predicted_value, EVENTBUS_NAME, REGION_NAME, vin):
 def handler(event, context):
     try:
         values = {
-            "region-name": "XXXX",  # Update your region
-            "eventbus-name": "XXXXX", # Update the event-bus created 
-            "model-endpoint": "sagemaker-soln-XXXX",  # Update your sagemaker model endpoint
+            "region-name": "eu-west-1",  # Update your region
+            "eventbus-name": "test_pushing_to_mongodb", # Update the event-bus created 
+            "model-endpoint": "sagemaker-soln-fpm-js-qndgu6-demo-endpoint",  # Update your sagemaker model endpoint
         }
         
         ENDPOINT_NAME= values['model-endpoint'] 

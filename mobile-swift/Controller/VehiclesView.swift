@@ -5,84 +5,94 @@
 //  Created by Felix Reichenbach on 13.06.21.
 //
 
+import Combine
 import SwiftUI
-import RealmSwift
+import DittoSwift
+
+@MainActor
+class VehiclesViewModel: ObservableObject {
+    @Published var vehicles = [VehicleModel]()
+    
+    private let dittoSync = DittoManager.shared.ditto.sync
+    private let dittoStore = DittoManager.shared.ditto.store
+    private var subscription: DittoSyncSubscription?
+    private var storeObserver: DittoStoreObserver?
+    
+    init() {
+        try? updateSubscription()
+        try? updateStoreObserver()
+    }
+    
+    private func updateSubscription() throws {
+        do {
+            if let sub = subscription {
+                sub.cancel()
+                subscription = nil
+            }
+            
+            let query = "SELECT * FROM COLLECTION vehicle"
+            subscription = try dittoSync.registerSubscription(query: query)
+        } catch {
+            print("VehiclesViewModel.\(#function) - ERROR registering subscription: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    private func updateStoreObserver() throws {
+        do {
+            if let observer = storeObserver {
+                observer.cancel()
+                storeObserver = nil
+            }
+            
+            let query = "SELECT * FROM COLLECTION vehicle"
+            storeObserver = try dittoStore.registerObserver(query: query) { [weak self] result in
+                guard let self = self else { return }
+                
+                // DEBUG print to show the raw result from Ditto
+                print("VehiclesViewModel.\(#function) - Fetched items from Ditto: \(result.items.count)")
+                for item in result.items {
+                    print("Fetched Vehicle item: \(item.jsonString())")
+                }
+                
+                self.vehicles = result.items.compactMap { VehicleModel($0.jsonString()) }
+            }
+        } catch {
+            print("VehiclesViewModel.\(#function) - ERROR registering observer: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    
+}
 
 struct VehiclesView: View {
-    // This view opens a synced realm.
-    // We've injected a `flexibleSyncConfiguration` as an environment value,
-    // so `@AsyncOpen` here opens a realm using that configuration.
-    @AsyncOpen(appId: Bundle.main.object(forInfoDictionaryKey:"Atlas_App_ID") as? String, timeout: 4000) var asyncOpen
+    @StateObject var viewModel = VehiclesViewModel()
     
     var body: some View {
-        // Because we are setting the `ownerId` to the `user.id`, we need
-        // access to the app's current user in this view.
-        //let user = app?.currentUser
-        switch asyncOpen {
-            // Starting the Realm.asyncOpen process.
-            // Show a progress view.
-        case .connecting:
-            ProgressView()
-            // Waiting for a user to be logged in before executing
-            // Realm.asyncOpen.
-        case .waitingForUser:
-            ProgressView("Waiting for user to log in...")
-            // The realm has been opened and is ready for use.
-            // Show the content view.
-        case .open(let realm):
-            VehiclesListView().environment(\.realm, realm)
-            // The realm is currently being downloaded from the server.
-            // Show a progress view.
-        case .progress(let progress):
-            ProgressView(progress)
-            // Opening the Realm failed.
-            // Show an error view.
-        case .error(let error):
-            ErrorView(error: error)
-        }
-    }
-}
-struct ErrorView: View {
-    var error: Error
-    var body: some View {
-        VStack {
-            Text("Error opening the realm: \(error.localizedDescription)")
-        }
-    }
-}
-
-
-struct VehiclesListView: View {
-    @ObservedResults(Vehicle.self) var vehicles
-    var body: some View {
         NavigationView {
-            VStack{
-                // The list shows the items in the realm.
-                List {
-                    ForEach(vehicles) { vehicle in
-                        NavigationLink(vehicle.name, destination: VehicleDetailView(vehicle: vehicle))
+            List {
+                if viewModel.vehicles.isEmpty {
+                    Text("No vehicles found.")
+                        .foregroundColor(.gray)
+                } else {
+                    ForEach(viewModel.vehicles) { vehicle in
+                        NavigationLink(destination: VehicleDetailView(viewModel: VehicleDetailViewModel(vehicle: vehicle))) {
+                            Text(vehicle.name)
+                        }
                     }
-                        .onDelete(perform: $vehicles.remove)
                 }
             }
             .navigationTitle("Vehicles")
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("Logout", action: logout)
-                }
+            .onAppear {
+                print("VehiclesView - Vehicle count: \(viewModel.vehicles.count)")
             }
         }
-        .navigationViewStyle(.stack)
     }
-    
-    func logout() {
-        guard let user = app!.currentUser else {
-            return
-        }
-        user.logOut() { error in
-            // Other views are observing the app and will detect
-            // that the currentUser has changed. Nothing more to do here.
-            print("Logged out")
-        }
+}
+
+struct VehiclesView_Previews: PreviewProvider {
+    static var previews: some View {
+        VehiclesView()
     }
 }
