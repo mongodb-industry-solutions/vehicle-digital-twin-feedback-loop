@@ -64,7 +64,7 @@ For a deeper understanding into **Ditto**, you can see [React Native Guide](http
 npm install @dittolive/ditto
 ```
 
-11. Once you've finalized the above installations, navigate towards your `root` folder in the terminal and also run:
+11. Once you've finalized the above installation, at the same `vehicle-ts` folder in the terminal  also run:
     
 ```bash
     npm install
