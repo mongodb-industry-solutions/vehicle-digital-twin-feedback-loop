@@ -214,6 +214,24 @@ class DittoApp {
       throw error;
     }
   }
+
+  async startSync() {
+    try {
+      this.ditto.startSync()
+      return true
+    } catch (err) {
+      return false
+    }
+  }
+
+  async stopSync() {
+    try {
+      this.ditto.stopSync()
+      return true
+    } catch (err) {
+      return false
+    }
+  }
 }
 
 export default DittoApp;
