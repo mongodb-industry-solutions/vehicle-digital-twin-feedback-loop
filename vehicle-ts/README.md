@@ -31,7 +31,10 @@ After you've completed one of the options, you should see the following:
 1. Navigate into the vehicle-ts folder 
 2. Update your App ID and the Atlas password if you have changed it while creating the atlas-backend (from [Part 1](../atlas-backend)) in `./src/ditto/DittoApp.ts`
 
-3. Run the following command: 
+3. Run the following commands: 
+      ```
+      npm run build
+      ```
       ```
       npm start
       ```
