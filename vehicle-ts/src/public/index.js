@@ -46,6 +46,7 @@ $(document).ready(function () {
         $("#vehicle_section").html(content);
 
         updateComponent(device);
+        updateComands(device);
         updateMeasurements(device);
         updateTelemetrySliders(device)
     }
@@ -54,6 +55,38 @@ $(document).ready(function () {
     function updateComponent(device) {
         const componentsCount = device.components ? device.components.length : 0;
         $("#number_components").html(`Components: <strong>${componentsCount}</strong>`);
+    }
+
+    // Function to process new commands
+    let processingCommands = false
+    function updateComands(device){
+        let skipUpdate = true;
+        for (const command of device.commands) {
+            if(command.status !== 'completed'){
+                // if there is at least one commands that needs to be processed we do not skip this process
+                skipUpdate = false
+                break;
+            }
+        }
+        if(skipUpdate || processingCommands === true)
+            return
+        processingCommands = true
+        console.log('updateComands', device.commands)
+        $.ajax({
+            url: `${window.location.origin}/process_commands`,
+            type: "POST",
+            data: { commands: device.commands },
+            success: (result) => {
+                console.log(result.message);
+                updateMeasurements();
+                processingCommands = false
+
+            },
+            error: (error) => { 
+                console.error(`${error}`);
+                processingCommands = false
+            }
+        });
     }
 
     // Function to update the measurements bucket
@@ -122,7 +155,8 @@ $(document).ready(function () {
     const eventSource = new EventSource(`/subscribe`);
     eventSource.onmessage = function (event) {
         try {
-            const vehicleData = JSON.parse(event.data);
+            console.log("onmessage", event)
+            const vehicleData = JSON.parse(event.data);  
             updateVehicle(vehicleData);
         } catch (error) {
             console.error('Error parsing JSON:', error, 'Received data:', event.data);

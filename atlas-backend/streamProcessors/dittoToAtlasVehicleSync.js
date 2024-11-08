@@ -1,3 +1,8 @@
+/*
+This Stream Procesor is in charge of listening to changes inside the battery, isOn, components and commands of the vehicle.
+It compares the new values of those attributes and if any change was registered we update those values from our Vehicle document.
+*/
+
 let s = {
     $source: {
       connectionName: "ditto_feedback_loop",
@@ -54,7 +59,19 @@ let p = {
             then: "$change.newValue.components",
             else: "$$REMOVE"
           }
-      },
+        },
+        commands: {
+          $cond: {
+            if: {
+              $ne: [
+                "$change.newValue.commands",
+                "$change.oldValue.commands"
+              ]
+            },
+            then: "$change.newValue.commands",
+            else: "$$REMOVE"
+          }
+        },
       }
 }
 

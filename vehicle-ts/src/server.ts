@@ -48,7 +48,6 @@ app.post("/add_sensor", async (req, res) => {
 app.post("/add_component", async (req, res) => {
   try {
     const result = await dittoApp.addComponent(req.body);
-    console.log(result);
     res.send(result);
   } catch (error) {
     console.error("Error adding sensor data:", error);
@@ -93,6 +92,17 @@ app.post("/stop_sync", async (req, res) => {
     res.send(result);
   } catch (error) {
     console.error("Error stopping ditto sync:", error);
+    res.status(500).send("Failed to stop sync.");
+  }
+});
+
+app.post("/process_commands", async (req, res) => {
+  try {
+    console.log('process_commands', req.body.commands)
+    const result = await dittoApp.processCommands(req.body.commands);
+    res.send(result);
+  } catch (error) {
+    console.error("Error processing :", error);
     res.status(500).send("Failed to stop sync.");
   }
 });

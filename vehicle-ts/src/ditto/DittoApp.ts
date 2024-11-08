@@ -15,6 +15,11 @@ interface Component {
   name: string
   owner_id: string;
 }
+interface Command {
+  ts: string
+  command: string;
+  status: string;
+}
 
 class DittoApp {
   private ditto: Ditto;
@@ -232,6 +237,54 @@ class DittoApp {
       return false
     }
   }
+
+  async processCommands( commands: Command[]) {
+    if(!commands)
+        return
+    console.log('processCommands dittoApp', commands)
+    let vehicleUpdated = null;
+    let processedCommands : Command[] = []
+    for (const command of commands) {
+      command.status = (command.status === "submitted") ? "inProgress" : command.status;
+      const processedCommand: Command = {
+        ts: command.ts,
+        command: command.command,
+        status: command.status
+      }
+      processedCommands.push(processedCommand)
+    }
+    await this.ditto.store.collection("vehicle")
+      .find("_id == $args._id", { _id: this.vehicle._id })
+      .update((mutableDocs: MutableDocument[]) => {
+        mutableDocs.forEach(doc => {
+          doc.at('commands').set(processedCommands)
+          vehicleUpdated = doc.value
+        })
+      });
+
+    // Create a delay function that returns a Promise
+    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+    await delay(5000);
+
+    this.resetBattery();
+
+    for (const command of processedCommands) {
+      command.status = (command.status === "inProgress") ? "completed" : command.status;
+    }
+    await this.ditto.store.collection("vehicle")
+      .find("_id == $args._id", { _id: this.vehicle._id })
+      .update((mutableDocs: MutableDocument[]) => {
+        mutableDocs.forEach(doc => {
+          doc.at('commands').set(processedCommands)
+          vehicleUpdated = doc.value
+        })
+      });
+    return {
+      message: `Commands processed to vehicle ${this.vehicle.name}`,
+      vehicle: vehicleUpdated
+    };
+  }
+
 }
 
 export default DittoApp;
