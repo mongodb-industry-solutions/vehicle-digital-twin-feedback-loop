@@ -199,6 +199,24 @@ class DittoApp {
     };
   }
 
+  async clearComponent() {
+    if (this.vehicle) {
+      try {
+        const updateQuery = ` UPDATE COLLECTION vehicle SET components=(:doc1) WHERE _id=='${this.vehicle._id}' `;
+        const args = {
+          doc1: [],
+        };
+
+        await this.ditto.store.execute(updateQuery, args);
+        console.log("Vehicle cleared components successfully.");
+      } catch (err) {
+        console.error("Error clearing components in Ditto:", err);
+      }
+    } else {
+      console.error("Vehicle not found in Ditto store.");
+    }
+  }
+
   async getVehicleAsJSON() {
     try {
       const queryResult = await this.ditto.store.execute(
@@ -235,6 +253,24 @@ class DittoApp {
       return true
     } catch (err) {
       return false
+    }
+  }
+
+  async stopEngine() {
+    if (this.vehicle) {
+      try {
+        const updateQuery = ` UPDATE COLLECTION vehicle SET isOn=(:doc1) WHERE _id=='${this.vehicle._id}' `;
+        const args = {
+          doc1: false,
+        };
+
+        await this.ditto.store.execute(updateQuery, args);
+        console.log("Vehicle engine stopped successfully.");
+      } catch (err) {
+        console.error("Error engine stopped in Ditto:", err);
+      }
+    } else {
+      console.error("Vehicle not found in Ditto store.");
     }
   }
 
@@ -285,6 +321,23 @@ class DittoApp {
     };
   }
 
+  async clearCommands() {
+    if (this.vehicle) {
+      try {
+        const updateQuery = ` UPDATE COLLECTION vehicle SET commands=(:doc1) WHERE _id=='${this.vehicle._id}' `;
+        const args = {
+          doc1: [],
+        };
+
+        await this.ditto.store.execute(updateQuery, args);
+        console.log("Vehicle cleared commands successfully.");
+      } catch (err) {
+        console.error("Error clearing commands in Ditto:", err);
+      }
+    } else {
+      console.error("Vehicle not found in Ditto store.");
+    }
+  }
 }
 
 export default DittoApp;

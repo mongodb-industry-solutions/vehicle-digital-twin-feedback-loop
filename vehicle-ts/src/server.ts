@@ -50,8 +50,18 @@ app.post("/add_component", async (req, res) => {
     const result = await dittoApp.addComponent(req.body);
     res.send(result);
   } catch (error) {
-    console.error("Error adding sensor data:", error);
-    res.status(500).send("Failed to add sensor data.");
+    console.error("Error adding component data:", error);
+    res.status(500).send("Failed to add component data.");
+  }
+});
+
+app.post("/clear_components", async (req, res) => {
+  try {
+    const result = await dittoApp.clearComponent();
+    res.send(result);
+  } catch (error) {
+    console.error("Error clearing components:", error);
+    res.status(500).send("Failed to clear components.");
   }
 });
 
@@ -96,6 +106,16 @@ app.post("/stop_sync", async (req, res) => {
   }
 });
 
+app.post("/stop_engine", async (req, res) => {
+  try {
+    const result = await dittoApp.stopEngine();
+    res.send(result);
+  } catch (error) {
+    console.error("Error stopping vehicle engine:", error);
+    res.status(500).send("Failed to stop engine.");
+  }
+});
+
 app.post("/process_commands", async (req, res) => {
   try {
     console.log('process_commands', req.body.commands)
@@ -104,6 +124,16 @@ app.post("/process_commands", async (req, res) => {
   } catch (error) {
     console.error("Error processing :", error);
     res.status(500).send("Failed to stop sync.");
+  }
+});
+
+app.post("/clear_commands", async (req, res) => {
+  try {
+    const result = await dittoApp.clearCommands();
+    res.send(result);
+  } catch (error) {
+    console.error("Error clearing commands:", error);
+    res.status(500).send("Failed to clear commands.");
   }
 });
 
