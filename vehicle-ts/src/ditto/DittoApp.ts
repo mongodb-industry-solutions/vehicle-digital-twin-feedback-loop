@@ -1,4 +1,4 @@
-import { init, Ditto, MutableDocument } from "@dittolive/ditto";
+import { init, Ditto, MutableDocument,TransportConfig } from "@dittolive/ditto";
 import { BSON } from "bson";
 import * as dotenv from 'dotenv';
 import { resolve } from 'path';
@@ -8,7 +8,9 @@ dotenv.config({ path: resolve(__dirname, '../../src/.env') });
 
 // Now you can access the variables using process.env
 const appID = process.env.DITTO_APP_ID || 'cant read env var DITTO_APP_ID';
-const token = process.env.DITTO_PLAYGROUND_TOKEN || 'cant read env var DITTO_PLAYGROUND_TOKEN';;
+const token = process.env.DITTO_PLAYGROUND_TOKEN || 'cant read env var DITTO_PLAYGROUND_TOKEN';
+const customAuthURL = process.env.DITTO_CUSTOM_AUTH_URL ||'cant read env var DITTO_CUSTOM_AUTH_URL';
+const dittoWebSocketURLs = process.env.DITTO_WEBSOCKET_URL || 'cant read env var DITTO_WEBSOCKET_URL';
 
 interface Component {
   _id: string;
@@ -34,21 +36,29 @@ class DittoApp {
       type: "onlinePlayground",
       appID: appID,
       token: token,
+      customAuthURL: customAuthURL,
+      enableDittoCloudSync: false
     });
+
+     // Set the Ditto Websocket URL
+    const config = new TransportConfig()
+    config.connect.websocketURLs.push(dittoWebSocketURLs)
+    this.ditto.setTransportConfig(config)
     this.ditto.disableSyncWithV3();
     this.ditto.startSync();
     this.initialize();
   }
 
   async initialize() {
+    console.log("DittoApp initialized.");
     this.ditto.sync.registerSubscription(`
-        SELECT * FROM vehicle 
+        SELECT * FROM Vehicle 
     `);
 
     this.ditto.store.registerObserver(
       `
           SELECT *
-          FROM vehicle
+          FROM Vehicle
       `,
       (result: any) => {
         this.vehicle =
@@ -81,7 +91,7 @@ class DittoApp {
       try {
         //console.log(this.vehicle);
         const updateQuery = `
-          UPDATE COLLECTION vehicle SET battery=(:doc1) WHERE _id=='${this.vehicle._id}'
+          UPDATE COLLECTION Vehicle SET battery=(:doc1) WHERE _id=='${this.vehicle._id}'
           `;
 
         const args = {
@@ -113,7 +123,7 @@ class DittoApp {
       try {
         //console.log(this.vehicle);
         const updateQuery = `
-          UPDATE COLLECTION vehicle SET battery=(:doc1) WHERE _id=='${this.vehicle._id}'
+          UPDATE COLLECTION Vehicle SET battery=(:doc1) WHERE _id=='${this.vehicle._id}'
           `;
 
         const args = {
@@ -175,7 +185,7 @@ class DittoApp {
           name: values.name,
           owner_id: this.vehicle.owner_id
         }
-        let updateResultsMap = await this.ditto.store.collection("vehicle")
+        let updateResultsMap = await this.ditto.store.collection("Vehicle")
           .find("_id == $args._id", { _id: this.vehicle._id })
           .update((mutableDocs: MutableDocument[]) => {
             mutableDocs.forEach(doc => {
@@ -202,7 +212,7 @@ class DittoApp {
   async clearComponent() {
     if (this.vehicle) {
       try {
-        const updateQuery = ` UPDATE COLLECTION vehicle SET components=(:doc1) WHERE _id=='${this.vehicle._id}' `;
+        const updateQuery = ` UPDATE COLLECTION Vehicle SET components=(:doc1) WHERE _id=='${this.vehicle._id}' `;
         const args = {
           doc1: [],
         };
@@ -221,7 +231,7 @@ class DittoApp {
     try {
       const queryResult = await this.ditto.store.execute(
         `
-        SELECT * FROM "vehicle" 
+        SELECT * FROM Vehicle 
         `
       );
 
@@ -259,7 +269,7 @@ class DittoApp {
   async stopEngine() {
     if (this.vehicle) {
       try {
-        const updateQuery = ` UPDATE COLLECTION vehicle SET isOn=(:doc1) WHERE _id=='${this.vehicle._id}' `;
+        const updateQuery = ` UPDATE COLLECTION Vehicle SET isOn=(:doc1) WHERE _id=='${this.vehicle._id}' `;
         const args = {
           doc1: false,
         };
@@ -324,7 +334,7 @@ class DittoApp {
   async clearCommands() {
     if (this.vehicle) {
       try {
-        const updateQuery = ` UPDATE COLLECTION vehicle SET commands=(:doc1) WHERE _id=='${this.vehicle._id}' `;
+        const updateQuery = ` UPDATE COLLECTION Vehicle SET commands=(:doc1) WHERE _id=='${this.vehicle._id}' `;
         const args = {
           doc1: [],
         };

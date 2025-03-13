@@ -48,7 +48,7 @@ To learn more about Mongo Database Tools ☞ [click here](https://www.mongodb.co
 8. Create your **Ditto** account ([here](https://ditto.live/)) 
 
 9. Set-up a new App by selecting `New App` under `Apps` tab and assign it as *"Playground"* Auth mode.
-You'll be given your **App ID** and **Playground token** as well as an URL
+You'll be given your **App ID**, **Playground token**, **Auth URL** and **Websocket URL** as well as an URL
 
 ---
 **ⓘ :**
@@ -75,6 +75,8 @@ npm install @dittolive/ditto
 ```bash
 DITTO_APP_ID=<yourID>
 DITTO_PLAYGROUND_TOKEN=<yourtokenID>
+DITTO_CUSTOM_AUTH_URL =<yourCustomAuthUrl>
+DITTO_WEBSOCKET_URL=<yourDittoWebsocketUrl>
 ```
 
 13. Congrats! The first part is done. Now you'll continue with configuring / running the vehicle simulator ["Part 2: Set up the Typescript Vehicle Simulator"](..//vehicle-ts).

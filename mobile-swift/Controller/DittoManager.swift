@@ -14,11 +14,23 @@ class DittoManager: ObservableObject {
     
     init() {        
         ditto = Ditto(
-            identity: .onlinePlayground(
+            identity: DittoIdentity.onlinePlayground(
                 appID: Env.DITTO_APP_ID,
-                token: Env.DITTO_PLAYGROUND_TOKEN
+                token: Env.DITTO_PLAYGROUND_TOKEN,
+                enableDittoCloudSync: false,
+                customAuthURL: URL(string: Env.DITTO_CUSTOM_AUTH_URL)
             )
         )        
+        
+        // Set the Ditto Websocket URL
+        var config = DittoTransportConfig()
+        let webSocketURL = Env.DITTO_WEBSOCKET_URL
+        config.connect.webSocketURLs.insert(webSocketURL)
+        
+        // Optionally enable all P2P transports if using P2P Sync
+        // Do not call this if only using Ditto Cloud Sync
+        config.enableAllPeerToPeer()
+        ditto.transportConfig = config
         
         // disable sync with v3 peers, required for DQL
         do {

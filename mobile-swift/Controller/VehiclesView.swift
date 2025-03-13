@@ -30,7 +30,7 @@ class VehiclesViewModel: ObservableObject {
                 subscription = nil
             }
             
-            let query = "SELECT * FROM COLLECTION vehicle"
+            let query = "SELECT * FROM COLLECTION Vehicle"
             subscription = try dittoSync.registerSubscription(query: query)
         } catch {
             print("VehiclesViewModel.\(#function) - ERROR registering subscription: \(error.localizedDescription)")
@@ -45,7 +45,7 @@ class VehiclesViewModel: ObservableObject {
                 storeObserver = nil
             }
             
-            let query = "SELECT * FROM COLLECTION vehicle"
+            let query = "SELECT * FROM COLLECTION Vehicle"
             storeObserver = try dittoStore.registerObserver(query: query) { [weak self] result in
                 guard let self = self else { return }
                 
