@@ -44,7 +44,7 @@ class VehicleDetailViewModel: ObservableObject {
             storeObserver = nil
         }
 
-        let query = "SELECT * FROM COLLECTION vehicle WHERE _id == :_id"
+        let query = "SELECT * FROM COLLECTION Vehicle WHERE _id == :_id"
         storeObserver = try dittoStore.registerObserver(query: query, arguments: ["_id": vehicle._id]) { [weak self] result in
             guard let self = self else { return }
             guard let updatedVehicle = result.items.first else { return }
@@ -68,7 +68,7 @@ class VehicleDetailViewModel: ObservableObject {
 
     func saveChanges() {
         let query = """
-        UPDATE vehicle SET
+        UPDATE Vehicle SET
             isOn = :isOn
         WHERE _id == :_id
         """
@@ -91,7 +91,7 @@ class VehicleDetailViewModel: ObservableObject {
     func saveSentCommand() {
         print("saveSentCommand")
         let query = """
-        UPDATE vehicle SET
+        UPDATE Vehicle SET
             commands = :commands
         WHERE _id == :_id
         """
@@ -115,7 +115,7 @@ class VehicleDetailViewModel: ObservableObject {
     func addCommand(command: Command) {
         commands.append(command)
         let query = """
-        UPDATE vehicle SET
+        UPDATE Vehicle SET
             commands = :commands
         WHERE _id == :_id
         """
