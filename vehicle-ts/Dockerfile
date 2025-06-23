@@ -1,4 +1,7 @@
 FROM node:18-slim
+
+RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -6,6 +9,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY tsconfig.json ./
 COPY ./src ./src
+
+RUN npm install @dittolive/ditto
 
 # Install app dependencies
 RUN npm install
@@ -17,4 +22,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Start server
-CMD [ "node", "build/server.js"]
+CMD [ "npm", "start"]

@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 import { resolve } from 'path';
 
 // Load environment variables from .env file
-dotenv.config({ path: resolve(__dirname, '../../src/.env') });
+dotenv.config();
 
 // Now you can access the variables using process.env
 const appID = process.env.DITTO_APP_ID || 'cant read env var DITTO_APP_ID';
